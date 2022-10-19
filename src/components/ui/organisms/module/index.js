@@ -1,71 +1,92 @@
-import React, {
-  useState, useRef
-} from "react";
+import React, { useState, useRef, Suspense } from "react";
 import "./style.css";
 import * as THREE from "three";
-import { Canvas, useFrame } from '@react-three/fiber'
-import { MeshReflectorMaterial } from '@react-three/drei'
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import {
+  OrbitControls,
+  MeshReflectorMaterial,
+  ContactShadows,
+  Environment,
+  softShadows
+} from "@react-three/drei";
 import { MeshBasicMaterial, SphereBufferGeometry } from "three";
-function Module({
-}) {
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import Cannon from "../../../../assets/scans/Cannon.glb";
+import Loader from "../../molecules/Loader/index";
+function Module({}) {
+  
+  function Scene() {
+    const { nodes, materials } = useLoader(GLTFLoader, Cannon);
+    const group = useRef();
+    console.log(materials.main.map);
+    materials.main.map = null;
 
-  function Box(props) {
-    // This reference gives us direct access to the THREE.Mesh object
-    const ref = useRef()
-    // Hold state for hovered and clicked events
-    const [hovered, hover] = useState(false)
-    const [clicked, click] = useState(false)
-    // Subscribe this component to the render-loop, rotate the mesh every frame
-    useFrame((state, delta) => (ref.current.rotation.x += 0.01))
-    // Return the view, these are regular Threejs elements expressed in JSX
     return (
-      <mesh
-        {...props}
-        ref={ref}
-        scale={clicked ? 1.5 : 1}
-        onClick={(event) => click(!clicked)}
-        onPointerOver={(event) => hover(true)}
-        onPointerOut={(event) => hover(false)}>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={hovered ? 'hotpink' : 'orange'} />
-      </mesh>
-    )
+      <Suspense fallback={<Loader />}>
+
+          <mesh
+            material={materials.main}
+            geometry={nodes.mesh.geometry}
+            position={[0, 0, 0]}
+
+            castShadow
+          ></mesh>
+ 
+      </Suspense>
+    );
   }
 
-  
+
 
   return (
     <div id="canvas">
       <Canvas
-        camera={{ position: [0, 0, 5], fov: 70 }}
+        camera={{ position: [0, 2.5, 5], fov: 70 }}
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
+        shadows
       >
-        <color attach="background" args={['#191920']} />
-        <fog attach="fog" args={['#191920', 0, 15]} />
+
+{/* <pointLight position={[10, 10, 10]} intensity={1.5} /> */}
+        <OrbitControls />
+        {/* <color attach="background" args={['#f4f4f4']} />
+        <fog attach="fog" args={['#f4f4f4', 0, 15]} /> */}
+
+     
+          <Scene />
+          <Environment preset="city"/>
+          <ContactShadows position={[0, -4.5, 0]} scale={20} blur={2} far={4.5} />
+  
+
         
-        <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]}>
-          <planeGeometry args={[50, 50]} />
-          <MeshReflectorMaterial
-            blur={[300, 100]}
-            resolution={2048}
-            mixBlur={1}
-            mixStrength={40}
-            roughness={1}
-            depthScale={1.2}
-            minDepthThreshold={0.4}
-            maxDepthThreshold={1.4}
-            color="#050505"
-            metalness={0.5}
+        {/* <mesh position={[0, -1, 2]} rotation={[-1.568, 0, 0]}>
+          <cylinderBufferGeometry args={[.05, .05, 100]} />
+          <meshBasicMaterial
+            
+            color="red"
           />
-        </mesh>
-      <Box position={[0, 0, 0]} />
-      <ambientLight />
-    <pointLight position={[10, 10, 10]} />
-        
+        </mesh> */}
+
+       
+        {/* <spotLight intensity={0.3} angle={0.3} penumbra={1} position={[5, 25, 20]} shadow-bias={-0.0001} castShadow />
+        <ambientLight intensity={0.5} /> */}
+
+
+
+
+        {/* <hemisphereLight
+          color="#ffffff"
+          groundColor="#707070"
+          position={[0, 25, -30]}
+          intensity={0.85}
+          castShadow
+        /> */}
+        {/* <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]} receiveShadow>
+        <planeBufferGeometry attach="geometry" args={[100, 100]} />
+        <shadowMaterial attach="material" transparent opacity={0.4} />
+      </mesh> */}
       </Canvas>
     </div>
   );
 }
 
 export default Module;
-
