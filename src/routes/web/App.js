@@ -10,11 +10,10 @@ function App() {
 
 // Startup Function
 const [loading, setLoading] = useState(true);
-// useEffect(()=>{
 
-// },[])
+const handleStart = () => {
 
-
+}
 
   // SCROLL RIG
   const scrollArea = useRef()
@@ -37,6 +36,7 @@ useEffect(() => {
 const loader = {
 loading: loading,
 setLoading: setLoading,
+handleStart: handleStart,
 }
 const wrapper = {
   // scrollArea: scrollArea,
