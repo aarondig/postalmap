@@ -1,0 +1,22 @@
+#view {
+  position: relative;
+  box-sizing: border-box;
+  height: 100vh;
+  }
+
+#view .text-c {
+  padding-top: 42vh;
+}
+
+#view .subtitle {
+  color: #959595;
+  font-size: 1.6vw;
+  margin: 0;
+}
+#view .title {
+  color: #fff;
+  margin: 0;
+  font-size: 3.8vw;
+  max-width: 100%;
+  white-space: wrap;
+}

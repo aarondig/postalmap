@@ -1,0 +1,25 @@
+#description {
+  position: relative;
+  box-sizing: border-box;
+  background: #101010;
+  }
+
+  #description .subtitle {
+    color: #959595;
+    font-size: 1.6vw;
+    margin: 0;
+  }
+  #description .title {
+    color: #fff;
+    margin: 0;
+    font-size: 3.8vw;
+    max-width: 100%;
+    white-space: wrap;
+  }
+  #description .text {
+    color: #fff;
+    margin: 0;
+    font-size: 1.6vw;
+    max-width: 100%;
+    white-space: wrap;
+  }

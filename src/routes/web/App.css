@@ -11,4 +11,46 @@ body, html {
   width: 100vw;
   z-index: 1;
   overflow: auto;
+
+  /* pointer-events: none; */
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.col-1 {
+  display: flex;
+  flex: 1;
+  align-items: center;
+
+}
+.col-2 {
+  display: flex;
+  flex: 2;
+  align-items: center;
+}
+.col-3 {
+  display: flex;
+  flex: 3;
+  align-items: center;
+}
+
+h1 {
+
+}
+h2 {
+  font-family: Inter;
+  font-weight: 300;
+  /* font-size: 36px; */
+}
+h6 {
+  font-family: Inter;
+  font-weight: 300;
+  /* font-size: 18px; */
+}
+p {
+  font-family: Inter;
+  font-weight: 300;
 }

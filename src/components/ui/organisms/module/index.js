@@ -12,24 +12,33 @@ import {
 import { MeshBasicMaterial, SphereBufferGeometry } from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import Cannon from "../../../../assets/scans/Cannon.glb";
+import postalcode from "../../../../assets/scans/postalcode.glb";
+import train from "../../../../assets/scans/train.glb";
+import corner from "../../../../assets/scans/corner.glb";
+import riverside from "../../../../assets/scans/riverside.glb";
 import Loader from "../../molecules/Loader/index";
-function Module({}) {
+function Module({scroll}) {
   
-  function Scene() {
-    const { nodes, materials } = useLoader(GLTFLoader, Cannon);
+  function Scene({scroll}) {
+    const ref = useRef();
+    const { nodes, materials } = useLoader(GLTFLoader, postalcode);
     
     materials.main.map = null;
     materials.main.color = new THREE.Color(0x404040)
-
-    console.log(materials.main);
+    
+    useFrame(() => {
+      ref.current.rotation.y = -700 + scroll / 200;
+    })
     return (
       <Suspense fallback={<Loader />}>
 
           <mesh
+            ref={ref}
             material={materials.main}
             geometry={nodes.mesh.geometry}
-            position={[0, 0, 0]}
+            position={[0, -1, 0]}
             castShadow
+            scale={1.8}
           >
           </mesh>
  
@@ -42,18 +51,19 @@ function Module({}) {
   return (
     <div id="canvas">
       <Canvas
-        camera={{ position: [0, 1.5, 3], fov: 50 }}
+        camera={{ position: [0, 1.5, 3], fov: 70 }}
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
         shadows
       >
 
-{/* <pointLight position={[10, 10, 10]} intensity={.3} /> */}
+        <pointLight position={[4, 2, 4]} intensity={1} />
+        <pointLight position={[-5, 0, -3]} intensity={.3} />
         <OrbitControls />
 
 
      
-          <Scene />
-          <Environment preset="city"/>
+          <Scene scroll={scroll}/>
+          {/* <Environment preset="city"/> */}
   
 
         
