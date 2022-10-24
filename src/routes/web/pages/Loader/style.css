@@ -123,3 +123,10 @@ background: #fff;
  
 
 }
+
+@media only screen and (max-width: 720px) {
+.letter {
+  font-size: 140px;
+}
+  
+}

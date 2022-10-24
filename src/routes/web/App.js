@@ -4,6 +4,7 @@ import Wrapper from '../../components/ui/atoms/Wrapper';
 import Module from '../../components/ui/organisms/module';
 import Project from './pages/project';
 import Loader from './pages/Loader';
+import Navigation from '../../components/ui/molecules/Navigation';
 
 
 function App() {
@@ -30,7 +31,7 @@ const handleStart = () => {
 
 useEffect(() => {
   pagesize.current.getBoundingClientRect();
-
+  
 },[])
 
 const loader = {
@@ -51,14 +52,15 @@ const project = {
   return (
     <div className="App">
     <Wrapper {...wrapper}>
-
-      <Loader {...loader}/>
+<Navigation/>
+    {loading && <Loader {...loader}/>
+    }
       <div id="scroller" ref={scrollArea} onScroll={onScroll}> 
         {/* <div style={{ height: `${10 * 100}vh` }} /> */}
         <Project {...project}/>
 
     </div>
-    {!loading && <Module {...module}/>}
+   <Module {...module}/>
       
    
     </Wrapper>

@@ -12,8 +12,16 @@ body, html {
   z-index: 1;
   overflow: auto;
 
-  /* pointer-events: none; */
+
+  perspective: 300px;
+
+
 }
+
+/* 
+::-webkit-scrollbar {
+  display: none;
+} */
 
 .row {
   display: flex;

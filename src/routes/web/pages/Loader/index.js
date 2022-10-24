@@ -12,8 +12,28 @@ import {
 function Loader({ loading, setLoading, handleStart }) {
   const [counter, setCounter] = useState(0);
   const [countDone, setCountDone] = useState(false);
+  const [unmount, setUnmount] = useState(false);
   const [array, setArray] = useState([]);
   
+  //Unmount
+
+  const fadeOut = useSpring(unmount && {
+  
+
+    from: { opacity: 1, pointerEvents: "all" },
+    to: { opacity: 0, pointerEvents: "none" },
+    config: {duration: 400},
+    onRest: () => setLoading(false),
+  });
+ const handleUnmount = () => {
+  console.log("Click")
+  if (countDone) {
+    setUnmount(true)
+    // setTimeout(() => setUnmount(), 4000);
+  }
+ }
+
+
   //Counter
 
   useEffect(() => {
@@ -42,19 +62,23 @@ function Loader({ loading, setLoading, handleStart }) {
   let circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
-  //  ANIMATIOINS
+  //  ANIMATIONS
 
+  //Animated Ring
   let numAnimated = 3;
 
   const [fade, setFade] = useState([]);
+
+  //Using refs could be extremely costly. Might want to change to an array?
   useEffect(() => {
     //Setting Grouped Refs
     setFade((fade) =>
       Array(numAnimated)
         .fill()
         .map((el, i) => fade[i] || [i])
-    );
+    ); 
   }, []);
+
 
   const fadeIn = useSprings(
     fade.length,
@@ -70,7 +94,7 @@ function Loader({ loading, setLoading, handleStart }) {
               transform: `translateY(0) scale(${i === 0 ? 4 : 1.2})`,
             },
 
-            delay: i !== 2 ? (220 * i) : 1200,
+            delay: (220 * i),
             config: { mass: 1, tension: 120, friction: 40 },
           }
         : {
@@ -114,16 +138,24 @@ function Loader({ loading, setLoading, handleStart }) {
             // friction: 18
           },
           lettersRef,
+          onRest: () => {
+            // if (i=== letters.length-1 ) {
+            //   setLoading(false);
+            // }
+          }
         }
     )
   );
   //OTHER ANIMATIONS
-  const opacityBounce = useSpring({
-    loop: true,
+
+  const [flip, set] = useState(false)
+  const bounce = useSpring({
+    reset: true,
+    reverse: flip,
     from: { opacity: 0 },
     to: { opacity: 1 },
-    delay: 200,
-    config: { mass: 1, tension: 280, friction: 120 },
+    config: {duration: 800},
+    onRest: () => set(!flip),
   });
   const subtitle = useSpring({
     opacity: countDone ? 1 : 0,
@@ -131,7 +163,7 @@ function Loader({ loading, setLoading, handleStart }) {
   });
 
   return (
-    <div id="loader" onClick={()=>handleStart}>
+    <a.div id="loader" style={fadeOut} onClick={()=> handleUnmount()}>
         <a.div className="svg-c" style={fadeIn[0]}>
           <svg className="svg-path" height={radius * 2} width={radius * 2}>
             <circle
@@ -174,17 +206,22 @@ function Loader({ loading, setLoading, handleStart }) {
           </div>
 
           <a.h4 className="subtitle" style={subtitle}>
-            {" "}
             a ual group project
           </a.h4>
         </div>
      
-        <a.div className="loader-text-c" style={fadeIn[2]}>
-          <a.p className="loader-text" style={opacityBounce}>
+        {loading ? <a.div className="loader-text-c" style={fadeIn[2]}>
+          <a.p className="loader-text" style={bounce}>
             Loading...
           </a.p>
+        </a.div> :
+         <a.div className="loader-text-c" >
+          <a.p className="loader-text" style={bounce}>
+            Tap anywhere to continue.
+          </a.p>
         </a.div>
-    </div>
+}
+    </a.div>
   );
 }
 

@@ -7,7 +7,6 @@ import View from "../../sections/view";
 function Project({pagesize}) {
   return (
     <div id="project" ref={pagesize}>
-      <div className="page-c">
         {data.map((el, i) => {
           switch (el.type) {
             default: {
@@ -21,7 +20,7 @@ function Project({pagesize}) {
             }
           }
         })}
-      </div>
+   
     </div>
   );
 }

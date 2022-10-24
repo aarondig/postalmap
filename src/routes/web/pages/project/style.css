@@ -5,11 +5,8 @@
 
   z-index: 100;
  
-  
+  transform-style: preserve-3d;
   }
-.page-c {
-  box-sizing: border-box;
-}
 
 .section-wrap {
   box-sizing: border-box;
@@ -35,4 +32,13 @@
   justify-content: space-between;
   gap: 20px;
   white-space: wrap;
+}
+
+
+@media only screen and (max-width: 720px) {
+
+  .section-wrap {
+    padding-top: 12vh;
+    padding-bottom: 12vh;
+  }
 }

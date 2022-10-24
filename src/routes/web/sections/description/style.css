@@ -2,6 +2,8 @@
   position: relative;
   box-sizing: border-box;
   background: #101010;
+  /* transform: translateZ(-1800px) scale(7); */
+  /* transform: translateZ(-1200px) scale(5.2); */
   }
 
   #description .subtitle {
@@ -15,6 +17,7 @@
     font-size: 3.8vw;
     max-width: 100%;
     white-space: wrap;
+ 
   }
   #description .text {
     color: #fff;
@@ -22,4 +25,23 @@
     font-size: 1.6vw;
     max-width: 100%;
     white-space: wrap;
+  }
+
+  @media only screen and (max-width: 720px) {
+    #description .title {
+      font-size: 30px;
+     }
+   #description .subtitle {
+    font-size: 16px;
+   }
+   #description .text {
+    
+    font-size: 1.15rem;
+    
+  }
+  #description .col-1 {
+    
+    display: none;
+    
+  }
   }

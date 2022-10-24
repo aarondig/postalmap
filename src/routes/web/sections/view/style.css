@@ -1,7 +1,8 @@
 #view {
   position: relative;
   box-sizing: border-box;
-  height: 100vh;
+  height:100vh;
+  transform: translateZ(-1800px) scale(7);
   }
 
 #view .text-c {
@@ -19,4 +20,22 @@
   font-size: 3.8vw;
   max-width: 100%;
   white-space: wrap;
+}
+
+@media only screen and (max-width: 720px) {
+  #view .text-c {
+    padding-top: 42vh;
+  }
+ #view .title {
+    font-size: 30px;
+   }
+ #view .subtitle {
+  font-size: 16px;
+ }
+ #view .col-1 {
+    
+  display: none;
+  
+}
+
 }

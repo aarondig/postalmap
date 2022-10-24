@@ -1,4 +1,60 @@
 #navigation {
-    position: absolute;
-   
+    position: fixed;
+    width: 100%;
+    height: 24vh;
+    
+    /* background-color: red; */
+    
+    z-index: 3;
+  }
+  .logo {
+    font-family: 'El Messiri', sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    /* height: 1.2vh; */
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.6);
+  }
+  #navigation .content-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
+    
+  }
+  #navigation svg:hover :nth-child(1) {
+    transform: translateY(3px);
+  }
+  #navigation svg:hover :nth-child(2) {
+    transform: translateY(-3px);
+  }
+  #navigation svg:hover  {
+    transform: scale(1.6);
+  }
+  #navigation svg  {
+    transition: .1s transform ease-in-out;
+  }
+  #navigation svg :nth-child(2) {
+    transition: .1s transform ease-in-out;
+  }
+  #navigation svg :nth-child(1) {
+    transition: .1s transform ease-in-out;
+  }
+  @media only screen and (max-width: 720px) {
+
+   #navigation {
+    height: 16vh;
+   }
+   #navigation .content-box {
+    padding-right: 6vw;
+    gap: 24px;
+  }
   }
