@@ -4,9 +4,9 @@ import React, {
 import "./style.css";
 import {data} from "../../../../data"
 
-function Description({el}) {
+function Description({el, section}) {
 
-  return <div id="description">
+  return <div id="description" ref={section}>
     <div className="section-wrap">
     <div className="row">
         <div className="col-3">

@@ -25,7 +25,7 @@ function Module({scroll}) {
     
     materials.main.map = null;
     materials.main.color = new THREE.Color(0x404040)
-    
+    // materials.main.color = new THREE.Color(0xffffff)
     useFrame(() => {
       ref.current.rotation.y = -700 + scroll / 200;
     })

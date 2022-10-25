@@ -13,7 +13,7 @@ function App() {
 const [loading, setLoading] = useState(true);
 
 const handleStart = () => {
-
+  
 }
 
   // SCROLL RIG
@@ -53,8 +53,7 @@ const project = {
     <div className="App">
     <Wrapper {...wrapper}>
 <Navigation/>
-    {loading && <Loader {...loader}/>
-    }
+    {/* {loading && <Loader {...loader}/>} */}
       <div id="scroller" ref={scrollArea} onScroll={onScroll}> 
         {/* <div style={{ height: `${10 * 100}vh` }} /> */}
         <Project {...project}/>

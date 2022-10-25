@@ -210,7 +210,7 @@ function Loader({ loading, setLoading, handleStart }) {
           </a.h4>
         </div>
      
-        {loading ? <a.div className="loader-text-c" style={fadeIn[2]}>
+        {!countDone ? <a.div className="loader-text-c" style={fadeIn[2]}>
           <a.p className="loader-text" style={bounce}>
             Loading...
           </a.p>

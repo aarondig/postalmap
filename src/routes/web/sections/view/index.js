@@ -1,9 +1,9 @@
 import React, { useState, useRef, Suspense } from "react";
 import "./style.css";
 
-function View({ el }) {
+function View({ el, section }) {
   return (
-    <div id="view">
+    <div id="view" ref={section}>
       <div className="section-wrap">
       {/* <div className="content-box"> */}
       <div className="row">
