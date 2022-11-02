@@ -10,7 +10,12 @@ import Navigation from '../../components/ui/molecules/Navigation';
 function App() {
 
 // Startup Function
+const [projectHeight, setProjectHeight] = useState(0)
+
+
 const [loading, setLoading] = useState(true);
+
+
 
 const handleStart = () => {
   
@@ -18,11 +23,15 @@ const handleStart = () => {
 
   // SCROLL RIG
   const scrollArea = useRef()
+  // const [scroll, setScroll] = useState([])
   const [scroll, setScroll] = useState(0)
-
+  
     const onScroll = (e) => {
       setScroll(e.target.scrollTop);
+      // setScroll((scroll) => [...scroll, e.target.scrollTop]);
     };
+    
+
     useEffect(() => void onScroll({ target: scrollArea.current }), []);
    
 
@@ -30,7 +39,7 @@ const handleStart = () => {
  const pagesize = useRef();
 
 useEffect(() => {
-  pagesize.current.getBoundingClientRect();
+  // pagesize.current.getBoundingClientRect();
   
 },[])
 
@@ -47,18 +56,27 @@ const module = {
   scroll: scroll
 }
 const project = {
-  pagesize: pagesize
+scroll: scroll,
+  // pagesize: pagesize,
+  scrollArea: scrollArea,
+  setProjectHeight: setProjectHeight,
+  onScroll: onScroll,
 }
+
   return (
     <div className="App">
     <Wrapper {...wrapper}>
 <Navigation/>
+
+
+
+
     {/* {loading && <Loader {...loader}/>} */}
-      <div id="scroller" ref={scrollArea} onScroll={onScroll}> 
-        {/* <div style={{ height: `${10 * 100}vh` }} /> */}
+  
+      
         <Project {...project}/>
 
-    </div>
+  
    <Module {...module}/>
       
    
