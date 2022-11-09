@@ -1,4 +1,4 @@
-#description {
+#detail {
   position: relative;
   box-sizing: border-box;
   /* width: 100vw;
@@ -6,14 +6,6 @@
 
   background: #101010;
   }
-  /* #description .background-c {
-    transform-style: flat;
-  }
-  #description .background {
-    height: 100vh;
-    width: 100vw;
-    background: #101010;
-  } */
   #description .text-c {
     opacity: 0;
  
@@ -21,8 +13,7 @@
   #description .title {
     color: #fff;
     margin: 0;
-    /* font-size: 3.8vw; */
-    font-size: 6vw;
+    font-size: 3.8vw;
     max-width: 100%;
     white-space: wrap;
  

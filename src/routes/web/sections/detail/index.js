@@ -5,7 +5,7 @@ import "./style.css";
 import {data} from "../../../../data"
 import {a, useSpring } from "react-spring";
 
-function Description({i, el, section, scrollArea, scroll}) {
+function Description({el, section, scrollArea, scroll}) {
   const content = useRef();
   const [inView, setInView] = useState(false);
 
@@ -21,6 +21,7 @@ function Description({i, el, section, scrollArea, scroll}) {
  
   }
 
+
  const visible = useSpring({ opacity: inView ? 1 : 0,
 config: { duration: 250 } })
   
@@ -31,42 +32,8 @@ config: { duration: 250 } })
     observer.observe(section.current)
   }
   },[section])
- 
-  // const [opa, setOpa] = useState(0)
-  
-
-  // useEffect(()=>{
-    
 
   
-  //     //If scroll is positive
-  //     if (scroll.slice(-1) > scroll.slice(-2)) {
-  // if (inView) {
-      
-      
-  //     setOpa((opa + 1) * 1.2)
-  //     content.current.style.opacity = opa / 250
-  // }
-  //     }
-  //     if (scroll.slice(-1) < scroll.slice(-2)) {
-
-      
-      
-  //       setOpa(opa <= .04 ? 0 : ((opa + 1) / 1.2))
-  //       content.current.style.opacity = opa / 250
-        
-  //       }
-        
-
-  //       console.log(opa/250)
-  //     //If scroll is negative
-
-  //     // console.log(scroll.slice(-1) > scroll.slice(-2))
-    
-    
-  // },[scroll])
-  
-  console.log(inView)
 
   return <div id="description" ref={section} >
    {/* style={visible} */}

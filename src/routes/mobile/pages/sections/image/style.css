@@ -2,12 +2,16 @@
   position: relative;
   box-sizing: content-box;
   width: 100%;
-  background: #101010;
-
+  max-height: 0;
+  /* background: #101010; */
+  /* perspective: 300px; */
+  transform-style: preserve-3d;
 
   }
   #image .section-wrap {
     padding-top: 6%;
+
+    transform: translateZ(-800px) scale(2) translateY(-50vh);
   }
   .image-c {
     position: relative;

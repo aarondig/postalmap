@@ -6,6 +6,9 @@
     overflow-y: auto;
     overflow-x: hidden;
   
+  
+    perspective: 800px;
+  
   }
   .section-spacer-c {
     position: relative;
@@ -47,8 +50,6 @@
   padding-right: 12vw;
   padding-top: 12%;
   padding-bottom: 12%;
-  will-change: transform;
-  /* transition: all .01s ease-in-out; */
 }
 .content-box {
   box-sizing: border-box;

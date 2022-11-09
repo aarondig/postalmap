@@ -1,31 +1,29 @@
 #view {
-  position: relative;
+  position: absolute;
   box-sizing: border-box;
   height:100vh;
   width:100vw;
   
 
+  transform-style: preserve-3d;
   /* overflow: hidden; */
   }
 
   #view .section-wrap {
-    position: fixed;
-    width: 100%;
-    pointer-events: none;
     /* padding-left: 0;
     padding-right: 0; */
     /* transform: scale(7); */
     /* transform: translateZ(-1800px) scale(7); */
 
+
+    transform: translateZ(-1800px) scale(3.25);
   }
 
 #view .text-c {
-
   padding-top: 42vh;
   /* transform: scale(7); */
- /* white-space: wrap; */
+ 
 }
-
 
 #view .subtitle {
   color: #959595;

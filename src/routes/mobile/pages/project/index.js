@@ -1,4 +1,4 @@
-import React, { useState, useRef, Suspense, useEffect, createRef, useLayoutEffect } from "react";
+import React, { useState, useRef, Suspense, useEffect, createRef } from "react";
 import "./style.css";
 import Description from "../../sections/description";
 import { data } from "../../../../data.js";
@@ -30,28 +30,35 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
       });
     }
   }, [section]);
-  const slow3 = useRef([]);
 
-  useEffect(()=>{
-    
-    slow3.current.map((el, i)=>{
-      el.style.transform = `translateY(${-scroll*.3}px)`
-   
-    })
-    
-  },[scroll])
-  // console.log(slow3)
-
-
-  const viewP = {
-    scroll: scroll,
-    scrollArea: scrollArea,
-
-
-  }
   return (
     <div id="project" ref={scrollArea} onScroll={onScroll}>
-     
+      <div className="section-spacer-c" >
+      {data.map((el, i) => {
+        switch (el.type) {
+          default: {
+            return <div className="space" key={i} />;
+          }
+          case "text": {
+            return (
+              <div className="text-b" />
+
+            );
+          }
+          case "view": {
+            return (
+                <div className="view-b" />
+        
+            );
+          }
+          case "image": {
+            return (
+                <div className="image-b" />
+            );
+          }
+        }
+      })}
+      </div>
       {data.map((el, i) => {
         switch (el.type) {
           default: {
@@ -61,7 +68,7 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
             return (
               <>
                 {/* <div className="text-b" /> */}
-                <Description key={i} i={i} el={el} section={section[i]} scrollArea={scrollArea} scroll={scroll}/>
+                <Description key={i} el={el} section={section[i]} scrollArea={scrollArea} scroll={scroll}/>
               </>
             );
           }
@@ -69,7 +76,7 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
             return (
               <>
                 
-                <View key={i} i={i} el={el} section={section[i]} slow3={slow3} {...viewP}/>
+                <View key={i} el={el} section={section[i]} scrollArea={scrollArea} scroll={scroll}/>
                 {/* <div className="view-b" /> */}
               </>
             );
