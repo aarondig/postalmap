@@ -30,7 +30,7 @@ export const data = [
             type: "image"
             },
             {
-                id: "description",
+                id: "detail",
                 title: "Statement on something blah blah blah",
                 subtitle: "Introduction",
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
@@ -38,7 +38,15 @@ export const data = [
             
                 type: "detail"
                 },
-        
+                {
+                    id: "description",
+                    title: "Statement on something blah blah blah",
+                    subtitle: "Introduction",
+                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+                    number: "02",
+                
+                    type: "text"
+                    },
         
         
 

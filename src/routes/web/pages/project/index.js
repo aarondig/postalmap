@@ -6,7 +6,13 @@ import View from "../../sections/view";
 import Image from "../../sections/image";
 import Detail from "../../sections/detail";
 
-function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
+function Project({ scrollArea, onScroll, scroll }) {
+
+  const [current, setCurrent] = useState(0)
+
+useEffect(()=>{
+},[current])
+
   const [section, setSection] = useState([]);
   const [sectionSize, setSectionSize] = useState([]);
 
@@ -32,6 +38,8 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
     //           }
     //         }, [section]);
 
+
+
   //Parallax Items
   const slowFixed = useRef([]);
   const slow3 = useRef([]);
@@ -50,18 +58,40 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
   // console.log(slow3)
 
 
+  const viewP = {
+    scroll: scroll,
+    scrollArea: scrollArea,
+
+    setCurrent: setCurrent,
+    slowFixed: slowFixed,
+
+  }
+
   const textP = {
     scroll: scroll,
     scrollArea: scrollArea,
+
+    setCurrent: setCurrent,
     slow3: slow3,
 
 
   }
-  const viewP = {
+  const detailP = {
     scroll: scroll,
     scrollArea: scrollArea,
-    slowFixed: slowFixed,
 
+    setCurrent: setCurrent,
+    slow3: slow3,
+
+
+  }
+
+  const imageP = {
+    scroll: scroll,
+    scrollArea: scrollArea,
+
+    setCurrent: setCurrent,
+    slowFixed: slowFixed,
 
   }
   return (
@@ -93,8 +123,7 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
             return (
               <>
           
-                {/* <div className="image-b" /> */}
-                <Image key={i} el={el} section={section[i]} scrollArea={scrollArea} scroll={scroll}/>
+                <Image key={i} i={i} el={el} section={section[i]} {...imageP}/>
                 
               </>
             );
@@ -103,7 +132,7 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
             return (
               <>
           
-                <Detail key={i} el={el} section={section[i]} scrollArea={scrollArea} scroll={scroll}/>
+                <Detail key={i} i={i} el={el} section={section[i]} {...detailP}/>
                 
               </>
             );

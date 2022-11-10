@@ -10,16 +10,15 @@ import Navigation from '../../components/ui/molecules/Navigation';
 function App() {
 
 // Startup Function
-const [projectHeight, setProjectHeight] = useState(0)
-
+// const [projectHeight, setProjectHeight] = useState(0)
 
 const [loading, setLoading] = useState(true);
 
 
 
-const handleStart = () => {
+// const handleStart = () => {
   
-}
+// }
 
   // SCROLL RIG
   const scrollArea = useRef()
@@ -46,7 +45,7 @@ useEffect(() => {
 const loader = {
 loading: loading,
 setLoading: setLoading,
-handleStart: handleStart,
+// handleStart: handleStart,
 }
 const wrapper = {
   // scrollArea: scrollArea,
@@ -59,7 +58,7 @@ const project = {
 scroll: scroll,
   // pagesize: pagesize,
   scrollArea: scrollArea,
-  setProjectHeight: setProjectHeight,
+  // setProjectHeight: setProjectHeight,
   onScroll: onScroll,
 }
 

@@ -5,11 +5,14 @@ import "./style.css";
 import {data} from "../../../../data"
 import {a, useSpring } from "react-spring";
 import useOnScreen from "../../../../hooks/useOnScreen";
+import {InView} from "react-intersection-observer";
 
-function Description({i, el, section, slow3, scrollArea, scroll}) {
-  const content = useRef();
-  // const [isVisible, setIsVisible] = useState(false);
+function Description({i, el, section, setCurrent, slow3, scrollArea, scroll}) {
+  const [inView, setInView] = useState(false);
 
+  useEffect(()=>{
+    setCurrent(i)
+  },[inView])
   // let options = {
   //   root: scrollArea.current,
   //   rootMargin: '150px',
@@ -22,8 +25,7 @@ function Description({i, el, section, slow3, scrollArea, scroll}) {
  
   // }
 
-
-  const isVisible = useOnScreen(content)
+ 
 // console.log(section)
 // useEffect(()=>{
 //   if(inView) {
@@ -34,9 +36,7 @@ function Description({i, el, section, slow3, scrollArea, scroll}) {
   
 
 
- const visible = useSpring({ opacity: isVisible ? 1 : 0,
-  delay: 400,
-config: { duration: 250,  } })
+
   
   // let observer = new IntersectionObserver(callback, options);
  
@@ -83,34 +83,40 @@ config: { duration: 250,  } })
 
   // ref={(element) => (slow3.current[i] = element)}
   
-  
-
-
-  useEffect(()=>{
-
-  },[scroll])
+  const line1 = useSpring({ opacity: inView ? 1 : 0,
+    transform: inView ? "translateY(0)" :  "translateY(20px)",
+    delay: 400,
+  config: { duration: 250,  } })
+  const line2 = useSpring({ opacity: inView ? 1 : 0,
+    transform: inView ? "translateY(0)" :  "translateY(20px)",
+    delay: 500,
+  config: { duration: 250,  } })
+  const line3 = useSpring({ opacity: inView ? 1 : 0,
+    transform: inView ? "translateY(0)" :  "translateY(20px)",
+    delay: 600,
+  config: { duration: 250,  } })
 
 
 
   return <div id="description" ref={section} >
-   {/* style={visible} */}
-      {/* <div className="background-c">
-      <div className="background"></div>
-      </div> */}
+
       <div className="section-wrap" >
     <div className="row">
         <div className="col-3">
-          <a.div className="text-c" ref={content} style={visible}>
-            <h6 className="subtitle">/ {el.subtitle}</h6>
-            <h2 className="title">{el.title}</h2>
-            <p className="text">{el.text}</p>
-          </a.div>
+        <InView onChange={setInView}>
+          <div className="text-c">
+            <a.h6 className="subtitle" style={line1}>/ {el.subtitle}</a.h6>
+            <a.h2 className="title" style={line2}>{el.title}</a.h2>
+            <a.p className="text" style={line3}>{el.text}</a.p>
+          </div>
+          </InView>
         </div>
         {/* <div className="col-1"></div> */}
       </div>
 
    
       </div>
+     
   </div>
 }
 

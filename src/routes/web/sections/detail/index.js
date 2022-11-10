@@ -15,22 +15,23 @@ import {
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import {a, useSpring } from "react-spring";
 import Cannon from "../../../../assets/scans/Cannon.glb";
-import useOnScreen from "../../../../hooks/useOnScreen";
 
-function Detail({el, section, scrollArea, scroll}) {
-  const content = useRef();
+import { InView } from "react-intersection-observer";
 
+function Detail({i, el, section, setCurrent, scrollArea, scroll}) {
+  const [inView, setInView] = useState(false);
 
-
-  const isVisible = useOnScreen(content)
-
-
- const visible = useSpring({ opacity: isVisible ? 1 : 0,
-  delay: 400,
-config: { duration: 250,  } })
+  useEffect(()=>{
+    setCurrent(i)
+  },[inView])
 
 
+  const visible = useSpring({ opacity: inView ? 1 : 0,
+    delay: 400,
+  config: { duration: 250 } })
 
+
+  
   function Scene({scroll}) {
     const ref = useRef();
     const { nodes, materials } = useLoader(GLTFLoader, Cannon);
@@ -69,11 +70,13 @@ config: { duration: 250,  } })
       <div className="section-wrap">
     <div className="row">
         <div className="col-3">
-          <a.div className="text-c" ref={content} style={visible}>
-            <h6 className="subtitle">/ {el.subtitle}</h6>
+          <InView onChange={setInView}>
+          <a.div className="text-c" style={visible}>
+          <h6 className="subtitle">/ {el.subtitle}</h6>
             <h2 className="title">{el.title}</h2>
             <p className="text">{el.text}</p>
           </a.div>
+          </InView>
         </div>
         <div className="col-1">
     
