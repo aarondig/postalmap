@@ -4,13 +4,13 @@
   /* width: 100vw;
   height: 100vh; */
 
-  background: #101010;
+  background: #050505;
   }
-  #description .text-c {
-    opacity: 0;
+  #detail .text-c {
+    /* opacity: 0; */
  
   }
-  #description .title {
+  #detail .title {
     color: #fff;
     margin: 0;
     font-size: 3.8vw;
@@ -20,13 +20,13 @@
   }
 
 
-  #description .subtitle {
+  #detail .subtitle {
     color: #959595;
     font-size: 1.6vw;
     margin: 0;
   }
 
-  #description .text {
+  #detail .text {
     color: #fff;
     margin: 0;
     font-size: 1.6vw;
@@ -36,18 +36,18 @@
 
   
   @media only screen and (max-width: 720px) {
-    #description .title {
+    #detail .title {
       font-size: 30px;
      }
-   #description .subtitle {
+   #detail .subtitle {
     font-size: 16px;
    }
-   #description .text {
+   #detail .text {
     
     font-size: 1.15rem;
     
   }
-  #description .col-1 {
+  #detail .col-1 {
     
     display: none;
     

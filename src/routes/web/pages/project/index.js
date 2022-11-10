@@ -4,48 +4,63 @@ import Description from "../../sections/description";
 import { data } from "../../../../data.js";
 import View from "../../sections/view";
 import Image from "../../sections/image";
+import Detail from "../../sections/detail";
 
 function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
   const [section, setSection] = useState([]);
   const [sectionSize, setSectionSize] = useState([]);
 
-  useEffect(() => {
-    //Setting Grouped Refs
-    setSection((section) =>
-      Array(data.length)
-        .fill()
-        .map((el, i) => section[i] || createRef())
-    );
-  }, []);
-  useEffect(() => {
-    if (section.length === data.length) {
-      let height = 0;
-      section.map((el, i) => {
-        let sectsize = el.current.getBoundingClientRect();
-        setSectionSize((sectionSize) => [...sectionSize, sectsize]);
+    //       useEffect(() => {
+    // //Setting Grouped Refs
+    //           setSection((section) =>
+    //             Array(data.length)
+    //               .fill()
+    //               .map((el, i) => section[i] || createRef())
+    //           );
+    //         }, []);
+    //         useEffect(() => {
+    //           if (section.length === data.length) {
+    //             let height = 0;
+    //             section.map((el, i) => {
+    //               let sectsize = el.current.getBoundingClientRect();
+    //               setSectionSize((sectionSize) => [...sectionSize, sectsize]);
 
-        height += sectsize.height;
+    //               height += sectsize.height;
 
-        setProjectHeight(height);
-      });
-    }
-  }, [section]);
+    //               setProjectHeight(height);
+    //             });
+    //           }
+    //         }, [section]);
+
+  //Parallax Items
+  const slowFixed = useRef([]);
   const slow3 = useRef([]);
+
 
   useEffect(()=>{
     
-    slow3.current.map((el, i)=>{
+    slowFixed.current.map((el, i)=>{
       el.style.transform = `translateY(${-scroll*.3}px)`
-   
+    })
+    slow3.current.map((el, i)=>{
+      el.style.transform = `translateY(${scroll*.01}px)`
     })
     
   },[scroll])
   // console.log(slow3)
 
 
+  const textP = {
+    scroll: scroll,
+    scrollArea: scrollArea,
+    slow3: slow3,
+
+
+  }
   const viewP = {
     scroll: scroll,
     scrollArea: scrollArea,
+    slowFixed: slowFixed,
 
 
   }
@@ -61,7 +76,7 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
             return (
               <>
                 {/* <div className="text-b" /> */}
-                <Description key={i} i={i} el={el} section={section[i]} scrollArea={scrollArea} scroll={scroll}/>
+                <Description key={i} i={i} el={el} section={section[i]} {...textP}/>
               </>
             );
           }
@@ -69,7 +84,7 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
             return (
               <>
                 
-                <View key={i} i={i} el={el} section={section[i]} slow3={slow3} {...viewP}/>
+                <View key={i} i={i} el={el} section={section[i]} {...viewP}/>
                 {/* <div className="view-b" /> */}
               </>
             );
@@ -80,6 +95,15 @@ function Project({ scrollArea, setProjectHeight, onScroll, scroll }) {
           
                 {/* <div className="image-b" /> */}
                 <Image key={i} el={el} section={section[i]} scrollArea={scrollArea} scroll={scroll}/>
+                
+              </>
+            );
+          }
+          case "detail": {
+            return (
+              <>
+          
+                <Detail key={i} el={el} section={section[i]} scrollArea={scrollArea} scroll={scroll}/>
                 
               </>
             );

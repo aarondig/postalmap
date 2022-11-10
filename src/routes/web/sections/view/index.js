@@ -1,11 +1,12 @@
 import React, { useState, useRef, Suspense } from "react";
 import "./style.css";
 
-function View({ i, el, section, slow3}) {
+function View({ i, el, section, slowFixed}) {
+  
 
   return (
     <div id="view" ref={section}>
-      <div className="section-wrap" ref={(element) => (slow3.current[i] = element)}>
+      <div className="section-wrap" ref={(element) => (slowFixed.current[i] = element)}>
       {/* <div className="content-box"> */}
       <div className="row">
         <div className="col-2">
