@@ -7,7 +7,7 @@
 
   }
   #image .section-wrap {
-    padding-top: 6%;
+    /* padding-top: 6%; */
   }
   .image-c {
     position: relative;
@@ -22,5 +22,8 @@
 
 
   @media only screen and (max-width: 720px) {
+    #image .section-wrap {
+      padding-top: 0%;
+    }
 
   }

@@ -6,9 +6,9 @@
 
   background: #050505;
   }
-  /* #description .section-wrap {
-    position: relative;
-  } */
+  #description .section-wrap {
+    z-index: 1;
+  }
   
   
   #description .text-c {
@@ -49,14 +49,16 @@
   
   @media only screen and (max-width: 720px) {
     #description .title {
-      font-size: 30px;
+      font-size: 32px;
+      margin-bottom: 2vh;
      }
    #description .subtitle {
-    font-size: 16px;
+    font-size: 18px;
    }
    #description .text {
     
-    font-size: 1.15rem;
+    font-size: 18px;
+    max-width: 100%;
     
   }
   #description .col-1 {

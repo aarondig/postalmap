@@ -9,16 +9,44 @@ import {
   Environment,
   softShadows
 } from "@react-three/drei";
-import Scene from "../../molecules/scene";
-import { data } from "../../../../data";
-
-
+import { MeshBasicMaterial, SphereBufferGeometry } from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import Cannon from "../../../../assets/scans/Cannon.glb";
+import postalcode from "../../../../assets/scans/postalcode.glb";
+import train from "../../../../assets/scans/train.glb";
+import corner from "../../../../assets/scans/corner.glb";
+import riverside from "../../../../assets/scans/riverside.glb";
+import Loader from "../Loader/index";
 function Module({scroll, current}) {
+  
+  function Scene({scroll}) {
+    const ref = useRef();
+    const { nodes, materials } = useLoader(GLTFLoader, postalcode);
+    
+    materials.main.map = null;
+    materials.main.color = new THREE.Color(0x404040)
+    // materials.main.color = new THREE.Color(0xffffff)
+    useFrame(() => {
+      ref.current.rotation.y = -700 + scroll / 200;
+    })
+    return (
+      <Suspense fallback={<Loader />}>
 
-const scene = {
-  current: current,
-  scroll: scroll,
-}
+          <mesh
+            ref={ref}
+            material={materials.main}
+            geometry={nodes.mesh.geometry}
+            position={[0, -1, 0]}
+            castShadow
+            scale={1.8}
+          >
+          </mesh>
+ 
+      </Suspense>
+    );
+  }
+
+
 
   return (
     <div id="canvas">
@@ -33,13 +61,8 @@ const scene = {
         <OrbitControls />
 
 
-        {data.map((el, i) => {
-          
-       
-            return data[i].type === "view" && <Scene key={i} el={el} i={i} {...scene}/>
-
-        })}
-
+     
+          <Scene scroll={scroll}/>
           {/* <Environment preset="city"/> */}
   
 

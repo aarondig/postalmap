@@ -9,7 +9,7 @@ function Image({i, el,  section, setCurrent}) {
   const [inView, setInView] = useState();
 
   useEffect(()=>{
-    setCurrent(i)
+    inView && setCurrent(i)
   },[inView])
 
 

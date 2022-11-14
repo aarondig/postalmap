@@ -6,10 +6,10 @@ body, html {
  
 }
 
-/* 
+
 ::-webkit-scrollbar {
   display: none;
-} */
+}
 
 .row {
   display: flex;
@@ -49,4 +49,14 @@ h6 {
 p {
   font-family: Inter;
   font-weight: 300;
+}
+
+
+
+@media only screen and (max-width: 720px) {
+  .row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 }

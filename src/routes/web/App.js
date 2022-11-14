@@ -23,12 +23,31 @@ const [loading, setLoading] = useState(true);
   // SCROLL RIG
   const scrollArea = useRef()
   // const [scroll, setScroll] = useState([])
-  const [scroll, setScroll] = useState(0)
+  const [scroll, setScroll] = useState()
   
     const onScroll = (e) => {
       setScroll(e.target.scrollTop);
       // setScroll((scroll) => [...scroll, e.target.scrollTop]);
     };
+
+// window.addEventListener('wheel', (e) => {
+// console.log(e.deltaZ);
+// });
+
+    
+
+    // const [scroll, setScroll] = useState({
+    //   values: [],
+    //   count: 0,
+    //   direct: 1
+    // })
+    
+    //   const onScroll = (e) => {
+    //     setScroll({
+    //      values: [...scroll.values, e.target.scrollTop],
+    //      count: e.target.scrollTop,
+    //      direct: scroll.values.slice(-1) < e.target.scrollTop ? 1 : -1});
+    //   };
     
 
     useEffect(() => void onScroll({ target: scrollArea.current }), []);
@@ -50,9 +69,6 @@ setLoading: setLoading,
 const wrapper = {
   // scrollArea: scrollArea,
   // setScroll: setScroll,
-}
-const module = {
-  scroll: scroll
 }
 const project = {
 scroll: scroll,
@@ -76,7 +92,7 @@ scroll: scroll,
         <Project {...project}/>
 
   
-   <Module {...module}/>
+
       
    
     </Wrapper>

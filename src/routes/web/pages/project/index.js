@@ -5,13 +5,11 @@ import { data } from "../../../../data.js";
 import View from "../../sections/view";
 import Image from "../../sections/image";
 import Detail from "../../sections/detail";
+import Module from "../../../../components/ui/organisms/module";
 
-function Project({ scrollArea, onScroll, scroll }) {
+function Project({ scroll, onScroll, scrollArea  }) {
 
   const [current, setCurrent] = useState(0)
-
-useEffect(()=>{
-},[current])
 
   const [section, setSection] = useState([]);
   const [sectionSize, setSectionSize] = useState([]);
@@ -55,10 +53,10 @@ useEffect(()=>{
     })
     
   },[scroll])
-  // console.log(slow3)
+ 
 
 
-  const viewP = {
+  const view = {
     scroll: scroll,
     scrollArea: scrollArea,
 
@@ -67,7 +65,7 @@ useEffect(()=>{
 
   }
 
-  const textP = {
+  const text = {
     scroll: scroll,
     scrollArea: scrollArea,
 
@@ -76,7 +74,7 @@ useEffect(()=>{
 
 
   }
-  const detailP = {
+  const detail = {
     scroll: scroll,
     scrollArea: scrollArea,
 
@@ -86,13 +84,18 @@ useEffect(()=>{
 
   }
 
-  const imageP = {
+  const image = {
     scroll: scroll,
     scrollArea: scrollArea,
 
     setCurrent: setCurrent,
     slowFixed: slowFixed,
 
+  }
+
+  const module = {
+    scroll: scroll,
+    current: current,
   }
   return (
     <div id="project" ref={scrollArea} onScroll={onScroll}>
@@ -105,17 +108,14 @@ useEffect(()=>{
           case "text": {
             return (
               <>
-                {/* <div className="text-b" /> */}
-                <Description key={i} i={i} el={el} section={section[i]} {...textP}/>
+                <Description key={i} i={i} el={el} section={section[i]} {...text}/>
               </>
             );
           }
           case "view": {
             return (
               <>
-                
-                <View key={i} i={i} el={el} section={section[i]} {...viewP}/>
-                {/* <div className="view-b" /> */}
+                <View key={i} i={i} el={el} section={section[i]} {...view}/>
               </>
             );
           }
@@ -123,7 +123,7 @@ useEffect(()=>{
             return (
               <>
           
-                <Image key={i} i={i} el={el} section={section[i]} {...imageP}/>
+                <Image key={i} i={i} el={el} section={section[i]} {...image}/>
                 
               </>
             );
@@ -132,13 +132,15 @@ useEffect(()=>{
             return (
               <>
           
-                <Detail key={i} i={i} el={el} section={section[i]} {...detailP}/>
+                <Detail key={i} i={i} el={el} section={section[i]} {...detail}/>
                 
               </>
             );
           }
         }
       })}
+
+      <Module {...module}/>
     </div>
   );
 }

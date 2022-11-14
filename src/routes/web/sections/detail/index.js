@@ -14,7 +14,6 @@ import {
 } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import {a, useSpring } from "react-spring";
-import Cannon from "../../../../assets/scans/Cannon.glb";
 
 import { InView } from "react-intersection-observer";
 
@@ -22,7 +21,7 @@ function Detail({i, el, section, setCurrent, scrollArea, scroll}) {
   const [inView, setInView] = useState(false);
 
   useEffect(()=>{
-    setCurrent(i)
+    inView && setCurrent(i)
   },[inView])
 
 
@@ -34,11 +33,12 @@ function Detail({i, el, section, setCurrent, scrollArea, scroll}) {
   
   function Scene({scroll}) {
     const ref = useRef();
-    const { nodes, materials } = useLoader(GLTFLoader, Cannon);
+
+    const { nodes, materials } = useLoader(GLTFLoader, data[i].object);
     
     materials.main.map = null;
     materials.main.color = new THREE.Color(0x404040)
-    // materials.main.color = new THREE.Color(0xffffff)
+    
     useFrame(() => {
       ref.current.rotation.y = -700 + scroll / 200;
     })
@@ -78,7 +78,7 @@ function Detail({i, el, section, setCurrent, scrollArea, scroll}) {
           </a.div>
           </InView>
         </div>
-        <div className="col-1">
+        <div className="col-2">
     
           <Canvas
         camera={{ position: [0, 1.5, 3], fov: 70 }}

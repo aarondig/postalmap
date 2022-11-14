@@ -1,18 +1,43 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, useRef, Suspense } from "react";
 import "./style.css";
 import {InView} from "react-intersection-observer";
 
-function View({ i, el, section, setCurrent, slowFixed}) {
+function View({ i, el, section, setCurrent, slowFixed, scroll}) {
 const [inView, setInView] = useState();
+const parallax = useRef();
+
+const [count, setCount] = useState(0);
 
 useEffect(()=>{
-  setCurrent(i)
+  inView && setCurrent(i)
+  setCount(scroll)
 },[inView])
 
+const handleScroll = () => {
+
+  // parallax.current.style.transform = `translateY(${-(scroll+(count*3))*.3}px)`
+  parallax.current.style.transform = `translateY(${-(scroll)*.3}px)`
+}
+
+useEffect(() => {
+    // setCount(count + 1);
+    
+    handleScroll()
+    console.log("Count:" + count)
+},[scroll])
+
+
+useEffect(()=> {
+
+},[])
+
+console.log("Count:" + count)
+console.log("Scroll:" + scroll)
   return (
     <div id="view" ref={section}>
       <InView onChange={setInView}>
-      <div className="section-wrap" ref={(element) => (slowFixed.current[i] = element)}>
+      {/* <div className="section-wrap" ref={(element) => (slowFixed.current[i] = element)}> */}
+      <div className="section-wrap" ref={parallax}>
       {/* <div className="content-box"> */}
       <div className="row">
         <div className="col-2">

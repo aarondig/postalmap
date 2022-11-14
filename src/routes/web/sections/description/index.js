@@ -11,42 +11,11 @@ function Description({i, el, section, setCurrent, slow3, scrollArea, scroll}) {
   const [inView, setInView] = useState(false);
 
   useEffect(()=>{
-    setCurrent(i)
+    inView && setCurrent(i);
   },[inView])
-  // let options = {
-  //   root: scrollArea.current,
-  //   rootMargin: '150px',
-  //   threshold: 1.0
-  // }
-  
-  // let callback = (entries, observer) => {
-  //     setInView(entries[0].isIntersecting)
-  //     console.log(inView)
- 
-  // }
 
- 
-// console.log(section)
-// useEffect(()=>{
-//   if(inView) {
-//     setIsVisible(true)
-//   }
-  
-// },[inView])
-  
+  const parallax = useRef();
 
-
-
-  
-  // let observer = new IntersectionObserver(callback, options);
- 
-  // useEffect(()=>{
-  //   if (section) {
-  //   observer.observe(section.current)
-  // }
-  // },[section])
- 
-  // const [opa, setOpa] = useState(0)
   
 
   // useEffect(()=>{
@@ -82,7 +51,21 @@ function Description({i, el, section, setCurrent, slow3, scrollArea, scroll}) {
   
 
   // ref={(element) => (slow3.current[i] = element)}
-  
+
+  // PARALLAX
+//   const [scrollStart, setScrollStart] = useState(false)
+//   useEffect(()=>{
+//     if (inView) {
+//       !scrollStart && setScrollStart(scroll);
+//       parallax.current.style.transform = `translateY(${((scroll-scrollStart)*.3)}px)`
+//     }
+//   if (!inView) {
+//     scrollStart && setScrollStart(false);
+//   }
+// // console.log(scroll + scrollStart)
+//   },[scroll])
+
+  //ANIMATIONS
   const line1 = useSpring({ opacity: inView ? 1 : 0,
     transform: inView ? "translateY(0)" :  "translateY(20px)",
     delay: 400,
@@ -98,23 +81,26 @@ function Description({i, el, section, setCurrent, slow3, scrollArea, scroll}) {
 
 
 
+
+
   return <div id="description" ref={section} >
 
       <div className="section-wrap" >
+      <InView onChange={setInView} threshold={.6}>
     <div className="row">
         <div className="col-3">
-        <InView onChange={setInView}>
-          <div className="text-c">
+        
+          <div className="text-c" ref={parallax}>
             <a.h6 className="subtitle" style={line1}>/ {el.subtitle}</a.h6>
             <a.h2 className="title" style={line2}>{el.title}</a.h2>
             <a.p className="text" style={line3}>{el.text}</a.p>
           </div>
-          </InView>
+          
         </div>
         {/* <div className="col-1"></div> */}
       </div>
 
-   
+      </InView>
       </div>
      
   </div>
