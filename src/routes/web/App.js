@@ -15,6 +15,8 @@ const [current, setCurrent] = useState(0)
 const [loading, setLoading] = useState(true);
 
 
+const [audio, setAudio] = useState(false)
+
 
   // SCROLL RIG
   const scrollArea = useRef()
@@ -78,9 +80,13 @@ scroll: scroll,
 const module = {
   scroll: scroll,
   current: current,
+  audio: audio,
 }
 const navigation = {
   current: current,
+  audio: audio,
+  setAudio: setAudio,
+
 }
 
 
@@ -92,7 +98,7 @@ const navigation = {
 
 
 
-    {loading && <Loader {...loader}/>}
+    {/* {loading && <Loader {...loader}/>} */}
   
       
         <Project {...project}/>

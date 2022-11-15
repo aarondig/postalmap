@@ -1,7 +1,7 @@
 import postalcode from "../src/assets/scans/postalcode.glb"
 import cannon from "../src/assets/scans/cannon.glb"
 import train from "../src/assets/scans/train.glb"
-
+import sidewalk from "../src/assets/audio/sidewalk1.mp4"
 
 export const data = [
   {
@@ -11,6 +11,7 @@ export const data = [
     number: "01",
 
     object: postalcode,
+    audio: sidewalk,
 
     type: "view",
   },
@@ -52,6 +53,7 @@ export const data = [
     number: "01",
 
     object: cannon,
+    audio: sidewalk,
 
     type: "view",
   },

@@ -13,12 +13,15 @@ import Scene from "../../molecules/scene";
 import { data } from "../../../../data";
 
 
-function Module({scroll, current}) {
+function Module({scroll, current, audio}) {
 
 const scene = {
   current: current,
   scroll: scroll,
+  audio: audio,
 }
+
+
 
   return (
     <div id="canvas">
