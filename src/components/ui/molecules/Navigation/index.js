@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { a, useSpring } from "react-spring";
 import "./style.css";
 
-function Navigation() {
+function Navigation({current}) {
+  console.log(current > 0)
+const opacity = useSpring({
+  opacity: current > 0 ? 0 : 1
+})
   return (
     <div id="navigation">
-      <div className="content-box">
-        <h2 className="logo">canis</h2>
+      <div className="content-box" >
+        <a.h2 className="logo" style={opacity}>canis</a.h2>
 
         <div className="menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -16,9 +16,7 @@ function Scene({current, scroll, i}) {
   const ref = useRef();
 
   // Checks if the scene is Visible
-
   const [isVisible, setIsVisible] = useState(false)
-
   useEffect(()=>{
     if (current === i) {
       setIsVisible(true)
@@ -26,7 +24,6 @@ function Scene({current, scroll, i}) {
       setIsVisible(false)
     }
   },[current])
-  console.log(current)
 
 
   const { nodes, materials } = useLoader(GLTFLoader, data[i].object);

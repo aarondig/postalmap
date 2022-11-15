@@ -16,10 +16,6 @@ const [loading, setLoading] = useState(true);
 
 
 
-// const handleStart = () => {
-  
-// }
-
   // SCROLL RIG
   const scrollArea = useRef()
   // const [scroll, setScroll] = useState([])
@@ -76,11 +72,14 @@ scroll: scroll,
   scrollArea: scrollArea,
   // setProjectHeight: setProjectHeight,
   onScroll: onScroll,
-  setCurrent: setCurrent
+  setCurrent: setCurrent,
 }
 
 const module = {
   scroll: scroll,
+  current: current,
+}
+const navigation = {
   current: current,
 }
 
@@ -88,7 +87,7 @@ const module = {
   return (
     <div className="App">
     <Wrapper {...wrapper}>
-<Navigation/>
+<Navigation {...navigation}/>
 
 
 
