@@ -3,7 +3,6 @@ import { a, useSpring } from "react-spring";
 import "./style.css";
 
 function Navigation({current}) {
-  console.log(current > 0)
 const opacity = useSpring({
   opacity: current > 0 ? 0 : 1
 })

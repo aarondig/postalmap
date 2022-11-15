@@ -6,7 +6,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-background: #fff;
+/* background: #fff; */
+background: #050505;
   z-index: 3;
   }
 
@@ -27,6 +28,7 @@ background: #fff;
   .svg-back {
     position: absolute;
     top: 0;
+    left: 0;
     z-index: -1;
   }
 
@@ -50,7 +52,8 @@ background: #fff;
   }
   .loader-num {
     font-size: 48px;
-    color: #404040;
+    /* color: #404040; */
+    color: #fff;
     font-weight: 600;
     line-height: normal;
     margin: 0;
@@ -73,8 +76,10 @@ background: #fff;
   }
  .letter {
   font-family: 'El Messiri', sans-serif;
-    color: #404040;
-    font-size: 220px;
+    /* color: #404040; */
+    color: #fff;
+    /* font-size: 220px; */
+    font-size: 180px;
 /* font-family: 'El Messiri', sans-serif; */
     font-weight: 400;
     opacity: 0;
@@ -88,7 +93,8 @@ background: #fff;
   font-family: 'Inter', sans-serif;
   margin-top: 12px;
   font-weight: 300;
-  color: #404040;
+  /* color: #404040; */
+  color: #fff;
   font-size: 18px;
 }
 
@@ -126,7 +132,7 @@ background: #fff;
 
 @media only screen and (max-width: 720px) {
 .letter {
-  font-size: 140px;
+  font-size: 120px;
 }
   
 }

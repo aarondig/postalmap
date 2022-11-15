@@ -162,12 +162,14 @@ function Loader({ loading, setLoading, handleStart }) {
     delay: 1800,
   });
 
+let mode = "dark";
+
   return (
     <a.div id="loader" style={fadeOut} onClick={()=> handleUnmount()}>
         <a.div className="svg-c" style={fadeIn[0]}>
           <svg className="svg-path" height={radius * 2} width={radius * 2}>
             <circle
-              stroke="#404040"
+              stroke={mode === "light" ? "#404040" : "#f4f4f4"}
               fill="transparent"
               strokeWidth={stroke}
               strokeDasharray={circumference + " " + circumference}
@@ -179,7 +181,7 @@ function Loader({ loading, setLoading, handleStart }) {
           </svg>
           <svg className="svg-back" height={radius * 2} width={radius * 2}>
             <circle
-              stroke="#f4f4f4"
+              stroke={mode === "light" ? "#f4f4f4" : "#202020"}
               fill="transparent"
               strokeWidth={stroke}
               style={{ strokeDashoffset }}

@@ -92,7 +92,7 @@ const navigation = {
 
 
 
-    {/* {loading && <Loader {...loader}/>} */}
+    {loading && <Loader {...loader}/>}
   
       
         <Project {...project}/>
