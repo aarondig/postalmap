@@ -68,15 +68,15 @@ function Description({i, el, section, setCurrent, slow3, scrollArea, scroll}) {
   //ANIMATIONS
   const line1 = useSpring({ opacity: inView ? 1 : 0,
     transform: inView ? "translateY(0)" :  "translateY(20px)",
-    delay: 400,
+    delay: 100,
   config: { duration: 250,  } })
   const line2 = useSpring({ opacity: inView ? 1 : 0,
     transform: inView ? "translateY(0)" :  "translateY(20px)",
-    delay: 500,
+    delay: 200,
   config: { duration: 250,  } })
   const line3 = useSpring({ opacity: inView ? 1 : 0,
     transform: inView ? "translateY(0)" :  "translateY(20px)",
-    delay: 600,
+    delay: 300,
   config: { duration: 250,  } })
 
 
