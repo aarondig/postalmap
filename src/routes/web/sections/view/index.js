@@ -16,30 +16,33 @@ useEffect(()=>{
 const handleScroll = () => {
 
   // parallax.current.style.transform = `translateY(${-(scroll+(count*3))*.3}px)`
-  parallax.current.style.transform = `translateY(${-(scroll)*.3}px)`
+  // parallax.current.style.transform = `translateY(${-(scroll)*.3}px)`
 }
 
-useEffect(() => {
-    // setCount(count + 1);
+// useEffect(() => {
+//     // setCount(count + 1);
     
-    handleScroll()
-    console.log("Count:" + count)
-},[scroll])
+//     handleScroll()
+//     console.log("Count:" + count)
+// },[scroll])
 
 
 useEffect(()=> {
 
 },[])
 
-console.log("Count:" + count)
-console.log("Scroll:" + scroll)
+// console.log("Count:" + count)
+// console.log("Scroll:" + scroll)
+{/* <div id="view" ref={section}> */}
   return (
-    <div id="view" ref={section}>
-      <InView onChange={setInView}>
+
+      
+      <InView onChange={setInView} id="view" >
+        {/* <InView onChange={setInView} id="view" style={{transform: "translateZ(-1800px) scale(3.25)", width: "100%", height: "100%"}} > */}
       {/* <div className="section-wrap" ref={(element) => (slowFixed.current[i] = element)}> */}
       <div className="section-wrap" ref={parallax}>
       {/* <div className="content-box"> */}
-      <div className="row">
+      <div className="row"> 
         <div className="col-2">
           <div className="text-c">
             <h6 className="subtitle">/ {el.subtitle}</h6>
@@ -51,7 +54,7 @@ console.log("Scroll:" + scroll)
       
       </div>
       </InView>
-    </div>
+
   );
 }
 

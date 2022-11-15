@@ -11,7 +11,7 @@ function App() {
 
 // Startup Function
 // const [projectHeight, setProjectHeight] = useState(0)
-
+const [current, setCurrent] = useState(0)
 const [loading, setLoading] = useState(true);
 
 
@@ -76,7 +76,14 @@ scroll: scroll,
   scrollArea: scrollArea,
   // setProjectHeight: setProjectHeight,
   onScroll: onScroll,
+  setCurrent: setCurrent
 }
+
+const module = {
+  scroll: scroll,
+  current: current,
+}
+
 
   return (
     <div className="App">
@@ -93,7 +100,7 @@ scroll: scroll,
 
   
 
-      
+        <Module {...module}/>
    
     </Wrapper>
    

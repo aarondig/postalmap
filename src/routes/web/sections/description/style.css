@@ -5,6 +5,7 @@
   height: 100vh; */
 
   background: #050505;
+  z-index: 1 ;
   }
   #description .section-wrap {
     z-index: 1;

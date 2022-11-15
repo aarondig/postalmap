@@ -63,6 +63,7 @@ function Detail({i, el, section, setCurrent, scrollArea, scroll}) {
   
 
   return <div id="detail" ref={section} >
+    <InView onChange={setInView}>
    {/* style={visible} */}
       {/* <div className="background-c">
       <div className="background"></div>
@@ -70,13 +71,13 @@ function Detail({i, el, section, setCurrent, scrollArea, scroll}) {
       <div className="section-wrap">
     <div className="row">
         <div className="col-3">
-          <InView onChange={setInView}>
+          
           <a.div className="text-c" style={visible}>
           <h6 className="subtitle">/ {el.subtitle}</h6>
             <h2 className="title">{el.title}</h2>
             <p className="text">{el.text}</p>
           </a.div>
-          </InView>
+          
         </div>
         <div className="col-2">
     
@@ -102,6 +103,7 @@ function Detail({i, el, section, setCurrent, scrollArea, scroll}) {
 
    
       </div>
+      </InView>
   </div>
 }
 

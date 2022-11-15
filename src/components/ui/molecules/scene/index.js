@@ -26,6 +26,7 @@ function Scene({current, scroll, i}) {
       setIsVisible(false)
     }
   },[current])
+  console.log(current)
 
 
   const { nodes, materials } = useLoader(GLTFLoader, data[i].object);
@@ -50,6 +51,8 @@ function Scene({current, scroll, i}) {
   const { visible } = useSpring({ visible: isVisible ? true : false})
   const { opacity } = useSpring({ opacity: isVisible ? 1 : 0})
   materials.main.opacity = opacity;
+  
+
   // if (materials.main.opacity === 0) {
   //   materials.main.opacity = opacity;
   // }

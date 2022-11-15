@@ -7,9 +7,9 @@ import Image from "../../sections/image";
 import Detail from "../../sections/detail";
 import Module from "../../../../components/ui/organisms/module";
 
-function Project({ scroll, onScroll, scrollArea  }) {
+function Project({ scroll, onScroll, scrollArea, setCurrent  }) {
 
-  const [current, setCurrent] = useState(0)
+  // const [current, setCurrent] = useState(0)
 
   const [section, setSection] = useState([]);
   const [sectionSize, setSectionSize] = useState([]);
@@ -93,10 +93,7 @@ function Project({ scroll, onScroll, scrollArea  }) {
 
   }
 
-  const module = {
-    scroll: scroll,
-    current: current,
-  }
+
   return (
     <div id="project" ref={scrollArea} onScroll={onScroll}>
      
@@ -114,9 +111,9 @@ function Project({ scroll, onScroll, scrollArea  }) {
           }
           case "view": {
             return (
-              <>
+        
                 <View key={i} i={i} el={el} section={section[i]} {...view}/>
-              </>
+          
             );
           }
           case "image": {
@@ -131,16 +128,14 @@ function Project({ scroll, onScroll, scrollArea  }) {
           case "detail": {
             return (
               <>
-          
                 <Detail key={i} i={i} el={el} section={section[i]} {...detail}/>
-                
               </>
             );
           }
         }
       })}
 
-      <Module {...module}/>
+      
     </div>
   );
 }

@@ -5,6 +5,7 @@
     z-index: 1;
     overflow-y: auto;
     overflow-x: hidden;
+    perspective: 800px;
   
   }
   .section-spacer-c {
