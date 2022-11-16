@@ -25,7 +25,7 @@ console.log(current)
 
   return (
     <div id="canvas" style={{background: "linear-gradient(160deg, #151515 20%, #404040)"}}>
-      <Suspense fallback={<div style={{background: 'red', width: "100%", height: "100%", zIndex: 1}} />}>
+      
       
       
       <Canvas
@@ -38,14 +38,14 @@ console.log(current)
         <pointLight position={[-5, 0, -3]} intensity={.3} />
         <OrbitControls />
 
-
+        <Suspense fallback={<div style={{background: 'red', width: "100%", height: "100%", zIndex: 1}} />}>
         {data.map((el, i) => {
           
        
             return data[i].type === "view" && <Scene key={i} el={el} i={i} {...scene}/>
 
         })}
-
+</Suspense>
           {/* <Environment preset="city"/> */}
   
 
@@ -76,7 +76,7 @@ console.log(current)
         <shadowMaterial attach="material" transparent opacity={0.4} />
       </mesh> */}
       </Canvas>
-      </Suspense>
+      
     </div>
   );
 }
