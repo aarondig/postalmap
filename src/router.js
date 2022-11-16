@@ -19,7 +19,7 @@ function Router() {
 
   return (
    <>
-   <Web/>
+   <Mobile/>
       {/* {!isMobile ? 
       <Web/> :
       <Mobile/>

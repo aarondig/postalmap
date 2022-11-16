@@ -69,40 +69,42 @@ function Detail({i, el, section, setCurrent, scrollContainer, scroll}) {
       <div className="background"></div>
       </div> */}
       <div className="section-wrap">
-    <div className="row">
+    
         <div className="col-3">
           
           <a.div className="text-c" style={visible}>
-          <h6 className="subtitle">/ {el.subtitle}</h6>
+          <h6 className="subtitle">{el.subtitle}</h6>
             <h2 className="title">{el.title}</h2>
             <p className="text">{el.text}</p>
           </a.div>
           
         </div>
         <div className="col-2">
-    
-          <Canvas
-        camera={{ position: [0, 1.5, 3], fov: 70 }}
-        gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
-        shadows
-      >
-
-        <pointLight position={[4, 2, 4]} intensity={1} />
-        <pointLight position={[-5, 0, -3]} intensity={.3} />
-        <OrbitControls />
-
-
-     
-          <Scene scroll={scroll}/>
           
-      </Canvas>
-
-        
-        </div>
       </div>
-
+      
    
       </div>
+      <div className="canvas-wrap">
+    
+    <Canvas
+  camera={{ position: [0, 1.5, 7], fov: 70 }}
+  gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
+  shadows
+>
+
+  <pointLight position={[4, 2, 4]} intensity={1} />
+  <pointLight position={[-5, 0, -3]} intensity={.3} />
+  <OrbitControls />
+
+
+
+    <Scene scroll={scroll}/>
+    
+</Canvas>
+
+
+  </div>
       </InView>
   </div>
 }

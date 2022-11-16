@@ -1,13 +1,13 @@
-import postalcode from "../src/assets/scans/postalcode.glb"
-import cannon from "../src/assets/scans/cannon.glb"
-import train from "../src/assets/scans/train.glb"
-import sidewalk from "../src/assets/audio/sidewalk1.mp4"
+import postalcode from "../src/assets/scans/postalcode.glb";
+import cannon from "../src/assets/scans/cannon.glb";
+import train from "../src/assets/scans/train.glb";
+import sidewalk from "../src/assets/audio/sidewalk1.mp4";
 
 export const data = [
   {
     id: "introduction",
     title: "Guide the user back to LCC or else ...",
-    subtitle: "Our Mission",
+    subtitle: "/ Our Mission",
     number: "01",
 
     object: postalcode,
@@ -18,7 +18,7 @@ export const data = [
   {
     id: "description",
     title: "Statement on something blah blah blah",
-    subtitle: "Introduction",
+    subtitle: "/ Introduction",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
@@ -29,7 +29,7 @@ export const data = [
     src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
 
     title: "Statement on something blah blah blah",
-    subtitle: "Introduction",
+    subtitle: "/ Introduction",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
@@ -38,13 +38,53 @@ export const data = [
   {
     id: "detail",
     title: "Statement on something blah blah blah",
-    subtitle: "Introduction",
+    subtitle: "/ Introduction",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
     object: train,
 
     type: "detail",
+  },
+  {
+    id: "description",
+    title: "Statement on something blah blah blah",
+    subtitle: "/ Introduction",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    number: "02",
+
+    type: "text",
+  },
+  {
+    id: "slider",
+    src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
+
+    title: "Statement on something blah blah blah",
+    subtitle: "/ Photography",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    number: "02",
+
+    images: [
+      {
+        title: "CLIPPER",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
+      },
+      {
+        title: "THAMES",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
+      },
+      {
+        title: "NEW",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
+      },
+    ],
+
+
+    lightMode: "light",
+    type: "slider",
   },
   {
     id: "view",
@@ -80,9 +120,6 @@ export const data = [
 
     type: "image",
   },
-
-
-  
 ];
 
 // Types: Inspect, View, Text

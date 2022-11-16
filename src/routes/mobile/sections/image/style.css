@@ -1,26 +1,27 @@
-
-@media only screen and (min-width: 768px) {
-
+@media only screen and (max-width: 768px) {
 #image {
   position: relative;
   box-sizing: content-box;
   width: 100%;
   background: #050505;
+  
 
 
-  }
-  #image .section-wrap {
-    /* padding-top: 6%; */
   }
   .image-c {
     position: relative;
-    object-fit: cover;
- 
+    object-fit:cover;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
   }
   .image {
-    width: 100%;
-    height: 100%;
+    
   }
 
+
+
+/* MEDIA LINE */
+ 
 
   }

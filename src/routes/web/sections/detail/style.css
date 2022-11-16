@@ -1,3 +1,5 @@
+@media only screen and (min-width: 768px) {
+
 #detail {
   position: relative;
   box-sizing: border-box;
@@ -32,38 +34,5 @@
     font-size: 1.6vw;
     max-width: 100%;
     white-space: wrap;
-  }
-
-  
-  @media only screen and (max-width: 720px) {
-    /* #detail {
-      height: 100vh;
-    } */
-    #detail .text-c {
-      /* opacity: 0; */
-   max-width: 100%;
-    }
-    #detail .title {
-      font-size: 32px;
-      margin-bottom: 2vh;
-     }
-   #detail .subtitle {
-    font-size: 18px;
-   }
-   #detail .text {
-    
-    font-size: 18px;
-    max-width: 100%;
-    
-  }
-
-  #detail .row {
-
-      gap: 12vh;
-  }
-  #detail .col-1 {
-    
-    display: none;
-    
   }
   }

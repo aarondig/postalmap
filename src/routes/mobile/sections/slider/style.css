@@ -1,0 +1,90 @@
+@media only screen and (max-width: 768px) {
+
+#slider {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+
+  /* overflow: hidden; */
+  padding-top: 80px;
+  padding-bottom: 60px;
+  overflow: visible;
+  
+  }
+
+
+
+  ul {
+  list-style-type: none;
+  padding-inline-start: 0;
+  }
+  li {
+    margin: 0;
+  }
+
+
+  .slider {
+    padding-left: 10%;
+    padding-right: 10%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+
+
+
+  .card-row {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .card {
+    min-width: 75vw;
+
+  }
+
+  .card:nth-last-child(1) {
+    padding-right: 10%;
+
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: 50vw;
+    object-fit: contain;
+    overflow: hidden;
+    /* background: #f4f4f6; */
+    background: #eaeaea;
+  }
+  .thumbnail img {
+    width: 100%;
+
+  }
+  /* EDF0F2 */
+  /* #FBFBFD */
+  .card .text-c {
+    display: flex;
+    flex-direction: column;
+    padding-top: 12%;
+    gap: 20px;
+  }
+  
+  .card h6 {
+    /* font-size: 16px; */
+    font-size: 12px;
+    font-weight: 300;
+    margin: 0;
+  }
+  .card h4 {
+    font-size: 18px;
+    font-weight: 300;
+    margin: 0;
+  }
+
+
+
+
+}
+

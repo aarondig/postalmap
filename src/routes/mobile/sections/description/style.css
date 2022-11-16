@@ -1,14 +1,23 @@
+@media only screen and (max-width: 768px) {
 #description {
   position: relative;
   box-sizing: border-box;
   /* width: 100vw;
   height: 100vh; */
 
-  background: #101010;
-  }
+  background: #050505;
+  z-index: 1 ;
 
+  padding-top: 80px;
+  padding-bottom: 60px;
+  }
+  #description .section-wrap {
+    z-index: 1;
+  }
+  
+  
   #description .text-c {
-    opacity: 0;
+    /* opacity: 0; */
  
   }
   #description .title {
@@ -17,6 +26,7 @@
     /* font-size: 3.8vw; */
     font-size: 6vw;
     max-width: 100%;
+    margin-bottom: 4vh;
     white-space: wrap;
  
   }
@@ -26,27 +36,34 @@
     color: #959595;
     font-size: 1.6vw;
     margin: 0;
+    margin-bottom: 2vh;
+    
+
   }
 
   #description .text {
     color: #fff;
     margin: 0;
     font-size: 1.6vw;
-    max-width: 100%;
+    line-height: 1.6;
+    max-width: 32vw;
+
     white-space: wrap;
   }
 
   
-  @media only screen and (max-width: 720px) {
+/* MEDIA LINE */
     #description .title {
-      font-size: 30px;
+      font-size: 32px;
+      margin-bottom: 2vh;
      }
    #description .subtitle {
-    font-size: 16px;
+    font-size: 18px;
    }
    #description .text {
     
-    font-size: 1.15rem;
+    font-size: 18px;
+    max-width: 100%;
     
   }
   #description .col-1 {

@@ -19,7 +19,8 @@ const [audio, setAudio] = useState(false)
 
 
   // SCROLL RIG
-  const scrollArea = useRef()
+  const scrollContainer = useRef()
+  const scrollContent = useRef()
   // const [scroll, setScroll] = useState([])
   const [scroll, setScroll] = useState()
   
@@ -28,10 +29,49 @@ const [audio, setAudio] = useState(false)
       // setScroll((scroll) => [...scroll, e.target.scrollTop]);
     };
 
-// window.addEventListener('wheel', (e) => {
-// console.log(e.deltaZ);
-// });
 
+
+        //GET PAGE SIZE
+
+
+let windowWidth, containerHeight;
+
+let position = 0;
+let target = 0
+let ease = 0.1;
+
+
+
+function lerp(start, end, t) {
+  return start * (1 - t) + end * t;
+}
+
+
+
+function setTransform(el, transform) {
+  el.current.style.transform = transform
+}
+
+
+useEffect(()=>{
+  windowWidth = window.innerWidth;
+  containerHeight = scrollContainer.current.getBoundingClientRect().height;
+  smoothScroll()
+  // document.body.style.height = `${containerHeight}px`
+},[])
+  
+function smoothScroll() {
+  position = lerp(current,target,ease)
+  position = parseFloat(position.toFixed(2))
+  target = scroll;
+  
+
+  setTransform(scrollContent, `translateY(${-position}px)`)
+  requestAnimationFrame(smoothScroll)
+}
+
+
+console.log(window.scrollY)
     
 
     // const [scroll, setScroll] = useState({
@@ -48,16 +88,10 @@ const [audio, setAudio] = useState(false)
     //   };
     
 
-    useEffect(() => void onScroll({ target: scrollArea.current }), []);
+    useEffect(() => void onScroll({ target: scrollContainer.current }), []);
    
 
-    //GET PAGE SIZE
- const pagesize = useRef();
 
-useEffect(() => {
-  // pagesize.current.getBoundingClientRect();
-  
-},[])
 
 const loader = {
 loading: loading,
@@ -65,13 +99,14 @@ setLoading: setLoading,
 // handleStart: handleStart,
 }
 const wrapper = {
-  // scrollArea: scrollArea,
+  // scrollContainer: scrollContainer,
   // setScroll: setScroll,
 }
 const project = {
 scroll: scroll,
   // pagesize: pagesize,
-  scrollArea: scrollArea,
+  scrollContainer: scrollContainer,
+  scrollContent: scrollContent,
   // setProjectHeight: setProjectHeight,
   onScroll: onScroll,
   setCurrent: setCurrent,

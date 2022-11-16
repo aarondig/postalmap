@@ -1,9 +1,12 @@
+@media only screen and (min-width: 768px) {
+
 .App {
 
 }
 
 body, html {
  background: #050505;
+
 }
 
 
@@ -51,12 +54,4 @@ p {
   font-weight: 300;
 }
 
-
-
-@media only screen and (max-width: 720px) {
-  .row {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
 }

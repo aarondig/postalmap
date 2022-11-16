@@ -1,4 +1,4 @@
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
 
 #loader {
     position: fixed;
@@ -130,6 +130,12 @@ background: #050505;
   width: 100vw;
  
 
+}
+
+ /* MEDIA LINE */
+
+.letter {
+  font-size: 120px;
 }
   
 }

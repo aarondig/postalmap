@@ -1,0 +1,87 @@
+@media only screen and (max-width: 768px) {
+#detail {
+  position: relative;
+  box-sizing: border-box;
+  /* width: 100vw;
+  height: 100vh; */
+
+  background: #050505;
+  padding-top: 80px;
+  padding-bottom: 60px;
+  }
+  #detail .text-c {
+    /* opacity: 0; */
+ max-width: 80%;
+  }
+  #detail .title {
+    color: #fff;
+    margin: 0;
+    font-size: 3.8vw;
+    max-width: 100%;
+    white-space: wrap;
+ 
+  }
+
+
+  #detail .subtitle {
+    color: #959595;
+    font-size: 1.6vw;
+    margin: 0;
+  }
+
+  #detail .text {
+    color: #fff;
+    margin: 0;
+    font-size: 1.6vw;
+    max-width: 100%;
+    white-space: wrap;
+  }
+  #detail .row:nth-last-child(1) .col-2 {
+
+  }
+  .canvas-wrap {
+    height: 400px;
+    width: 100vw;
+    
+  }
+  .canvas-wrap:nth-child(1) {
+    overflow: visible;
+  }
+  .canvas-wrap canvas {
+    width: 100vw;
+  }
+
+
+  /* MEDIA LINE */
+  
+    /* #detail {
+      height: 100vh;
+    } */
+    #detail .text-c {
+      /* opacity: 0; */
+   max-width: 100%;
+    }
+    #detail .title {
+      font-size: 32px;
+      margin-bottom: 2vh;
+     }
+   #detail .subtitle {
+    font-size: 18px;
+   }
+   #detail .text {
+    
+    font-size: 18px;
+    max-width: 100%;
+    
+  }
+
+  #detail .row {
+
+      gap: 12vh;
+  }
+  #detail .col-1 {
+    
+    display: none;
+    
+  }
+  }

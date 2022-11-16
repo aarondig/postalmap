@@ -91,7 +91,7 @@ function Description({i, el, section, setCurrent, slow3, scrollContainer, scroll
         <div className="col-3">
         
           <div className="text-c" ref={parallax}>
-            <a.h6 className="subtitle" style={line1}>/ {el.subtitle}</a.h6>
+            <a.h6 className="subtitle" style={line1}>{el.subtitle}</a.h6>
             <a.h2 className="title" style={line2}>{el.title}</a.h2>
             <a.p className="text" style={line3}>{el.text}</a.p>
           </div>

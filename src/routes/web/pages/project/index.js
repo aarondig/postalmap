@@ -7,34 +7,34 @@ import Image from "../../sections/image";
 import Detail from "../../sections/detail";
 import Module from "../../../../components/ui/organisms/module";
 
-function Project({ scroll, onScroll, scrollArea, setCurrent  }) {
+function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent  }) {
 
-  // const [current, setCurrent] = useState(0)
 
   const [section, setSection] = useState([]);
-  const [sectionSize, setSectionSize] = useState([]);
+  // const [sectionSize, setSectionSize] = useState([]);
+  // const [projectHeight, setProjectHeight] = useState();
 
-    //       useEffect(() => {
-    // //Setting Grouped Refs
-    //           setSection((section) =>
-    //             Array(data.length)
-    //               .fill()
-    //               .map((el, i) => section[i] || createRef())
-    //           );
-    //         }, []);
-    //         useEffect(() => {
-    //           if (section.length === data.length) {
-    //             let height = 0;
-    //             section.map((el, i) => {
-    //               let sectsize = el.current.getBoundingClientRect();
-    //               setSectionSize((sectionSize) => [...sectionSize, sectsize]);
+  //         useEffect(() => {
+  //   //Setting Grouped Refs
+  //             setSection((section) =>
+  //               Array(data.length)
+  //                 .fill()
+  //                 .map((el, i) => section[i] || createRef())
+  //             );
+  //           }, []);
+  //           useEffect(() => {
+  //             if (section.length === data.length) {
+  //               let height = 0;
+  //               section.map((el, i) => {
+  //                 let sectsize = el.current.getBoundingClientRect();
+  //                 setSectionSize((sectionSize) => [...sectionSize, sectsize]);
 
-    //               height += sectsize.height;
+  //                 height += sectsize.height;
 
-    //               setProjectHeight(height);
-    //             });
-    //           }
-    //         }, [section]);
+  //                 setProjectHeight(height);
+  //               });
+  //             }
+  //           }, [section]);
 
 
 
@@ -58,7 +58,7 @@ function Project({ scroll, onScroll, scrollArea, setCurrent  }) {
 
   const view = {
     scroll: scroll,
-    scrollArea: scrollArea,
+    scrollContainer: scrollContainer,
 
     setCurrent: setCurrent,
     slowFixed: slowFixed,
@@ -67,7 +67,7 @@ function Project({ scroll, onScroll, scrollArea, setCurrent  }) {
 
   const text = {
     scroll: scroll,
-    scrollArea: scrollArea,
+    scrollContainer: scrollContainer,
 
     setCurrent: setCurrent,
     slow3: slow3,
@@ -76,7 +76,7 @@ function Project({ scroll, onScroll, scrollArea, setCurrent  }) {
   }
   const detail = {
     scroll: scroll,
-    scrollArea: scrollArea,
+    scrollContainer: scrollContainer,
 
     setCurrent: setCurrent,
     slow3: slow3,
@@ -86,7 +86,7 @@ function Project({ scroll, onScroll, scrollArea, setCurrent  }) {
 
   const image = {
     scroll: scroll,
-    scrollArea: scrollArea,
+    scrollContainer: scrollContainer,
 
     setCurrent: setCurrent,
     slowFixed: slowFixed,
@@ -95,8 +95,8 @@ function Project({ scroll, onScroll, scrollArea, setCurrent  }) {
 
 
   return (
-    <div id="project" ref={scrollArea} onScroll={onScroll}>
-     
+    <div id="project" ref={scrollContainer} onScroll={onScroll}>
+     <div className="scroll-container" ref={scrollContent}>
       {data.map((el, i) => {
         switch (el.type) {
           default: {
@@ -135,7 +135,7 @@ function Project({ scroll, onScroll, scrollArea, setCurrent  }) {
         }
       })}
 
-      
+</div>
     </div>
   );
 }

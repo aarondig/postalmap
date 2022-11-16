@@ -1,0 +1,92 @@
+@media only screen and (max-width: 768px) {
+
+.App {
+
+}
+
+body, html {
+ background: #050505;
+ overscroll-behavior-y: none !important;
+}
+
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.col-1 {
+  display: flex;
+  flex: 1;
+  align-items: center;
+
+}
+.col-2 {
+  display: flex;
+  flex: 2;
+  align-items: center;
+}
+.col-3 {
+  display: flex;
+  flex: 3;
+  align-items: center;
+}
+.col-4 {
+  display: flex;
+  flex: 4;
+  align-items: center;
+}
+
+
+
+.title {
+  margin: 0;
+  /* font-size: 3.8vw; */
+  font-size: 32px;
+  white-space: wrap;
+
+}
+
+
+.subtitle {
+ 
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 2vh;
+  
+
+}
+
+
+
+h1 {
+
+}
+h2 {
+  font-family: Inter;
+  font-weight: 300;
+  /* font-size: 36px; */
+}
+h6 {
+  font-family: Inter;
+  font-weight: 300;
+  /* font-size: 18px; */
+}
+p {
+  font-family: Inter;
+  font-weight: 300;
+}
+
+
+
+
+  .row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}

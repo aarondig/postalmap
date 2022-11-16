@@ -21,10 +21,12 @@ const scene = {
   audio: audio,
 }
 
-
+const background = {
+  
+}
 
   return (
-    <div id="canvas">
+    <div id="canvas" style={{background: "linear-gradient(160deg, #151515 20%, #404040);"}}>
       <Canvas
         camera={{ position: [0, 1.5, 3], fov: 70 }}
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}

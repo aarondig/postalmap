@@ -51,10 +51,20 @@
   @media only screen and (max-width: 720px) {
 
    #navigation {
-    height: 16vh;
+    height: 12vh;
    }
    #navigation .content-box {
-    padding-right: 6vw;
+    justify-content: space-between;
+    padding-right: 8vw;
+    padding-left: 8vw;
     gap: 24px;
+  }
+  .logo {
+    font-family: 'El Messiri', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    /* height: 1.2vh; */
   }
   }

@@ -1,3 +1,5 @@
+@media only screen and (min-width: 768px) {
+
 #description {
   position: relative;
   box-sizing: border-box;
@@ -47,24 +49,4 @@
     white-space: wrap;
   }
 
-  
-  @media only screen and (max-width: 720px) {
-    #description .title {
-      font-size: 32px;
-      margin-bottom: 2vh;
-     }
-   #description .subtitle {
-    font-size: 18px;
-   }
-   #description .text {
-    
-    font-size: 18px;
-    max-width: 100%;
-    
-  }
-  #description .col-1 {
-    
-    display: none;
-    
-  }
   }

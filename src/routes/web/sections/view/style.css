@@ -1,3 +1,5 @@
+@media only screen and (min-width: 768px) {
+
 #view {
   position: relative;
   box-sizing: border-box;
@@ -44,20 +46,5 @@ z-index: 0;
   white-space: wrap;
 }
 
-@media only screen and (max-width: 720px) {
-  #view .text-c {
-    padding-top: 42vh;
-  }
- #view .title {
-    font-size: 30px;
-   }
- #view .subtitle {
-  font-size: 16px;
- }
- #view .col-1 {
-    
-  display: none;
-  
-}
 
 }
