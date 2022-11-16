@@ -26,7 +26,7 @@ function Detail({i, el, section, setCurrent, scrollContainer, scroll}) {
 
 
   const visible = useSpring({ opacity: inView ? 1 : 0,
-    delay: 400,
+    // delay: 100,
   config: { duration: 250 } })
 
 
