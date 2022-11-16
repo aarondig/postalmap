@@ -22,6 +22,7 @@ export const data = [
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
+    lightMode: "dark",
     type: "text",
   },
   {
@@ -53,6 +54,19 @@ export const data = [
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
+
+    lightMode: "dark",
+    type: "text",
+  },
+  {
+    id: "description",
+    title: "Statement on something blah blah blah",
+    subtitle: "A Visual Medium",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    number: "02",
+
+
+    lightMode: "light",
     type: "text",
   },
   {
@@ -89,7 +103,7 @@ export const data = [
   {
     id: "view",
     title: "Guide the user back to LCC or else ...",
-    subtitle: "Our Mission",
+    subtitle: "/ Our Mission",
     number: "01",
 
     object: cannon,
@@ -102,7 +116,7 @@ export const data = [
     src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
 
     title: "Statement on something blah blah blah",
-    subtitle: "Introduction",
+    subtitle: "/ Introduction",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
@@ -114,7 +128,7 @@ export const data = [
     src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
 
     title: "Statement on something blah blah blah",
-    subtitle: "Introduction",
+    subtitle: "/ Introduction",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 

@@ -3,14 +3,14 @@
 #view {
   position: relative;
   box-sizing: border-box;
-  height:100vh;
+  min-height:100vh;
   width:100vw;
   
 
-  /* overflow: hidden; */
+  
 
   transform-style: preserve-3d;
-  z-index: -1;
+    -webkit-transform-style: preserve-3d;
   }
 
   #view .section-wrap {

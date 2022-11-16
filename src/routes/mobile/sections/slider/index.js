@@ -4,23 +4,32 @@ import {InView} from "react-intersection-observer";
 
 
 function Slider({ i, el, section, setCurrent, slowFixed, scroll}) {
-const [inView, setInView] = useState();
-const [lightMode, setLightMode] = useState();
 
+
+// SETS IN VIEW
+
+const [inView, setInView] = useState();
 useEffect(()=>{
   inView && setCurrent(i)
 
 },[inView])
 
+// LIGHT MODE OR DARK MODE (False is Dark)
+const [lightMode, setLightMode] = useState();
 
 useEffect(()=>{
-if (el.lightMode === "light"){
-  setLightMode(true)
-}
-if (el.lightMode === "dark") {
-  setLightMode(false)
-}
-},[])
+  if (el.lightMode === "light"){
+    setLightMode(true)
+  }
+  if (el.lightMode === "dark") {
+    setLightMode(false)
+  }
+  },[])
+
+
+
+
+
 
 
   return (
@@ -42,8 +51,8 @@ if (el.lightMode === "dark") {
           <div className="thumbnail">
             {/* <img src={el.src}/> */}
           </div>
-          <div className="text-c" style={lightMode ? {color: "#000"} : {color: "#fff"}}>
-            <h6 className="subtitle" >{el.subtitle}</h6>
+          <div className="text-c" style={lightMode ? {color: "#050505"} : {color: "#fff"}}>
+            <h6 className="subtitle" style={lightMode ? {color: "#707070"} : {color: "#959595"}}>{el.subtitle}</h6>
             <h4 className="title">{el.title}</h4>
           </div>
         </li>

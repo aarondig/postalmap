@@ -55,8 +55,8 @@
    }
    #navigation .content-box {
     justify-content: space-between;
-    padding-right: 8vw;
-    padding-left: 8vw;
+    padding-right: 10%;
+    padding-left: 10%;
     gap: 24px;
   }
   .logo {
