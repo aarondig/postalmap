@@ -9,34 +9,7 @@ import Module from "../../../../components/ui/organisms/module";
 import Slider from "../../sections/slider";
 
 function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent  }) {
-
-
   const [section, setSection] = useState([]);
-  // const [sectionSize, setSectionSize] = useState([]);
-  // const [projectHeight, setProjectHeight] = useState();
-
-  //         useEffect(() => {
-  //   //Setting Grouped Refs
-  //             setSection((section) =>
-  //               Array(data.length)
-  //                 .fill()
-  //                 .map((el, i) => section[i] || createRef())
-  //             );
-  //           }, []);
-  //           useEffect(() => {
-  //             if (section.length === data.length) {
-  //               let height = 0;
-  //               section.map((el, i) => {
-  //                 let sectsize = el.current.getBoundingClientRect();
-  //                 setSectionSize((sectionSize) => [...sectionSize, sectsize]);
-
-  //                 height += sectsize.height;
-
-  //                 setProjectHeight(height);
-  //               });
-  //             }
-  //           }, [section]);
-
 
 
   //Parallax Items
@@ -44,16 +17,16 @@ function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent 
   const slow3 = useRef([]);
 
 
-  useEffect(()=>{
+  // useEffect(()=>{
     
-    slowFixed.current.map((el, i)=>{
-      el.style.transform = `translateY(${-scroll*.3}px)`
-    })
-    slow3.current.map((el, i)=>{
-      el.style.transform = `translateY(${scroll*.01}px)`
-    })
+  //   slowFixed.current.map((el, i)=>{
+  //     el.style.transform = `translateY(${-scroll*.3}px)`
+  //   })
+  //   slow3.current.map((el, i)=>{
+  //     el.style.transform = `translateY(${scroll*.01}px)`
+  //   })
     
-  },[scroll])
+  // },[scroll])
  
 
 
@@ -104,9 +77,9 @@ function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent 
           }
           case "text": {
             return (
-              <>
+              
                 <Description key={i} i={i} el={el} section={section[i]} {...text}/>
-              </>
+              
             );
           }
           case "view": {
@@ -118,25 +91,25 @@ function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent 
           }
           case "image": {
             return (
-              <>
+            
           
                 <Image key={i} i={i} el={el} section={section[i]} {...image}/>
                 
-              </>
+       
             );
           }
           case "detail": {
             return (
-              <>
+    
                 <Detail key={i} i={i} el={el} section={section[i]} {...detail}/>
-              </>
+             
             );
           }
           case "slider": {
             return (
-              <>
+           
                 <Slider key={i} i={i} el={el} section={section[i]} {...detail}/>
-              </>
+           
             );
           }
         }

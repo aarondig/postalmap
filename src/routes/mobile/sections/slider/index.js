@@ -26,7 +26,7 @@ if (el.lightMode === "dark") {
   return (
 
       
-      <InView onChange={setInView} id="slider" style={lightMode ? {background: "#f4f4f4"} : {background: "#050505"}}>
+      <InView onChange={setInView} id="slider" threshold={.6} style={lightMode ? {background: "#f4f4f4"} : {background: "#050505"}} >
     <div className="content-wrap">
       
     <h6 className="subtitle">{el.subtitle}</h6>
@@ -38,7 +38,7 @@ if (el.lightMode === "dark") {
       
       <ul className="card-row">
       {el.images.map((el, i)=> {
-        return <li className="card">
+        return <li className="card" key={i}>
           <div className="thumbnail">
             {/* <img src={el.src}/> */}
           </div>

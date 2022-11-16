@@ -83,10 +83,10 @@ function Description({i, el, section, setCurrent, slow3, scrollContainer, scroll
 
 
 
-  return <div id="description" ref={section} >
+  return <InView id="description" ref={section} onChange={setInView} threshold={.6}>
 
       <div className="section-wrap" >
-      <InView onChange={setInView} threshold={.6}>
+      
     <div className="row">
         <div className="col-3">
         
@@ -100,10 +100,10 @@ function Description({i, el, section, setCurrent, slow3, scrollContainer, scroll
         {/* <div className="col-1"></div> */}
       </div>
 
-      </InView>
+      
       </div>
      
-  </div>
+      </InView>
 }
 
 export default Description;

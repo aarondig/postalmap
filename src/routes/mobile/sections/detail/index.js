@@ -63,7 +63,7 @@ function Detail({i, el, section, setCurrent, scrollContainer, scroll}) {
   
 
   return <div id="detail" ref={section} >
-    <InView onChange={setInView}>
+    <InView onChange={setInView} threshold={.6}>
    {/* style={visible} */}
       {/* <div className="background-c">
       <div className="background"></div>

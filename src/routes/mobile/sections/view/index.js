@@ -37,7 +37,7 @@ useEffect(()=> {
   return (
 
       
-      <InView onChange={setInView} id="view" >
+      <InView onChange={setInView} threshold={.6} id="view" >
         {/* <InView onChange={setInView} id="view" style={{transform: "translateZ(-1800px) scale(3.25)", width: "100%", height: "100%"}} > */}
       {/* <div className="section-wrap" ref={(element) => (slowFixed.current[i] = element)}> */}
       <div className="section-wrap" ref={parallax}>

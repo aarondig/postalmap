@@ -14,7 +14,7 @@ function Image({i, el,  section, setCurrent}) {
 
 
   return <div id="image" ref={section}>
-    <InView onChange={setInView}>
+    <InView onChange={setInView} threshold={.6}>
  
        
           <div className="image-c">
