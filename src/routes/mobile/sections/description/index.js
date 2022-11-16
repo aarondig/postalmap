@@ -97,7 +97,7 @@ function Description({
     id: "description",
     ref: section,
 
-    style: lightMode ? { background: "#f4f4f4" } : { background: "#050505" },
+    style: lightMode ? { background: "#f4f4f4", paddingBottom: 0, } : { background: "#050505", paddingBottom: "60px", },
 
     onChange: setInView,
     threshold: 0.6,
@@ -109,13 +109,31 @@ function Description({
         <div className="row">
           <div className="col-3">
             {lightMode ? (
-              <div className="text-c" ref={parallax} style={lightMode ? {color: "#050505"} : {color: "#ffffff"}}>
+              <div
+                className="text-c"
+                ref={parallax}
+                style={lightMode ? { color: "#050505" } : { color: "#ffffff" }}
+              >
                 <h6 className="subtitle">{el.subtitle}</h6>
                 <h2 className="title">{el.title}</h2>
                 <p className="text">{el.text}</p>
+                {el.button && (
+                  <div className="button-c">
+                    <a href={el.button.link} replace>
+                      <h6 className="button-text">{el.button.text}</h6>
+                     </a> 
+                      
+
+                      <div className="button-visual"></div>
+                  </div>
+                )}
               </div>
             ) : (
-              <div className="text-c" ref={parallax} style={lightMode ? {color: "#050505"} : {color: "#ffffff"}}>
+              <div
+                className="text-c"
+                ref={parallax}
+                style={lightMode ? { color: "#050505" } : { color: "#ffffff" }}
+              >
                 <a.h6 className="subtitle" style={line1}>
                   {el.subtitle}
                 </a.h6>

@@ -15,6 +15,17 @@ body, html {
   display: none;
 }
 
+a {
+  color: #050505;
+  text-decoration: none; /* no underline */
+}
+a:hover {
+  opacity: .2;
+}
+a:visited {
+  opacity: .6;
+}
+
 .row {
   display: flex;
   justify-content: center;

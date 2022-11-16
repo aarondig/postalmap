@@ -65,6 +65,11 @@ export const data = [
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
+    button: {
+        text: "Learn More",
+        link: "https://www.aarondiggdon.com"
+    },
+
 
     lightMode: "light",
     type: "text",

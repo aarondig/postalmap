@@ -9,7 +9,6 @@
   z-index: 1 ;
 
   padding-top: 80px;
-  padding-bottom: 60px;
   }
   #description .section-wrap {
     z-index: 1;
@@ -51,6 +50,32 @@
     white-space: wrap;
   }
 
+
+  #description .button-c {
+
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+
+  }
+  #description a {
+    flex: 1 0;
+
+    
+      }
+  #description .button-text {
+
+    font-size: 18px;
+
+  }
+  #description .button-visual {
+    height: .8px;
+    flex: 1 0;
+    background: #050505;
+    align-self: center;
+
+  }
   
 /* MEDIA LINE */
     #description .title {
