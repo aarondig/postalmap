@@ -25,6 +25,9 @@ console.log(current)
 
   return (
     <div id="canvas" style={{background: "linear-gradient(160deg, #151515 20%, #404040)"}}>
+      <Suspense fallback={<div style={{background: 'red', width: "100%", height: "100%", zIndex: 1}} />}>
+      
+      
       <Canvas
         camera={{ position: [0, 1.5, 3], fov: 70 }}
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
@@ -73,6 +76,7 @@ console.log(current)
         <shadowMaterial attach="material" transparent opacity={0.4} />
       </mesh> */}
       </Canvas>
+      </Suspense>
     </div>
   );
 }

@@ -20,10 +20,10 @@ a {
   text-decoration: none; /* no underline */
 }
 a:hover {
-  opacity: .2;
+  opacity: .4;
 }
 a:visited {
-  opacity: .6;
+  opacity: .8;
 }
 
 .row {
