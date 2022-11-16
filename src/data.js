@@ -10,6 +10,8 @@ export const data = [
     subtitle: "/ Our Mission",
     number: "01",
 
+    index: 0,
+
     object: postalcode,
     audio: sidewalk,
 
@@ -21,6 +23,8 @@ export const data = [
     subtitle: "/ Introduction",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
+
+    index: 0,
 
     lightMode: "dark",
     type: "text",
@@ -34,6 +38,8 @@ export const data = [
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
+    index: 0,
+
     type: "image",
   },
   {
@@ -42,6 +48,8 @@ export const data = [
     subtitle: "/ Introduction",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
+
+    index: 0,
 
     object: train,
 
@@ -54,6 +62,8 @@ export const data = [
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
+    index: 0,
+
 
     lightMode: "dark",
     type: "text",
@@ -64,6 +74,8 @@ export const data = [
     subtitle: "A Visual Medium",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
+
+    index: 0,
 
     button: {
         text: "Learn More",
@@ -82,6 +94,8 @@ export const data = [
     subtitle: "/ Photography",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
+
+    index: 0,
 
     images: [
       {
@@ -111,6 +125,8 @@ export const data = [
     subtitle: "/ Our Mission",
     number: "01",
 
+    index: 0,
+
     object: cannon,
     audio: sidewalk,
 
@@ -125,6 +141,8 @@ export const data = [
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
+    index: 0,
+
     type: "text",
   },
 
@@ -136,6 +154,8 @@ export const data = [
     subtitle: "/ Introduction",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
+
+    index: 0,
 
     type: "image",
   },

@@ -28,6 +28,15 @@ function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent 
     
   // },[scroll])
  
+//START UP
+
+  useEffect(()=>{
+// Setting Index for Each
+  data.map((el, i)=>{
+    el.index = i;
+  })
+
+  },[])
 
 
   const view = {

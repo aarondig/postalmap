@@ -12,86 +12,86 @@ import { data } from "../../../../data";
 import { useSpring, a } from "@react-spring/three";
 import { PositionalAudio } from "@react-three/drei";
 
-function Scene({ i, current, scroll, audio }) {
+function Scene({ i, el, current, scroll, audio, setScene }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
 
   // Checks if the scene is Visible
-  const [isVisible, setIsVisible] = useState(i === 0 ? true : false);
+  const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
 
-  useEffect(() => {
-    if (current === i) {
-      setIsVisible(true);
-
-    } else {
-      setIsVisible(false);
-    }
-  }, [current]);
-  
-  
- 
-
-  const { nodes, materials } = useLoader(GLTFLoader, data[i].object);
-
-  // new THREE.MeshStandardMaterial({color: 0xff0000})
+// IMPORT MODEL
+  const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
   materials.main.map = null;
   materials.main.color = new THREE.Color(0x404040);
   materials.main.transparent = true;
 
   useFrame(() => {
+    // ref.current.position.x = el.index * 10;
     ref.current.rotation.y = -700 + scroll / 200;
   });
+  const [remove, setRemove] = useState(false);
 
-  // const { position } = useSpring({ position: isVisible ? [0,-1,0] : [i+4,5,0]})
-  const { scale } = useSpring({ scale: isVisible ? 1.8 : 0 });
-
-  const { visible } = useSpring({ visible: isVisible ? true : false });
-  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0 });
+ 
+  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && (materials.main.visible = false) });
   materials.main.opacity = opacity;
+  // const { visible } = useSpring({ visible: remove ? false : true });
+  // materials.main.visible = visible;
+
+// STARTUP
+
+  useEffect(() => {
+    if (current === el.index) {
+      materials.main.visible = true;
+      setIsVisible(true);
+      
+      // setScene(el.index)
+
+    } else {
+      setIsVisible(false);
+    }
+  }, [current]);
+  
+ 
+
+
 
   // if (materials.main.opacity === 0) {
   //   materials.main.opacity = opacity;
   // }
 
+  // onRest: () => navigate(`projects`)
 
-// const { distance } = useSpring({ distance: isVisible ? 1 : 100 });
+
 
 //AUDIO
 
-const [playAudio, setPlayAudio] = useState(false);
-const [fadeOut, setFadeOut] = useState(false);
+// const { distance } = useSpring({ distance: isVisible ? 1 : 100 });
 
-function Sound({isVisible}) {
-  const sound = useRef();
-  const { camera } = useThree();
-  const [listener] = useState(() => new THREE.AudioListener());
-  const buffer = useLoader(THREE.AudioLoader, data[i].audio);
+// const [playAudio, setPlayAudio] = useState(false);
+// const [fadeOut, setFadeOut] = useState(false);
 
- 
-//   !isVisible ? setInterval(function(){
-//     if(audio.volume <= 0){
-//         clearInterval(fadeInterval);
-//         return;
-//     }
-//     audio.volume -= 0.1;
-// }, 2);
+// function Sound({isVisible}) {
+//   const sound = useRef();
+//   const { camera } = useThree();
+//   const [listener] = useState(() => new THREE.AudioListener());
+//   const buffer = useLoader(THREE.AudioLoader, el.audio);
 
-useFrame(()=>{
-  sound.current.setRefDistance(scroll)
-})
-  useEffect(() => {
-    sound.current.setBuffer(buffer);
-    sound.current.setRefDistance(1);
-    sound.current.setLoop(true);
-    sound.current.play();
-    camera.add(listener);
+// useFrame(()=>{
+//   sound.current.setRefDistance(scroll)
+// })
+//   useEffect(() => {
+//     sound.current.setBuffer(buffer);
+//     sound.current.setRefDistance(1);
+//     sound.current.setLoop(true);
+//     sound.current.play();
+//     camera.add(listener);
 
-    return () => camera.remove(listener);
-  }, []);
-  return <positionalAudio ref={sound} args={[listener]} />;
-}
+//     return () => camera.remove(listener);
+//   }, []);
+//   return <positionalAudio ref={sound} args={[listener]} />;
+// }
 
 
   
@@ -109,8 +109,8 @@ useFrame(()=>{
           // visible={visible}
         >
          
-          {audio && <Sound isVisible={isVisible}/>}
-        
+          {/* {audio && <Sound isVisible={isVisible}/>} */}
+          
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
       </group>

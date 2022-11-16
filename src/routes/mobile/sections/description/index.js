@@ -119,7 +119,7 @@ function Description({
                 <p className="text">{el.text}</p>
                 {el.button && (
                   <div className="button-c">
-                    <a href={el.button.link} replace>
+                    <a href={el.button.link}>
                       <h6 className="button-text">{el.button.text}</h6>
                      </a> 
                       
