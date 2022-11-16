@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/postalmap/static/css/main.b5028fb5.css",
-    "main.js": "/postalmap/static/js/main.c21964f6.js",
+    "main.js": "/postalmap/static/js/main.4d25f521.js",
     "static/media/postalcode.glb": "/postalmap/static/media/postalcode.3e8fae92b80184341d36.glb",
     "static/media/riverside.glb": "/postalmap/static/media/riverside.c027596b6ea3a37cdd5a.glb",
     "static/media/corner.glb": "/postalmap/static/media/corner.c29a3e5c8c8ee08947e2.glb",
@@ -10,10 +10,10 @@
     "static/media/sidewalk1.mp4": "/postalmap/static/media/sidewalk1.d3a73ced5c566419b05e.mp4",
     "index.html": "/postalmap/index.html",
     "main.b5028fb5.css.map": "/postalmap/static/css/main.b5028fb5.css.map",
-    "main.c21964f6.js.map": "/postalmap/static/js/main.c21964f6.js.map"
+    "main.4d25f521.js.map": "/postalmap/static/js/main.4d25f521.js.map"
   },
   "entrypoints": [
     "static/css/main.b5028fb5.css",
-    "static/js/main.c21964f6.js"
+    "static/js/main.4d25f521.js"
   ]
 }
