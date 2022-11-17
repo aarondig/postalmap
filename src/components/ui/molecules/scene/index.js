@@ -3,19 +3,17 @@ import "./style.css";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import postalcode from "../../../../assets/scans/postalcode.glb";
-import train from "../../../../assets/scans/train.glb";
-import corner from "../../../../assets/scans/corner.glb";
-import riverside from "../../../../assets/scans/riverside.glb";
 import Loader from "../Loader/index";
 import { data } from "../../../../data";
 import { useSpring, a } from "@react-spring/three";
-import { PositionalAudio } from "@react-three/drei";
+import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
+import { Vector3 } from "three";
 
 function Scene({ i, el, current, scroll, audio, setScene }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
+  const camera = useRef();
 
   // Checks if the scene is Visible
   const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
@@ -24,35 +22,42 @@ function Scene({ i, el, current, scroll, audio, setScene }) {
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
   materials.main.map = null;
-  materials.main.color = new THREE.Color(0x404040);
+  materials.main.color = new THREE.Color(0x505050);
   materials.main.transparent = true;
 
   useFrame(() => {
     // ref.current.position.x = el.index * 10;
     ref.current.rotation.y = -700 + scroll / 200;
   });
-  const [remove, setRemove] = useState(false);
+
+  // REMOVE IS WHAT HAPPENS AFTER ANIMATION
+  const [remove, setRemove] = useState(true);
 
  
-  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && (materials.main.visible = false) });
+
+
+  const { visible } = useSpring({ visible: remove ? false : true });
+  materials.main.visible = visible;
+
+  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
   materials.main.opacity = opacity;
-  // const { visible } = useSpring({ visible: remove ? false : true });
-  // materials.main.visible = visible;
 
 // STARTUP
 
   useEffect(() => {
     if (current === el.index) {
-      materials.main.visible = true;
+      // materials.main.visible = true;
+      setRemove(false)
       setIsVisible(true);
       
       // setScene(el.index)
 
     } else {
+
       setIsVisible(false);
     }
   }, [current]);
-  
+
  
 
 
@@ -94,7 +99,8 @@ function Scene({ i, el, current, scroll, audio, setScene }) {
 // }
 
 
-  
+
+  i=== current && console.log(remove)
   return (
     <Suspense fallback={<Loader />}>
       <group ref={group}>
@@ -113,6 +119,9 @@ function Scene({ i, el, current, scroll, audio, setScene }) {
           
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
+        
+        <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)}/>
+        
       </group>
     </Suspense>
   );

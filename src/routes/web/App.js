@@ -46,6 +46,7 @@ function lerp(start, end, t) {
   return start * (1 - t) + end * t;
 }
 
+lerp(current, target, ease)
 
 
 function setTransform(el, transform) {
@@ -61,11 +62,11 @@ useEffect(()=>{
 },[])
   
 function smoothScroll() {
-  position = lerp(current,target,ease)
+  position = lerp(current, target, ease)
   position = parseFloat(position.toFixed(2))
   target = scroll;
   
-
+  
   setTransform(scrollContent, `translateY(${-position}px)`)
   requestAnimationFrame(smoothScroll)
 }

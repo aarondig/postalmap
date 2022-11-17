@@ -1,4 +1,4 @@
-import postalcode from "../src/assets/scans/postalcode.glb";
+import postcode from "../src/assets/scans/postcode.glb";
 import cannon from "../src/assets/scans/cannon.glb";
 import train from "../src/assets/scans/train.glb";
 import sidewalk from "../src/assets/audio/sidewalk1.mp4";
@@ -12,7 +12,10 @@ export const data = [
 
     index: 0,
 
-    object: postalcode,
+    object: postcode,
+    position: [0, 10, 50],
+
+
     audio: sidewalk,
 
     type: "view",
@@ -128,6 +131,8 @@ export const data = [
     index: 0,
 
     object: cannon,
+    position: [0, 10, 10],
+
     audio: sidewalk,
 
     type: "view",

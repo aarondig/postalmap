@@ -27,19 +27,32 @@ const scenes = {
 //   console.log(group.current)
 // })
 
+// const cameras = { 
+// postcode: {
+//   position: [0,1.5, 3], fov: 70
+// },
+// hallway: {
+//   position: [0,1.5, 3], fov: 70
+// }
+// }
+// console.log()
   return (
     <div id="canvas">
       
       
       
       <Canvas
-        camera={{ position: [0, 1.5, 3], fov: 70 }}
+      // camera={cameras[current]}
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
         shadows
       >
+    {/* <rectAreaLight position={[0, 20, 10]} intensity={40} width={200}
+      height={1}/> */}
 
-        <pointLight position={[4, 2, 4]} intensity={1} />
-        <pointLight position={[-5, 0, -3]} intensity={.3} />
+<rectAreaLight position={[0, 20, 40]} intensity={80} width={200}
+      height={1}/>
+        {/* <pointLight position={[4, 2, 4]} intensity={1} />
+        <pointLight position={[-5, 0, -3]} intensity={.3} /> */}
         <OrbitControls />
 
         {/* <Suspense fallback={<div style={{background: 'red', width: "100%", height: "100%", zIndex: 1}} />}> */}
@@ -47,7 +60,8 @@ const scenes = {
 
         
    <Scenes {...scenes}/>
-          {/* <Environment preset="city"/> */}
+   {/* <ambientLight intensity={.1}/> */}
+          {/* <Environment preset="studio" near={1} far={1000} resolution={256}/> */}
   
 
         
