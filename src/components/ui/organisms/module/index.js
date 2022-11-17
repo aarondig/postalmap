@@ -28,7 +28,7 @@ const scenes = {
 // })
 
   return (
-    <div id="canvas" style={{background: "linear-gradient(160deg, #151515 20%, #404040)"}}>
+    <div id="canvas">
       
       
       
