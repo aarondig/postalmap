@@ -22,6 +22,7 @@ const [audio, setAudio] = useState(false)
   const scrollContainer = useRef()
   const scrollContent = useRef()
   const [scroll, setScroll] = useState()
+  const [direct, setDirect] = useState(1)
   
     const onScroll = (e) => {
       setScroll(e.target.scrollTop);
@@ -31,6 +32,20 @@ const [audio, setAudio] = useState(false)
     useEffect(() => void onScroll({ target: scrollContainer.current }), []);
    
 
+
+    window.addEventListener('wheel', function(event)
+    {
+     if (event.deltaY < 0)
+     {
+
+      setDirect(-1)
+     }
+     else if (event.deltaY > 0)
+     {
+   
+      setDirect(1)
+     }
+    });
 
 
 const loader = {
@@ -44,6 +59,7 @@ const wrapper = {
 }
 const project = {
 scroll: scroll,
+direct: direct,
   // pagesize: pagesize,
   scrollContainer: scrollContainer,
   scrollContent: scrollContent,
@@ -54,6 +70,8 @@ scroll: scroll,
 
 const module = {
   scroll: scroll,
+  direct: direct,
+
   current: current,
   audio: audio,
 }

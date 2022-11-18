@@ -7,66 +7,11 @@ import Loader from "../Loader/index";
 import { data } from "../../../../data";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
-import { Vector3 } from "three";
 
-function Scene({ i, el, current, scroll, audio, setScene }) {
-  const ref = useRef();
-  const group = useRef();
-  const aud = useRef();
-  const camera = useRef();
+function Scene({ i, el, current, scroll }) {
+  
 
-  // Checks if the scene is Visible
-  const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
-
-// IMPORT MODEL
-  const { nodes, materials } = useLoader(GLTFLoader, el.object);
-
-  materials.main.map = null;
-  materials.main.color = new THREE.Color(0x505050);
-  materials.main.transparent = true;
-
-  useFrame(() => {
-    // ref.current.position.x = el.index * 10;
-    ref.current.rotation.y = -700 + scroll / 200;
-  });
-
-  // REMOVE IS WHAT HAPPENS AFTER ANIMATION
-  const [remove, setRemove] = useState(true);
-
- 
-
-
-  const { visible } = useSpring({ visible: remove ? false : true });
-  materials.main.visible = visible;
-
-  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
-  materials.main.opacity = opacity;
-
-// STARTUP
-
-  useEffect(() => {
-    if (current === el.index) {
-      // materials.main.visible = true;
-      setRemove(false)
-      setIsVisible(true);
-      
-      // setScene(el.index)
-
-    } else {
-
-      setIsVisible(false);
-    }
-  }, [current]);
-
- 
-
-
-
-  // if (materials.main.opacity === 0) {
-  //   materials.main.opacity = opacity;
-  // }
-
-  // onRest: () => navigate(`projects`)
+  
 
 
 
@@ -98,31 +43,18 @@ function Scene({ i, el, current, scroll, audio, setScene }) {
 //   return <positionalAudio ref={sound} args={[listener]} />;
 // }
 
+// const model = {
+//   scroll: scroll,
 
+//   isVisible: isVisible,
+//   remove: remove,
+//   setRemove: setRemove,
+// }
 
-  i=== current && console.log(remove)
+ 
   return (
     <Suspense fallback={<Loader />}>
-      <group ref={group}>
-        <mesh
-          ref={ref}
-          // material={materials.main}
-          geometry={nodes.mesh.geometry}
-          position={[0, -1, 0]}
-          castShadow
-          scale={1.8}
-
-          // visible={visible}
-        >
-         
-          {/* {audio && <Sound isVisible={isVisible}/>} */}
-          
-          <a.meshStandardMaterial {...materials.main} />
-        </mesh>
-        
-        <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)}/>
-        
-      </group>
+      
     </Suspense>
   );
 }

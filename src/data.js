@@ -1,11 +1,16 @@
 import postcode from "../src/assets/scans/postcode.glb";
+import ecstation from "../src/assets/scans/ecstation.glb";
+import pier from "../src/assets/scans/pier.glb";
+
 import cannon from "../src/assets/scans/cannon.glb";
 import train from "../src/assets/scans/train.glb";
+
 import sidewalk from "../src/assets/audio/sidewalk1.mp4";
+
 
 export const data = [
   {
-    id: "introduction",
+    id: "postcode",
     title: "Guide the user back to LCC or else ...",
     subtitle: "/ Our Mission",
     number: "01",
@@ -13,7 +18,7 @@ export const data = [
     index: 0,
 
     object: postcode,
-    position: [0, 10, 50],
+    position: [0, 10, 75],
 
 
     audio: sidewalk,
@@ -123,14 +128,14 @@ export const data = [
     type: "slider",
   },
   {
-    id: "view",
+    id: "pier",
     title: "Guide the user back to LCC or else ...",
     subtitle: "/ Our Mission",
     number: "01",
 
     index: 0,
 
-    object: cannon,
+    object: pier,
     position: [0, 10, 10],
 
     audio: sidewalk,

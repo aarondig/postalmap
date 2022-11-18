@@ -8,16 +8,15 @@ import { data } from "../../../../data";
 import { useSpring, a, useSprings } from "@react-spring/three";
 import { PositionalAudio } from "@react-three/drei";
 import Scene from "../scene";
+import Postcode from "../../atoms/postcode";
+import Pier from "../../atoms/pier";
 
 
 function Scenes({ current, scroll, audio }) {
-  const ref = useRef();
   const group = useRef();
 
 //   const [scenes, setScenes] = useState([])
   
-
-
 // useEffect(()=>{
 //   data.map((el, i)=>{
 //     if (el.type === "view") {
@@ -38,17 +37,29 @@ function Scenes({ current, scroll, audio }) {
  
 
   }
+  
 
   return (
-    
-      <a.group ref={group} >
-        {/* <Suspense fallback={<Loader />}> */}
+      <group ref={group} >
+        <Suspense fallback={<Loader/>}>
         {data.map((el, i) => {
-            return el.type === "view" && (<Scene key={i} el={el} i={i} {...sceneprops}/>) 
+          switch (el.id) {
+            default: {
+              return null;
+            }
+            case "postcode": {
+             
+              return <Postcode key={i} el={el} i={i} {...sceneprops}/>;
+            }
+            case "pier": {
+              
+              return <Pier key={i} el={el} i={i} {...sceneprops}/>;
+            }
+
+          }
         })}
-        {/* </Suspense> */}
-      </a.group>
-    
+        </Suspense>
+      </group>
   );
 }
 
