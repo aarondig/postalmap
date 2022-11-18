@@ -37,10 +37,13 @@ const wrapper = useSpring({
 
         {/* <div className="menu" onClick={()=> setAudio(!audio)}> */}
         <div className="menu" onClick={() => toggleActive(!active)}>
-        <a.svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        {/* <Hamburger toggled={isOpen} toggle={setOpen} /> */}
+        {/* <a.svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <a.path style={path1} d="M3 9H20" stroke="white" strokeWidth={.8}/>
         <a.path style={path2} d="M3 15H20" stroke="white" strokeWidth={.8}/>
-        </a.svg>
+        </a.svg> */}
+      
 
         </div>
       </div>

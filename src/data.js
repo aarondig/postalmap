@@ -18,7 +18,7 @@ export const data = [
     index: 0,
 
     object: postcode,
-    position: [0, 10, 75],
+   
 
 
     audio: sidewalk,
@@ -136,7 +136,6 @@ export const data = [
     index: 0,
 
     object: pier,
-    position: [0, 10, 10],
 
     audio: sidewalk,
 
