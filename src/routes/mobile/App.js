@@ -15,6 +15,12 @@ const [current, setCurrent] = useState(0)
 const [loading, setLoading] = useState(true);
 
 
+ //For Models to appear/disappear
+ const [isInView, setIsInView] = useState()
+
+
+
+
 const [audio, setAudio] = useState(false)
 
 
@@ -33,19 +39,19 @@ const [audio, setAudio] = useState(false)
    
 
 
-    window.addEventListener('wheel', function(event)
-    {
-     if (event.deltaY < 0)
-     {
+    // window.addEventListener('wheel', function(event)
+    // {
+    //  if (event.deltaY < 0)
+    //  {
 
-      setDirect(-1)
-     }
-     else if (event.deltaY > 0)
-     {
+    //   setDirect(-1)
+    //  }
+    //  if (event.deltaY > 0)
+    //  {
    
-      setDirect(1)
-     }
-    });
+    //   setDirect(1)
+    //  }
+    // });
 
 
 const loader = {
@@ -65,7 +71,10 @@ direct: direct,
   scrollContent: scrollContent,
   // setProjectHeight: setProjectHeight,
   onScroll: onScroll,
+  current: current,
   setCurrent: setCurrent,
+
+  setIsInView: setIsInView,
 }
 
 const module = {
@@ -74,6 +83,7 @@ const module = {
 
   current: current,
   audio: audio,
+  isInView: isInView,
 }
 const navigation = {
   current: current,

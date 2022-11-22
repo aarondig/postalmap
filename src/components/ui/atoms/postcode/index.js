@@ -6,23 +6,28 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 
-const position = [0, 10, 75]
 
-const Camera = ({scroll, remove}) => {
+
+const Camera = ({scroll, remove, starterValue}) => {
+  const position = [0, 10, 75]
   const ref = useRef();
-  const set = useThree((state) => state.set);
+  // const set = useThree((state) => state.set);
+
 
   // Sets default camera on remove-false
-  useEffect(() => !remove && void set({ camera: ref.current }), []);
+  // useEffect(() => {
+  //   void set({ camera: ref.current })}, 
+  //   []);
   // Camera animations
   useFrame(() => {
     ref.current.position.z = position[2] - (scroll / 10) ;
+
     ref.current.updateMatrixWorld();
   });
-  return <PerspectiveCamera ref={ref} position={position} />;
+  return <PerspectiveCamera ref={ref} position={position} makeDefault={!remove}/>;
 };
 
-function Postcode({ i, el, current, scroll, audio }) {
+function Postcode({ i, el, current, scroll, starterValue, audio }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
@@ -67,17 +72,18 @@ useEffect(() => {
     // ref.current.position.x = el.index * 10;
     ref.current.rotation.y =  - scroll / 400 + 75;
     
-    // - positionz
   });
-  useEffect(()=>{
-    // setPositionz(camera.current.position.z)
-  },[])
 
+
+
+
+  
 
 const camprops = {
   scroll: scroll,
   isVisible: isVisible,
   remove: remove,
+  starterValue: starterValue,
 }
  
   return (
@@ -96,7 +102,7 @@ const camprops = {
           
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
-        {!remove && <Camera {...camprops}/>}
+        <Camera {...camprops}/>
         {/* <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)} /> */}
         
       </group>

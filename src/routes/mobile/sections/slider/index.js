@@ -28,14 +28,19 @@ useEffect(()=>{
 
 
 
+const slider = {
+  id: "slider",
+  ref: section,
+  onChange: setInView,
+  threshold: .6,
 
+
+}
 
 
 
   return (
-
-      
-      <InView onChange={setInView} id="slider" threshold={.6} style={lightMode ? {background: "#f4f4f4"} : {background: "#050505"}} >
+      <InView  style={lightMode ? {background: "#f4f4f4"} : {background: "#050505"}} {...slider}>
     <div className="content-wrap">
       
     <h6 className="subtitle">{el.subtitle}</h6>

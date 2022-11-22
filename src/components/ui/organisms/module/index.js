@@ -9,13 +9,12 @@ import {
   Environment,
   softShadows
 } from "@react-three/drei";
-import Scene from "../../molecules/scene";
 import { data } from "../../../../data";
 import Scenes from "../../molecules/scenes";
 import { InView, useInView } from "react-intersection-observer";
 
 
-function Module({scroll, direct, current, audio}) {
+function Module({scroll, direct, current, isInView, starterValue, audio}) {
 
   
 
@@ -24,6 +23,8 @@ const scenes = {
   direct: direct,
 
   current: current,
+  isInView: isInView,
+  starterValue: starterValue,
   
   audio: audio,
 }

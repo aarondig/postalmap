@@ -154,6 +154,7 @@ export const data = [
 
     type: "text",
   },
+ 
 
   {
     id: "image",
@@ -168,6 +169,20 @@ export const data = [
 
     type: "image",
   },
+  // {
+  //   id: "pier",
+  //   title: "Guide the user back to LCC or else ...",
+  //   subtitle: "/ Our Mission",
+  //   number: "01",
+
+  //   index: 0,
+
+  //   object: cannon,
+
+  //   audio: sidewalk,
+
+  //   type: "view",
+  // },
 ];
 
 // Types: Inspect, View, Text

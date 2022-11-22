@@ -13,8 +13,7 @@ function Image({i, el,  section, setCurrent}) {
   },[inView])
 
 
-  return <div id="image" ref={section}>
-    <InView onChange={setInView} threshold={.6}>
+  return <InView id="image" ref={section} onChange={setInView} threshold={.6}>
  
        
           <div className="image-c">
@@ -23,8 +22,7 @@ function Image({i, el,  section, setCurrent}) {
    
       </div>
       
-      </InView>
-  </div>
+  </InView>
 }
 
 export default Image;

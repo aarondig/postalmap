@@ -7,12 +7,11 @@ import Loader from "../Loader/index";
 import { data } from "../../../../data";
 import { useSpring, a, useSprings } from "@react-spring/three";
 import { PositionalAudio } from "@react-three/drei";
-import Scene from "../scene";
 import Postcode from "../../atoms/postcode";
 import Pier from "../../atoms/pier";
 
 
-function Scenes({ current, scroll, audio }) {
+function Scenes({ current, scroll, isInView, starterValue, audio }) {
   const group = useRef();
 
 //   const [scenes, setScenes] = useState([])
@@ -27,13 +26,13 @@ function Scenes({ current, scroll, audio }) {
 // },[])
 
 
- 
-
-
   const sceneprops = {
     current: current,
     scroll: scroll,
     audio: audio,
+
+    isInView: isInView,
+    starterValue: starterValue,
  
 
   }

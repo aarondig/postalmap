@@ -1,8 +1,6 @@
-import React, {
-  useState, useRef, Suspense, useEffect
-} from "react";
+import React, { useState, useRef, Suspense, useEffect } from "react";
 import "./style.css";
-import {data} from "../../../../data"
+import { data } from "../../../../data";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import {
@@ -10,104 +8,98 @@ import {
   MeshReflectorMaterial,
   ContactShadows,
   Environment,
-  softShadows
+  softShadows,
 } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import {a, useSpring } from "react-spring";
+import { a, useSpring } from "react-spring";
 
 import { InView } from "react-intersection-observer";
 
-function Detail({i, el, section, setCurrent, scrollContainer, scroll}) {
+function Detail({
+  i,
+  el,
+  section,
+  sectionSize,
+  setCurrent,
+  scrollContainer,
+  scroll,
+}) {
   const [inView, setInView] = useState(false);
 
-  useEffect(()=>{
-    inView && setCurrent(i)
-  },[inView])
+  useEffect(() => {
+    inView && setCurrent(i);
+  }, [inView]);
 
+// Measure the size of all sections before it and create a start value for scrolling
+const [startValue, setStartValue] = useState(0)
 
-  const visible = useSpring({ opacity: inView ? 1 : 0,
+useEffect(()=>{
+  // Removes all elements in array past index, then adds all of them together
+ setStartValue((sectionSize.slice(-(i-1)).reduce((a, b) => a + b, 0) - 98))
+},[sectionSize])
+
+  const visible = useSpring({
+    opacity: inView ? 1 : 0,
     // delay: 100,
-  config: { duration: 250 } })
+    config: { duration: 250 },
+  });
 
-
-  
-  function Scene({scroll}) {
+  function Scene({ scroll, startValue }) {
     const ref = useRef();
 
     const { nodes, materials } = useLoader(GLTFLoader, el.object);
-    
+
     materials.main.map = null;
-    materials.main.color = new THREE.Color(0x404040)
-    
+    materials.main.color = new THREE.Color(0x404040);
+
     useFrame(() => {
-      ref.current.rotation.y = -700 + scroll / 200;
-    })
+      ref.current.rotation.y = (scroll - startValue - 400) / 400;
+    });
     return (
       <Suspense fallback={null}>
-
-          <mesh
-            ref={ref}
-            material={materials.main}
-            geometry={nodes.mesh.geometry}
-            position={[0, -1, 0]}
-            castShadow
-            scale={1.8}
-          >
-          </mesh>
- 
+        <mesh
+          ref={ref}
+          material={materials.main}
+          geometry={nodes.mesh.geometry}
+          position={[0, -1, 0]}
+          castShadow
+          scale={1.8}
+        ></mesh>
       </Suspense>
     );
   }
 
-
-  
-
-  return <div id="detail" ref={section} >
-    <InView onChange={setInView} threshold={.6}>
-   {/* style={visible} */}
+  return (
+    <InView id="detail" ref={section} onChange={setInView} threshold={0.6}>
+      {/* style={visible} */}
       {/* <div className="background-c">
       <div className="background"></div>
       </div> */}
       <div className="section-wrap">
-    
         <div className="col-3">
-          
           <a.div className="text-c" style={visible}>
-          <h6 className="subtitle">{el.subtitle}</h6>
+            <h6 className="subtitle">{el.subtitle}</h6>
             <h2 className="title">{el.title}</h2>
             <p className="text">{el.text}</p>
           </a.div>
-          
         </div>
-        <div className="col-2">
-          
-      </div>
-      
-   
+        <div className="col-2"></div>
       </div>
       <div className="canvas-wrap">
-    
-    <Canvas
-  camera={{ position: [0, 1.5, 7], fov: 70 }}
-  gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
-  shadows
->
+        <Canvas
+          camera={{ position: [0, 1.5, 7], fov: 70 }}
+          gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
+          shadows
+        >
+          <pointLight position={[4, 2, 4]} intensity={1} />
+          <pointLight position={[-5, 0, -3]} intensity={0.3} />
+          <OrbitControls />
 
-  <pointLight position={[4, 2, 4]} intensity={1} />
-  <pointLight position={[-5, 0, -3]} intensity={.3} />
-  <OrbitControls />
-
-
-
-    <Scene scroll={scroll}/>
-    
-</Canvas>
-
-
-  </div>
-      </InView>
-  </div>
+          <Scene scroll={scroll} startValue={startValue} />
+        </Canvas>
+      </div>
+    </InView>
+  );
 }
 
 export default Detail;
-

@@ -6,33 +6,33 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 
-const position = [0, 10, 10]
 
-const Camera = ({scroll, remove}) => {
+
+
+const Camera = ({ scroll, remove, isVisible, starterValue }) => {
+  const position = [0, 10, 20];
   const ref = useRef();
-  const set = useThree((state) => state.set);
-
-  // Sets default camera on remove-false
-  useEffect(() => !remove && void set({ camera: ref.current }), []);
+  
   // Camera animations
   useFrame(() => {
-    ref.current.position.z = position[2] - (scroll / 10) ;
+    // ref.current.position.z = 20 - scroll / 10;
     ref.current.updateMatrixWorld();
   });
-  return <PerspectiveCamera ref={ref} position={position} />;
+  return <PerspectiveCamera ref={ref} position={position} makeDefault={!remove}/>;
 };
 
-function Pier({ i, el, current, scroll, audio }) {
+function Pier({ i, el, current, scroll, starterValue, audio }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
 
-// IMPORT MODEL
-  const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
-  materials.main.map = null;
-  materials.main.color = new THREE.Color(0x505050);
-  materials.main.transparent = true;
+ // IMPORT MODEL
+ const { nodes, materials } = useLoader(GLTFLoader, el.object);
+
+ materials.main.map = null;
+ materials.main.color = new THREE.Color(0x505050);
+ materials.main.transparent = true;
 
 // Checks if the scene is Visible
 const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
@@ -42,69 +42,63 @@ const [remove, setRemove] = useState(true);
 
 // Model View Animations
 
-  const { visible } = useSpring({ visible: remove ? false : true });
-  materials.main.visible = visible;
+ const { visible } = useSpring({ visible: remove ? false : true });
+ materials.main.visible = visible;
 
-  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
-  materials.main.opacity = opacity;
-
-// STARTUP
-
-useEffect(() => {
-  if (current === el.index) {
-    setRemove(false)
-    setIsVisible(true);
-  } else {
-    setIsVisible(false);
-  }
-}, [current]);
+ const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
+ materials.main.opacity = opacity;
 
 
+ 
+  // STARTUP
 
+  useEffect(() => {
+    if (current === el.index) {
+      setRemove(false);
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  }, [current]);
 
-//SCROLLING ANIMATIONS
+  //SCROLLING ANIMATIONS
 
   useFrame(() => {
-
-    ref.current.rotation.y =  - scroll / 400 + 75;
-   
+    ref.current.rotation.y = -scroll / 400 + 75;
   });
 
   const camprops = {
     scroll: scroll,
     isVisible: isVisible,
     remove: remove,
-  }
- 
+    starterValue: starterValue,
+  };
+
+
+
   return (
+    <group ref={group}>
+      <mesh
+        ref={ref}
+        // material={materials.main}
+        geometry={nodes.mesh.geometry}
+        position={[0, -1, 0]}
+        castShadow
+        scale={1.8}
 
-      <group ref={group}>
-        <mesh
-          ref={ref}
-          // material={materials.main}
-          geometry={nodes.mesh.geometry}
-          position={[0, -1, 0]}
-          castShadow
-          scale={1.8}
+        // visible={visible}
+      >
+        {/* {audio && <Sound isVisible={isVisible}/>} */}
 
-          // visible={visible}
-        >
-         
-          {/* {audio && <Sound isVisible={isVisible}/>} */}
-          
-          <a.meshStandardMaterial {...materials.main} />
-        </mesh>
-        
-        <Camera {...camprops}/>
-        
-      </group>
+        <a.meshStandardMaterial {...materials.main} />
+      </mesh>
+
+     <Camera {...camprops}/>
+    </group>
   );
 }
 
 export default Pier;
-
-
-
 
 //AUDIO
 

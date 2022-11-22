@@ -1,4 +1,11 @@
-import React, { useState, useRef, Suspense, useEffect, createRef, useLayoutEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  Suspense,
+  useEffect,
+  createRef,
+  useLayoutEffect,
+} from "react";
 import "./style.css";
 import Description from "../../sections/description";
 import { data } from "../../../../data.js";
@@ -8,74 +15,82 @@ import Detail from "../../sections/detail";
 import Module from "../../../../components/ui/organisms/module";
 import Slider from "../../sections/slider";
 
-function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent  }) {
-  const [section, setSection] = useState([]);
+function Project({
+  scroll,
+  onScroll,
+  scrollContainer,
+  scrollContent,
+  current,
+  setCurrent,
+}) {
+  const [sections, setSection] = useState([]);
+  const [sectionSize, setSectionSize] = useState([]);
 
+  const [projectHeight, setProjectHeight] = useState();
 
-  //Parallax Items
-  const slowFixed = useRef([]);
-  const slow3 = useRef([]);
-
-
-  // useEffect(()=>{
-    
-  //   slowFixed.current.map((el, i)=>{
-  //     el.style.transform = `translateY(${-scroll*.3}px)`
-  //   })
-  //   slow3.current.map((el, i)=>{
-  //     el.style.transform = `translateY(${scroll*.01}px)`
-  //   })
-    
-  // },[scroll])
  
-//START UP
 
-  useEffect(()=>{
-// Setting Index for Each
-  data.map((el, i)=>{
-    el.index = i;
-  })
+  useEffect(() => {
+    //Setting Grouped Refs
+    setSection((sections) =>
+      Array(data.length)
+        .fill()
+        .map((el, i) => sections[i] || createRef())
+    );
+  }, []);
 
-  },[])
+  // Getting size of each section
+  useEffect(() => {
+    if (sections.length === data.length) {
+      let height = 0;
+      sections.map((el, i) => {
+        let sectsize = el.current.node.getBoundingClientRect().height;
+        setSectionSize((sectionSize) => [...sectionSize, sectsize]);
 
+        height += sectsize.height;
+        setProjectHeight(height);
+      });
+    }
+  }, [sections]);
+
+  //START UP
+
+  useEffect(() => {
+    // Setting Index for Each
+    data.map((el, i) => {
+      el.index = i;
+    });
+  }, []);
 
   const view = {
     scroll: scroll,
     scrollContainer: scrollContainer,
 
+    current: current,
     setCurrent: setCurrent,
-    slowFixed: slowFixed,
-
-  }
+    sectionSize: sectionSize,
+  };
 
   const text = {
     scroll: scroll,
     scrollContainer: scrollContainer,
 
     setCurrent: setCurrent,
-    slow3: slow3,
-
-
-  }
+  };
   const detail = {
     scroll: scroll,
     scrollContainer: scrollContainer,
 
     setCurrent: setCurrent,
-    slow3: slow3,
-
-
-  }
+    sectionSize: sectionSize,
+  };
 
   const image = {
     scroll: scroll,
     scrollContainer: scrollContainer,
 
     setCurrent: setCurrent,
-    slowFixed: slowFixed,
-
-  }
-
+  };
 
   return (
     <div id="project" ref={scrollContainer} onScroll={onScroll}>
@@ -86,45 +101,37 @@ function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent 
           }
           case "text": {
             return (
-              
-                <Description key={i} i={i} el={el} section={section[i]} {...text}/>
-              
+              <Description
+                key={i}
+                i={i}
+                el={el}
+                section={sections[i]}
+                {...text}
+              />
             );
           }
           case "view": {
             return (
-        
-                <View key={i} i={i} el={el} section={section[i]} {...view}/>
-          
+              <View key={i} i={i} el={el} section={sections[i]} {...view} />
             );
           }
           case "image": {
             return (
-            
-          
-                <Image key={i} i={i} el={el} section={section[i]} {...image}/>
-                
-       
+              <Image key={i} i={i} el={el} section={sections[i]} {...image} />
             );
           }
           case "detail": {
             return (
-    
-                <Detail key={i} i={i} el={el} section={section[i]} {...detail}/>
-             
+              <Detail key={i} i={i} el={el} section={sections[i]} {...detail} />
             );
           }
           case "slider": {
             return (
-           
-                <Slider key={i} i={i} el={el} section={section[i]} {...detail}/>
-           
+              <Slider key={i} i={i} el={el} section={sections[i]} {...detail} />
             );
           }
         }
       })}
-
-
     </div>
   );
 }
