@@ -15,7 +15,7 @@ import { InView, useInView } from "react-intersection-observer";
 import Loader from "../../molecules/Loader";
 
 
-function Module({scroll, direct, current, isInView, starterValue, audio}) {
+function Module({scroll, direct, current, isInView, sectionSize, audio}) {
 
   
 
@@ -25,7 +25,7 @@ const scenes = {
 
   current: current,
   isInView: isInView,
-  starterValue: starterValue,
+  sectionSize: sectionSize,
   
   audio: audio,
 }
@@ -42,8 +42,6 @@ const canvas = {
         shadows
       >
         <Suspense fallback={<Loader/>}>
-    {/* <rectAreaLight position={[0, 20, 10]} intensity={40} width={200}
-      height={1}/> */}
 
 <rectAreaLight position={[0, 20, 40]} intensity={80} width={200}
       height={1}/>
@@ -59,19 +57,7 @@ const canvas = {
 
         
 
-       
-        {/* <spotLight intensity={0.3} angle={0.3} penumbra={1} position={[5, 25, 20]} shadow-bias={-0.0001} castShadow />
-        <ambientLight intensity={10} /> */}
-
-
-
-        {/* <hemisphereLight
-          color="#ffffff"
-          groundColor="#707070"
-          position={[0, 25, -30]}
-          intensity={0.85}
-          castShadow
-        /> */}
+     
         </Suspense>
       </Canvas>
       </div>

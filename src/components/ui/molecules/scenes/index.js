@@ -10,9 +10,11 @@ import { PositionalAudio } from "@react-three/drei";
 import Postcode from "../../atoms/postcode";
 import Pier from "../../atoms/pier";
 import Intro from "../../../../routes/mobile/pages/intro";
+import Station from "../../atoms/station";
+import Hallway from "../../atoms/hallway";
 
 
-function Scenes({ current, scroll, isInView, starterValue, audio }) {
+function Scenes({ current, scroll, isInView, sectionSize, audio }) {
   const group = useRef();
 
 //   const [scenes, setScenes] = useState([])
@@ -33,7 +35,7 @@ function Scenes({ current, scroll, isInView, starterValue, audio }) {
     audio: audio,
 
     isInView: isInView,
-    starterValue: starterValue,
+    sectionSize: sectionSize,
  
 
   }
@@ -51,10 +53,19 @@ function Scenes({ current, scroll, isInView, starterValue, audio }) {
              
               return <Postcode key={i} el={el} i={i} {...sceneprops}/>;
             }
+            case "station": {
+              
+              return <Station key={i} el={el} i={i} {...sceneprops}/>;
+            }
+            case "hallway": {
+              
+              return <Hallway key={i} el={el} i={i} {...sceneprops}/>;
+            }
             case "pier": {
               
               return <Pier key={i} el={el} i={i} {...sceneprops}/>;
             }
+
 
           }
         })}

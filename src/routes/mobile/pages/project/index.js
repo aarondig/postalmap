@@ -19,39 +19,41 @@ function Project({
   scroll,
   onScroll,
   scrollContainer,
-  scrollContent,
+  sections,
+  setSection,
+  setIsInView,
+  sectionSize,
   current,
   setCurrent,
 }) {
-  const [sections, setSection] = useState([]);
-  const [sectionSize, setSectionSize] = useState([]);
+  // const [sections, setSection] = useState([]);
+  // const [sectionSize, setSectionSize] = useState([]);
 
-  const [projectHeight, setProjectHeight] = useState();
+  // const [projectHeight, setProjectHeight] = useState();
 
  
+  // useEffect(() => {
+  //   //Setting Grouped Refs
+  //   setSection((sections) =>
+  //     Array(data.length)
+  //       .fill()
+  //       .map((el, i) => sections[i] || createRef())
+  //   );
+  // }, []);
 
-  useEffect(() => {
-    //Setting Grouped Refs
-    setSection((sections) =>
-      Array(data.length)
-        .fill()
-        .map((el, i) => sections[i] || createRef())
-    );
-  }, []);
+  // // Getting size of each section
+  // useEffect(() => {
+  //   if (sections.length === data.length) {
+  //     let height = 0;
+  //     sections.map((el, i) => {
+  //       let sectsize = el.current.node.getBoundingClientRect().height;
+  //       setSectionSize((sectionSize) => [...sectionSize, sectsize]);
 
-  // Getting size of each section
-  useEffect(() => {
-    if (sections.length === data.length) {
-      let height = 0;
-      sections.map((el, i) => {
-        let sectsize = el.current.node.getBoundingClientRect().height;
-        setSectionSize((sectionSize) => [...sectionSize, sectsize]);
-
-        height += sectsize.height;
-        setProjectHeight(height);
-      });
-    }
-  }, [sections]);
+  //       height += sectsize.height;
+  //       setProjectHeight(height);
+  //     });
+  //   }
+  // }, [sections]);
 
   //START UP
 
@@ -67,6 +69,7 @@ function Project({
     scrollContainer: scrollContainer,
 
     current: current,
+    setIsInView: setIsInView,
     setCurrent: setCurrent,
     sectionSize: sectionSize,
   };
@@ -91,6 +94,14 @@ function Project({
 
     setCurrent: setCurrent,
   };
+  // const module = {
+  //   scroll: scroll,
+  //   // direct: direct,
+  //   sectionSize: sectionSize,
+  //   current: current,
+  //   // audio: audio,
+  //   // isInView: isInView,
+  // }
 
   return (
     <div id="project" ref={scrollContainer} onScroll={onScroll}>
@@ -132,6 +143,7 @@ function Project({
           }
         }
       })}
+      {/* <Module {...module}/> */}
     </div>
   );
 }

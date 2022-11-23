@@ -57,7 +57,9 @@ const handleInView = (inView, entry) => {
 
 const handleVisible = (inView, entry) => { 
   setVisible(inView)
+  
   if (inView) {
+    setIsInView(inView)
     setCurrent(i)
   }
 }

@@ -6,23 +6,31 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
+import { InView } from "react-intersection-observer";
 
 
 
-const Camera = ({scroll, remove, starterValue}) => {
-  const position = [0, 10, 75]
+const Camera = ({scroll, remove, startValue}) => {
+
   const ref = useRef();
 
   // Camera animations
   useFrame(() => {
-    ref.current.position.z = position[2] - (scroll / 10) ;
-
+    ref.current.position.x =  0;
+    ref.current.position.y =  -2;
+    ref.current.position.z =  ((scroll - startValue)/10) - 50;
+    
     ref.current.updateMatrixWorld();
   });
-  return <PerspectiveCamera ref={ref} position={position} makeDefault={!remove}/>;
+const camera = {
+  ref: ref,
+  makeDefault: !remove,
+}
+
+  return <PerspectiveCamera {...camera}/>;
 };
 
-function Postcode({ i, el, current, scroll, starterValue, audio }) {
+function Hallway({ i, el, current, scroll, sectionSize, audio }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
@@ -31,7 +39,7 @@ function Postcode({ i, el, current, scroll, starterValue, audio }) {
 // IMPORT MODEL
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
-  materials.main.map = null;
+  // materials.main.map = ;
   materials.main.color = new THREE.Color(0x505050);
   materials.main.transparent = true;
 
@@ -43,8 +51,11 @@ const [remove, setRemove] = useState(true);
 
 // Model View Animations
 
-  const { visible } = useSpring({ visible: remove ? false : true });
-  materials.main.visible = visible;
+  // const { visible } = useSpring({ visible: remove ? false : true });
+  if (group.current) {
+    group.current.visible = remove ? false : true;
+  }
+ 
 
   const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
   materials.main.opacity = opacity;
@@ -60,27 +71,39 @@ useEffect(() => {
   }
 }, [current]);
 
+// Measure the size of all sections before it and create a start value for scrolling
+const [startValue, setStartValue] = useState(0)
+
+useEffect(()=>{
+  // Removes all elements in array past index, then adds all of them together
+ setStartValue((sectionSize.slice(-(i-1)).reduce((a, b) => a + b, 0) - 98))
+},[sectionSize])
+
+
 //SCROLLING ANIMATIONS
 // const [positionz, setPositionz] = useState();
 
   useFrame(() => {
-    // ref.current.position.x = el.index * 10;
-    ref.current.rotation.y =  - scroll / 400 + 75;
     
+    // ref.current.rotation. =  - scroll / 400 + 75;
+    // console.log(ref.current.rotation)
   });
 
 
 
-
+  console.log(isVisible)
+  console.log(current)
   
 
 const camprops = {
   scroll: scroll,
   isVisible: isVisible,
   remove: remove,
-  starterValue: starterValue,
+  startValue: startValue,
 }
  
+
+
   return (
     
       <group ref={group}>
@@ -89,23 +112,29 @@ const camprops = {
           ref={ref}
           // material={materials.main}
           geometry={nodes.mesh.geometry}
-          position={[0, -1, 0]}
+          position={[-.2, -5, 30]}
+          rotation={[.13, -.96, .18]}
           castShadow
           scale={1.8}
         >
          
           {/* {audio && <Sound isVisible={isVisible}/>} */}
           
+
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
+        <pointLight position={[4, 2, 4]} intensity={.6} />
+        <pointLight position={[-5, 0, -3]} intensity={.4}/>
+
+        
         {/* <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)} /> */}
         </Suspense>
       </group>
   );
 }
 
-export default Postcode;
+export default Hallway;
 
 
  // i=== current && console.log(positionz - (scroll / 2))

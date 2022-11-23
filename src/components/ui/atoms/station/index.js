@@ -10,19 +10,19 @@ import Loader from "../../molecules/Loader";
 
 
 const Camera = ({scroll, remove, starterValue}) => {
-  const position = [0, 10, 75]
+  const position = [0, 10, 20]
   const ref = useRef();
 
   // Camera animations
   useFrame(() => {
-    ref.current.position.z = position[2] - (scroll / 10) ;
+    // ref.current.position.z = position[2] - (scroll / 10) ;
 
     ref.current.updateMatrixWorld();
   });
   return <PerspectiveCamera ref={ref} position={position} makeDefault={!remove}/>;
 };
 
-function Postcode({ i, el, current, scroll, starterValue, audio }) {
+function Station({ i, el, current, scroll, starterValue, audio }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
@@ -105,7 +105,7 @@ const camprops = {
   );
 }
 
-export default Postcode;
+export default Station;
 
 
  // i=== current && console.log(positionz - (scroll / 2))

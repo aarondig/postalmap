@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, createRef } from 'react';
 import './App.css';
 import Wrapper from '../../components/ui/atoms/Wrapper';
 import Module from '../../components/ui/organisms/module';
@@ -7,6 +7,7 @@ import Loader from './pages/Loader';
 import Navigation from '../../components/ui/molecules/Navigation';
 import Intro from './pages/intro';
 
+import {data} from '../../data'
 
 function App() {
 
@@ -14,6 +15,38 @@ function App() {
 // const [projectHeight, setProjectHeight] = useState(0)
 const [current, setCurrent] = useState(0)
 const [loading, setLoading] = useState(true);
+
+
+// Setting Sections for Project page
+const [sections, setSection] = useState([]);
+  const [sectionSize, setSectionSize] = useState([]);
+
+  const [projectHeight, setProjectHeight] = useState();
+
+ 
+  useEffect(() => {
+    //Setting Grouped Refs
+    setSection((sections) =>
+      Array(data.length)
+        .fill()
+        .map((el, i) => sections[i] || createRef())
+    );
+  }, []);
+
+  // Getting size of each section
+  useEffect(() => {
+    if (sections.length === data.length) {
+      let height = 0;
+      sections.map((el, i) => {
+        let sectsize = el.current.node.getBoundingClientRect().height;
+        setSectionSize((sectionSize) => [...sectionSize, sectsize]);
+
+        height += sectsize.height;
+        setProjectHeight(height);
+      });
+    }
+  }, [sections]);
+  
 
 
  //For Models to appear/disappear
@@ -76,6 +109,11 @@ direct: direct,
   setCurrent: setCurrent,
 
   setIsInView: setIsInView,
+
+  sections: sections,
+  setSection: setSection,
+  sectionSize: sectionSize,
+
 }
 
 const module = {
@@ -83,8 +121,10 @@ const module = {
   direct: direct,
 
   current: current,
-  audio: audio,
   isInView: isInView,
+  sectionSize: sectionSize,
+
+  audio: audio,
 }
 const navigation = {
   current: current,
@@ -100,7 +140,7 @@ const navigation = {
 <Navigation {...navigation}/>
 
 
-<Intro {...loader}/>
+{/* <Intro {...loader}/> */}
 
     {/* {loading && <Loader {...loader}/>} */}
   

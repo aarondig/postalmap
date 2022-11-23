@@ -1,7 +1,9 @@
 import postcode from "../src/assets/scans/postcode.glb";
-import ecstation from "../src/assets/scans/ecstation.glb";
+import station from "../src/assets/scans/ecstation.glb";
 import pier from "../src/assets/scans/pier.glb";
 
+
+import hallway from "../src/assets/scans/hallway.glb";
 import cannon from "../src/assets/scans/cannon.glb";
 import train from "../src/assets/scans/train.glb";
 
@@ -128,18 +130,36 @@ export const data = [
     type: "slider",
   },
   {
-    id: "pier",
-    title: "Guide the user back to LCC or else ...",
-    subtitle: "/ Our Mission",
-    number: "01",
+    id: "hallway",
+    title: "You're almost there. This is your final stop.",
+    subtitle: "/ Embankment Station",
+    number: "02",
 
     index: 0,
 
-    object: pier,
+    object: hallway,
 
     audio: sidewalk,
 
     type: "view",
+  },
+  {
+    id: "description",
+    title: "Statement on something blah blah blah",
+    subtitle: "A Visual Medium",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    number: "02",
+
+    index: 0,
+
+    button: {
+        text: "Learn More",
+        link: "https://www.aarondiggdon.com"
+    },
+
+
+    lightMode: "light",
+    type: "text",
   },
   {
     id: "image",
@@ -154,7 +174,20 @@ export const data = [
 
     type: "text",
   },
- 
+  {
+    id: "station",
+    title: "You're almost there. This is your final stop.",
+    subtitle: "/ Embankment Station",
+    number: "02",
+
+    index: 0,
+
+    object: station,
+
+    audio: sidewalk,
+
+    type: "view",
+  },
 
   {
     id: "image",
