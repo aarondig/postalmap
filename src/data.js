@@ -11,8 +11,8 @@ import sidewalk from "../src/assets/audio/sidewalk1.mp4";
 export const data = [
   {
     id: "postcode",
-    title: "Guide the user back to LCC or else ...",
-    subtitle: "/ Our Mission",
+    title: "We start our journey here, at E14GP.",
+    subtitle: "/ Embarking",
     number: "01",
 
     index: 0,

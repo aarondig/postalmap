@@ -10,13 +10,92 @@ import {
 } from "react-spring";
 import { useInView } from "react-intersection-observer";
 
+
+function Cover({startIntro, setStartIntro}) {
+const [fadeOut, setFadeOut] = useState(false)
+  //Animated Letters
+ const wordCount = ["welcome", "to", "canis"];
+
+ const cover = useSprings(
+   wordCount.length,
+   wordCount.map(
+     (el, i) =>
+      !fadeOut ?  {
+         from: {
+           opacity: 0,
+           transform: "translateY(+10px)",
+         },
+         to: {
+           opacity: 1,
+           transform: "translateY(0)",
+         },
+
+         delay: 400 + 220 * i,
+         config: {
+           // mass: 1,
+           // tension: 280,
+           // friction: 18
+         },
+         onRest: () => {
+          setFadeOut(true);
+         }
+       } : {
+        from: {
+          opacity: 1,
+          transform: "translateY(0px)",
+        },
+        to: {
+          opacity: 0,
+          transform: "translateY(-40px)",
+        },
+
+        delay: 400 + 400 * i,
+        config: {
+          // mass: 1,
+          // tension: 280,
+          // friction: 18
+        },
+        onRest: (e) => {
+        
+        if (i === wordCount.length - 1) {
+          if (e.value.opacity === 0) {
+            setStartIntro(true);
+          }
+          
+        }
+        
+        }
+      }
+   )
+ );
+
+  return <div id="cover">
+    <div className="cover-title">
+    <a.h6 className="cover-word" style={cover[0]}>
+                welcome
+              </a.h6>
+              <a.h6 className="cover-word" style={cover[1]}>
+               to
+              </a.h6>
+              <a.h6 className="cover-word" style={cover[2]}>
+                canis
+              </a.h6>
+              </div>
+  </div>
+}
+
+
 function Intro({ loading, setLoading, handleStart }) {
   const { ref, inView, entry } = useInView();
+
+
+  const [startIntro, setStartIntro] = useState(false)
 
   const [counter, setCounter] = useState(0);
   const [countDone, setCountDone] = useState(false);
   const [unmount, setUnmount] = useState(false);
   const [array, setArray] = useState([]);
+  
 
   //Unmount
   const fadeOut = useSpring(
@@ -27,12 +106,12 @@ function Intro({ loading, setLoading, handleStart }) {
       onRest: () => setLoading(false),
     }
   );
-
   const handleUnmount = () => {
     if (countDone) {
       setUnmount(true);
     }
   };
+
   //  const { active, progress, errors, item, loaded, total } = useProgress();
 
   //Counter
@@ -53,16 +132,6 @@ function Intro({ loading, setLoading, handleStart }) {
     }
   }, [counter]);
 
-  // let radius = 20;
-
-  // let stroke = .5;
-  // let amount = counter;
-
-  // let normalizedRadius = radius - stroke * 2;
-
-  // let circumference = normalizedRadius * 2 * Math.PI;
-
-  // const strokeDashoffset = circumference - (amount / 100) * circumference;
   let radius = 30;
 
   let stroke = 1;
@@ -137,8 +206,6 @@ function Intro({ loading, setLoading, handleStart }) {
     )
   );
 
-  //Unmount
-
 
  //Animated Letters
  const letters = ["E", "1", "4", "G", "P"];
@@ -195,13 +262,7 @@ function Intro({ loading, setLoading, handleStart }) {
     config: { duration: 800 },
     onRest: () => set(!flip),
   });
-  // const bounce = useSpring({
-  //   reverse: flip,
-  //   from: { opacity: 1 },
-  //   to: { opacity: 0 },
-  //   config: { duration: 800 },
-  //   onRest: () => set(!flip),
-  // });
+
   const opacity = useSpring({
      opacity: countDone ? 1 : 0,
       config: { duration: 1200 },
@@ -216,7 +277,9 @@ function Intro({ loading, setLoading, handleStart }) {
 
   return (
     <a.div id="intro" ref={ref} style={fadeOut} onClick={() => handleUnmount()}>
-      {/* <div className="intro-wrap"> */}
+
+      {!startIntro ? 
+      <Cover startIntro={startIntro} setStartIntro={setStartIntro}/> :
       <div className="row">
         <div className="col-2">
           {/* <a.div className="svg-c" style={fadeIn[0]}>
@@ -328,10 +391,11 @@ function Intro({ loading, setLoading, handleStart }) {
           </div>
         </div>
       </div>
-
+    }
       {/* <a.h4 className="subtitle" style={subtitle}>
             a ual group project
           </a.h4> */}
+        
     </a.div>
   );
 }

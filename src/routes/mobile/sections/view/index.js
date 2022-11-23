@@ -75,7 +75,7 @@ const handleVisible = (inView, entry) => {
       <div className="row"> 
         <div className="col-2">
           <div className="text-c">
-            <h6 className="subtitle">{el.subtitle}</h6>
+            <h6 className="subtitle">/ {el.number} {el.subtitle}</h6>
             <h2 className="title">{el.title}</h2>
           </div>
         </div>
