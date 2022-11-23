@@ -40,6 +40,9 @@
     transform: scale(1.6);
     
   }
+  .hamburger-react * {
+    height: .8px !important;
+  }
   svg {
     will-change: transform;
   }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { a, useSpring } from "react-spring";
+import { Slant as Hamburger } from 'hamburger-react'
 import "./style.css";
 
 
@@ -22,12 +23,17 @@ const path2 = useSpring({
 
 const wrapper = useSpring({
   height: active ? "100vh" : "0vh",
-  background: active ? "#050505" : "#404040",
+  background: active ? "#050505" : "#fff",
   config: { mass: 1, tension: 280, friction: 60 },
   // onRest: () => setSettle(true)
   
 })
-
+const hamburger = {
+  size: 20,
+  color: "white",
+  distance: "sm",
+  duration: .4,
+}
 
   return (
     <div id="navigation">
@@ -37,7 +43,7 @@ const wrapper = useSpring({
 
         {/* <div className="menu" onClick={()=> setAudio(!audio)}> */}
         <div className="menu" onClick={() => toggleActive(!active)}>
-
+<Hamburger {...hamburger}/>
         {/* ha */}
         {/* <a.svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <a.path style={path1} d="M3 9H20" stroke="white" strokeWidth={.8}/>
