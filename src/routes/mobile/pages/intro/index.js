@@ -30,7 +30,7 @@ const [fadeOut, setFadeOut] = useState(false)
            transform: "translateY(0)",
          },
 
-         delay: 400 + 220 * i,
+         delay: 800 + 220 * i,
          config: {
            // mass: 1,
            // tension: 280,
