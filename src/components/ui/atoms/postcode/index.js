@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
+import Loader from "../../molecules/Loader";
 
 
 
@@ -89,6 +90,7 @@ const camprops = {
   return (
     
       <group ref={group}>
+        <Suspense fallback={<Loader/>}>
         <mesh
           ref={ref}
           // material={materials.main}
@@ -104,7 +106,7 @@ const camprops = {
         </mesh>
         <Camera {...camprops}/>
         {/* <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)} /> */}
-        
+        </Suspense>
       </group>
   );
 }

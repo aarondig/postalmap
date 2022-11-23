@@ -9,6 +9,7 @@ import { useSpring, a, useSprings } from "@react-spring/three";
 import { PositionalAudio } from "@react-three/drei";
 import Postcode from "../../atoms/postcode";
 import Pier from "../../atoms/pier";
+import Intro from "../../../../routes/mobile/pages/intro";
 
 
 function Scenes({ current, scroll, isInView, starterValue, audio }) {
@@ -40,7 +41,7 @@ function Scenes({ current, scroll, isInView, starterValue, audio }) {
 
   return (
       <group ref={group} >
-        <Suspense fallback={<Loader/>}>
+        
         {data.map((el, i) => {
           switch (el.id) {
             default: {
@@ -57,7 +58,7 @@ function Scenes({ current, scroll, isInView, starterValue, audio }) {
 
           }
         })}
-        </Suspense>
+ 
       </group>
   );
 }

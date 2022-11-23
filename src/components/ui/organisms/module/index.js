@@ -12,6 +12,7 @@ import {
 import { data } from "../../../../data";
 import Scenes from "../../molecules/scenes";
 import { InView, useInView } from "react-intersection-observer";
+import Loader from "../../molecules/Loader";
 
 
 function Module({scroll, direct, current, isInView, starterValue, audio}) {
@@ -40,6 +41,7 @@ const canvas = {
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
         shadows
       >
+        <Suspense fallback={<Loader/>}>
     {/* <rectAreaLight position={[0, 20, 10]} intensity={40} width={200}
       height={1}/> */}
 
@@ -70,6 +72,7 @@ const canvas = {
           intensity={0.85}
           castShadow
         /> */}
+        </Suspense>
       </Canvas>
       </div>
   );

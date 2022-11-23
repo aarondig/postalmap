@@ -5,6 +5,7 @@ import Module from '../../components/ui/organisms/module';
 import Project from './pages/project';
 import Loader from './pages/Loader';
 import Navigation from '../../components/ui/molecules/Navigation';
+import Intro from './pages/intro';
 
 
 function App() {
@@ -99,7 +100,7 @@ const navigation = {
 <Navigation {...navigation}/>
 
 
-
+<Intro {...loader}/>
 
     {/* {loading && <Loader {...loader}/>} */}
   
