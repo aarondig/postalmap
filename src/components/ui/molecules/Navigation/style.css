@@ -31,17 +31,38 @@
     margin: 0;
     /* height: 1.2vh; */
   }
-  .menu {
+  .right-side {
+    /* box-sizing: border-box; */
+    display: flex;
+    flex-direction: row;
+
+   
+  }
+  .nav-button {
     position: relative;
+    align-self: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: scale(1.6);
-    
+    min-height: 38px;
+    min-width: 38px;
+    padding-right: 28px;
+  }
+  .nav-icon {
+    position: absolute;
+    top:0;
+    left: 0;
+  }
+  .nav-icon path {
+    stroke-width: 16px;
+  }
+  .hamburger-react {
+    height: 26px;
+    width: 26px;
   }
   .hamburger-react * {
-    height: .8px !important;
+    height: 1px !important;
   }
   svg {
     will-change: transform;
@@ -62,9 +83,8 @@
   #navigation .content-box {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    gap: 24px;
     
   }
   .nav-btn {
@@ -125,6 +145,8 @@
     font-weight: 400;
     color: white;
     margin: 0;
-    /* height: 1.2vh; */
+
+    line-height: 1.8em;
+
   }
   }

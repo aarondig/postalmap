@@ -1,5 +1,5 @@
 import postcode from "../src/assets/scans/postcode.glb";
-import station from "../src/assets/scans/ecstation.glb";
+import platform from "../src/assets/scans/platform.glb";
 import pier from "../src/assets/scans/pier.glb";
 
 
@@ -130,7 +130,7 @@ export const data = [
     type: "slider",
   },
   {
-    id: "hallway",
+    id: "station",
     title: "You're almost there. This is your final stop.",
     subtitle: "/ Embankment Station",
     number: "02",
@@ -175,14 +175,14 @@ export const data = [
     type: "text",
   },
   {
-    id: "station",
+    id: "platform",
     title: "You're almost there. This is your final stop.",
     subtitle: "/ Embankment Station",
     number: "02",
 
     index: 0,
 
-    object: station,
+    object: platform,
 
     audio: sidewalk,
 

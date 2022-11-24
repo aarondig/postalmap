@@ -6,20 +6,73 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
+import sidewalk from "../../../../assets/audio/sidewalk.m4a"
+import { lerp } from "three/src/math/MathUtils";
+
+function Sound({ el, audio, camera, remove }) {
+  const sound = useRef()
+  const [listener] = useState(() => new THREE.AudioListener())
+  const buffer = useLoader(THREE.AudioLoader, sidewalk)
+  useEffect(() => {
+    sound.current.setBuffer(buffer)
+    sound.current.setRefDistance(1)
+    sound.current.setLoop(true)
+    sound.current.setRolloffFactor(3)
+    camera.current.add(listener)
+    // sound.current.setVolume(0);
+    sound.current.play();
+// console.log(sound.current.getVolume())
+  
+    // let volume = 0;
+
+    // setInterval(function() {
+
+    // }, 1000);
+    // for (let index = 0; index < 100; index++) {
+    //   volume += .01
+      
+    //   sound.current.setVolume(volume)
+    // }
+    // console.log(sound.current.getVolume())
+    
+    // return () => {
+    //   camera.current.remove(listener)
+     
+    // }
+  }, [])
+
+  // const { setVolume } = useSpring({ setVolume: remove ? 0 : 1, onRest: () => remove &&  sound.current.pause()});
 
 
 
-const Camera = ({scroll, remove, starterValue}) => {
+
+  useEffect(()=>{
+    if (!remove) {
+      sound.current.play();
+    }
+    if (!remove) {
+      sound.current.play();
+    }
+
+
+  },[remove])
+  // sound.current && console.log(sound.current.panner.orientationZ.value)
+  // sound.current && console.log(sound.current)
+ 
+  return <a.positionalAudio ref={sound} args={[listener]} setVolume={.2}/>
+}
+
+const Camera = ({camera, scroll, remove, starterValue}) => {
   const position = [0, 10, 75]
-  const ref = useRef();
+  
 
   // Camera animations
   useFrame(() => {
-    ref.current.position.z = position[2] - (scroll / 10) ;
+    camera.current.position.z = position[2] - (scroll / 10) ;
 
-    ref.current.updateMatrixWorld();
+    camera.current.updateMatrixWorld();
   });
-  return <PerspectiveCamera ref={ref} position={position} makeDefault={!remove}/>;
+  return <PerspectiveCamera ref={camera} position={position} makeDefault={!remove}/>;
 };
 
 function Postcode({ i, el, current, scroll, starterValue, audio }) {
@@ -41,6 +94,7 @@ const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
 // Remove is set to True after opacity animation
 const [remove, setRemove] = useState(true);
 
+
 // Model View Animations
 
   const { visible } = useSpring({ visible: remove ? false : true });
@@ -49,12 +103,14 @@ const [remove, setRemove] = useState(true);
   const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
   materials.main.opacity = opacity;
 
+
 // STARTUP
 
 useEffect(() => {
   if (current === el.index) {
-    setRemove(false)
+    setRemove(false);
     setIsVisible(true);
+    
   } else {
     setIsVisible(false);
   }
@@ -63,24 +119,26 @@ useEffect(() => {
 //SCROLLING ANIMATIONS
 // const [positionz, setPositionz] = useState();
 
+
   useFrame(() => {
     // ref.current.position.x = el.index * 10;
     ref.current.rotation.y =  - scroll / 400 + 75;
     
+    
   });
-
 
 
 
   
 
 const camprops = {
+  camera: camera,
   scroll: scroll,
   isVisible: isVisible,
   remove: remove,
   starterValue: starterValue,
 }
- 
+
   return (
     
       <group ref={group}>
@@ -93,47 +151,15 @@ const camprops = {
           castShadow
           scale={1.8}
         >
-         
-          {/* {audio && <Sound isVisible={isVisible}/>} */}
           
+           
+           {audio && <Sound el={el} audio={audio} camera={camera} remove={remove}/>}
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
-        {/* <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)} /> */}
         </Suspense>
       </group>
   );
 }
 
 export default Postcode;
-
-
- // i=== current && console.log(positionz - (scroll / 2))
-
-//AUDIO
-
-// const { distance } = useSpring({ distance: isVisible ? 1 : 100 });
-
-// const [playAudio, setPlayAudio] = useState(false);
-// const [fadeOut, setFadeOut] = useState(false);
-
-// function Sound({isVisible}) {
-//   const sound = useRef();
-//   const { camera } = useThree();
-//   const [listener] = useState(() => new THREE.AudioListener());
-//   const buffer = useLoader(THREE.AudioLoader, el.audio);
-
-// useFrame(()=>{
-//   sound.current.setRefDistance(scroll)
-// })
-//   useEffect(() => {
-//     sound.current.setBuffer(buffer);
-//     sound.current.setRefDistance(1);
-//     sound.current.setLoop(true);
-//     sound.current.play();
-//     camera.add(listener);
-
-//     return () => camera.remove(listener);
-//   }, []);
-//   return <positionalAudio ref={sound} args={[listener]} />;
-// }

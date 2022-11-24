@@ -10,8 +10,8 @@ import { PositionalAudio } from "@react-three/drei";
 import Postcode from "../../atoms/postcode";
 import Pier from "../../atoms/pier";
 import Intro from "../../../../routes/mobile/pages/intro";
+import Platform from "../../atoms/platform";
 import Station from "../../atoms/station";
-import Hallway from "../../atoms/hallway";
 
 
 function Scenes({ current, scroll, isInView, sectionSize, audio }) {
@@ -57,9 +57,9 @@ function Scenes({ current, scroll, isInView, sectionSize, audio }) {
               
               return <Station key={i} el={el} i={i} {...sceneprops}/>;
             }
-            case "hallway": {
+            case "platform": {
               
-              return <Hallway key={i} el={el} i={i} {...sceneprops}/>;
+              return <Platform key={i} el={el} i={i} {...sceneprops}/>;
             }
             case "pier": {
               

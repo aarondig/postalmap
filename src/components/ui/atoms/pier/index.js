@@ -42,9 +42,9 @@ const [remove, setRemove] = useState(true);
 
 // Model View Animations
 
- const { visible } = useSpring({ visible: remove ? false : true });
- materials.main.visible = visible;
-
+if (group.current) {
+  group.current.visible = remove ? false : true;
+}
  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
  materials.main.opacity = opacity;
 
