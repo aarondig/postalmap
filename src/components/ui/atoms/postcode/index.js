@@ -67,7 +67,7 @@ if (!audio){
   // sound.current && console.log(sound.current.panner.orientationZ.value)
   // sound.current && console.log(sound.current)
  
-  return <positionalAudio ref={sound} args={[listener]} setVolume={1}/>
+  return (<positionalAudio ref={sound} args={[listener]} setVolume={1}/>)
 }
 
 const Camera = ({camera, scroll, remove, starterValue}) => {
@@ -150,7 +150,7 @@ const camprops = {
   return (
     
       <group ref={group}>
-        <Suspense fallback={<Loader/>}>
+        
         <mesh
           ref={ref}
           // material={materials.main}
@@ -165,7 +165,7 @@ const camprops = {
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
-        </Suspense>
+    
       </group>
   );
 }

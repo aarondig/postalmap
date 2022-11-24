@@ -41,7 +41,7 @@ const canvas = {
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
         shadows
       >
-        <Suspense fallback={<Loader/>}>
+        {/* <Suspense fallback={<Loader/>}> */}
 
 <rectAreaLight position={[0, 20, 40]} intensity={80} width={200}
       height={1}/>
@@ -58,7 +58,7 @@ const canvas = {
         
 
      
-        </Suspense>
+        {/* </Suspense> */}
       </Canvas>
       </div>
   );
