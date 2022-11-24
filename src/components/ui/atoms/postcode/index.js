@@ -55,9 +55,9 @@ if (!audio){
 
 
   useEffect(()=>{
-    if (!remove) {
-      sound.current.play();
-    }
+    // if (!remove) {
+    //   sound.current.play();
+    // }
     // if (remove) {
     //   sound.current.pause();
     // }
