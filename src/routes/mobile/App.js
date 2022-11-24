@@ -54,7 +54,7 @@ const [sections, setSection] = useState([]);
 
 
 
-
+//Sets whether audio is heard in scenes
 const [audio, setAudio] = useState(false)
 
 

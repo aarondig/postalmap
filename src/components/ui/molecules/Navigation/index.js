@@ -8,9 +8,6 @@ function Navigation({ current, audio, setAudio }) {
   const [active, toggleActive] = useState(false);
   // const [settle, setSettle] = useState(false);
 
-  // useEffect(() => {
-  //   setAudio(active);
-  // }, [active]);
 
   const audioOff = useSpring({
     opacity: audio ? 0 : 1,

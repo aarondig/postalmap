@@ -17,10 +17,10 @@ function Sound({ el, audio, camera, remove }) {
     sound.current.setBuffer(buffer)
     sound.current.setRefDistance(1)
     sound.current.setLoop(true)
-    sound.current.setRolloffFactor(3)
+    // sound.current.setRolloffFactor()
     camera.current.add(listener)
     // sound.current.setVolume(0);
-    sound.current.play();
+    // sound.current.play();
 // console.log(sound.current.getVolume())
   
     // let volume = 0;
@@ -43,23 +43,31 @@ function Sound({ el, audio, camera, remove }) {
 
   // const { setVolume } = useSpring({ setVolume: remove ? 0 : 1, onRest: () => remove &&  sound.current.pause()});
 
+useEffect(()=>{
 
+if (audio){
+  sound.current.play();
+}
+if (!audio){
+  sound.current.pause();
+}
+},[audio])
 
 
   useEffect(()=>{
     if (!remove) {
       sound.current.play();
     }
-    if (!remove) {
-      sound.current.play();
-    }
+    // if (remove) {
+    //   sound.current.pause();
+    // }
 
 
   },[remove])
   // sound.current && console.log(sound.current.panner.orientationZ.value)
   // sound.current && console.log(sound.current)
  
-  return <a.positionalAudio ref={sound} args={[listener]} setVolume={.2}/>
+  return <positionalAudio ref={sound} args={[listener]} setVolume={1}/>
 }
 
 const Camera = ({camera, scroll, remove, starterValue}) => {
@@ -153,7 +161,7 @@ const camprops = {
         >
           
            
-           {audio && <Sound el={el} audio={audio} camera={camera} remove={remove}/>}
+          <Sound el={el} audio={audio} camera={camera} remove={remove}/>
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
