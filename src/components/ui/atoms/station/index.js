@@ -8,71 +8,109 @@ import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
 import { InView } from "react-intersection-observer";
 
-function Sound({ el, audio, camera, isVisible }) {
+function Sound({ el, audio, camera, isVisible, remove }) {
   const sound = useRef()
   const [listener] = useState(() => new THREE.AudioListener())
   const buffer = useLoader(THREE.AudioLoader, el.audio)
-  useEffect(() => {
-    sound.current.setBuffer(buffer)
-    sound.current.setRefDistance(1)
-    sound.current.setLoop(true)
-    // sound.current.setRolloffFactor()
-    camera.current.add(listener)
-    
-
-
-
-
-//Animations
-
-
-
-
-  }, [])
-
-
-
-//SOUND START/CLEANUP
-
-
-const fadeIn = () => {
-sound.current.play();
-sound.current.setVolume(0);
- setInterval(function() {
-  let volume = sound.current.getVolume();
-  sound.current.setVolume = volume + .01;
   
-  if (volume >= 1) {
+  useEffect(()=>{
+    sound.current.setBuffer(buffer);
+    sound.current.setRefDistance(0);
+    return () => camera.current.remove(listener);
+  },[]);
+
+  useEffect(()=>{
+    if (camera.current !== undefined) {
+   
+    if (remove) {
+      camera.current.remove(listener)
+    }
+    if (!remove) {
+      camera.current.add(listener)
+    } 
+  }
+
+  
+  },[remove])
+
+  function playSound() {
+   
     sound.current.play();
-    clearInterval(fadeIn);
+
+    var source = listener.context.createBufferSource();
+    source.connect(listener.context.destination);
+    source.start();
   }
-}, 1000);
 
-}
+  
+  document.addEventListener('click', playSound);
 
-const fadeOut = () => {
-  setInterval(function() {
 
-  let volume = sound.current.getVolume();
-  sound.current.setVolume = volume - .01;
-  console.log(sound.current.getVolume())
-  if (volume <= 0) {
-    sound.current.stop();
-    
-    clearInterval(fadeOut);
-  }
-}, 1000);
-}
 
-useEffect(()=>{
 
-if (isVisible) {
-  fadeIn()
-}
-if (!isVisible) {
-  fadeOut()
-}
-},[isVisible]);
+  //SOUND START/CLEANUP
+
+  var fadeIn = () =>
+    setTimeout(function () {
+      if (sound.current !== undefined) {
+
+      
+      let volume = sound.current.getRefDistance();
+
+      if (!sound.current.isPlaying) {
+        sound.current.play();
+      }
+
+      if (volume < 1) {
+        sound.current.setRefDistance(volume + 0.01);
+        if (isVisible) {
+          fadeIn();
+        }
+      }
+      if (volume >= 1) {
+        sound.current.setRefDistance(1);
+        clearTimeout(fadeIn);
+      }
+    }
+      clearTimeout(fadeIn);
+    }, 10);
+
+  var fadeOut = () =>
+    setTimeout(function () {
+      if (sound.current !== undefined) {
+      let volume = Math.abs(sound.current.getRefDistance());
+
+      if (volume > 0) {
+        sound.current.setRefDistance(Math.abs(volume - 0.01));
+        if (!isVisible) {
+          fadeOut();
+        }
+      }
+      if (volume <= 0.1) {
+        sound.current.setRefDistance(0);
+        sound.current.pause();
+        camera.current.remove(listener);
+        clearTimeout(fadeOut);
+      }
+    }
+      clearTimeout(fadeOut);
+    }, 10);
+
+  useEffect(() => {
+    if (isVisible) {
+      camera.current.add(listener);
+      fadeIn();
+
+    }
+    if (!isVisible) {
+      fadeOut();
+      
+    }
+   return ()=>{
+    clearTimeout(fadeIn);
+    clearTimeout(fadeOut);
+    }
+  }, [isVisible]);
 
 
  
@@ -170,6 +208,14 @@ useEffect(()=>{
     remove: remove,
     startValue: startValue,
   }
+  const soundprops = {
+    el: el,
+    camera: camera,
+    scroll: scroll,
+    isVisible: isVisible,
+    remove: remove,
+    
+  }
  
 
 
@@ -189,7 +235,7 @@ useEffect(()=>{
          
        
           
-         {/* {audio && <Sound el={el} audio={audio} camera={camera} isVisible={isVisible} />} */}
+         {audio && <Sound {...soundprops}/>}
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
