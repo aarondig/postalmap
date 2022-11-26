@@ -12,6 +12,7 @@ import Pier from "../../atoms/pier";
 import Intro from "../../../../routes/mobile/pages/intro";
 import Platform from "../../atoms/platform";
 import Station from "../../atoms/station";
+import Lcc from "../../atoms/lcc";
 
 
 function Scenes({ current, scroll, isInView, sectionSize, audio }) {
@@ -64,6 +65,10 @@ function Scenes({ current, scroll, isInView, sectionSize, audio }) {
             case "pier": {
               
               return <Pier key={i} el={el} i={i} {...sceneprops}/>;
+            }
+            case "lcc": {
+              
+              return <Lcc key={i} el={el} i={i} {...sceneprops}/>;
             }
 
 

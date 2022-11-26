@@ -31,7 +31,7 @@ function Pier({ i, el, current, scroll, starterValue, audio }) {
  const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
  materials.main.map = null;
- materials.main.color = new THREE.Color(0x505050);
+ materials.main.color = new THREE.Color(0x4F4F51);
  materials.main.transparent = true;
 
 // Checks if the scene is Visible

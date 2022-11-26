@@ -40,7 +40,7 @@ function Station({ i, el, current, scroll, sectionSize, audio }) {
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
   // materials.main.map = ;
-  materials.main.color = new THREE.Color(0x505050);
+  materials.main.color = new THREE.Color(0x4F4F51);
   materials.main.transparent = true;
   materials.main.roughness = 1;
 

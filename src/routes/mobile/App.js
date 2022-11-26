@@ -23,7 +23,7 @@ const [sections, setSection] = useState([]);
 
   const [projectHeight, setProjectHeight] = useState();
 
- 
+
   useEffect(() => {
     //Setting Grouped Refs
     setSection((sections) =>
@@ -53,9 +53,19 @@ const [sections, setSection] = useState([]);
  const [isInView, setIsInView] = useState()
 
 
-
+// AUDIO
 //Sets whether audio is heard in scenes
 const [audio, setAudio] = useState(false)
+
+useEffect(() => {
+  //Setting Grouped Refs for audio
+  setSection((sections) =>
+    Array(data.length)
+      .fill()
+      .map((el, i) => sections[i] || createRef())
+  );
+}, []);
+
 
 
   // SCROLL RIG

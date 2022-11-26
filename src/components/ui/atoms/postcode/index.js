@@ -80,7 +80,12 @@ const Camera = ({camera, scroll, remove, starterValue}) => {
 
     camera.current.updateMatrixWorld();
   });
-  return <PerspectiveCamera ref={camera} position={position} makeDefault={!remove}/>;
+  return (<PerspectiveCamera ref={camera} position={position} makeDefault={!remove}>
+    {/* <pointLight intensity={.6} position={[10,10,-80]}/> */}
+    {/* <pointLight intensity={1} position={[0,2,-40]}/>
+    <pointLight intensity={.4} position={[0,8,-75]}/>
+    <pointLight intensity={.4} position={[20,4,-75]}/> */}
+  </PerspectiveCamera>);
 };
 
 function Postcode({ i, el, current, scroll, starterValue, audio }) {
@@ -93,8 +98,9 @@ function Postcode({ i, el, current, scroll, starterValue, audio }) {
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
   materials.main.map = null;
-  materials.main.color = new THREE.Color(0x505050);
+  materials.main.color = new THREE.Color(0x4F4F51);
   materials.main.transparent = true;
+  
 
 // Checks if the scene is Visible
 const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
@@ -165,6 +171,8 @@ const camprops = {
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
+       
+   
     
       </group>
   );

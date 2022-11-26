@@ -42,8 +42,8 @@ const canvas = {
         shadows
       >
         {/* <Suspense fallback={<Loader/>}> */}
-
-<rectAreaLight position={[0, 20, 40]} intensity={80} width={200}
+        
+<rectAreaLight position={[0, 20, 40]} intensity={90} width={200}
       height={1}/>
         {/* <pointLight position={[4, 2, 4]} intensity={1} />
         <pointLight position={[-5, 0, -3]} intensity={.3} /> */}
