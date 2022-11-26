@@ -9,68 +9,93 @@ import Loader from "../../molecules/Loader";
 import sidewalk from "../../../../assets/audio/sidewalk.m4a"
 import { lerp } from "three/src/math/MathUtils";
 
-function Sound({ el, audio, camera, remove }) {
+function Sound({ el, audio, camera, isVisible }) {
   const sound = useRef()
   const [listener] = useState(() => new THREE.AudioListener())
   const buffer = useLoader(THREE.AudioLoader, sidewalk)
   useEffect(() => {
     sound.current.setBuffer(buffer)
-    sound.current.setRefDistance(1)
+    sound.current.setRefDistance(0)
     sound.current.setLoop(true)
     // sound.current.setRolloffFactor()
     camera.current.add(listener)
-    // sound.current.setVolume(0);
-    // sound.current.play();
-// console.log(sound.current.getVolume())
-  
-    // let volume = 0;
 
-    // setInterval(function() {
-
-    // }, 1000);
-    // for (let index = 0; index < 100; index++) {
-    //   volume += .01
-      
-    //   sound.current.setVolume(volume)
-    // }
-    // console.log(sound.current.getVolume())
     
-    // return () => {
-    //   camera.current.remove(listener)
-     
-    // }
   }, [])
 
-  // const { setVolume } = useSpring({ setVolume: remove ? 0 : 1, onRest: () => remove &&  sound.current.pause()});
+//SOUND START/CLEANUP
+console.log()
 
-useEffect(()=>{
+var fadeIn = () => setTimeout(function() {
+    
+    let volume = sound.current.getRefDistance();
+    
+    if (!sound.current.isPlaying) {
+      sound.current.play();
+    }
 
-if (audio){
-  sound.current.play();
-}
-if (!audio){
-  sound.current.pause();
-}
-},[audio])
+    if (volume < 1) {
+      sound.current.setRefDistance(volume + .01);
+      if (isVisible) {
+        fadeIn();
+      }
+      }
+    if (volume >= 1) {
+      sound.current.setRefDistance(1);  
+      clearTimeout(fadeIn)
+    }
+    
 
+    clearTimeout(fadeIn);
+    
+  }, 10);
 
+  
+  
+  
+  var fadeOut = () => setTimeout(function() {
+
+      let volume = Math.abs(sound.current.getRefDistance());
+
+      if (volume > 0) {
+      sound.current.setRefDistance(Math.abs(volume - .01));
+      if (!isVisible) {
+        fadeOut();
+      }
+     
+      }
+      if (volume <= .1) {
+        sound.current.setRefDistance(0);
+        sound.current.pause();
+        clearTimeout(fadeOut)
+      }
+     
+      clearTimeout(fadeOut);
+    }, 10);
+  
+
+  
   useEffect(()=>{
-    // if (!remove) {
-    //   sound.current.play();
-    // }
-    // if (remove) {
-    //   sound.current.pause();
-    // }
-
-
-  },[remove])
-  // sound.current && console.log(sound.current.panner.orientationZ.value)
-  // sound.current && console.log(sound.current)
+  
+  if (isVisible) {
+    fadeIn();
+  }
+  if (!isVisible) {
+    fadeOut();
+  }
+  },[isVisible]);
+  
  
-  return (<positionalAudio ref={sound} args={[listener]} setVolume={1}/>)
+ 
+  return (<positionalAudio ref={sound} args={[listener]}/>)
 }
 
-const Camera = ({camera, scroll, remove, starterValue}) => {
+
+
+
+
+
+const Camera = ({camera, scroll, remove}) => {
   const position = [0, 10, 75]
   
 
@@ -81,14 +106,15 @@ const Camera = ({camera, scroll, remove, starterValue}) => {
     camera.current.updateMatrixWorld();
   });
   return (<PerspectiveCamera ref={camera} position={position} makeDefault={!remove}>
-    {/* <pointLight intensity={.6} position={[10,10,-80]}/> */}
-    {/* <pointLight intensity={1} position={[0,2,-40]}/>
-    <pointLight intensity={.4} position={[0,8,-75]}/>
-    <pointLight intensity={.4} position={[20,4,-75]}/> */}
   </PerspectiveCamera>);
 };
 
-function Postcode({ i, el, current, scroll, starterValue, audio }) {
+
+
+
+
+
+function Postcode({ i, el, current, scroll, startValue, audio }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
@@ -131,11 +157,9 @@ useEffect(() => {
 }, [current]);
 
 //SCROLLING ANIMATIONS
-// const [positionz, setPositionz] = useState();
-
 
   useFrame(() => {
-    // ref.current.position.x = el.index * 10;
+
     ref.current.rotation.y =  - scroll / 400 + 75;
     
     
@@ -150,7 +174,7 @@ const camprops = {
   scroll: scroll,
   isVisible: isVisible,
   remove: remove,
-  starterValue: starterValue,
+  startValue: startValue,
 }
 
   return (
@@ -166,8 +190,8 @@ const camprops = {
           scale={1.8}
         >
           
-           
-          <Sound el={el} audio={audio} camera={camera} remove={remove}/>
+          
+          {audio && <Sound el={el} audio={audio} camera={camera} isVisible={isVisible} />}
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>

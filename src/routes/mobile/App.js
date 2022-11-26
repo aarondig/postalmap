@@ -57,14 +57,14 @@ const [sections, setSection] = useState([]);
 //Sets whether audio is heard in scenes
 const [audio, setAudio] = useState(false)
 
-useEffect(() => {
-  //Setting Grouped Refs for audio
-  setSection((sections) =>
-    Array(data.length)
-      .fill()
-      .map((el, i) => sections[i] || createRef())
-  );
-}, []);
+// useEffect(() => {
+//   //Setting Grouped Refs for audio
+//   setSection((sections) =>
+//     Array(data.length)
+//       .fill()
+//       .map((el, i) => sections[i] || createRef())
+//   );
+// }, []);
 
 
 

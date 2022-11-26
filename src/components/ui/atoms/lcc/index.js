@@ -14,7 +14,6 @@ const Camera = ({scroll, remove, startValue}) => {
   const ref = useRef();
 
   // Camera animations
-  console.log(((startValue - scroll )/10))
   useFrame(() => {
     ref.current.position.x =  -2;
     ref.current.position.y =  2;

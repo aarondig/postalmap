@@ -8,6 +8,7 @@ import cannon from "../src/assets/scans/cannon.glb";
 import train from "../src/assets/scans/train.glb";
 
 import sidewalk from "../src/assets/audio/sidewalk1.mp4";
+import station from "../src/assets/audio/station.mp4";
 
 
 export const data = [
@@ -139,7 +140,7 @@ export const data = [
 
     object: hallway,
 
-    audio: sidewalk,
+    audio: station,
 
     type: "view",
   },

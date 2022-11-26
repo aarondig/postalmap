@@ -8,26 +8,93 @@ import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
 import { InView } from "react-intersection-observer";
 
+function Sound({ el, audio, camera, isVisible }) {
+  const sound = useRef()
+  const [listener] = useState(() => new THREE.AudioListener())
+  const buffer = useLoader(THREE.AudioLoader, el.audio)
+  useEffect(() => {
+    sound.current.setBuffer(buffer)
+    sound.current.setRefDistance(1)
+    sound.current.setLoop(true)
+    // sound.current.setRolloffFactor()
+    camera.current.add(listener)
+    
 
 
-const Camera = ({scroll, remove, startValue}) => {
 
-  const ref = useRef();
+
+//Animations
+
+
+
+
+  }, [])
+
+
+
+//SOUND START/CLEANUP
+
+
+const fadeIn = () => {
+sound.current.play();
+sound.current.setVolume(0);
+ setInterval(function() {
+  let volume = sound.current.getVolume();
+  sound.current.setVolume = volume + .01;
+  
+  if (volume >= 1) {
+    sound.current.play();
+    clearInterval(fadeIn);
+  }
+}, 1000);
+
+}
+
+const fadeOut = () => {
+  setInterval(function() {
+
+  let volume = sound.current.getVolume();
+  sound.current.setVolume = volume - .01;
+  console.log(sound.current.getVolume())
+  if (volume <= 0) {
+    sound.current.stop();
+    
+    clearInterval(fadeOut);
+  }
+}, 1000);
+}
+
+useEffect(()=>{
+
+if (isVisible) {
+  fadeIn()
+}
+if (!isVisible) {
+  fadeOut()
+}
+},[isVisible]);
+
+
+ 
+  return (<positionalAudio ref={sound} args={[listener]} setVolume={1}/>)
+}
+
+const Camera = ({camera, scroll, remove, startValue}) => {
 
   // Camera animations
   useFrame(() => {
-    ref.current.position.x =  0;
-    ref.current.position.y =  -2;
-    ref.current.position.z =  ((scroll - startValue)/10) - 50;
+    camera.current.position.x =  0;
+    camera.current.position.y =  -2;
+    camera.current.position.z =  ((scroll - startValue)/10) - 50;
     
-    ref.current.updateMatrixWorld();
+    camera.current.updateMatrixWorld();
   });
-const camera = {
-  ref: ref,
+const cameraProps = {
+  ref: camera,
   makeDefault: !remove,
 }
 
-  return <PerspectiveCamera {...camera}/>;
+  return <PerspectiveCamera {...cameraProps}/>;
 };
 
 function Station({ i, el, current, scroll, sectionSize, audio }) {
@@ -71,6 +138,11 @@ useEffect(() => {
   }
 }, [current]);
 
+
+
+
+
+
 // Measure the size of all sections before it and create a start value for scrolling
 const [startValue, setStartValue] = useState(0)
 
@@ -81,24 +153,23 @@ useEffect(()=>{
 
 
 //SCROLLING ANIMATIONS
-// const [positionz, setPositionz] = useState();
+
 
   useFrame(() => {
-    
-    // ref.current.rotation. =  - scroll / 400 + 75;
-    // console.log(ref.current.rotation)
+
   });
 
 
 
   
 
-const camprops = {
-  scroll: scroll,
-  isVisible: isVisible,
-  remove: remove,
-  startValue: startValue,
-}
+  const camprops = {
+    camera: camera,
+    scroll: scroll,
+    isVisible: isVisible,
+    remove: remove,
+    startValue: startValue,
+  }
  
 
 
@@ -116,9 +187,9 @@ const camprops = {
           scale={1.8}
         >
          
-          {/* {audio && <Sound isVisible={isVisible}/>} */}
+       
           
-
+         {/* {audio && <Sound el={el} audio={audio} camera={camera} isVisible={isVisible} />} */}
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
@@ -136,33 +207,3 @@ const camprops = {
 
 export default Station;
 
-
- // i=== current && console.log(positionz - (scroll / 2))
-
-//AUDIO
-
-// const { distance } = useSpring({ distance: isVisible ? 1 : 100 });
-
-// const [playAudio, setPlayAudio] = useState(false);
-// const [fadeOut, setFadeOut] = useState(false);
-
-// function Sound({isVisible}) {
-//   const sound = useRef();
-//   const { camera } = useThree();
-//   const [listener] = useState(() => new THREE.AudioListener());
-//   const buffer = useLoader(THREE.AudioLoader, el.audio);
-
-// useFrame(()=>{
-//   sound.current.setRefDistance(scroll)
-// })
-//   useEffect(() => {
-//     sound.current.setBuffer(buffer);
-//     sound.current.setRefDistance(1);
-//     sound.current.setLoop(true);
-//     sound.current.play();
-//     camera.add(listener);
-
-//     return () => camera.remove(listener);
-//   }, []);
-//   return <positionalAudio ref={sound} args={[listener]} />;
-// }

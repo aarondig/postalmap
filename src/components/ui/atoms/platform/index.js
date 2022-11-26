@@ -107,34 +107,3 @@ const camprops = {
 }
 
 export default Platform;
-
-
- // i=== current && console.log(positionz - (scroll / 2))
-
-//AUDIO
-
-// const { distance } = useSpring({ distance: isVisible ? 1 : 100 });
-
-// const [playAudio, setPlayAudio] = useState(false);
-// const [fadeOut, setFadeOut] = useState(false);
-
-// function Sound({isVisible}) {
-//   const sound = useRef();
-//   const { camera } = useThree();
-//   const [listener] = useState(() => new THREE.AudioListener());
-//   const buffer = useLoader(THREE.AudioLoader, el.audio);
-
-// useFrame(()=>{
-//   sound.current.setRefDistance(scroll)
-// })
-//   useEffect(() => {
-//     sound.current.setBuffer(buffer);
-//     sound.current.setRefDistance(1);
-//     sound.current.setLoop(true);
-//     sound.current.play();
-//     camera.add(listener);
-
-//     return () => camera.remove(listener);
-//   }, []);
-//   return <positionalAudio ref={sound} args={[listener]} />;
-// }
