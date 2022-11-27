@@ -1,21 +1,23 @@
 {
   "files": {
-    "main.css": "/postalmap/static/css/main.519ad6d9.css",
-    "main.js": "/postalmap/static/js/main.4a45b3e6.js",
+    "main.css": "/postalmap/static/css/main.a390a4dd.css",
+    "main.js": "/postalmap/static/js/main.f25dac5e.js",
     "static/media/postcode.glb": "/postalmap/static/media/postcode.304b55474be8588262e4.glb",
     "static/media/pier.glb": "/postalmap/static/media/pier.624f8506161ec6e37521.glb",
     "static/media/hallway.glb": "/postalmap/static/media/hallway.cd997f26856b664a01fc.glb",
     "static/media/platform.glb": "/postalmap/static/media/platform.6d3c99cb14ba9b6a3c2d.glb",
+    "static/media/lcc.glb": "/postalmap/static/media/lcc.baf54d12660ee6cbce71.glb",
     "static/media/cannon.glb": "/postalmap/static/media/cannon.c071f681a12dada9546f.glb",
     "static/media/train.glb": "/postalmap/static/media/train.0d4eb0d73750e5b5c161.glb",
+    "static/media/station.mp4": "/postalmap/static/media/station.3911fc07b7c929cb6ad5.mp4",
     "static/media/sidewalk.m4a": "/postalmap/static/media/sidewalk.d3a73ced5c566419b05e.m4a",
     "static/media/sidewalk1.mp4": "/postalmap/static/media/sidewalk1.d3a73ced5c566419b05e.mp4",
     "index.html": "/postalmap/index.html",
-    "main.519ad6d9.css.map": "/postalmap/static/css/main.519ad6d9.css.map",
-    "main.4a45b3e6.js.map": "/postalmap/static/js/main.4a45b3e6.js.map"
+    "main.a390a4dd.css.map": "/postalmap/static/css/main.a390a4dd.css.map",
+    "main.f25dac5e.js.map": "/postalmap/static/js/main.f25dac5e.js.map"
   },
   "entrypoints": [
-    "static/css/main.519ad6d9.css",
-    "static/js/main.4a45b3e6.js"
+    "static/css/main.a390a4dd.css",
+    "static/js/main.f25dac5e.js"
   ]
 }
