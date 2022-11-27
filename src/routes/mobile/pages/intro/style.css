@@ -60,6 +60,15 @@ background: #050505;
     z-index: 2;
     transition: all .01s;
   }
+  .svg-arrow {
+    position: absolute;
+    align-self: center;
+    padding-left: 4%;
+    z-index: 3;
+    
+
+
+  }
  
   .svg-back {
     position: absolute;
@@ -143,6 +152,7 @@ align-self: center;
   /* top: 0; */
   right: 0;
   position: absolute;
+z-index: 0;
 }
 
 

@@ -12,6 +12,24 @@ import station from "../src/assets/audio/station.mp4";
 
 
 export const data = [
+  // {
+  //   id: "description",
+  //   title: "Statement on something blah blah blah",
+  //   subtitle: "A Visual Medium",
+  //   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+  //   number: "02",
+
+  //   index: 0,
+
+  //   button: {
+  //       text: "Learn More",
+  //       link: "https://www.aarondiggdon.com"
+  //   },
+
+
+  //   lightMode: "dark",
+  //   type: "text",
+  // },
   {
     id: "postcode",
     title: "We start our journey here, at E14GP.",

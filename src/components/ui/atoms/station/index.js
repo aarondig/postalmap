@@ -112,7 +112,6 @@ function Sound({ el, audio, camera, isVisible, remove }) {
     }
   }, [isVisible]);
 
-
  
   return (<positionalAudio ref={sound} args={[listener]} setVolume={1}/>)
 }

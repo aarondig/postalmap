@@ -29,18 +29,8 @@ function Sound({ el, audio, camera, isVisible, remove }) {
     source.start();
   }
 
-
- 
   
   document.addEventListener('click', playSound);
-
-  // useEffect(() => {
-  //   sound.current.setBuffer(buffer);
-  //   sound.current.setRefDistance(0);
-  //   sound.current.setLoop(true);
-  //   // sound.current.setRolloffFactor()
-  //   camera.current.add(listener);
-  // }, []);
 
   //SOUND START/CLEANUP
 
@@ -109,12 +99,14 @@ function Sound({ el, audio, camera, isVisible, remove }) {
   return <positionalAudio ref={sound} args={[listener]} />;
 }
 
-const Camera = ({ camera, scroll, remove }) => {
-  const position = [0, 10, 75];
-
+const Camera = ({ camera, startValue, scroll, remove,  }) => {
+  const position = [0,10,75];
+console.log(- ((scroll-startValue) / 10))
   // Camera animations
   useFrame(() => {
-    camera.current.position.z = position[2] - scroll / 10;
+    camera.current.position.x =  0 ;
+    camera.current.position.z = 70 - (scroll / 10);
+    // camera.current.position.z = -40 +((scroll-(startValue+300)) / 10) ;
 
     camera.current.updateMatrixWorld();
   });
@@ -127,7 +119,7 @@ const Camera = ({ camera, scroll, remove }) => {
   );
 };
 
-function Postcode({ i, el, current, scroll, startValue, audio }) {
+function Postcode({ i, el, current, scroll, sectionSize, audio }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
@@ -148,8 +140,6 @@ function Postcode({ i, el, current, scroll, startValue, audio }) {
 
   // Model View Animations
 
-  // const { visible } = useSpring({ visible: remove ? false : true });
-  // materials.main.visible = visible;
   if (group.current) {
     group.current.visible = remove ? false : true;
   }
@@ -171,11 +161,21 @@ function Postcode({ i, el, current, scroll, startValue, audio }) {
     }
   }, [current]);
 
+// Measure the size of all sections before it and create a start value for scrolling
+const [startValue, setStartValue] = useState(0)
+
+useEffect(()=>{
+  // Removes all elements in array past index, then adds all of them together
+ setStartValue((sectionSize.slice(-(i)).reduce((a, b) => a + b, 0) - 98))
+},[sectionSize])
+
   //SCROLLING ANIMATIONS
 
   useFrame(() => {
     ref.current.rotation.y = -scroll / 400 + 75;
   });
+
+// PROPS
 
   const camprops = {
     camera: camera,
