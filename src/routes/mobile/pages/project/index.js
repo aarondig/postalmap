@@ -10,10 +10,11 @@ import "./style.css";
 import Description from "../../sections/description";
 import { data } from "../../../../data.js";
 import View from "../../sections/view";
-import Image from "../../sections/image";
+import Video from "../../sections/video";
 import Detail from "../../sections/detail";
 import Module from "../../../../components/ui/organisms/module";
 import Slider from "../../sections/slider";
+import Title from "../../sections/title";
 
 function Project({
   scroll,
@@ -110,6 +111,17 @@ function Project({
           default: {
             return <div className="space" key={i} />;
           }
+          case "title": {
+            return (
+              <Title
+                key={i}
+                i={i}
+                el={el}
+                section={sections[i]}
+                {...text}
+              />
+            );
+          }
           case "text": {
             return (
               <Description
@@ -126,9 +138,9 @@ function Project({
               <View key={i} i={i} el={el} section={sections[i]} {...view} />
             );
           }
-          case "image": {
+          case "video": {
             return (
-              <Image key={i} i={i} el={el} section={sections[i]} {...image} />
+              <Video key={i} i={i} el={el} section={sections[i]} {...image} />
             );
           }
           case "detail": {

@@ -1,0 +1,104 @@
+@media only screen and (max-width: 768px) {
+#title {
+  position: relative;
+  box-sizing: border-box;
+  /* width: 100vw;
+  height: 100vh; */
+
+  background: #050505;
+  z-index: 1 ;
+  transform-style: preserve-3d;
+
+  border-top: 1px #252525 solid;
+  }
+  #title .section-wrap {
+    /* transform: translateZ(-1800px) scale(3.25); */
+    z-index: 1;
+
+  }
+  .line {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 32%;
+    background: #252525;
+  }
+  
+  #title .title {
+    
+    margin: 0;
+    font-family: 'El Messiri', sans-serif;
+    font-size: 6vw;
+    max-width: 100%;
+    margin-bottom: 4vh;
+    white-space: wrap;
+ 
+  }
+
+
+  #title .subtitle {
+    color: #959595;
+    font-size: 1.6vw;
+    margin: 0;
+    margin-bottom: 2vh;
+    
+
+  }
+
+  #title .text {
+
+    margin: 0;
+    font-size: 1.6vw;
+    line-height: 1.6;
+    max-width: 32vw;
+
+    white-space: wrap;
+  }
+
+
+  #title .button-c {
+
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+
+  }
+  #title a {
+    flex: 1 0;
+
+    
+      }
+  #title .button-text {
+
+    font-size: 18px;
+
+  }
+  #title .button-visual {
+    height: .8px;
+    flex: 1 0;
+    background: #050505;
+    align-self: center;
+
+  }
+  
+/* MEDIA LINE */
+    #title .title {
+      font-size: 64px;
+      line-height: 1.2em;
+      margin-bottom: 2vh;
+     }
+   #title .subtitle {
+    font-size: 32px;
+   }
+   #title .text {
+    
+    font-size: 18px;
+    max-width: 100%;
+    
+  }
+  #title .col-1 {
+    
+    display: none;
+    
+  }
+  }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, Suspense } from "react";
 import "./style.css";
 import {InView} from "react-intersection-observer";
+import {a, useSpring, useSprings} from "react-spring";
 
 
 function Slider({ i, el, section, setCurrent, slowFixed, scroll}) {
@@ -25,7 +26,47 @@ useEffect(()=>{
     setLightMode(false)
   }
   },[])
+  
+// ANIMATIONS
+const fadeIn = useSprings(
+  el.images.length,
+  el.images.map((el, i) =>
+     inView ? {
+          from: {
+            opacity: 0,
+            transform: `translateY(+20px)`,
+          },
+          to: {
+            opacity: 1,
+            transform: `translateY(0px)`,
+          },
 
+          delay: 220 * i,
+          config: { mass: 1, tension: 120, friction: 40 },
+        } :
+        {
+          from: {
+            opacity: 1,
+            transform: `translateY(0px)`,
+          },
+          to: {
+            opacity: 0,
+            transform: `translateY(-20px)`,
+          },
+
+          delay: 220 * i,
+          config: { mass: 1, tension: 120, friction: 40 },
+        }
+      
+  )
+);
+
+const subtitle = useSpring({
+  opacity: inView ? 1 : 0,
+  
+  // delay: 300,
+  config: { duration: 250 },
+});
 
 
 const slider = {
@@ -40,10 +81,10 @@ const slider = {
 
 
   return (
-      <InView  style={lightMode ? {background: "#f4f4f4"} : {background: "#050505"}} {...slider}>
+      <InView style={lightMode ? {background: "#f4f4f4"} : {background: "#050505"}} {...slider}>
     <div className="content-wrap">
       
-    <h6 className="subtitle">{el.subtitle}</h6>
+    <a.h6 className="subtitle" style={subtitle}>{el.subtitle}</a.h6>
     </div>
 
 
@@ -52,15 +93,15 @@ const slider = {
       
       <ul className="card-row">
       {el.images.map((el, i)=> {
-        return <li className="card" key={i}>
+        return <a.li className="card" key={i} style={fadeIn[i]}>
           <div className="thumbnail">
-            {/* <img src={el.src}/> */}
+            <img src={el.src}/>
           </div>
           <div className="text-c" style={lightMode ? {color: "#050505"} : {color: "#fff"}}>
             <h6 className="subtitle" style={lightMode ? {color: "#707070"} : {color: "#959595"}}>{el.subtitle}</h6>
             <h4 className="title">{el.title}</h4>
           </div>
-        </li>
+        </a.li>
       })}
       </ul>
       </div>

@@ -101,7 +101,6 @@ function Sound({ el, audio, camera, isVisible, remove }) {
 
 const Camera = ({ camera, startValue, scroll, remove,  }) => {
   const position = [0,10,75];
-console.log(- ((scroll-startValue) / 10))
   // Camera animations
   useFrame(() => {
     camera.current.position.x =  0 ;
