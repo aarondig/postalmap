@@ -7,10 +7,12 @@
 
   /* overflow: hidden; */
   /* padding-top: 80px; */
-  padding-bottom: 60px;
+  /* padding-bottom: 60px; */
+  padding-bottom: 12vh;
   overflow: visible;
   z-index: 1;
   }
+
 
 #slider .subtitle {
   color: #959595

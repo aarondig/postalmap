@@ -6,19 +6,19 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
-import sidewalk from "../../../../assets/audio/sidewalk.m4a";
 
 function Sound({ el, audio, camera, isVisible, remove }) {
-  const sound = useRef();
-  const [listener] = useState(() => new THREE.AudioListener());
-  const buffer = useLoader(THREE.AudioLoader, sidewalk);
+  const sound = useRef()
+  const [listener] = useState(() => new THREE.AudioListener())
+  const buffer = useLoader(THREE.AudioLoader, el.audio)
+  
   useEffect(()=>{
     sound.current.setBuffer(buffer);
     sound.current.setRefDistance(0);
-    return () => camera.current.remove(listener);
+    return () => {
+      fadeOut();
+    };
   },[]);
-// Prevents static overlay of both audio files
-
 
   function playSound() {
    
@@ -30,7 +30,8 @@ function Sound({ el, audio, camera, isVisible, remove }) {
   }
 
   
-  document.addEventListener('click', playSound);
+  document.addEventListener('click', !audio && playSound);
+
 
   //SOUND START/CLEANUP
 
@@ -96,7 +97,8 @@ function Sound({ el, audio, camera, isVisible, remove }) {
     }
   }, [isVisible]);
 
-  return <positionalAudio ref={sound} args={[listener]} />;
+ 
+  return (<positionalAudio ref={sound} args={[listener]}/>)
 }
 
 const Camera = ({ camera, startValue, scroll, remove,  }) => {

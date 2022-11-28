@@ -4,16 +4,16 @@
   box-sizing: content-box;
   width: 100%;
   background: #050505;
-  height: 100vh;
+  /* max-height: 100vh; */
+  min-height: 100vh;
 
 
   }
   .video-c {
     position: relative;
     object-fit: cover;
-    /* height: 100vh; */
+    height: 100vh;
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -21,13 +21,15 @@
   }
   .video-overlay-c {
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    z-index: 1;
+    pointer-events: none;
   }
   .video-overlay {
     position: absolute;

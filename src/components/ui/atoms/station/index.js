@@ -9,29 +9,16 @@ import Loader from "../../molecules/Loader";
 import { InView } from "react-intersection-observer";
 
 function Sound({ el, audio, camera, isVisible, remove }) {
-  const sound = useRef()
-  const [listener] = useState(() => new THREE.AudioListener())
-  const buffer = useLoader(THREE.AudioLoader, el.audio)
-  
+  const sound = useRef();
+  const [listener] = useState(() => new THREE.AudioListener());
+  const buffer = useLoader(THREE.AudioLoader, el.audio);
   useEffect(()=>{
     sound.current.setBuffer(buffer);
     sound.current.setRefDistance(0);
     return () => camera.current.remove(listener);
   },[]);
+// Prevents static overlay of both audio files
 
-  useEffect(()=>{
-    if (camera.current !== undefined) {
-   
-    if (remove) {
-      camera.current.remove(listener)
-    }
-    if (!remove) {
-      camera.current.add(listener)
-    } 
-  }
-
-  
-  },[remove])
 
   function playSound() {
    
@@ -44,9 +31,6 @@ function Sound({ el, audio, camera, isVisible, remove }) {
 
   
   document.addEventListener('click', playSound);
-
-
-
 
   //SOUND START/CLEANUP
 
@@ -112,8 +96,7 @@ function Sound({ el, audio, camera, isVisible, remove }) {
     }
   }, [isVisible]);
 
- 
-  return (<positionalAudio ref={sound} args={[listener]} setVolume={1}/>)
+  return <positionalAudio ref={sound} args={[listener]} />;
 }
 
 const Camera = ({camera, scroll, remove, startValue}) => {
@@ -160,7 +143,6 @@ const [remove, setRemove] = useState(true);
     group.current.visible = remove ? false : true;
   }
  
-
   const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
   materials.main.opacity = opacity;
 

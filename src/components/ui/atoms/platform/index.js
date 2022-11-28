@@ -9,17 +9,17 @@ import Loader from "../../molecules/Loader";
 
 
 
-const Camera = ({scroll, remove, starterValue}) => {
+const Camera = ({camera, scroll, remove, starterValue}) => {
   const position = [0, 10, 20]
-  const ref = useRef();
+
 
   // Camera animations
   useFrame(() => {
     // ref.current.position.z = position[2] - (scroll / 10) ;
 
-    ref.current.updateMatrixWorld();
+   camera.current.updateMatrixWorld();
   });
-  return <PerspectiveCamera ref={ref} position={position} makeDefault={!remove}/>;
+  return <PerspectiveCamera ref={camera} position={position} makeDefault={!remove}/>;
 };
 
 function Platform({ i, el, current, scroll, starterValue, audio }) {
@@ -76,6 +76,7 @@ useEffect(() => {
   
 
 const camprops = {
+  camera: camera,
   scroll: scroll,
   isVisible: isVisible,
   remove: remove,

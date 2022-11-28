@@ -66,7 +66,7 @@ function Title({
   return (
     <InView {...title}>
       <div className="section-wrap">
-        {/* <div className="line"/> */}
+        <div className="line"/>
         <div className="row">
           <div className="col-3">
             {lightMode ? (

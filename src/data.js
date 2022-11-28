@@ -5,14 +5,22 @@ import lcc from "../src/assets/scans/lcc.glb";
 
 import hallway from "../src/assets/scans/hallway.glb";
 import cannon from "../src/assets/scans/cannon.glb";
+import pierpay from "../src/assets/scans/pierpay.glb";
 import train from "../src/assets/scans/train.glb";
+import embstation from "../src/assets/scans/embstation.glb";
 
-import sidewalk from "../src/assets/audio/sidewalk1.mp4";
-import station from "../src/assets/audio/station.mp4";
+// AUDIO
+import sidewalkaud from "../src/assets/audio/sidewalk1.mp4";
+import stationaud from "../src/assets/audio/station.mp4";
+import lccaud from "../src/assets/audio/lcc.mp4";
+import pieraud from "../src/assets/audio/greenwich.mp4";
 
+
+// VIDEOS
 import postalcodevid from "./assets/videos/postcode/postcode.mov"
+import uberboatvid from "./assets/videos/greenwich/uberboat.mov"
 
-
+// IMAGES
 import postalcodeimg from "./assets/images/greenwhich/postalcode.png"
 import uniofgreenwichimg from "./assets/images/greenwhich/uniofgreenwich.jpg"
 import greenwhichimg from "./assets/images/greenwhich/greenwich.jpg"
@@ -49,7 +57,7 @@ export const data = [
    
 
 
-    audio: sidewalk,
+    audio: sidewalkaud,
 
     type: "view",
   },
@@ -126,7 +134,7 @@ export const data = [
     type: "video",
   },
   {
-    id: "detail",
+    id: "cannon",
     title: "Walk towards Greenwich Pier",
     subtitle: "/ Walking / South Bank",
     text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
@@ -171,6 +179,107 @@ export const data = [
   // },
 
   {
+    id: "pier",
+    title: "Join the que for west-bound Uber Boat.",
+    subtitle: "/ Greenwich Pier",
+    number: "02",
+
+    index: 0,
+
+    object: pier,
+
+    audio: pieraud,
+
+    type: "view",
+  },
+  {
+    id: "pierpay",
+    title: "Tap to pay for your Uber Boat ride",
+    subtitle: "/ Uber Boat / Greenwhich Pier",
+    text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
+    number: "02",
+
+    index: 0,
+
+    object: pierpay,
+
+    type: "detail",
+  },
+  {
+    id: "title",
+    title: "Ride the Uber Boat",
+    subtitle: "/ 03",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    number: "02",
+
+    index: 0,
+
+
+    lightMode: "dark",
+    type: "title",
+  },
+  {
+    id: "video",
+    src: uberboatvid,
+
+    title: "Statement on something blah blah blah",
+    subtitle: "/ Introduction",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    number: "02",
+
+    index: 0,
+
+    type: "video",
+  },
+  {
+    id: "embstation",
+    title: "Walk towards Greenwich Pier",
+    subtitle: "/ Walking / South Bank",
+    text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
+    number: "02",
+
+    index: 0,
+
+    object: embstation,
+
+    type: "detail",
+  },
+  {
+    id: "slider",
+    src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
+
+    title: "Statement on something blah blah blah",
+    subtitle: "/ Photography",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    number: "02",
+
+    index: 0,
+
+    images: [
+      {
+        title: "Postal Code SE10-9DD",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: postalcodeimg,
+      },
+      {
+        title: "University of Greenwich",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: uniofgreenwichimg,
+      },
+      
+      {
+        title: "Greenwich Intersection",
+        subtitle: "ENVIRONMENT / PHOTO",
+        src: greenwhichimg,
+      },
+    ],
+
+
+    lightMode: "dark",
+    type: "slider",
+  },
+  
+  {
     id: "station",
     title: "You're almost there. This is your final stop.",
     subtitle: "/ Embankment Station",
@@ -180,10 +289,26 @@ export const data = [
 
     object: hallway,
 
-    audio: station,
+    audio: stationaud,
 
     type: "view",
   },
+  {
+    id: "stationplatform",
+    title: "Tap to pay for your Uber Boat ride",
+    subtitle: "/ Uber Boat / Greenwhich Pier",
+    text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
+    number: "02",
+
+    index: 0,
+
+    object: platform,
+
+    type: "detail",
+  },
+  
+
+
   {
     id: "description",
     title: "Statement on something blah blah blah",
@@ -203,33 +328,40 @@ export const data = [
     type: "text",
   },
   {
-    id: "video",
-    src: postalcodevid,
+    id: "slider",
+    src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
 
     title: "Statement on something blah blah blah",
-    subtitle: "/ Introduction",
+    subtitle: "/ Photography",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
     index: 0,
 
-    type: "video",
+    images: [
+      {
+        title: "Postal Code SE10-9DD",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: postalcodeimg,
+      },
+      {
+        title: "University of Greenwich",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: uniofgreenwichimg,
+      },
+      
+      {
+        title: "Greenwich Intersection",
+        subtitle: "ENVIRONMENT / PHOTO",
+        src: greenwhichimg,
+      },
+    ],
+
+
+    lightMode: "light",
+    type: "slider",
   },
-  // {
-  //   id: "platform",
-  //   title: "You're almost there. This is your final stop.",
-  //   subtitle: "/ Embankment Station",
-  //   number: "02",
-
-  //   index: 0,
-
-  //   object: platform,
-
-  //   audio: sidewalk,
-
-  //   type: "view",
-  // },
-  {
+    {
     id: "lcc",
     title: "You're almost there. This is your final stop.",
     subtitle: "/ Embankment Station",
@@ -239,38 +371,75 @@ export const data = [
 
     object: lcc,
 
-    audio: sidewalk,
+    audio: lccaud,
 
     type: "view",
   },
-
   {
-    id: "video",
-    src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
-
+    id: "description",
     title: "Statement on something blah blah blah",
-    subtitle: "/ Introduction",
+    subtitle: "A Visual Medium",
     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
     number: "02",
 
     index: 0,
 
-    type: "video",
+    button: {
+        text: "Learn More",
+        link: "https://www.aarondiggdon.com"
+    },
+
+
+    lightMode: "dark",
+    type: "text",
   },
-  // {
-  //   id: "pier",
-  //   title: "Guide the user back to LCC or else ...",
-  //   subtitle: "/ Our Mission",
-  //   number: "01",
+  {
+    id: "slider",
+    src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
 
-  //   index: 0,
+    title: "Statement on something blah blah blah",
+    subtitle: "/ Photography",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    number: "02",
 
-  //   object: cannon,
+    index: 0,
 
-  //   audio: sidewalk,
+    images: [
+      {
+        title: "Postal Code SE10-9DD",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: postalcodeimg,
+      },
+      {
+        title: "University of Greenwich",
+        subtitle: "ARCHITECTURE / PHOTO",
+        src: uniofgreenwichimg,
+      },
+      
+      {
+        title: "Greenwich Intersection",
+        subtitle: "ENVIRONMENT / PHOTO",
+        src: greenwhichimg,
+      },
+    ],
 
-  //   type: "view",
-  // },
+
+    lightMode: "dark",
+    type: "slider",
+  },
+   {
+    id: "title",
+    title: "End of Line",
+    subtitle: "/ 02",
+    text: "Walk east along the river towards Greenwich Pier.",
+    number: "02",
+
+    index: 0,
+
+
+    lightMode: "dark",
+    type: "title",
+  },
 ];
 
 // Types: Inspect, View, Text

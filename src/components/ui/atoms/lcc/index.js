@@ -8,26 +8,121 @@ import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
 import { InView } from "react-intersection-observer";
 
+function Sound({ el, audio, camera, isVisible, remove }) {
+  const sound = useRef()
+  const [listener] = useState(() => new THREE.AudioListener())
+  const buffer = useLoader(THREE.AudioLoader, el.audio)
+  
+  useEffect(()=>{
+    sound.current.setBuffer(buffer);
+    sound.current.setRefDistance(0);
+    return () => {
+      sound.current.pause();
+      camera.current.remove(listener)
+    };
+  },[]);
+
+  function playSound() {
+   
+    sound.current.play();
+
+    var source = listener.context.createBufferSource();
+    source.connect(listener.context.destination);
+    source.start();
+  }
+
+  
+  document.addEventListener('click', playSound);
 
 
-const Camera = ({scroll, remove, startValue}) => {
-  const ref = useRef();
+
+
+  //SOUND START/CLEANUP
+
+  var fadeIn = () =>
+    setTimeout(function () {
+      if (sound.current !== undefined) {
+
+      
+      let volume = sound.current.getRefDistance();
+
+      if (!sound.current.isPlaying) {
+        sound.current.play();
+      }
+
+      if (volume < 1) {
+        sound.current.setRefDistance(volume + 0.01);
+        if (isVisible) {
+          fadeIn();
+        }
+      }
+      if (volume >= 1) {
+        sound.current.setRefDistance(1);
+        clearTimeout(fadeIn);
+      }
+    }
+      clearTimeout(fadeIn);
+    }, 10);
+
+  var fadeOut = () =>
+    setTimeout(function () {
+      if (sound.current !== undefined) {
+      let volume = Math.abs(sound.current.getRefDistance());
+
+      if (volume > 0) {
+        sound.current.setRefDistance(Math.abs(volume - 0.01));
+        if (!isVisible) {
+          fadeOut();
+        }
+      }
+      if (volume <= 0.1) {
+        sound.current.setRefDistance(0);
+        sound.current.pause();
+        camera.current.remove(listener);
+        clearTimeout(fadeOut);
+      }
+    }
+      clearTimeout(fadeOut);
+    }, 10);
+
+  useEffect(() => {
+    if (isVisible) {
+      camera.current.add(listener);
+      fadeIn();
+
+    }
+    if (!isVisible) {
+      fadeOut();
+      
+    }
+   return ()=>{
+    clearTimeout(fadeIn);
+    clearTimeout(fadeOut);
+    }
+  }, [isVisible]);
+
+ 
+  return (<positionalAudio ref={sound} args={[listener]} setVolume={1}/>)
+}
+
+const Camera = ({camera, scroll, remove, startValue}) => {
+
 
   // Camera animations
   useFrame(() => {
-    ref.current.position.x =  -2;
-    ref.current.position.y =  2;
+    camera.current.position.x =  -2;
+    camera.current.position.y =  2;
     // ref.current.position.z =  ((scroll - startValue)/10) - 50;
-    ref.current.position.z =  ((startValue - scroll )/25) + 60;
+    camera.current.position.z =  ((startValue - scroll )/25) + 60;
     
-    ref.current.updateMatrixWorld();
+    camera.current.updateMatrixWorld();
   });
-const camera = {
-  ref: ref,
+const cameraprops = {
+  ref: camera,
   makeDefault: !remove,
 }
 
-  return <PerspectiveCamera {...camera}/>;
+  return <PerspectiveCamera {...cameraprops}/>;
 };
 
 function Lcc({ i, el, current, scroll, sectionSize, audio }) {
@@ -83,32 +178,36 @@ useEffect(()=>{
 
 
 //SCROLLING ANIMATIONS
-// const [positionz, setPositionz] = useState();
 
   useFrame(() => {
     
-    ref.current.rotation.y =  - (scroll-startValue)/ 400 + 65;
-    // ref.current.position.z =  - scroll / 400 ;
-    // console.log(ref.current.rotation)
+      ref.current.rotation.y =  - (scroll-startValue)/ 400 + 65;
   });
-
-
 
   
 
-const camprops = {
-  scroll: scroll,
-  isVisible: isVisible,
-  remove: remove,
-  startValue: startValue,
-}
+  const camprops = {
+    camera: camera,
+    scroll: scroll,
+    isVisible: isVisible,
+    remove: remove,
+    startValue: startValue,
+  }
+  const soundprops = {
+    el: el,
+    camera: camera,
+    scroll: scroll,
+    isVisible: isVisible,
+    remove: remove,
+    
+  }
  
 
 
   return (
     
       <group ref={group}>
-        <Suspense fallback={<Loader/>}>
+    
         <mesh
           ref={ref}
           geometry={nodes.mesh_0.geometry}
@@ -117,14 +216,14 @@ const camprops = {
           scale={1.8}
         >
          
-          {/* {audio && <Sound isVisible={isVisible}/>} */}
+          {audio && <Sound isVisible={isVisible} {...soundprops}/>}
           
 
           <a.meshStandardMaterial {...materials[""]} />
         </mesh>
         <Camera {...camprops}/>
         
-        </Suspense>
+       
       </group>
   );
 }

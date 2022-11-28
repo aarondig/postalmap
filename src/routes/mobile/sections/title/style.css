@@ -9,7 +9,7 @@
   z-index: 1 ;
   transform-style: preserve-3d;
 
-  border-top: 1px #252525 solid;
+  /* border-top: 1px #252525 solid; */
   }
   #title .section-wrap {
     /* transform: translateZ(-1800px) scale(3.25); */

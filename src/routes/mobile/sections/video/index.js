@@ -34,7 +34,7 @@ function Video({i, el,  section, setCurrent}) {
               
             </a.div>
             </div>
-            <video className="video" src={el.src} type="video" autoPlay loop muted={audio ? false : true} height="100%"/>
+            <video className="video" src={el.src} type="video" autoPlay loop playsInline webkit-playsinline="true" muted={audio ? false : true} height="100%"/>
      
    
       </div>

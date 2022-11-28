@@ -105,7 +105,7 @@ function Description({
 
   return (
     <InView {...description}>
-      {data[i-1].id !== "detail" && <div className="spacer" />}
+      {data[i-1].type !== "detail" && <div className="spacer" />}
       <div className="section-wrap">
         <div className="row">
           <div className="col-3">
