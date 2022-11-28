@@ -93,8 +93,7 @@ useEffect(()=>{
         ref.current.scale.x = scale;
         ref.current.scale.y = scale;
         ref.current.scale.z = scale;
-        
-        ref.current.position = [1.2,-.4,0];
+      
         ref.current.position.x = 1.2;
         ref.current.position.y = -.4;
         
