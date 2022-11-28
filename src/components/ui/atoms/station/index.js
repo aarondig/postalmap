@@ -210,7 +210,7 @@ useEffect(()=>{
   return (
     
       <group ref={group}>
-        <Suspense fallback={<Loader/>}>
+    
         <mesh
           ref={ref}
           // material={materials.main}
@@ -235,7 +235,6 @@ useEffect(()=>{
         </Suspense>
         
         {/* <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)} /> */}
-        </Suspense>
       </group>
   );
 }
