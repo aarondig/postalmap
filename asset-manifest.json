@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/postalmap/static/css/main.790a835e.css",
-    "main.js": "/postalmap/static/js/main.12c080ee.js",
+    "main.css": "/postalmap/static/css/main.6c04fcfe.css",
+    "main.js": "/postalmap/static/js/main.419954ed.js",
     "static/media/postcode.glb": "/postalmap/static/media/postcode.304b55474be8588262e4.glb",
     "static/media/pier.glb": "/postalmap/static/media/pier.624f8506161ec6e37521.glb",
     "static/media/hallway.glb": "/postalmap/static/media/hallway.cd997f26856b664a01fc.glb",
@@ -13,19 +13,19 @@
     "static/media/train.glb": "/postalmap/static/media/train.0d4eb0d73750e5b5c161.glb",
     "static/media/uberboat.mov": "/postalmap/static/media/uberboat.2db7c8e97f043c16afe1.mov",
     "static/media/station.mp4": "/postalmap/static/media/station.3911fc07b7c929cb6ad5.mp4",
-    "static/media/greenwich.jpg": "/postalmap/static/media/greenwich.df4cec19abd00c878af4.jpg",
     "static/media/postcode.mov": "/postalmap/static/media/postcode.56139fd2bfd0f3e93f47.mov",
     "static/media/lcc.mp4": "/postalmap/static/media/lcc.d22e9469d87fbaec1a86.mp4",
-    "static/media/uniofgreenwich.jpg": "/postalmap/static/media/uniofgreenwich.fc5944d1c2477550549a.jpg",
     "static/media/greenwich.mp4": "/postalmap/static/media/greenwich.8328e37ed5f0036e51c3.mp4",
-    "static/media/postalcode.png": "/postalmap/static/media/postalcode.ce74f9bccb2d1633ff2a.png",
     "static/media/sidewalk1.mp4": "/postalmap/static/media/sidewalk1.d3a73ced5c566419b05e.mp4",
+    "static/media/postalcode.png": "/postalmap/static/media/postalcode.843f9158eec9413dc88c.png",
+    "static/media/greenwich.jpg": "/postalmap/static/media/greenwich.f8b4958c7445a65d7d0f.jpg",
+    "static/media/uniofgreenwich.jpg": "/postalmap/static/media/uniofgreenwich.5d7e6aa958f5b767ca98.jpg",
     "index.html": "/postalmap/index.html",
-    "main.790a835e.css.map": "/postalmap/static/css/main.790a835e.css.map",
-    "main.12c080ee.js.map": "/postalmap/static/js/main.12c080ee.js.map"
+    "main.6c04fcfe.css.map": "/postalmap/static/css/main.6c04fcfe.css.map",
+    "main.419954ed.js.map": "/postalmap/static/js/main.419954ed.js.map"
   },
   "entrypoints": [
-    "static/css/main.790a835e.css",
-    "static/js/main.12c080ee.js"
+    "static/css/main.6c04fcfe.css",
+    "static/js/main.419954ed.js"
   ]
 }
