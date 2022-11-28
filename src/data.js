@@ -192,19 +192,19 @@ export const data = [
 
     type: "view",
   },
-  // {
-  //   id: "pierpay",
-  //   title: "Tap to pay for your Uber Boat ride",
-  //   subtitle: "/ Uber Boat / Greenwhich Pier",
-  //   text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
-  //   number: "02",
+  {
+    id: "pierpay",
+    title: "Tap to pay for your Uber Boat ride",
+    subtitle: "/ Uber Boat / Greenwhich Pier",
+    text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
+    number: "02",
 
-  //   index: 0,
+    index: 0,
 
-  //   object: pierpay,
+    object: pierpay,
 
-  //   type: "detail",
-  // },
+    type: "detail",
+  },
   {
     id: "title",
     title: "Ride the Uber Boat",

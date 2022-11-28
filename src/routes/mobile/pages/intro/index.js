@@ -141,26 +141,25 @@ function Intro({ loading, setLoading, handleStart }) {
   //  ANIMATIONS
 
   //Animated Ring
-  let numAnimated = 3;
 
-  const [fade, setFade] = useState([]);
+  const [fade, setFade] = useState([1,2,3,4]);
 
   //ANIMATIONS
   const line1 = useSpring({
-    opacity: inView ? 1 : 0,
-    transform: inView ? "translateY(0)" : "translateY(20px)",
+    opacity: startIntro ? 1 : 0,
+    transform: startIntro ? "translateY(0)" : "translateY(20px)",
     delay: 300,
     config: { duration: 250 },
   });
   const line2 = useSpring({
-    opacity: inView ? 1 : 0,
-    transform: inView ? "translateY(0)" : "translateY(20px)",
+    opacity: startIntro ? 1 : 0,
+    transform: startIntro ? "translateY(0)" : "translateY(20px)",
     delay: 400,
     config: { duration: 250 },
   });
   const line3 = useSpring({
-    opacity: inView ? 1 : 0,
-    transform: inView ? "translateY(0)" : "translateY(20px)",
+    opacity: startIntro ? 1 : 0,
+    transform: startIntro ? "translateY(0)" : "translateY(20px)",
     delay: 300,
     config: { duration: 250 },
   });
@@ -168,15 +167,15 @@ function Intro({ loading, setLoading, handleStart }) {
   const fadeIn = useSprings(
     fade.length,
     fade.map((el, i) =>
-      !countDone
-        ? {
+    !unmount
+        ? startIntro && {
             from: {
               opacity: 0,
-              transform: `translateY(+20px) scale(${i === 0 ? 3 : 1})`,
+              transform: `translateY(+20px) scale(${i === 0 ? 2 : .8})`,
             },
             to: {
               opacity: 1,
-              transform: `translateY(0) scale(${i === 0 ? 4 : 1.2})`,
+              transform: `translateY(0) scale(${i === 0 ? 3 : 1})`,
             },
 
             delay: 220 * i,
@@ -210,7 +209,7 @@ function Intro({ loading, setLoading, handleStart }) {
     letters.length,
     letters.map(
       (el, i) =>
-        counter && {
+      countDone && {
           from: {
             opacity: 0,
             transform: "translateY(+20px)",
@@ -242,7 +241,7 @@ function Intro({ loading, setLoading, handleStart }) {
   });
 
   const counterExit = useSpring({
-    opacity: countDone ? 1 : 0,
+    opacity: countDone ? 0 : 1,
     delay: 100,
   });
   const [flip, set] = useState(false);
@@ -264,16 +263,19 @@ function Intro({ loading, setLoading, handleStart }) {
   //   config: { duration: 200 },
 
   // });
+
+
+ 
   let mode = false;
 
   return (
     <a.div id="intro" ref={ref} style={fadeOut} onClick={() => handleUnmount()}>
-      {/* {!startIntro ? 
-      <Cover startIntro={startIntro} setStartIntro={setStartIntro}/> : */}
+      {!startIntro ? 
+      <Cover startIntro={startIntro} setStartIntro={setStartIntro}/> : 
       <div className="row">
         <div className="col-2">
-          {/* <a.div className="svg-c" style={fadeIn[0]}>
-          <svg className="svg-path" height={radius * 2} width={radius * 2}>
+          <a.div className="svg-c" style={fadeIn[0]}>
+          <a.svg className="svg-path" style={counterExit} height={radius * 2} width={radius * 2}>
             <circle
               stroke={mode === "light" ? "#404040" : "#f4f4f4"}
               fill="transparent"
@@ -284,8 +286,8 @@ function Intro({ loading, setLoading, handleStart }) {
               cx={radius}
               cy={radius}
             />
-          </svg>
-          <svg className="svg-back" height={radius * 2} width={radius * 2}>
+          </a.svg>
+          <a.svg className="svg-back" style={counterExit} height={radius * 2} width={radius * 2}>
             <circle
               stroke={mode === "light" ? "#f4f4f4" : "#202020"}
               fill="transparent"
@@ -295,9 +297,9 @@ function Intro({ loading, setLoading, handleStart }) {
               cx={radius}
               cy={radius}
             />
-          </svg>
-        </a.div> */}
-          <a.div className="letters-c" style={fadeIn[0]}>
+          </a.svg>
+        </a.div>
+          <a.div className="letters-c" style={fadeIn[1]}>
             {lettersSprings.map((el, i) => {
               return (
                 <a.h1 className="letter" key={i} style={lettersSprings[i]}>
@@ -335,7 +337,7 @@ function Intro({ loading, setLoading, handleStart }) {
                     Skip Intro
                   </a.p>
                 )}
-                <a.div className="loading-svg-c" style={fadeIn[0]}>
+                <a.div className="loading-svg-c" style={fadeIn[2]}>
                   <svg
                     className="svg-path"
                     height={radius * 2}
@@ -383,16 +385,15 @@ function Intro({ loading, setLoading, handleStart }) {
                       cy={radius}
                     />
                   </svg>
-{/* 
-                  <div className="svg-c-background" style={{background: "#f4f4f4"}}/>
-                  <a.div className="svg-c-background" style={fill}></a.div> */}
+
+                  
                 </a.div>
               </a.div>
             </div>
           </div>
         </div>
       </div>
-      {/* } */}
+       }
       {/* <a.h4 className="subtitle" style={subtitle}>
             a ual group project
           </a.h4> */}
@@ -401,3 +402,5 @@ function Intro({ loading, setLoading, handleStart }) {
 }
 
 export default Intro;
+{/* <div className="svg-c-background" style={{background: "#f4f4f4"}}/>
+                  <a.div className="svg-c-background" style={fill}></a.div> */}

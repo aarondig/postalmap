@@ -48,9 +48,13 @@ background: #050505;
   }
 
 
-  .svg-c {
-    position: relative;
-    /* transform: scale(4); */
+  #intro .svg-c {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: scale(3.6);
+    opacity: 0;
     will-change: opacity;
   }
   .svg-path {
@@ -76,6 +80,7 @@ background: #050505;
     top: 0;
     left: 0;
     z-index: -1;
+    
   }
 
   .checkmark-svg {
