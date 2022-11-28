@@ -293,19 +293,19 @@ export const data = [
 
     type: "view",
   },
-  {
-    id: "stationplatform",
-    title: "Tap to pay for your Uber Boat ride",
-    subtitle: "/ Uber Boat / Greenwhich Pier",
-    text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
-    number: "02",
+  // {
+  //   id: "stationplatform",
+  //   title: "Tap to pay for your Uber Boat ride",
+  //   subtitle: "/ Uber Boat / Greenwhich Pier",
+  //   text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
+  //   number: "02",
 
-    index: 0,
+  //   index: 0,
 
-    object: platform,
+  //   object: platform,
 
-    type: "detail",
-  },
+  //   type: "detail",
+  // },
   
 
 
@@ -427,19 +427,19 @@ export const data = [
     lightMode: "dark",
     type: "slider",
   },
-   {
-    id: "title",
-    title: "End of Line",
-    subtitle: "/ 02",
-    text: "Walk east along the river towards Greenwich Pier.",
-    number: "02",
+  //  {
+  //   id: "title",
+  //   title: "End of Line",
+  //   subtitle: "/ 02",
+  //   text: "Walk east along the river towards Greenwich Pier.",
+  //   number: "02",
 
-    index: 0,
+  //   index: 0,
 
 
-    lightMode: "dark",
-    type: "title",
-  },
+  //   lightMode: "dark",
+  //   type: "title",
+  // },
 ];
 
 // Types: Inspect, View, Text

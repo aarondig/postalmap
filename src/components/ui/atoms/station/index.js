@@ -6,7 +6,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
-import { InView } from "react-intersection-observer";
+import useWindowSize from "../../../../hooks/windowSize";
 
 function Sound({ el, audio, camera, isVisible, remove }) {
   const sound = useRef();
@@ -99,13 +99,25 @@ function Sound({ el, audio, camera, isVisible, remove }) {
   return <positionalAudio ref={sound} args={[listener]} />;
 }
 
-const Camera = ({camera, scroll, remove, startValue}) => {
-
+const Camera = ({camera, scroll, isVisible, remove, startValue}) => {
+const {height} = useWindowSize()
   // Camera animations
+  const lerp = (x, y, a) => x * (1 - a) + y * a;
+  const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
+  const invlerp = (x, y, a) => clamp((a - x) / (y - x));
+  const range = (x1, y1, x2, y2, a) => lerp(x2, y2, invlerp(x1, y1, a));
+
+
+  // console.log(((scroll - startValue)/10) - 50)
+  
+
+console.log("clamp: " + range(startValue-height, startValue + height, -80, 100, scroll))
   useFrame(() => {
     camera.current.position.x =  0;
     camera.current.position.y =  -2;
-    camera.current.position.z =  ((scroll - startValue)/10) - 50;
+   if (!remove) {
+    camera.current.position.z =  range(startValue, startValue + height, -20, 90, scroll);
+   } 
     
     camera.current.updateMatrixWorld();
   });
@@ -167,16 +179,11 @@ const [startValue, setStartValue] = useState(0)
 
 useEffect(()=>{
   // Removes all elements in array past index, then adds all of them together
- setStartValue((sectionSize.slice(-(i-1)).reduce((a, b) => a + b, 0) - 98))
+ setStartValue((sectionSize.slice(-(i)).reduce((a, b) => a + b, 0) - 98))
 },[sectionSize])
 
 
 //SCROLLING ANIMATIONS
-
-
-  useFrame(() => {
-
-  });
 
 
 
@@ -186,6 +193,7 @@ useEffect(()=>{
     camera: camera,
     scroll: scroll,
     isVisible: isVisible,
+
     remove: remove,
     startValue: startValue,
   }
@@ -220,11 +228,12 @@ useEffect(()=>{
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
+        <Suspense fallback={<Loader/>}>
         <ambientLight intensity={.5} />
         <pointLight position={[0, 0, 3]} intensity={.3} />
         <pointLight position={[0, 0, 60]} intensity={.3} />
         {/* <pointLight position={[-5, 0, -3]} intensity={.5}/> */}
-
+        </Suspense>
         
         {/* <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)} /> */}
         </Suspense>

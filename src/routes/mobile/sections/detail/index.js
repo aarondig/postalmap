@@ -14,6 +14,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { a, useSpring } from "react-spring";
 
 import { InView } from "react-intersection-observer";
+import Loader from "../../pages/Loader";
 
 function Detail({
   i,
@@ -24,6 +25,7 @@ function Detail({
   scrollContainer,
   scroll,
 }) {
+  const [isVisible, setIsVisible] = useState(false);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
@@ -69,12 +71,14 @@ useEffect(()=>{
    
 
     useFrame(() => {
+      if (isVisible) {
       ref.current.rotation.y = (scroll - startValue) / 800 + rotation;
+    }
     });
     
     useEffect(()=>{
       if (el.id) {
-        setScale(1.2)
+        // setScale(1.2)
         setPosition([0,-1,0])
         setRotation(.8)
       }
@@ -113,11 +117,8 @@ useEffect(()=>{
 
 
     return (
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader/>}>
         <mesh
-        
-        
-          castShadow
           
           {...mesh}
           
@@ -135,7 +136,8 @@ const orbitcontrols = {
 }
 
   return (
-    <InView id="detail" ref={section} onChange={setInView} threshold={0.6}>
+    <InView id="detail" ref={section} onChange={setIsVisible} >
+      <InView onChange={setInView} threshold={0.6} >
       {/* style={visible} */}
       {/* <div className="background-c">
       <div className="background"></div>
@@ -164,6 +166,7 @@ const orbitcontrols = {
           <Scene scroll={scroll} startValue={startValue} />
         </Canvas>
       </div>
+      </InView>
     </InView>
   );
 }

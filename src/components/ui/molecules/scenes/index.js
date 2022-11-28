@@ -44,7 +44,7 @@ function Scenes({ current, scroll, isInView, sectionSize, audio }) {
 
   return (
       <group ref={group} >
-        
+        <Suspense fallback={<Loader/>}>
         {data.map((el, i) => {
           switch (el.id) {
             default: {
@@ -74,7 +74,7 @@ function Scenes({ current, scroll, isInView, sectionSize, audio }) {
 
           }
         })}
- 
+ </Suspense>
       </group>
   );
 }
