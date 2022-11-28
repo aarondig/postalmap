@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/postalmap/static/css/main.6c04fcfe.css",
-    "main.js": "/postalmap/static/js/main.419954ed.js",
+    "main.css": "/postalmap/static/css/main.94a2a890.css",
+    "main.js": "/postalmap/static/js/main.603ca0a2.js",
     "static/media/postcode.glb": "/postalmap/static/media/postcode.304b55474be8588262e4.glb",
     "static/media/pier.glb": "/postalmap/static/media/pier.624f8506161ec6e37521.glb",
     "static/media/hallway.glb": "/postalmap/static/media/hallway.cd997f26856b664a01fc.glb",
@@ -21,11 +21,11 @@
     "static/media/greenwich.jpg": "/postalmap/static/media/greenwich.f8b4958c7445a65d7d0f.jpg",
     "static/media/uniofgreenwich.jpg": "/postalmap/static/media/uniofgreenwich.5d7e6aa958f5b767ca98.jpg",
     "index.html": "/postalmap/index.html",
-    "main.6c04fcfe.css.map": "/postalmap/static/css/main.6c04fcfe.css.map",
-    "main.419954ed.js.map": "/postalmap/static/js/main.419954ed.js.map"
+    "main.94a2a890.css.map": "/postalmap/static/css/main.94a2a890.css.map",
+    "main.603ca0a2.js.map": "/postalmap/static/js/main.603ca0a2.js.map"
   },
   "entrypoints": [
-    "static/css/main.6c04fcfe.css",
-    "static/js/main.419954ed.js"
+    "static/css/main.94a2a890.css",
+    "static/js/main.603ca0a2.js"
   ]
 }
