@@ -36,8 +36,9 @@ background: #050505;
     text-transform: capitalize;
     letter-spacing: .08em;
   }
-  .letter {
-    font-size: 112px;
+  #intro .letter {
+    /* font-size: 74px; */
+    font-size: 18.5vw;
     line-height: normal;
     display: flex;
     flex-direction: column;

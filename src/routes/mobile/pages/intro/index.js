@@ -203,7 +203,7 @@ function Intro({ loading, setLoading, handleStart }) {
   );
 
   //Animated Letters
-  const letters = ["E", "1", "4", "G", "P"];
+  const letters = ["S", "E", "1", "0", "-", "9", "D", "D"];
   const lettersRef = useSpringRef();
 
   const lettersSprings = useSprings(
