@@ -49,11 +49,13 @@ background: #050505;
 
 
   #intro .svg-c {
+    margin-top: 4vh;
+    box-sizing: border-box;
     align-self: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transform: scale(3.6);
+    transform: scale(3.4);
     opacity: 0;
     will-change: opacity;
   }
@@ -133,7 +135,7 @@ background: #050505;
   box-sizing: border-box;
   justify-content: space-between;
   /* padding-top: 42px; */
-  padding-top: calc(80px - 6%);
+  padding-top: calc(80px - 8%);
   padding-bottom: 80px;
   border-top: #252525 1px solid;
 }

@@ -116,7 +116,7 @@ function Intro({ loading, setLoading, handleStart }) {
       if (Number.isInteger(counter / 5)) {
         setArray((array) => [...array, counter]);
       }
-      
+
       // setTimeout(() => setCounter(counter + 1), 30);
       setTimeout(() => setCounter(counter + 0.2), 30);
     }
@@ -137,12 +137,11 @@ function Intro({ loading, setLoading, handleStart }) {
   let circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (amount / 100) * circumference;
 
-
   //  ANIMATIONS
 
   //Animated Ring
 
-  const [fade, setFade] = useState([1,2,3,4]);
+  const [fade, setFade] = useState([1, 2, 3, 4]);
 
   //ANIMATIONS
   const line1 = useSpring({
@@ -167,11 +166,11 @@ function Intro({ loading, setLoading, handleStart }) {
   const fadeIn = useSprings(
     fade.length,
     fade.map((el, i) =>
-    !unmount
+      !unmount
         ? startIntro && {
             from: {
               opacity: 0,
-              transform: `translateY(+20px) scale(${i === 0 ? 2 : .8})`,
+              transform: `translateY(+20px) scale(${i === 0 ? 2 : 0.8})`,
             },
             to: {
               opacity: 1,
@@ -209,7 +208,7 @@ function Intro({ loading, setLoading, handleStart }) {
     letters.length,
     letters.map(
       (el, i) =>
-      countDone && {
+        countDone && {
           from: {
             opacity: 0,
             transform: "translateY(+20px)",
@@ -264,136 +263,143 @@ function Intro({ loading, setLoading, handleStart }) {
 
   // });
 
-
- 
   let mode = false;
 
   return (
     <a.div id="intro" ref={ref} style={fadeOut} onClick={() => handleUnmount()}>
-      {!startIntro ? 
-      <Cover startIntro={startIntro} setStartIntro={setStartIntro}/> : 
-      <div className="row">
-        <div className="col-2">
-          <a.div className="svg-c" style={fadeIn[0]}>
-          <a.svg className="svg-path" style={counterExit} height={radius * 2} width={radius * 2}>
-            <circle
-              stroke={mode === "light" ? "#404040" : "#f4f4f4"}
-              fill="transparent"
-              strokeWidth={stroke}
-              strokeDasharray={circumference + " " + circumference}
-              style={{ strokeDashoffset }}
-              r={normalizedRadius}
-              cx={radius}
-              cy={radius}
-            />
-          </a.svg>
-          <a.svg className="svg-back" style={counterExit} height={radius * 2} width={radius * 2}>
-            <circle
-              stroke={mode === "light" ? "#f4f4f4" : "#202020"}
-              fill="transparent"
-              strokeWidth={stroke}
-              style={{ strokeDashoffset }}
-              r={normalizedRadius}
-              cx={radius}
-              cy={radius}
-            />
-          </a.svg>
-        </a.div>
-          <a.div className="letters-c" style={fadeIn[1]}>
-            {lettersSprings.map((el, i) => {
-              return (
-                <a.h1 className="letter" key={i} style={lettersSprings[i]}>
-                  {letters[i]}
-                </a.h1>
-              );
-            })}
-          </a.div>
-        </div>
+      {!startIntro ? (
+        <Cover startIntro={startIntro} setStartIntro={setStartIntro} />
+      ) : (
+        <div className="row">
+          <div className="col-2">
+            <a.div className="svg-c" style={fadeIn[0]}>
+              <a.svg
+                className="svg-path"
+                style={counterExit}
+                height={radius * 2}
+                width={radius * 2}
+              >
+                <circle
+                  stroke={mode === "light" ? "#404040" : "#f4f4f4"}
+                  fill="transparent"
+                  strokeWidth={stroke}
+                  strokeDasharray={circumference + " " + circumference}
+                  style={{ strokeDashoffset }}
+                  r={normalizedRadius}
+                  cx={radius}
+                  cy={radius}
+                />
+              </a.svg>
+              <a.svg
+                className="svg-back"
+                style={counterExit}
+                height={radius * 2}
+                width={radius * 2}
+              >
+                <circle
+                  stroke={mode === "light" ? "#f4f4f4" : "#202020"}
+                  fill="transparent"
+                  strokeWidth={stroke}
+                  style={{ strokeDashoffset }}
+                  r={normalizedRadius}
+                  cx={radius}
+                  cy={radius}
+                />
+              </a.svg>
+            </a.div>
+            <a.div className="letters-c" style={fadeIn[1]}>
+              {lettersSprings.map((el, i) => {
+                return (
+                  <a.h1 className="letter" key={i} style={lettersSprings[i]}>
+                    {letters[i]}
+                  </a.h1>
+                );
+              })}
+            </a.div>
+          </div>
 
-        <div className="col-3">
-          <div className="section-wrap">
-            <div
-              className="text-c"
+          <div className="col-3">
+            <div className="section-wrap">
+              <div
+                className="text-c"
 
-              // style={mode ? { color: "#050505" } : { color: "#ffffff" }}
-            >
-              <a.h6 className="subtitle" style={line1}>
-                / Introduction
-              </a.h6>
-              {/* <a.h2 className="title" style={line2}>
+                // style={mode ? { color: "#050505" } : { color: "#ffffff" }}
+              >
+                <a.h6 className="subtitle" style={line1}>
+                  / Introduction
+                </a.h6>
+                {/* <a.h2 className="title" style={line2}>
                 Statement on something blah blah blah
                 </a.h2> */}
-              <a.p className="text" style={line2}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
-                egestas commodo risus orci feugiat sagittis, ut cursus.
-              </a.p>
-              <a.div className="loading-btn">
-                {!countDone ? (
-                  <a.p className="loading-text" style={bounce}>
-                    Loading...
-                  </a.p>
-                ) : (
-                  <a.p className="loading-text" style={opacity}>
-                    Skip Intro
-                  </a.p>
-                )}
-                <a.div className="loading-svg-c" style={fadeIn[2]}>
-                  <svg
-                    className="svg-path"
-                    height={radius * 2}
-                    width={radius * 2}
-                  >
-                    <circle
-                      stroke={mode === "light" ? "#404040" : "#f4f4f4"}
-                      fill={"transparent"}
-                      strokeWidth={stroke}
-                      strokeDasharray={circumference + " " + circumference}
-                      style={{ strokeDashoffset }}
-                      r={normalizedRadius}
-                      cx={radius}
-                      cy={radius}
-                    />
-                  </svg>
-                  <svg
-                    className="svg-arrow"
-                    height={radius / 1.5}
-                    width={radius / 2.5}
-                  >
-                    <a.path
-                      d="M1 1L10 10L1 19"
-                      stroke="white"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      style={opacity}
-                      fill="transparent"
-                    />
-                  </svg>
+                <a.p className="text" style={line2}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa
+                  egestas commodo risus orci feugiat sagittis, ut cursus.
+                </a.p>
+                <a.div className="loading-btn" style={fadeIn[2]}>
+                  {!countDone ? (
+                    <a.p className="loading-text" style={bounce}>
+                      Loading...
+                    </a.p>
+                  ) : (
+                    <a.p className="loading-text" style={opacity}>
+                      Skip Intro
+                    </a.p>
+                  )}
+                  <a.div className="loading-svg-c" style={opacity}>
+                    <svg
+                      className="svg-path"
+                      height={radius * 2}
+                      width={radius * 2}
+                    >
+                      <circle
+                        stroke={mode === "light" ? "#404040" : "#f4f4f4"}
+                        fill={"transparent"}
+                        strokeWidth={stroke}
+                        strokeDasharray={circumference + " " + circumference}
+                        style={{ strokeDashoffset }}
+                        r={normalizedRadius}
+                        cx={radius}
+                        cy={radius}
+                      />
+                    </svg>
+                    <svg
+                      className="svg-arrow"
+                      height={radius / 1.5}
+                      width={radius / 2.5}
+                    >
+                      <a.path
+                        d="M1 1L10 10L1 19"
+                        stroke="white"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        style={opacity}
+                        fill="transparent"
+                      />
+                    </svg>
 
-                  <svg
-                    className="svg-back"
-                    height={radius * 2}
-                    width={radius * 2}
-                  >
-                    <circle
-                      stroke={mode === "light" ? "#f4f4f4" : "#202020"}
-                      fill="transparent"
-                      strokeWidth={stroke}
-                      style={{ strokeDashoffset }}
-                      r={normalizedRadius}
-                      cx={radius}
-                      cy={radius}
-                    />
-                  </svg>
-
-                  
+                    <svg
+                      className="svg-back"
+                      height={radius * 2}
+                      width={radius * 2}
+                    >
+                      <circle
+                        stroke={mode === "light" ? "#f4f4f4" : "#202020"}
+                        fill="transparent"
+                        strokeWidth={stroke}
+                        style={{ strokeDashoffset }}
+                        r={normalizedRadius}
+                        cx={radius}
+                        cy={radius}
+                      />
+                    </svg>
+                  </a.div>
                 </a.div>
-              </a.div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-       }
+      )}
       {/* <a.h4 className="subtitle" style={subtitle}>
             a ual group project
           </a.h4> */}
@@ -402,5 +408,7 @@ function Intro({ loading, setLoading, handleStart }) {
 }
 
 export default Intro;
-{/* <div className="svg-c-background" style={{background: "#f4f4f4"}}/>
-                  <a.div className="svg-c-background" style={fill}></a.div> */}
+{
+  /* <div className="svg-c-background" style={{background: "#f4f4f4"}}/>
+                  <a.div className="svg-c-background" style={fill}></a.div> */
+}
