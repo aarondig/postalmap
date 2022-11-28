@@ -65,42 +65,68 @@ useEffect(()=>{
       }
     },[])
     
-    const [scale,setScale] = useState()
+    // const [scale,setScale] = useState()
     const [position,setPosition] = useState()
     const [rotation, setRotation] = useState(0)
    
 
     useFrame(() => {
       if (isVisible) {
-      ref.current.rotation.y = (scroll - startValue) / 800 + rotation;
+      // ref.current.rotation.y = (scroll - startValue) / 800 + rotation;
+      ref.current.rotation.y = (scroll - startValue) / 800 ;
     }
     });
     
     useEffect(()=>{
+      if (ref.current !== undefined) {
+
+      
       if (el.id) {
-        // setScale(1.2)
-        setPosition([0,-1,0])
-        setRotation(.8)
+        
+        ref.current.position.y = -1;
+       
+        // setRotation(.8)
       }
       if (el.id === "pierpay") {
-        setScale(7.2)
-        setPosition([1.2,-.4,0])
-        setRotation(11.6)
+        // setScale(7.2)
+        let scale = 7.2;
+        ref.current.scale.x = scale;
+        ref.current.scale.y = scale;
+        ref.current.scale.z = scale;
+        
+        ref.current.position = [1.2,-.4,0];
+        ref.current.position.x = 1.2;
+        ref.current.position.y = -.4;
+        
+        
+        // setRotation(11.6)
       }
       if (el.id === "cannon") {
-        setScale(2.5)
-        setPosition([0,-1,0])
-        setRotation(-.8)
+        let scale = 2.5;
+        ref.current.scale.x = scale;
+        ref.current.scale.y = scale;
+        ref.current.scale.z = scale;
+        // setScale(2.5)
+        ref.current.position.y = -1;
+        // setRotation(-.8)
       } 
       if (el.id === "platform") {
-        setScale(1.8)
-        setPosition([0,-1,0])
+        // setScale(1.8)
+        let scale = 1.8;
+        ref.current.scale.x = scale;
+        ref.current.scale.y = scale;
+        ref.current.scale.z = scale;
+        ref.current.position.y = -1;
       } 
       if (el.id === "embstation") {
-        setScale(.5)
-        setPosition([0,-2,0])
+        // setScale(.5)
+        let scale = .5;
+        ref.current.scale.x = scale;
+        ref.current.scale.y = scale;
+        ref.current.scale.z = scale;
+        ref.current.position.y = -2;
       } 
-    
+    }
     
     },[])
 
@@ -110,8 +136,8 @@ useEffect(()=>{
       ref: ref,
       material: materials.main !== undefined ? materials.main : materials[""],
       geometry: nodes.mesh !== undefined ? nodes.mesh.geometry : nodes.mesh_0.geometry,
-      position: position,
-      scale: scale,
+      // position: position,
+      // scale: scale,
     
     }
 
@@ -161,10 +187,8 @@ const orbitcontrols = {
           <pointLight position={[4, 5, 4]} intensity={1.2} />
           <pointLight position={[0, -30, -10]} intensity={0.6} />
           <OrbitControls {...orbitcontrols}/>
-          {/* <rectAreaLight position={[0, 20, 40]} intensity={50} width={200}
-      height={1}/> */}
-          <Scene scroll={scroll} startValue={startValue} />
-        </Canvas>
+          {isVisible && <Scene scroll={scroll} startValue={startValue} />}
+        </Canvas> : 
       </div>
       </InView>
     </InView>

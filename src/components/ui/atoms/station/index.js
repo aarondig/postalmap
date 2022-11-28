@@ -106,20 +106,19 @@ const {height} = useWindowSize()
   const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
   const invlerp = (x, y, a) => clamp((a - x) / (y - x));
   const range = (x1, y1, x2, y2, a) => lerp(x2, y2, invlerp(x1, y1, a));
-
-
-  // console.log(((scroll - startValue)/10) - 50)
   
 
-console.log("clamp: " + range(startValue-height, startValue + height, -80, 100, scroll))
+
   useFrame(() => {
+    if (!remove) {
     camera.current.position.x =  0;
     camera.current.position.y =  -2;
-   if (!remove) {
+   
     camera.current.position.z =  range(startValue, startValue + height, -20, 90, scroll);
-   } 
+   
     
     camera.current.updateMatrixWorld();
+  } 
   });
 const cameraProps = {
   ref: camera,

@@ -5,6 +5,7 @@ import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
+import useWindowSize from "../../../../hooks/windowSize";
 
 
 function Sound({ el, audio, camera, isVisible, remove }) {
@@ -106,15 +107,21 @@ function Sound({ el, audio, camera, isVisible, remove }) {
 
 const Camera = ({camera, scroll, remove, startValue}) => {
 const position = [0,0, 0]
+
+const {height} = useWindowSize()
+
   // Camera animations
+  const lerp = (x, y, a) => x * (1 - a) + y * a;
+  const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
+  const invlerp = (x, y, a) => clamp((a - x) / (y - x));
+  const range = (x1, y1, x2, y2, a) => lerp(x2, y2, invlerp(x1, y1, a));
 
   useFrame(() => {
-    camera.current.position.z = - ((scroll- startValue)/30) +30;
-    // camera.current.position.x =  ((scroll- startValue)/10) -10;
-    // camera.current.position.y = -((scroll- startValue)/600);
-    camera.current.rotation.y = -((scroll- startValue)/600) + 1.2;
-    // camera.current.rotation.y = .6;
+   if (!remove) {
+    camera.current.position.z = range(startValue + (height*1.4), startValue, 0, 34, scroll);
+    camera.current.rotation.y = range(startValue + (height*1.2), startValue, -.1, 1.2, scroll) ;
     camera.current.updateMatrixWorld();
+  }
   });
 const cameraProps = {
   ref: camera,
