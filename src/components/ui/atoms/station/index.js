@@ -137,7 +137,7 @@ function Station({ i, el, current, scroll, sectionSize, audio }) {
 // IMPORT MODEL
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
-  // materials.main.map = ;
+  materials.main.map = null;
   materials.main.color = new THREE.Color(0x4F4F51);
   materials.main.transparent = true;
   materials.main.roughness = 1;
@@ -227,12 +227,12 @@ useEffect(()=>{
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
-        <Suspense fallback={<Loader/>}>
+        {/* <Suspense fallback={<Loader/>}> */}
         <ambientLight intensity={.5} />
         <pointLight position={[0, 0, 3]} intensity={.3} />
         <pointLight position={[0, 0, 60]} intensity={.3} />
         {/* <pointLight position={[-5, 0, -3]} intensity={.5}/> */}
-        </Suspense>
+        {/* </Suspense> */}
         
         {/* <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)} /> */}
       </group>
