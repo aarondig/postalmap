@@ -8,7 +8,7 @@ import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
 import { InView } from "react-intersection-observer";
 
-function Sound({ el, audio, camera, isVisible, remove }) {
+function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
   const sound = useRef()
   const [listener] = useState(() => new THREE.AudioListener())
   const buffer = useLoader(THREE.AudioLoader, el.audio)
@@ -17,8 +17,7 @@ function Sound({ el, audio, camera, isVisible, remove }) {
     sound.current.setBuffer(buffer);
     sound.current.setRefDistance(0);
     return () => {
-      sound.current.pause();
-      camera.current.remove(listener)
+      fadeOut();
     };
   },[]);
 
@@ -32,9 +31,18 @@ function Sound({ el, audio, camera, isVisible, remove }) {
   }
 
   
-  document.addEventListener('click', playSound);
-
-
+  audioRef.current.addEventListener('click', function() {
+    if (!audio) {
+      if (!sound.current.isPlaying) {
+        playSound();
+      }
+      
+    }
+    if (audio) {
+      sound.current.pause();
+      sound.current.stop();
+    }
+  });
 
 
   //SOUND START/CLEANUP
@@ -55,6 +63,9 @@ function Sound({ el, audio, camera, isVisible, remove }) {
         if (isVisible) {
           fadeIn();
         }
+        if (!isVisible) {
+          fadeOut();
+        }
       }
       if (volume >= 1) {
         sound.current.setRefDistance(1);
@@ -69,10 +80,14 @@ function Sound({ el, audio, camera, isVisible, remove }) {
       if (sound.current !== undefined) {
       let volume = Math.abs(sound.current.getRefDistance());
 
+
       if (volume > 0) {
         sound.current.setRefDistance(Math.abs(volume - 0.01));
         if (!isVisible) {
           fadeOut();
+        }
+        if (isVisible) {
+          fadeIn();
         }
       }
       if (volume <= 0.1) {
@@ -86,14 +101,16 @@ function Sound({ el, audio, camera, isVisible, remove }) {
     }, 10);
 
   useEffect(() => {
+
     if (isVisible) {
       camera.current.add(listener);
       fadeIn();
+      console.log("isVisble: " + isVisible);
 
     }
     if (!isVisible) {
       fadeOut();
-      
+      console.log("isVisble: " + isVisible);
     }
    return ()=>{
     clearTimeout(fadeIn);
@@ -102,7 +119,7 @@ function Sound({ el, audio, camera, isVisible, remove }) {
   }, [isVisible]);
 
  
-  return (<positionalAudio ref={sound} args={[listener]} setVolume={1}/>)
+  return (<positionalAudio ref={sound} args={[listener]}/>)
 }
 
 const Camera = ({camera, scroll, remove, startValue}) => {
@@ -110,12 +127,14 @@ const Camera = ({camera, scroll, remove, startValue}) => {
 
   // Camera animations
   useFrame(() => {
+    if (!remove) {
     camera.current.position.x =  -2;
     camera.current.position.y =  2;
     // ref.current.position.z =  ((scroll - startValue)/10) - 50;
     camera.current.position.z =  ((startValue - scroll )/25) + 60;
     
     camera.current.updateMatrixWorld();
+    }
   });
 const cameraprops = {
   ref: camera,
@@ -125,7 +144,7 @@ const cameraprops = {
   return <PerspectiveCamera {...cameraprops}/>;
 };
 
-function Lcc({ i, el, current, scroll, sectionSize, audio }) {
+function Lcc({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
@@ -173,7 +192,7 @@ const [startValue, setStartValue] = useState(0)
 
 useEffect(()=>{
   // Removes all elements in array past index, then adds all of them together
- setStartValue((sectionSize.slice(-(i-1)).reduce((a, b) => a + b, 0) - 98))
+  setStartValue(sectionSize.slice(0, i).reduce((a,b)=> a+b,0))
 },[sectionSize])
 
 
@@ -199,6 +218,9 @@ useEffect(()=>{
     scroll: scroll,
     isVisible: isVisible,
     remove: remove,
+
+    audio: audio,
+    audioRef: audioRef,
     
   }
  

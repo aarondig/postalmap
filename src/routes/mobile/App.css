@@ -54,6 +54,15 @@ a:visited {
 }
 
 
+ .top-spacer {
+  width: 100%;
+  padding-top: 80px;
+}
+ .bottom-spacer {
+  width: 100%;
+  padding-top: 60px;
+}
+
 
 .title {
   margin: 0;

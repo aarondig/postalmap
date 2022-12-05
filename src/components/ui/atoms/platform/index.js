@@ -22,7 +22,7 @@ const Camera = ({camera, scroll, remove, starterValue}) => {
   return <PerspectiveCamera ref={camera} position={position} makeDefault={!remove}/>;
 };
 
-function Platform({ i, el, current, scroll, starterValue, audio }) {
+function Platform({ i, el, current, scroll, starterValue, audio, audioRef }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
@@ -81,6 +81,19 @@ const camprops = {
   isVisible: isVisible,
   remove: remove,
   starterValue: starterValue,
+}
+
+
+const soundprops = {
+  el: el,
+  camera: camera,
+  scroll: scroll,
+  isVisible: isVisible,
+  remove: remove,
+
+  audio: audio,
+  audioRef: audioRef,
+  
 }
  
   return (

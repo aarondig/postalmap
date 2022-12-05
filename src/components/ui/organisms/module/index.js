@@ -15,7 +15,7 @@ import { InView, useInView } from "react-intersection-observer";
 import Loader from "../../molecules/Loader";
 
 
-function Module({scroll, direct, current, isInView, sectionSize, audio}) {
+function Module({scroll, direct, current, isInView, sectionSize, audio, audioRef}) {
 
   
 
@@ -28,6 +28,7 @@ const scenes = {
   sectionSize: sectionSize,
   
   audio: audio,
+  audioRef: audioRef,
 }
 
 const canvas = {
@@ -47,9 +48,9 @@ const canvas = {
       height={1}/>
         {/* <pointLight position={[4, 2, 4]} intensity={1} />
         <pointLight position={[-5, 0, -3]} intensity={.3} /> */}
-        <OrbitControls />
+        {/* <OrbitControls /> */}
 
-        
+        <fog attach="fog" args={['#17171b', 40, 80]} />
    <Scenes {...scenes}/>
    {/* <ambientLight intensity={.1}/> */}
           {/* <Environment preset="studio" near={1} far={1000} resolution={256}/> */}

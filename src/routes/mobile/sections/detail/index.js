@@ -184,10 +184,10 @@ const orbitcontrols = {
           shadows
         >
           <pointLight position={[4, 5, 4]} intensity={1.2} />
-          <pointLight position={[0, -30, -10]} intensity={0.6} />
+          <pointLight position={[0, -30, -10]} intensity={.8} />
           <OrbitControls {...orbitcontrols}/>
           {isVisible && <Scene scroll={scroll} startValue={startValue} />}
-        </Canvas> : 
+        </Canvas> 
       </div>
       </InView>
     </InView>

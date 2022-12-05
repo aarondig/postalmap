@@ -15,7 +15,8 @@ import Station from "../../atoms/station";
 import Lcc from "../../atoms/lcc";
 
 
-function Scenes({ current, scroll, isInView, sectionSize, audio }) {
+
+function Scenes({ current, scroll, isInView, sectionSize, audio, audioRef }) {
   const group = useRef();
 
 //   const [scenes, setScenes] = useState([])
@@ -34,6 +35,7 @@ function Scenes({ current, scroll, isInView, sectionSize, audio }) {
     current: current,
     scroll: scroll,
     audio: audio,
+    audioRef: audioRef,
 
     isInView: isInView,
     sectionSize: sectionSize,
@@ -44,7 +46,7 @@ function Scenes({ current, scroll, isInView, sectionSize, audio }) {
 
   return (
       <group ref={group} >
-        <Suspense fallback={<Loader/>}>
+        {/* <Suspense fallback={<Loader/>}> */}
         {data.map((el, i) => {
           switch (el.id) {
             default: {
@@ -74,7 +76,7 @@ function Scenes({ current, scroll, isInView, sectionSize, audio }) {
 
           }
         })}
- </Suspense>
+ {/* </Suspense> */}
       </group>
   );
 }

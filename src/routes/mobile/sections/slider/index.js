@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, Suspense } from "react";
 import "./style.css";
 import {InView} from "react-intersection-observer";
 import {a, useSpring, useSprings} from "react-spring";
-
+import {data} from "../../../../data"
 
 function Slider({ i, el, section, setCurrent, slowFixed, scroll}) {
 
@@ -78,8 +78,6 @@ const slider = {
 
 }
 
-
-
   return (
       <InView style={lightMode ? {background: "#f4f4f4"} : {background: "#050505"}} {...slider}>
     <div className="content-wrap">
@@ -105,7 +103,7 @@ const slider = {
       })}
       </ul>
       </div>
-      
+      {data[i+1] !== undefined && (data[i+1].type !== "slider" && <div className="bottom-spacer" />)}
       
       </InView>
 

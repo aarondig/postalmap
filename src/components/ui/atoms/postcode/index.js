@@ -6,8 +6,9 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
+import useWindowSize from "../../../../hooks/windowSize";
 
-function Sound({ el, audio, camera, isVisible, remove }) {
+function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
   const sound = useRef()
   const [listener] = useState(() => new THREE.AudioListener())
   const buffer = useLoader(THREE.AudioLoader, el.audio)
@@ -30,7 +31,18 @@ function Sound({ el, audio, camera, isVisible, remove }) {
   }
 
   
-  document.addEventListener('click', !audio && playSound);
+  audioRef.current.addEventListener('click', function() {
+    if (!audio) {
+      if (!sound.current.isPlaying) {
+        playSound();
+      }
+      
+    }
+    if (audio) {
+      sound.current.pause();
+      sound.current.stop();
+    }
+  });
 
 
   //SOUND START/CLEANUP
@@ -51,6 +63,9 @@ function Sound({ el, audio, camera, isVisible, remove }) {
         if (isVisible) {
           fadeIn();
         }
+        if (!isVisible) {
+          fadeOut();
+        }
       }
       if (volume >= 1) {
         sound.current.setRefDistance(1);
@@ -65,10 +80,14 @@ function Sound({ el, audio, camera, isVisible, remove }) {
       if (sound.current !== undefined) {
       let volume = Math.abs(sound.current.getRefDistance());
 
+
       if (volume > 0) {
         sound.current.setRefDistance(Math.abs(volume - 0.01));
         if (!isVisible) {
           fadeOut();
+        }
+        if (isVisible) {
+          fadeIn();
         }
       }
       if (volume <= 0.1) {
@@ -82,14 +101,16 @@ function Sound({ el, audio, camera, isVisible, remove }) {
     }, 10);
 
   useEffect(() => {
+
     if (isVisible) {
       camera.current.add(listener);
       fadeIn();
+      console.log("isVisble: " + isVisible);
 
     }
     if (!isVisible) {
       fadeOut();
-      
+      console.log("isVisble: " + isVisible);
     }
    return ()=>{
     clearTimeout(fadeIn);
@@ -101,26 +122,35 @@ function Sound({ el, audio, camera, isVisible, remove }) {
   return (<positionalAudio ref={sound} args={[listener]}/>)
 }
 
-const Camera = ({ camera, startValue, scroll, remove,  }) => {
-  const position = [0,10,75];
-  // Camera animations
+const Camera = ({ camera, startValue, scroll, remove,   }) => {
+
+  const {height} = useWindowSize();
+// Camera animations
+  const lerp = (x, y, a) => x * (1 - a) + y * a;
+  const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
+  const invlerp = (x, y, a) => clamp((a - x) / (y - x));
+  const range = (x1, y1, x2, y2, a) => lerp(x2, y2, invlerp(x1, y1, a));
   useFrame(() => {
-    camera.current.position.x =  0 ;
-    camera.current.position.z = 70 - (scroll / 10);
-    // camera.current.position.z = -40 +((scroll-(startValue+300)) / 10) ;
+if (!remove) {
+
+    camera.current.position.z = range(startValue - height, startValue + height, -4, 6, scroll );
+    camera.current.position.y = range(startValue - height, startValue + height, 10, -.5, scroll );
+    camera.current.rotation.y = range(startValue-height, startValue + height, .705, -.2, scroll) ;
+    camera.current.rotation.x = range(startValue-height, startValue + height, -.28, .1, scroll) ;
+
 
     camera.current.updateMatrixWorld();
+  }
   });
   return (
     <PerspectiveCamera
       ref={camera}
-      position={position}
       makeDefault={!remove}
     ></PerspectiveCamera>
   );
 };
 
-function Postcode({ i, el, current, scroll, sectionSize, audio }) {
+function Postcode({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
@@ -167,8 +197,9 @@ const [startValue, setStartValue] = useState(0)
 
 useEffect(()=>{
   // Removes all elements in array past index, then adds all of them together
- setStartValue((sectionSize.slice(-(i)).reduce((a, b) => a + b, 0) - 98))
+ setStartValue(sectionSize.slice(0, i).reduce((a,b)=> a+b,0))
 },[sectionSize])
+
 
   //SCROLLING ANIMATIONS
 
@@ -191,6 +222,9 @@ useEffect(()=>{
     scroll: scroll,
     isVisible: isVisible,
     remove: remove,
+
+    audio: audio,
+    audioRef: audioRef,
     
   }
 
@@ -200,13 +234,13 @@ useEffect(()=>{
         ref={ref}
         // material={materials.main}
         geometry={nodes.mesh.geometry}
-        position={[0, -1, 0]}
+        position={[0, -1, -40]}
         castShadow
         scale={1.8}
       >
-        {audio && (
+        
           <Sound {...soundprops} />
-        )}
+       
         <a.meshStandardMaterial {...materials.main} />
       </mesh>
       <Camera {...camprops} />

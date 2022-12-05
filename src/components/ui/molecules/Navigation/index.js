@@ -4,10 +4,10 @@ import { Slant as Hamburger } from "hamburger-react";
 import { IoVolumeOffOutline, IoVolumeMediumOutline } from "react-icons/io5";
 import "./style.css";
 
-function Navigation({ current, audio, setAudio }) {
+function Navigation({ audioRef, current, audio, setAudio }) {
   const [active, toggleActive] = useState(false);
   // const [settle, setSettle] = useState(false);
-
+  
 
   const audioOff = useSpring({
     opacity: audio ? 0 : 1,
@@ -45,7 +45,7 @@ function Navigation({ current, audio, setAudio }) {
             canis
           </a.h2>
           <div className="right-side">
-            <a.div className="nav-button"  onClick={() => setAudio(!audio)}>
+            <a.div className="nav-button" ref={audioRef} onClick={() => setAudio(!audio)}>
               <a.div className="nav-icon" style={audioOn}>
                 <IoVolumeMediumOutline {...sound} />
               </a.div>

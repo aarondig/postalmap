@@ -148,9 +148,9 @@ export const data = [
   },
   {
     id: "description",
-    title: "Statement on something blah blah blah",
-    subtitle: "/ Introduction",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    title: "Approach Greenwich Pier",
+    subtitle: "",
+    text: "You'll see a ship perched in the center of the square. This is where students gather, young families meet, and live music fills the air. Continue walking along the bank, but pay attention to the atmosphere around you.",
     number: "02",
 
     index: 0,
@@ -361,72 +361,72 @@ export const data = [
     lightMode: "light",
     type: "slider",
   },
-    {
-    id: "lcc",
-    title: "You're almost there. This is your final stop.",
-    subtitle: "/ Embankment Station",
-    number: "02",
+  //   {
+  //   id: "lcc",
+  //   title: "You're almost there. This is your final stop.",
+  //   subtitle: "/ Embankment Station",
+  //   number: "02",
 
-    index: 0,
+  //   index: 0,
 
-    object: lcc,
+  //   object: lcc,
 
-    audio: lccaud,
+  //   audio: lccaud,
 
-    type: "view",
-  },
-  {
-    id: "description",
-    title: "Statement on something blah blah blah",
-    subtitle: "A Visual Medium",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
-    number: "02",
+  //   type: "view",
+  // },
+  // {
+  //   id: "description",
+  //   title: "Statement on something blah blah blah",
+  //   subtitle: "A Visual Medium",
+  //   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+  //   number: "02",
 
-    index: 0,
+  //   index: 0,
 
-    button: {
-        text: "Learn More",
-        link: "https://www.aarondiggdon.com"
-    },
+  //   button: {
+  //       text: "Learn More",
+  //       link: "https://www.aarondiggdon.com"
+  //   },
 
 
-    lightMode: "dark",
-    type: "text",
-  },
-  {
-    id: "slider",
-    src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
+  //   lightMode: "dark",
+  //   type: "text",
+  // },
+  // {
+  //   id: "slider",
+  //   src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
 
-    title: "Statement on something blah blah blah",
-    subtitle: "/ Photography",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
-    number: "02",
+  //   title: "Statement on something blah blah blah",
+  //   subtitle: "/ Photography",
+  //   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+  //   number: "02",
 
-    index: 0,
+  //   index: 0,
 
-    images: [
-      {
-        title: "Postal Code SE10-9DD",
-        subtitle: "ARCHITECTURE / PHOTO",
-        src: postalcodeimg,
-      },
-      {
-        title: "University of Greenwich",
-        subtitle: "ARCHITECTURE / PHOTO",
-        src: uniofgreenwichimg,
-      },
+  //   images: [
+  //     {
+  //       title: "Postal Code SE10-9DD",
+  //       subtitle: "ARCHITECTURE / PHOTO",
+  //       src: postalcodeimg,
+  //     },
+  //     {
+  //       title: "University of Greenwich",
+  //       subtitle: "ARCHITECTURE / PHOTO",
+  //       src: uniofgreenwichimg,
+  //     },
       
-      {
-        title: "Greenwich Intersection",
-        subtitle: "ENVIRONMENT / PHOTO",
-        src: greenwhichimg,
-      },
-    ],
+  //     {
+  //       title: "Greenwich Intersection",
+  //       subtitle: "ENVIRONMENT / PHOTO",
+  //       src: greenwhichimg,
+  //     },
+  //   ],
 
 
-    lightMode: "dark",
-    type: "slider",
-  },
+  //   lightMode: "dark",
+  //   type: "slider",
+  // },
   //  {
   //   id: "title",
   //   title: "End of Line",

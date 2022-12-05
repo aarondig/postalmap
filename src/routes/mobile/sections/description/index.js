@@ -15,6 +15,7 @@ function Description({
   scroll,
 }) {
   const [inView, setInView] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     inView && setCurrent(i);
@@ -97,15 +98,16 @@ function Description({
     id: "description",
     ref: section,
 
-    style: lightMode ? { background: "#f4f4f4", paddingBottom: 0, } : { background: "#050505", paddingBottom: "60px", },
+    style: lightMode ? { background: "#f4f4f4", } : { background: "#050505", },
 
-    onChange: setInView,
-    threshold: 0.6,
+    onChange: (entry) => !entry && setInView(false),
   };
 
   return (
     <InView {...description}>
-      {data[i-1].type !== "detail" && <div className="spacer" />}
+    <InView onChange={(entry) => entry && setInView(true)} threshold={.6}>
+      
+      {data[i-1].type !== "detail" && <div className="top-spacer" />}
       <div className="section-wrap">
         <div className="row">
           <div className="col-3">
@@ -150,6 +152,8 @@ function Description({
           {/* <div className="col-1"></div> */}
         </div>
       </div>
+      {data[i+1].type !== "video" || "slider" && <div className="bottom-spacer" />}
+    </InView>
     </InView>
   );
 }

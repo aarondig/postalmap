@@ -54,6 +54,7 @@ const [sections, setSection] = useState([]);
 
 
 // AUDIO
+const audioRef = useRef();
 //Sets whether audio is heard in scenes
 const [audio, setAudio] = useState(false)
 
@@ -137,10 +138,12 @@ const module = {
   sectionSize: sectionSize,
 
   audio: audio,
+  audioRef: audioRef,
 }
 const navigation = {
   current: current,
   audio: audio,
+  audioRef: audioRef,
   setAudio: setAudio,
 
 }
@@ -152,7 +155,7 @@ const navigation = {
 <Navigation {...navigation}/>
 
 
-<Intro {...loader}/>
+{/* <Intro {...loader}/> */}
 {/* 
       {loading && <Loader {...loader}/>} */}
   
