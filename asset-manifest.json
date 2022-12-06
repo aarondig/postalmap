@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/postalmap/static/css/main.6916502a.css",
-    "main.js": "/postalmap/static/js/main.6a7bee3a.js",
+    "main.js": "/postalmap/static/js/main.e78cd5b1.js",
     "static/media/postcode.glb": "/postalmap/static/media/postcode.304b55474be8588262e4.glb",
     "static/media/pier.glb": "/postalmap/static/media/pier.624f8506161ec6e37521.glb",
     "static/media/hallway.glb": "/postalmap/static/media/hallway.cd997f26856b664a01fc.glb",
@@ -23,10 +23,10 @@
     "static/media/QRCode.svg": "/postalmap/static/media/QRCode.f91ea5e2584c49e5821e979858c3d961.svg",
     "index.html": "/postalmap/index.html",
     "main.6916502a.css.map": "/postalmap/static/css/main.6916502a.css.map",
-    "main.6a7bee3a.js.map": "/postalmap/static/js/main.6a7bee3a.js.map"
+    "main.e78cd5b1.js.map": "/postalmap/static/js/main.e78cd5b1.js.map"
   },
   "entrypoints": [
     "static/css/main.6916502a.css",
-    "static/js/main.6a7bee3a.js"
+    "static/js/main.e78cd5b1.js"
   ]
 }
