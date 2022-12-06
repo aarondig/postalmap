@@ -155,9 +155,9 @@ const navigation = {
 <Navigation {...navigation}/>
 
 
-{/* <Intro {...loader}/> */}
-{/* 
-      {loading && <Loader {...loader}/>} */}
+<Intro {...loader}/>
+
+      {/* {loading && <Loader {...loader}/>} */}
   
       
         <Project {...project}/>
