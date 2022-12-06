@@ -22,8 +22,6 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
   },[]);
 
   function playSound() {
-   
-    sound.current.play();
 
     var source = listener.context.createBufferSource();
     source.connect(listener.context.destination);
@@ -64,7 +62,7 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
           fadeIn();
         }
         if (!isVisible) {
-          fadeOut();
+          clearTimeout(fadeIn);
         }
       }
       if (volume >= 1) {
@@ -85,9 +83,12 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
         sound.current.setRefDistance(Math.abs(volume - 0.01));
         if (!isVisible) {
           fadeOut();
+          
         }
         if (isVisible) {
-          fadeIn();
+          camera.current.remove(listener);
+          sound.current.setRefDistance(0);
+          clearTimeout(fadeOut);
         }
       }
       if (volume <= 0.1) {
@@ -104,23 +105,34 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
 
     if (isVisible) {
       camera.current.add(listener);
+      clearTimeout(fadeOut);
       fadeIn();
-      console.log("isVisble: " + isVisible);
 
     }
     if (!isVisible) {
+      clearTimeout(fadeIn);
       fadeOut();
-      console.log("isVisble: " + isVisible);
+     
     }
    return ()=>{
     clearTimeout(fadeIn);
-    clearTimeout(fadeOut);
+    camera.current.remove(listener);
     }
   }, [isVisible]);
+
+  let vol = sound.current ? sound.current.getRefDistance() : 0;
+  
+  useEffect(() => {
+
+    sound.current && console.log("station: " + sound.current.getRefDistance())
+  }, [vol]);
+
+
 
  
   return (<positionalAudio ref={sound} args={[listener]}/>)
 }
+
 
 const Camera = ({ camera, startValue, scroll, remove,   }) => {
 

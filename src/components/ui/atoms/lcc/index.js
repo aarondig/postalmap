@@ -65,6 +65,7 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
         }
         if (!isVisible) {
           fadeOut();
+          clearTimeout(fadeIn);
         }
       }
       if (volume >= 1) {
@@ -88,6 +89,7 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
         }
         if (isVisible) {
           fadeIn();
+          clearTimeout(fadeOut);
         }
       }
       if (volume <= 0.1) {
@@ -114,7 +116,6 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
     }
    return ()=>{
     clearTimeout(fadeIn);
-    clearTimeout(fadeOut);
     }
   }, [isVisible]);
 
