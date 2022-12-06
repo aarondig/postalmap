@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/postalmap/static/css/main.94a2a890.css",
-    "main.js": "/postalmap/static/js/main.7cf43121.js",
+    "main.css": "/postalmap/static/css/main.6916502a.css",
+    "main.js": "/postalmap/static/js/main.6a7bee3a.js",
     "static/media/postcode.glb": "/postalmap/static/media/postcode.304b55474be8588262e4.glb",
     "static/media/pier.glb": "/postalmap/static/media/pier.624f8506161ec6e37521.glb",
     "static/media/hallway.glb": "/postalmap/static/media/hallway.cd997f26856b664a01fc.glb",
@@ -20,12 +20,13 @@
     "static/media/postalcode.png": "/postalmap/static/media/postalcode.843f9158eec9413dc88c.png",
     "static/media/greenwich.jpg": "/postalmap/static/media/greenwich.f8b4958c7445a65d7d0f.jpg",
     "static/media/uniofgreenwich.jpg": "/postalmap/static/media/uniofgreenwich.5d7e6aa958f5b767ca98.jpg",
+    "static/media/QRCode.svg": "/postalmap/static/media/QRCode.f91ea5e2584c49e5821e979858c3d961.svg",
     "index.html": "/postalmap/index.html",
-    "main.94a2a890.css.map": "/postalmap/static/css/main.94a2a890.css.map",
-    "main.7cf43121.js.map": "/postalmap/static/js/main.7cf43121.js.map"
+    "main.6916502a.css.map": "/postalmap/static/css/main.6916502a.css.map",
+    "main.6a7bee3a.js.map": "/postalmap/static/js/main.6a7bee3a.js.map"
   },
   "entrypoints": [
-    "static/css/main.94a2a890.css",
-    "static/js/main.7cf43121.js"
+    "static/css/main.6916502a.css",
+    "static/js/main.6a7bee3a.js"
   ]
 }
