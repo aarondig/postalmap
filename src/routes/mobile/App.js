@@ -157,7 +157,7 @@ const navigation = {
 
 {/* <Intro {...loader}/> */}
 
-      {/* {loading && <Loader {...loader}/>} */}
+      {loading && <Loader {...loader}/>}
   
       
         <Project {...project}/>
