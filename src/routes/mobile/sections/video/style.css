@@ -1,26 +1,24 @@
 @media only screen and (max-width: 768px) {
 #video {
   position: relative;
-  box-sizing: content-box;
+  height: 80vh;
   width: 100%;
-  background: #050505;
+  /* background: #050505; */
   /* max-height: 100vh; */
-
- display: flex;
-    flex-direction: row;
-    justify-content: center;
-
+transform-style: preserve-3d;
   }
   .video-c {
     position: relative;
     object-fit: cover;
-    height: 80vh;
+    height: 100vh;
     /* width: 76%; */
  
     display: flex;
     flex-direction: row;
     justify-content: center;
     overflow: hidden;
+    transform: translateZ(-1800px) scale(3.25);
+    opacity: 0;
   }
   .video-overlay-c {
     position: absolute;
@@ -40,6 +38,14 @@
     height: 100%;
     background: #050505;
     opacity: 0;
+  }
+
+  .parallax-back {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #050505;
+    transform: translateZ(-1800px) scale(3.25);
   }
   #video .subtitle {
     align-self: center;

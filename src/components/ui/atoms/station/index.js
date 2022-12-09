@@ -172,7 +172,7 @@ function Station({ i, el, current, scroll, sectionSize, audio, audioRef }) {
 // IMPORT MODEL
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
-  // materials.main.map = null;
+  materials.main.map = null;
   materials.main.color = new THREE.Color(0x4F4F51);
   materials.main.transparent = true;
   materials.main.roughness = 1;

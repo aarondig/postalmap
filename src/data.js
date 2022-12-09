@@ -209,7 +209,7 @@ export const data = [
     id: "title",
     title: "Ride the Uber Boat",
     subtitle: "/ 03",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    text: "Jump on board, and enjoy the ride. You will pass by some of London's most iconic monuments, with an incredibly unique view.",
     number: "02",
 
     index: 0,
@@ -233,9 +233,9 @@ export const data = [
   },
   {
     id: "embstation",
-    title: "Walk towards Greenwich Pier",
+    title: "Leave pier, look for Embankment Station",
     subtitle: "/ Walking / South Bank",
-    text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
+    text: "When you disembark from the uber boat, you will need to look for the Embankment underground station. The facade should look as follows.",
     number: "02",
 
     index: 0,
@@ -244,6 +244,89 @@ export const data = [
 
     type: "detail",
   },
+  // {
+  //   id: "slider",
+  //   src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
+
+  //   title: "Statement on something blah blah blah",
+  //   subtitle: "/ Photography",
+  //   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+  //   number: "02",
+
+  //   index: 0,
+
+  //   images: [
+  //     {
+  //       title: "Postal Code SE10-9DD",
+  //       subtitle: "ARCHITECTURE / PHOTO",
+  //       src: postalcodeimg,
+  //     },
+  //     {
+  //       title: "University of Greenwich",
+  //       subtitle: "ARCHITECTURE / PHOTO",
+  //       src: uniofgreenwichimg,
+  //     },
+      
+  //     {
+  //       title: "Greenwich Intersection",
+  //       subtitle: "ENVIRONMENT / PHOTO",
+  //       src: greenwhichimg,
+  //     },
+  //   ],
+
+
+  //   lightMode: "dark",
+  //   type: "slider",
+  // },
+  
+  {
+    id: "station",
+    title: "Welcome to Embankment Station.",
+    subtitle: "/ Embankment Station",
+    number: "02",
+
+    index: 0,
+
+    object: hallway,
+
+    audio: stationaud,
+
+    type: "view",
+  },
+  {
+    id: "stationplatform",
+    title: "Get on the Northern Line Train",
+    subtitle: "/ Embankment / Greenwhich Pier",
+    text: "Head to the platfom and join wait for the next southbound Northern Line Train.",
+    number: "02",
+
+    index: 0,
+
+    object: platform,
+
+    type: "detail",
+  },
+  
+
+
+  // {
+  //   id: "description",
+  //   title: "Statement on something blah blah blah",
+  //   subtitle: "A Visual Medium",
+  //   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+  //   number: "02",
+
+  //   index: 0,
+
+  //   button: {
+  //       text: "Learn More",
+  //       link: "https://www.aarondiggdon.com"
+  //   },
+
+
+  //   lightMode: "light",
+  //   type: "text",
+  // },
   {
     id: "slider",
     src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
@@ -278,103 +361,20 @@ export const data = [
     lightMode: "dark",
     type: "slider",
   },
-  
-  {
-    id: "station",
-    title: "You're almost there. This is your final stop.",
-    subtitle: "/ Embankment Station",
+    {
+    id: "lcc",
+    title: "You've completed your Journey.",
+    subtitle: "/ London College of Communication",
     number: "02",
 
     index: 0,
 
-    object: hallway,
+    object: lcc,
 
-    audio: stationaud,
+    audio: lccaud,
 
     type: "view",
   },
-  {
-    id: "stationplatform",
-    title: "Tap to pay for your Uber Boat ride",
-    subtitle: "/ Uber Boat / Greenwhich Pier",
-    text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
-    number: "02",
-
-    index: 0,
-
-    object: platform,
-
-    type: "detail",
-  },
-  
-
-
-  {
-    id: "description",
-    title: "Statement on something blah blah blah",
-    subtitle: "A Visual Medium",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
-    number: "02",
-
-    index: 0,
-
-    button: {
-        text: "Learn More",
-        link: "https://www.aarondiggdon.com"
-    },
-
-
-    lightMode: "light",
-    type: "text",
-  },
-  {
-    id: "slider",
-    src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
-
-    title: "Statement on something blah blah blah",
-    subtitle: "/ Photography",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
-    number: "02",
-
-    index: 0,
-
-    images: [
-      {
-        title: "Postal Code SE10-9DD",
-        subtitle: "ARCHITECTURE / PHOTO",
-        src: postalcodeimg,
-      },
-      {
-        title: "University of Greenwich",
-        subtitle: "ARCHITECTURE / PHOTO",
-        src: uniofgreenwichimg,
-      },
-      
-      {
-        title: "Greenwich Intersection",
-        subtitle: "ENVIRONMENT / PHOTO",
-        src: greenwhichimg,
-      },
-    ],
-
-
-    lightMode: "light",
-    type: "slider",
-  },
-  //   {
-  //   id: "lcc",
-  //   title: "You're almost there. This is your final stop.",
-  //   subtitle: "/ Embankment Station",
-  //   number: "02",
-
-  //   index: 0,
-
-  //   object: lcc,
-
-  //   audio: lccaud,
-
-  //   type: "view",
-  // },
   // {
   //   id: "description",
   //   title: "Statement on something blah blah blah",

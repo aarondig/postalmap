@@ -21,11 +21,16 @@ function Video({i, el,  section, setCurrent}) {
     opacity: audio ? 0 : 1,
    })
 
+   const opacity = useSpring({
+    opacity: inView ? 1 : 0,
+    // delay: 100,
+    config: { duration: 250 },
+  });
 
   return <InView id="video" ref={section} onChange={setInView} threshold={.6}>
- 
-       
-          <div className="video-c" onClick={()=> setAudio(!audio)}>
+
+       {/* <div className="parallax-back"/> */}
+          <a.div className="video-c" onClick={()=> setAudio(!audio)} style={opacity}>
           <div className="video-overlay-c">
           <a.h6 className="subtitle" style={overlaytext}>Tap to Listen</a.h6>
              
@@ -37,7 +42,7 @@ function Video({i, el,  section, setCurrent}) {
             <video className="video" src={el.src} type="video" autoPlay loop playsInline webkit-playsinline="true" muted={audio ? false : true} height="100%"/>
      
    
-      </div>
+      </a.div>
       
   </InView>
 }
