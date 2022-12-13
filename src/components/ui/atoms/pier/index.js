@@ -32,7 +32,7 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
 
   
   audioRef.current.addEventListener('click', function() {
-    console.log(audio)
+
     if (!audio) {
       if (!sound.current.isPlaying) {
         playSound();
@@ -125,10 +125,10 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
 
   let vol = sound.current ? sound.current.getRefDistance() : 0;
   
-  useEffect(() => {
+  // useEffect(() => {
 
-    sound.current && console.log("station: " + sound.current.getRefDistance())
-  }, [vol]);
+  //   sound.current && console.log("station: " + sound.current.getRefDistance())
+  // }, [vol]);
  
 
 

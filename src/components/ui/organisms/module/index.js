@@ -33,6 +33,7 @@ const scenes = {
 
 const canvas = {
   id: "canvas",
+  className:"module",
 
 };
 

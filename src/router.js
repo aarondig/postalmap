@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, createRef, Suspense } from "react";
 import Web from "./routes/web/App";
 import Mobile from "./routes/mobile/App";
 import Redirect from "./routes/redirect/App";
+import {BrowserRouter as Routes} from "react-router-dom"
 
 function Router() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -19,14 +20,14 @@ function Router() {
   const isMobile = width <= 768;
 
   return (
-   <>
-   {/* <Mobile/> */}
+   <Routes>
       {isMobile ? 
       
       <Mobile/> : <Redirect/>
       
       }
-      </>
+      </Routes>
+      
   );
 }
 

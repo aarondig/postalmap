@@ -1,0 +1,80 @@
+@media only screen and (max-width: 768px) {
+
+#scroller {
+  position: fixed;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 800px;
+    top:0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior-y: none !important;
+    
+  
+  }
+
+  #scroller > div:nth-last-child(1) {
+  /* background: red; */
+   /* padding-bottom: env(safe-area-inset-bottom) !important; */
+   /* padding-bottom: 42px !important; */
+  } 
+
+  .text-b {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: #101010;
+    
+  }
+  .view-b {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    
+  }
+  .image-b {
+    position: relative;
+    height: 200vh;
+    width: 100vw;
+    background: #101010;
+  }
+
+
+.section-wrap {
+  box-sizing: border-box;
+  padding: 50px 10% 50px 10%;
+  will-change: transform;
+}
+.content-box {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+
+}
+.content-wrap {
+  box-sizing: border-box;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.text-c {
+  position: relative;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  white-space: wrap;
+}
+
+/* MEDIA LINE */
+
+  .section-wrap {
+    padding-top: 12vh;
+    padding-bottom: 12vh;
+  }
+}

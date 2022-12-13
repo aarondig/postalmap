@@ -107,12 +107,12 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
     if (isVisible) {
       camera.current.add(listener);
       fadeIn();
-      console.log("isVisble: " + isVisible);
+
 
     }
     if (!isVisible) {
       fadeOut();
-      console.log("isVisble: " + isVisible);
+
     }
    return ()=>{
     clearTimeout(fadeIn);

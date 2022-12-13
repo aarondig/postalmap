@@ -1,11 +1,10 @@
 import React, { useState, useRef, Suspense, useEffect } from "react";
 import "./style.css";
-import { data } from "../../../../data";
 import { a, useSpring } from "react-spring";
 import useOnScreen from "../../../../hooks/useOnScreen";
 import { InView } from "react-intersection-observer";
 
-function Description({
+function Text({
   i,
   el,
   section,
@@ -13,7 +12,10 @@ function Description({
   slow3,
   scrollContainer,
   scroll,
+  data
 }) {
+
+
   const [inView, setInView] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -94,20 +96,19 @@ function Description({
     }
   }, []);
 
-  const description = {
-    id: "description",
+  const text = {
+    id: "text",
     ref: section,
 
     style: lightMode ? { background: "#f4f4f4", } : { background: "#050505", },
 
     onChange: (entry) => !entry && setInView(false),
   };
-
   return (
-    <InView {...description}>
+    <InView {...text}>
     <InView onChange={(entry) => entry && setInView(true)} threshold={.6}>
       
-      {data[i-1].type !== "detail" && <div className="top-spacer" />}
+      {/* {data[i-1] && (data[i-1].type !== "detail" && <div className="top-spacer" />)} */}
       <div className="section-wrap">
         <div className="row">
           <div className="col-3">
@@ -152,10 +153,10 @@ function Description({
           {/* <div className="col-1"></div> */}
         </div>
       </div>
-      {data[i+1].type !== "video" || "slider" && <div className="bottom-spacer" />}
+      {/* {data[i+1] && data[i+1].type !== "video" || "slider" && <div className="bottom-spacer" />} */}
     </InView>
     </InView>
   );
 }
 
-export default Description;
+export default Text;

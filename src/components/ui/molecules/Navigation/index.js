@@ -1,14 +1,30 @@
 import React, { useState, useEffect, useRef } from "react";
 import { a, useSpring } from "react-spring";
 import { Slant as Hamburger } from "hamburger-react";
-import { IoVolumeOffOutline, IoVolumeMediumOutline } from "react-icons/io5";
-import "./style.css";
 
-function Navigation({ audioRef, current, audio, setAudio }) {
+import { IoVolumeOffOutline, IoVolumeMediumOutline } from "react-icons/io5";
+import { a as animated, useSprings } from "react-spring";
+import "./style.css";
+import { data } from "../../../../data";
+
+function Navigation({ audioRef, current, audio, setAudio, visibleSelection }) {
   const [active, toggleActive] = useState(false);
   // const [settle, setSettle] = useState(false);
   
 
+const indicator = useSprings(data.length, data.map((el, i)=>
+i === current ?
+{ 
+  from: {opacity: 0},
+  to: {opacity: 1},
+
+} : { 
+  from: {opacity: 1},
+  to: {opacity: 0},
+
+}))
+
+console.log(current)
   const audioOff = useSpring({
     opacity: audio ? 0 : 1,
   });
@@ -17,11 +33,11 @@ function Navigation({ audioRef, current, audio, setAudio }) {
   });
 
   const opacity = useSpring({
-    opacity: current <= 0 || active ? 1 : 0,
+    opacity: visibleSelection <= 0 || active ? 1 : 0,
   });
 
   const wrapper = useSpring({
-    height: active ? "100vh" : "0vh",
+    transform: active ? "translateY(0vh)" : "translateY(100vh)",
     background: active ? "#050505" : "#fff",
     config: { mass: 1, tension: 280, friction: 60 },
     // onRest: () => setSettle(true)
@@ -64,7 +80,40 @@ function Navigation({ audioRef, current, audio, setAudio }) {
         </div>
       </div>
       <a.div className="nav-active" style={wrapper}>
+        <div className="nav-inner-wrap">
+        <div className="nav-section">
+        <p className="nav-subtitle">
+          Project
+          </p>
+          <div className="nav-link">
+            <h6 className="nav-link-title md">Introduction</h6>
+          </div>
+        </div>
+        <div className="nav-section">
+        <p className="nav-subtitle">
+          Locations
+          </p>
+          {data.map((el, i)=>{
+            return (<div className="nav-link">
+            <h6 className="nav-link-title lg">{el.id}</h6>
+            {/* <a.div className="indicator" style={indicator[i]}></a.div> */}
+          </div>)
+          })}
+          
+        </div>
 
+        <div className="nav-section">
+        <p className="nav-subtitle">
+          More
+          </p>
+          <div className="nav-link">
+            <h6 className="nav-link-title md">About Us</h6>
+          </div>
+          <div className="nav-link">
+            <h6 className="nav-link-title md">Contact</h6>
+          </div>
+        </div>
+        </div>
 
       </a.div>
       {/* <a.div className="nav-back" style={background}/> */}

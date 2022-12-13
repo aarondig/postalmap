@@ -1,0 +1,127 @@
+@media only screen and (max-width: 768px) {
+
+#home {
+    position: fixed;
+  width: 100vw;
+  height: 100vh;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content:end;
+/* background: #fff; */
+
+  }
+  #canvas.home {
+    position: relative;
+    flex: 1 1;
+    background: #050505;
+    /* background: linear-gradient(180deg, #F9F9F9 23.36%, #EBEBEB 100%);  */
+  }
+  
+
+  #home .section-wrap {
+     position: relative;
+    background: #151515;
+    padding-top: 0px;
+    
+  }
+  #home .info-c {
+    padding-top: 60px;
+    height: 20vh;
+    /* opacity: 0; */
+    padding-bottom:20px;
+   
+  }
+ 
+  #home .text-c {
+    position: absolute;
+    box-sizing: border-box;
+    gap: 0px;
+    min-height: 12vh;
+
+    padding-right: 10%;
+    
+    opacity: 0;
+    
+   
+  }
+
+  #home .title {
+    font-size: 24px;
+    color: #fff;
+    /* color: #212121; */
+    font-weight: 400;
+    margin: 0;
+    opacity: 0;
+    overflow: hidden;
+   }
+   #home .text {
+    
+    font-size: 18px;
+    font-weight: 400;
+    max-width: 100%;
+    color: #707070;
+    margin-bottom: 16%;
+    opacity: 0;
+    overflow: hidden;
+    
+  }
+
+  #home .row {
+    max-width: 100%;
+    flex-direction: row;
+    gap: 12vw;
+    padding-bottom: 20px;
+  }
+  
+  #home .index-c {
+    position:relative;
+    
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex: 1 2 0;
+    /* justify-content: space-between; */
+    gap: 12px;
+    align-items: center;
+  
+  }
+  
+  #home .index {
+    position:relative;
+    height: 100%;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #home .index-line {
+    background: white;
+    width: 100%;
+    height: 2px;
+  }
+  
+  .order-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1 1 auto;
+max-width: 40%;
+
+  }
+  .order-btn {
+    font-size: 18px;
+    color: white;
+    
+   
+  }
+  .order-btn.next{
+    opacity: .4;
+    padding-left: 18px;
+  }
+  
+  .order-btn.prev{
+    opacity: 1;
+    padding-right: 18px;
+  }
+}

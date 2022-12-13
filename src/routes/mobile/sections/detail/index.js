@@ -1,6 +1,5 @@
 import React, { useState, useRef, Suspense, useEffect } from "react";
 import "./style.css";
-import { data } from "../../../../data";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import {
@@ -24,7 +23,10 @@ function Detail({
   setCurrent,
   scrollContainer,
   scroll,
+  data
 }) {
+
+
   const [isVisible, setIsVisible] = useState(false);
   const [inView, setInView] = useState(false);
 

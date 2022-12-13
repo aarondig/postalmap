@@ -7,54 +7,62 @@ import React, {
   useLayoutEffect,
 } from "react";
 import "./style.css";
-import Description from "../../sections/text";
-import { data } from "../../../../data.js";
-import View from "../../sections/view";
-import Video from "../../sections/video";
-import Detail from "../../sections/detail";
-import Module from "../../../../components/ui/organisms/module";
-import Slider from "../../sections/slider";
-import Title from "../../sections/title";
+import Text from "../../../../routes/mobile/sections/text";
+import { data } from "../../../../data";
+import View from "../../../../routes/mobile/sections/view";
+import Video from "../../../../routes/mobile/sections/video";
+import Detail from "../../../../routes/mobile/sections/detail";
+import Module from "../module";
+import Slider from "../../../../routes/mobile/sections/slider";
+import Title from "../../../../routes/mobile/sections/title";
 
-function Project({
+function Scroller({
+  current,
   scroll,
   onScroll,
   scrollContainer,
+  
+  setIsInView,
+  visibleSection,
+  setVisibleSection,
+
   sections,
   setSection,
-  setIsInView,
   sectionSize,
-  current,
-  setCurrent,
+  setSectionSize,
+  setProjectHeight,
+
 }) {
-  // const [sections, setSection] = useState([]);
-  // const [sectionSize, setSectionSize] = useState([]);
+  
 
-  // const [projectHeight, setProjectHeight] = useState();
 
- 
-  // useEffect(() => {
-  //   //Setting Grouped Refs
-  //   setSection((sections) =>
-  //     Array(data.length)
-  //       .fill()
-  //       .map((el, i) => sections[i] || createRef())
-  //   );
-  // }, []);
 
-  // // Getting size of each section
-  // useEffect(() => {
-  //   if (sections.length === data.length) {
-  //     let height = 0;
-  //     sections.map((el, i) => {
-  //       let sectsize = el.current.node.getBoundingClientRect().height;
-  //       setSectionSize((sectionSize) => [...sectionSize, sectsize]);
 
-  //       height += sectsize.height;
-  //       setProjectHeight(height);
-  //     });
-  //   }
-  // }, [sections]);
+// // Setting Sections for Project page
+
+  useEffect(() => {
+    //Setting Grouped Refs
+    setSection((sections) =>
+      Array(data[current].sections.length)
+        .fill()
+        .map((el, i) => sections[i] || createRef())
+    );
+  }, []);
+
+//   // Getting size of each section
+  useEffect(() => {
+    if (sections.length === data.length) {
+      
+      let height = 0;
+      sections.map((el, i) => {
+        let sectsize = el.current.node.getBoundingClientRect().height;
+        setSectionSize((sectionSize) => [...sectionSize, sectsize]);
+
+        height += sectsize.height;
+        setProjectHeight(height);
+      });
+    }
+  }, [sections]);
 
   //START UP
 
@@ -69,9 +77,9 @@ function Project({
     scroll: scroll,
     scrollContainer: scrollContainer,
 
-    current: current,
+    current: visibleSection,
     setIsInView: setIsInView,
-    setCurrent: setCurrent,
+    setCurrent: setVisibleSection,
     sectionSize: sectionSize,
   };
 
@@ -79,34 +87,28 @@ function Project({
     scroll: scroll,
     scrollContainer: scrollContainer,
 
-    setCurrent: setCurrent,
+    setCurrent: setVisibleSection,
+
+    data: data[current].sections,
   };
   const detail = {
     scroll: scroll,
     scrollContainer: scrollContainer,
 
-    setCurrent: setCurrent,
+    setCurrent: setVisibleSection,
     sectionSize: sectionSize,
+    data: data[current].sections,
   };
 
   const image = {
     scroll: scroll,
     scrollContainer: scrollContainer,
 
-    setCurrent: setCurrent,
+    setCurrent: setVisibleSection,
   };
-  // const module = {
-  //   scroll: scroll,
-  //   // direct: direct,
-  //   sectionSize: sectionSize,
-  //   current: current,
-  //   // audio: audio,
-  //   // isInView: isInView,
-  // }
-
   return (
-    <div id="project" ref={scrollContainer} onScroll={onScroll}>
-      {data.map((el, i) => {
+    <div id="scroller" ref={scrollContainer} onScroll={onScroll}>
+      {data[current].sections.map((el, i) => {
         switch (el.type) {
           default: {
             return <div className="space" key={i} />;
@@ -124,7 +126,7 @@ function Project({
           }
           case "text": {
             return (
-              <Description
+              <Text
                 key={i}
                 i={i}
                 el={el}
@@ -155,9 +157,8 @@ function Project({
           }
         }
       })}
-      {/* <Module {...module}/> */}
     </div>
   );
 }
 
-export default Project;
+export default Scroller;

@@ -1,5 +1,5 @@
 @media only screen and (max-width: 768px) {
-#description {
+#text {
   position: relative;
   box-sizing: border-box;
   /* width: 100vw;
@@ -11,16 +11,16 @@
   /* padding-top: 80px; */
   }
  
-  #description .section-wrap {
+  #text .section-wrap {
     z-index: 1;
   }
   
   
-  #description .text-c {
+  #text .text-c {
     /* opacity: 0; */
  
   }
-  #description .title {
+  #text .title {
     
     margin: 0;
     /* font-size: 3.8vw; */
@@ -32,7 +32,7 @@
   }
 
 
-  #description .subtitle {
+  #text .subtitle {
     color: #959595;
     font-size: 1.6vw;
     margin: 0;
@@ -41,7 +41,7 @@
 
   }
 
-  #description .text {
+  #text .text {
 
     margin: 0;
     font-size: 1.6vw;
@@ -52,7 +52,7 @@
   }
 
 
-  #description .button-c {
+  #text .button-c {
 
     width: 100%;
     box-sizing: border-box;
@@ -60,17 +60,17 @@
     flex-direction: row;
 
   }
-  #description a {
+  #text a {
     flex: 1 0;
 
     
       }
-  #description .button-text {
+  #text .button-text {
 
     font-size: 18px;
 
   }
-  #description .button-visual {
+  #text .button-visual {
     height: .8px;
     flex: 1 0;
     background: #050505;
@@ -79,20 +79,20 @@
   }
   
 /* MEDIA LINE */
-    #description .title {
+    #text .title {
       font-size: 32px;
       margin-bottom: 2vh;
      }
-   #description .subtitle {
+   #text .subtitle {
     font-size: 18px;
    }
-   #description .text {
+   #text .text {
     
     font-size: 18px;
     max-width: 100%;
     
   }
-  #description .col-1 {
+  #text .col-1 {
     
     display: none;
     

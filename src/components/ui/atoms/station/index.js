@@ -23,8 +23,6 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
   },[]);
 
   function playSound() {
-   
-    sound.current.play();
 
     var source = listener.context.createBufferSource();
     source.connect(listener.context.destination);
@@ -130,6 +128,8 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
     sound.current && console.log("station: " + sound.current.getRefDistance())
   }, [vol]);
 
+
+
  
   return (<positionalAudio ref={sound} args={[listener]}/>)
 }
@@ -172,7 +172,7 @@ function Station({ i, el, current, scroll, sectionSize, audio, audioRef }) {
 // IMPORT MODEL
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
-  materials.main.map = null;
+  // materials.main.map = null;
   materials.main.color = new THREE.Color(0x4F4F51);
   materials.main.transparent = true;
   materials.main.roughness = 1;
@@ -242,10 +242,6 @@ useEffect(()=>{
 
 
 //SCROLLING ANIMATIONS
-
-
-
-  
 
   const camprops = {
     camera: camera,

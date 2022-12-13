@@ -12,6 +12,9 @@ z-index: -1;
 /* background: linear-gradient(160deg, #050505 20%, #404040); */
 /* background: linear-gradient(160deg, #050505 40%, #202020); */
 /* background: #050505; */
-background: linear-gradient(180deg, #000 0%, #303133 100%);
+
+  }
+  #canvas.module {
+    background: linear-gradient(180deg, #000 0%, #303133 100%);
   }
   
