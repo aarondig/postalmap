@@ -146,10 +146,9 @@ function App() {
       <Routes>
       <Route path={`/`} element={<Loader {...loader}/>} />
       {/* <Route path={`${basename}`} element={<Intro {...loader}/>} /> */}
-      <Route path={`${basename}/home`} element={<Home {...home} />} />
-        <Route path={`${basename}`} element={<Home {...home} />}>
-        </Route>
-        {data.map((el, i) => {
+      {/* <Route path={`${basename}/home`} element={<Home {...home} />} /> */}
+
+        {/* {data.map((el, i) => {
           return (
             <Route
               path={`${basename}/home/${data[i].id}`}
@@ -157,9 +156,19 @@ function App() {
               key={i}
             />
           );
-        })}
+        })} */}
+        <Route path={`${basename}`} element={<Home {...home} />}>
+        </Route>
         
-
+        {data.map((el, i) => {
+          return (
+            <Route
+              path={`${basename}/${data[i].id}`}
+              element={<Page {...page} />}
+              key={i}
+            />
+          );
+        })}
       
 
       </Routes>
