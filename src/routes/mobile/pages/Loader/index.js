@@ -1,6 +1,5 @@
 import React, { useState, useRef, Suspense, useEffect, createRef } from "react";
 import "./style.css";
-import { useProgress } from "@react-three/drei";
 import {
   a,
   useSpring,
@@ -26,7 +25,7 @@ function Loader({ loading, setLoading, handleStart }) {
     onRest: () => setLoading(false),
   });
  const handleUnmount = () => {
-  console.log("Click")
+ 
   if (countDone) {
     setUnmount(true)
     // setTimeout(() => setUnmount(), 4000);
@@ -164,8 +163,13 @@ function Loader({ loading, setLoading, handleStart }) {
 
 let mode = "dark";
 
+
+
+
+
   return (
     <a.div id="loader" style={fadeOut} onClick={()=> handleUnmount()}>
+      
         <a.div className="svg-c" style={fadeIn[0]}>
           <svg className="svg-path" height={radius * 2} width={radius * 2}>
             <circle

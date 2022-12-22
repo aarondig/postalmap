@@ -24,7 +24,7 @@ i === current ?
 
 }))
 
-console.log(current)
+
   const audioOff = useSpring({
     opacity: audio ? 0 : 1,
   });
@@ -94,7 +94,7 @@ console.log(current)
           Locations
           </p>
           {data.map((el, i)=>{
-            return (<div className="nav-link">
+            return (<div className="nav-link" key={i}>
             <h6 className="nav-link-title lg">{el.id}</h6>
             {/* <a.div className="indicator" style={indicator[i]}></a.div> */}
           </div>)

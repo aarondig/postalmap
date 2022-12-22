@@ -14,7 +14,7 @@ function Cover({ startIntro, setStartIntro }) {
   const [fadeOut, setFadeOut] = useState(false);
   //Animated Letters
   const wordCount = ["welcome", "to", "canis"];
-
+ 
   const cover = useSprings(
     wordCount.length,
     wordCount.map((el, i) =>
@@ -36,6 +36,7 @@ function Cover({ startIntro, setStartIntro }) {
               // friction: 18
             },
             onRest: () => {
+            
               setFadeOut(true);
             },
           }
@@ -65,7 +66,6 @@ function Cover({ startIntro, setStartIntro }) {
           }
     )
   );
-
   return (
     <div id="cover">
       <div className="cover-title">
@@ -86,7 +86,8 @@ function Cover({ startIntro, setStartIntro }) {
 function Intro({ loading, setLoading, handleStart }) {
   const { ref, inView, entry } = useInView();
 
-  const [startIntro, setStartIntro] = useState(false);
+  // const [startIntro, setStartIntro] = useState(false);
+    const [startIntro, setStartIntro] = useState(false);
 
   const [counter, setCounter] = useState(0);
   const [countDone, setCountDone] = useState(false);

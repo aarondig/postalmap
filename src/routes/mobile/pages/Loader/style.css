@@ -9,8 +9,12 @@
     justify-content: center;
     align-items: center;
 /* background: #fff; */
-background: #050505;
+/* background: #050505; */
   z-index: 3;
+  }
+  #loader.canvas {
+    position: fixed;
+    z-index: 0;
   }
 
   .svg-c {
@@ -135,7 +139,7 @@ background: #050505;
  /* MEDIA LINE */
 
 .letter {
-  font-size: 112px;
+  font-size: 64px;
 }
   
 }

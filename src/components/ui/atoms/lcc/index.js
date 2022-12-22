@@ -152,7 +152,7 @@ function Lcc({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const camera = useRef();
 
 // IMPORT MODEL
-  const { nodes, materials } = useLoader(GLTFLoader, el.object);
+  const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
 
 
 

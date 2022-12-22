@@ -29,7 +29,7 @@ function Platform({ i, el, current, scroll, starterValue, audio, audioRef }) {
   const camera = useRef();
 
 // IMPORT MODEL
-  const { nodes, materials } = useLoader(GLTFLoader, el.object);
+  const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
 
   materials.main.map = null;
   materials.main.color = new THREE.Color(0x4F4F51);

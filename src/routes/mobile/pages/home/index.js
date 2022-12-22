@@ -3,6 +3,7 @@ import "./style.css";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as THREE from "three";
+import { useControls } from "leva";
 
 // import {
 //   a,
@@ -15,14 +16,16 @@ import { a, easings } from "react-spring";
 import { useSpring, useSprings, useSpringRef, useChain, a as Animated } from "@react-spring/three";
 import { data } from "../../../../data";
 import { OrbitControls, Plane, Float } from "@react-three/drei";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Particles } from "../../../../components/ui/molecules/Particles";
+import { Vector3 } from "three";
 
-function Model({ model, el, i, current }) {
+function Model({ orbit, model, el, i, current }) {
   const group = useRef();
-const [remove, setRemove] = useState(false);
-
-
+  const [remove, setRemove] = useState(false);
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
+
+
 
   const { opacity } = useSpring({
     opacity: current === i ? 1 : 0,
@@ -43,17 +46,27 @@ const [remove, setRemove] = useState(false);
     materials[""].opacity = opacity;
   }
 
-  // useEffect(()=> {
-
-  // },[current])
   if (group.current) {
     group.current.visible = i === current ? true : (remove && false);
   }
 
+ 
+
+  useFrame(()=>{
+  if(i=== current){
+    if (orbit.current !== undefined) {
+      orbit.current.target.lerp(nodes.mesh.geometry.boundingSphere.center, .01)
+      orbit.current.update();
+    }
+  }
+
+  })
+  // console.log(onLoad)
+
   return (
-    <group ref={group}>
+    <group ref={group} position={[0,el.posiY,0]}scale={el.scale}>
       <Float
-  speed={.8} // Animation speed, defaults to 1
+  speed={1.2} // Animation speed, defaults to 1
   rotationIntensity={.8} // XYZ rotation intensity, defaults to 1
   floatIntensity={.4} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
   floatingRange={[0, 1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
@@ -70,7 +83,7 @@ const [remove, setRemove] = useState(false);
         //   nodes.mesh !== undefined ? [0,0,0] : [0,1,0]
         // }
         // position={[0, -1, -40]}
-        scale={0.2}
+        
       >
         <Animated.meshStandardMaterial
           {...(materials.main !== undefined ? materials.main : materials[""])}
@@ -81,26 +94,57 @@ const [remove, setRemove] = useState(false);
   );
 }
 
-function Scene({ models, current }) {
-  const model = {
-    current: current,
-  };
 
+
+
+function Scene({ models, current, onLoad }) {
+  const orbit = useRef();
+  const group = useRef()
+
+  const model = {
+    orbit: orbit,
+    current: current, 
+  };
+  
+
+  useEffect(()=>{
+    if (orbit.current !== undefined) {
+    orbit.current.reset();
+    }
+  },[current])
   let count = 0;
+
+ 
+// const zoom = useSpring({
+//   from: {opacity: 0, scale: 0},
+//   to: {opacity: 1, scale: 1}
+// });
+const {scale} = useSpring({
+  scale: onLoad ? 1 : 0,
+  delay: 200,
+  config: {
+    easing: easings.easeInOutExpo,
+    duration: 1200
+  }
+
+ 
+});
+
 
   return (
     <div id="canvas" className="home">
       <Canvas
-        camera={{ position: [0, 1.5, 7], fov: 70 }}
+        camera={{ position: [0, 1.8, 7], fov: 70 }}
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
       >
         {/* <fog attach="fog" args={["white", 0, 15]} /> */}
         <fog attach="fog" args={["black", 0,20]} />
-        <pointLight position={[0, 5, 4]} intensity={0.2} 
+        <pointLight position={[0, 5, 7]} intensity={0.2} 
    />
         {/* <pointLight position={[0, -30, -10]} intensity={0.1}/> */}
         <ambientLight intensity={0.1} />
         <directionalLight position={[0, 1, 0]} intensity={0.8}/>
+        <Animated.group ref={group} scale={scale}>
         {data.map((el, i) => {
           if (el.type === "view") {
             return (
@@ -108,7 +152,9 @@ function Scene({ models, current }) {
             );
           }
         })}
-        <OrbitControls />
+        </Animated.group>
+       
+        <OrbitControls ref={orbit} />
       </Canvas>
     </div>
   );
@@ -116,6 +162,7 @@ function Scene({ models, current }) {
 
 function Home({current, setCurrent, basename}) {
 //Startup Function
+  const [onLoad,setOnLoad]=useState(false)
   let modelcount = [];
   const [models, setModels] = useState([]);
 
@@ -135,6 +182,9 @@ function Home({current, setCurrent, basename}) {
         .fill()
         .map((el, i) => models[i] || createRef())
     );
+
+
+    setOnLoad(true)
   }, []);
 
 //Selecting Page
@@ -156,7 +206,7 @@ function Home({current, setCurrent, basename}) {
   };
 
   // Navigating to Page
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleEnter = () => {
    navigate(`${data[current].id}`);
   };
@@ -172,7 +222,6 @@ function Home({current, setCurrent, basename}) {
        tension: 120, friction: 14 ,
       easing: easings.easeInBounce
   },
-
   });
   const line1 = useSpring({
     from: { opacity: 0, transform: "translateY(20px)" },
@@ -186,7 +235,6 @@ function Home({current, setCurrent, basename}) {
 
 
   });
-
   const line2 = useSpring({
     from: {
       opacity: 0,
@@ -255,13 +303,14 @@ const indexSprings = useSprings(
   const scene = {
     models: models,
     current: current,
+    onLoad: onLoad,
   };
 
   let count = -1;
   return (
     <div id="home">
+      {/* {<Outlet/>} */}
       <a.div className="section-wrap" style={slideup}>
-        
           <div className="info-c">
         {data.map((el, i) => {
               if (el.type === "view") {

@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, createRef } from "react";
+import { useRef, useState, useEffect, createRef, Suspense } from "react";
 import "./App.css";
 import Wrapper from "../../components/ui/atoms/Wrapper";
 import Module from "../../components/ui/organisms/module";
@@ -6,6 +6,7 @@ import Project from "./pages/project";
 import Loader from "./pages/Loader";
 import Navigation from "../../components/ui/molecules/Navigation";
 import Intro from "./pages/intro";
+import TestCanvas from "./pages/testcanvas";
 
 import {
   Routes,
@@ -13,15 +14,17 @@ import {
   useLocation,
   useNavigate,
   useMatch,
+  
 } from "react-router-dom";
 
 import { data } from "../../data";
 import Home from "./pages/home";
 import Page from "./pages/page";
+import Startup from "./pages/startup";
 
 function App() {
   const [current, setCurrent] = useState(0);
-
+  
   // Displays which section is visible (USED TO BE Current but tells which section is currently visible)
   const [visibleSection, setVisibleSection] = useState([]);
 
@@ -48,15 +51,24 @@ function App() {
     return;
   }, []);
 
+  
+
+
   // // Startup Function
   // // const [projectHeight, setProjectHeight] = useState(0)
-  // const [loading, setLoading] = useState(true);
 
-  // const loader = {
-  // loading: loading,
-  // setLoading: setLoading,
-  // // handleStart: handleStart,
-  // }
+  const [started, setStarted] = useState(false);
+  useEffect(()=>{
+  setStarted(true);
+  },[])
+  const [pointLoad, setPointLoad] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const loader = {
+  loading: loading,
+  setLoading: setLoading,
+  // handleStart: handleStart,
+  }
   // const wrapper = {
   //   // scrollContainer: scrollContainer,
   //   // setScroll: setScroll,
@@ -118,30 +130,47 @@ function App() {
     audioRef: audioRef,
   };
 
+  const points = {
+    started: started,
+    pointLoad: pointLoad,
+    setPointLoad: setPointLoad,
+  }
+
   return (
     <div className="App">
       {/* <Wrapper {...wrapper}> */}
       <Navigation {...navigation} />
-
+    
       {/* <Intro {...loader}/> */}
 
       <Routes>
-        <Route path={`/`} element={<Home {...home} />} />
-        <Route path={`${basename}`} element={<Home {...home} />} />
+      <Route path={`/`} element={<Loader {...loader}/>} />
+      {/* <Route path={`${basename}`} element={<Intro {...loader}/>} /> */}
+      <Route path={`${basename}/home`} element={<Home {...home} />} />
+        <Route path={`${basename}`} element={<Home {...home} />}>
+        </Route>
         {data.map((el, i) => {
           return (
             <Route
-              path={`${basename}/${data[i].id}`}
+              path={`${basename}/home/${data[i].id}`}
               element={<Page {...page} />}
               key={i}
             />
           );
         })}
+        
 
-        {/* {loading && <Loader {...loader}/>} */}
+      
+
+      </Routes>
+      
+      {/* {started && 
+      <TestCanvas {...points}/>
+      }
+       */}
+      {/* {loading && <Loader {...loader}/>} */}
 
         {/* <Project {...project}/> */}
-      </Routes>
 
       {/* <Module {...module}/> */}
 

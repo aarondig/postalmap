@@ -1,13 +1,25 @@
 import postcode from "../src/assets/scans/postcode.glb";
-import platform from "../src/assets/scans/platform.glb";
+import tunnel from "../src/assets/scans/tunnel.glb";
 import pier from "../src/assets/scans/pier.glb";
 import lcc from "../src/assets/scans/lcc.glb";
 
 import hallway from "../src/assets/scans/hallway.glb";
 import cannon from "../src/assets/scans/cannon.glb";
-import pierpay from "../src/assets/scans/pierpay.glb";
+import pccar from "../src/assets/scans/pccar.glb";
+import lcstudent from "../src/assets/scans/lcstudent.glb";
+import lcstudents from "../src/assets/scans/lcstudents.glb";
+// import pierpay from "../src/assets/scans/pierpay.glb";
+import pierpay from "../src/assets/scans/gppay.glb";
+import gpstudents from "../src/assets/scans/gpstudents.glb";
 import train from "../src/assets/scans/train.glb";
-import embstation from "../src/assets/scans/embstation.glb";
+
+import trainseats from "../src/assets/scans/train.glb";
+
+import embpier from "../src/assets/scans/embpier.glb";
+import embfront from "../src/assets/scans/embfront.glb";
+import embplatform from "../src/assets/scans/embplatform.glb";
+
+
 
 // AUDIO
 import sidewalkaud from "../src/assets/audio/sidewalk1.mp4";
@@ -29,21 +41,23 @@ import greenwhichimg from "./assets/images/greenwhich/greenwich.jpg"
 export const data = [
   {
     id: "postcode",
-    title: "SE109DD",
+    title: "Postal Code",
     subtitle: "/ Postal Code - SE10-9DD",
-    text: "This is where we start our Journey. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    text: "Situated on the southern bank of the River Thames, its architecture is remenicient of an older, grittier, Greenwhich.",
     number: "01",
 
     index: 0,
 
-    object: postcode,
+    object: pccar,
+    scale: 1.4,
+    posiY: -.8,
     audio: sidewalkaud,
 
     sections: [  {
       id: "postcode",
-      title: "SE109DD",
+      title: "Postcode: SE10-9DD",
       subtitle: "/ Postal Code - SE10-9DD",
-      text: "This is where we start our Journey. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+      text: "Situated on the southern bank of the River Thames, its architecture is remenicient of an older, grittier, Greenwhich.",
       number: "01",
   
       index: 0,
@@ -145,20 +159,22 @@ export const data = [
     id: "pier",
     title: "Greenwich Pier",
     subtitle: "/ Greenwich Pier",
-    text: "Join the que for west-bound Uber Boat. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    text: "Located next to Greenwich Unversity, indulge in this immersive environment while you que for the Uber Boat.",
     number: "02",
 
     index: 0,
 
-    object: pier,
+    object: cannon,
+    scale: 2.2,
+    posiY: -1.8,
     audio: pieraud,
 
 
     sections: [{
-      id: "pier",
+    id: "pier",
     title: "Greenwich Pier",
     subtitle: "/ Greenwich Pier",
-    text: "Join the que for west-bound Uber Boat. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    text: "Located next to Greenwich Unversity, indulge in this immersive environment while you que for the Uber Boat.",
     number: "02",
 
     index: 0,
@@ -166,7 +182,7 @@ export const data = [
     object: pier,
     audio: pieraud,
   
-      type: "view",
+    type: "view",
     },{
       id: "pierpay",
       title: "Tap to pay for your Uber Boat ride",
@@ -215,19 +231,21 @@ export const data = [
     id: "station",
     title: "Embankment Station",
     subtitle: "/ Embankment Station",
-    text: "Welcome to Embankment Station. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    text: "Navigate through the hustle and bustle of this transit hub and look for the Northern Line.",
     number: "02",
 
     index: 0,
 
-    object: hallway,
+    object: train,
+    scale: .6,
+    posiY: 0,
     audio: stationaud,
 
     sections: [{
       id: "station",
       title: "Embankment Station",
       subtitle: "/ Embankment Station",
-      text: "Welcome to Embankment Station. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+      text: "Navigate through the hustle and bustle of this transit hub and look for the Northern Line.",
       number: "02",
   
       index: 0,
@@ -245,7 +263,7 @@ export const data = [
   
       index: 0,
   
-      object: platform,
+      object: tunnel,
   
       type: "detail",
     },{
@@ -285,24 +303,26 @@ export const data = [
 
     type: "view",
   },
+
     {
     id: "lcc",
     title: "London College of Communication",
     subtitle: "/ London College of Communication",
-    text: "You've completed your Journey. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+    text: "Your destination is the epicenter of creative student culture in Elephant and Castle.",
     number: "02",
 
     index: 0,
 
-    object: lcc,
-
+    object: lcstudent,
+    scale: 3.1,
+    posiY: -3.2,
     audio: lccaud,
 
     sections: [{
       id: "lcc",
       title: "London College of Communication",
       subtitle: "/ London College of Communication",
-      text: "You've completed your Journey. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+      text: "Your destination is the epicenter of creative student culture in Elephant and Castle.",
       number: "02",
   
       index: 0,
