@@ -5,7 +5,8 @@
 }
 
 body, html {
-min-height: -webkit-fill-available;
+ min-height: -webkit-fill-available;
+ padding-bottom: env(safe-area-inset-bottom);
  background-color: #050505;
  overflow: hidden;
  overscroll-behavior-y: none !important;

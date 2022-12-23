@@ -16,7 +16,7 @@ function Loader({ loaded, setLoaded }) {
   const strokeDashoffset = circumference - (amount / 100) * circumference;
   useEffect(() => {
     if (progress === 100) {
-      setLoaded(true);
+      setLoaded && setLoaded(true);
     }
   }, [progress]);
 

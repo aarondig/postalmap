@@ -238,7 +238,7 @@ export const data = [
 
     object: train,
     scale: .6,
-    posiY: 0,
+    posiY: .2,
     audio: stationaud,
 
     sections: [{

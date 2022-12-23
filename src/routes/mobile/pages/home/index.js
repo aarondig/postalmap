@@ -41,16 +41,19 @@ function Model({ orbit, model, el, i, current }) {
     opacity: current === i ? 1 : 0,
     onRest: () => current !== i && setRemove(true),
   });
+  materials.main.map = null;
+  materials.main.color = new THREE.Color(0x404040);
   useEffect(() => {
+   
     if (materials.main !== undefined) {
-      // materials.main.map = null;
+      materials.main.map = null;
       // materials.main.color = new THREE.Color(0xdadada);
-      materials.main.color = new THREE.Color(0xeeeeee);
-      // materials.main.color = new THREE.Color(0x404040);
+      // materials.main.color = new THREE.Color(0xeeeeee);
+      materials.main.color = new THREE.Color(0x404040);
       // materials.main.color = new THREE.Color(0x909090);
       materials.main.transparent = true;
       materials.main.opacity = opacity;
-      materials.main.visible = false;
+      // materials.main.visible = false;
       
     }
     if (materials[""] !== undefined) {
@@ -76,10 +79,10 @@ function Model({ orbit, model, el, i, current }) {
         orbit.current.update();
       }
     } 
-    if (i !== current) {
-      state.performance.regress();
+    // if (i !== current) {
+    //   state.performance.regress();
       
-    }
+    // }
   });
   useEffect(() => {
 
@@ -106,6 +109,7 @@ function Model({ orbit, model, el, i, current }) {
         floatIntensity={0.4} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
         floatingRange={[0, 1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
       >
+        <Suspense key={i} fallback={<Loader />}>
         <mesh
           ref={model}
           geometry={
@@ -118,6 +122,7 @@ function Model({ orbit, model, el, i, current }) {
             {...(materials.main !== undefined ? materials.main : materials[""])}
           />
         </mesh>
+        </Suspense>
       </Float>
     </group>
   );
@@ -149,20 +154,18 @@ function Scene({ models, current, loaded, setLoaded }) {
   return (
     <div id="canvas" className="home">
       <Canvas
-      camera={{ position: [0, 1.8, 6.4], fov: 25 }}
+      // camera={{ position: [0, 1.8, 6.4], fov: 25 }}
       
-        // camera={{ position: [0, 1.8, 7], fov: 25 }}
-        gl={{ antialias: false }}
+        camera={{ position: [0, 1.8, 7], fov: 50 }}
+        gl={{ antialias: true }}
       
         // flat={true}
-        dpr={[.01, 1]}
+        // dpr={[.1, 1]}
       >
-        {/* <fog attach="fog" args={["white", 0, 15]} /> */}
         <fog attach="fog" args={["black", 0, 20]} />
-        <pointLight position={[0, 5, 7]} intensity={0.2} />
-        {/* <pointLight position={[0, -30, -10]} intensity={0.1}/> */}
-        <ambientLight intensity={0.1} />
-        <directionalLight position={[0, 1, 0]} intensity={0.8} />
+        <pointLight position={[0, 1, 4]} intensity={0.2} />
+   
+        <directionalLight position={[0, .2, 0]} intensity={1.2} />
         <Animated.group ref={group} scale={scale}>
           {data.map((el, i) => {
             if (el.type === "view") {
@@ -174,15 +177,16 @@ function Scene({ models, current, loaded, setLoaded }) {
                     model={models[i]}
                     {...model}
                   />
+                  
                 </Suspense>
               );
             }
           })}
         </Animated.group>
 
-        <OrbitControls ref={orbit} />
-        <AdaptiveDpr pixelated />
-        <Preload />
+        <OrbitControls ref={orbit} autoRotate autoRotateSpeed={.4}/>
+        <AdaptiveDpr pixelated/>
+        <Preload all/>
       </Canvas>
     </div>
   );

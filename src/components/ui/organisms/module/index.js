@@ -50,7 +50,9 @@ const canvas = {
       height={1}/>
 
         <fog attach="fog" args={['#17171b', 40, 80]} />
+        <Suspense fallback={<Loader/>}>
    <Scenes {...scenes}/>
+   </Suspense>
    <Preload all/>
       </Canvas>
       </div>

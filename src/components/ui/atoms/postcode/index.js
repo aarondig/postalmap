@@ -134,7 +134,7 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
 }
 
 
-const Camera = ({ camera, startValue, scroll, remove,   }) => {
+const Camera = ({ camera, isVisible, startValue, scroll, remove,   }) => {
 
   const {height} = useWindowSize();
 // Camera animations
@@ -157,7 +157,7 @@ if (!remove) {
   return (
     <PerspectiveCamera
       ref={camera}
-      makeDefault={!remove}
+      makeDefault={isVisible}
     ></PerspectiveCamera>
   );
 };

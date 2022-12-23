@@ -123,7 +123,7 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
   return (<positionalAudio ref={sound} args={[listener]}/>)
 }
 
-const Camera = ({camera, scroll, remove, startValue}) => {
+const Camera = ({camera, isVisible, scroll, remove, startValue}) => {
 
 
   // Camera animations
@@ -139,7 +139,7 @@ const Camera = ({camera, scroll, remove, startValue}) => {
   });
 const cameraprops = {
   ref: camera,
-  makeDefault: !remove,
+  makeDefault: isVisible,
 }
 
   return <PerspectiveCamera {...cameraprops}/>;

@@ -54,7 +54,7 @@ function Scenes({ current, scroll, isInView, sectionSize, audio, audioRef }) {
             }
             case "postcode": {
              
-              return <Postcode key={i} el={el} i={i} {...sceneprops}/>;
+              return <Postcode key={i} el={el} i={i} {...sceneprops}/>
             }
             case "station": {
               

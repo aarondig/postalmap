@@ -157,7 +157,7 @@ const {height} = useWindowSize();
   });
 const cameraProps = {
   ref: camera,
-  makeDefault: !remove,
+  makeDefault: isVisible,
 }
 
   return <PerspectiveCamera {...cameraProps}/>;
@@ -172,10 +172,6 @@ function Station({ i, el, current, scroll, sectionSize, audio, audioRef }) {
 // IMPORT MODEL
   const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
 
-  // materials.main.map = null;
-  materials.main.color = new THREE.Color(0x4F4F51);
-  materials.main.transparent = true;
-  materials.main.roughness = 1;
 
 // Checks if the scene is Visible
 const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
@@ -188,9 +184,20 @@ const [remove, setRemove] = useState(true);
   if (group.current) {
     group.current.visible = remove ? false : true;
   }
- 
   const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
+  
+useEffect(()=>{
+   // materials.main.map = null;
+  materials.main.color = new THREE.Color(0x4F4F51);
+  materials.main.transparent = true;
   materials.main.opacity = opacity;
+},[])
+
+ 
+
+ 
+  
+ 
 
 // STARTUP
 
@@ -204,41 +211,13 @@ useEffect(() => {
 }, [current]);
 
 
-// let texture = materials.main.map
-// WebGLRenderer.initTexture = function ( texture ) {
-
-//   if ( texture.isCubeTexture ) {
-
-//     textures.setTextureCube( texture, 0 );
-
-//   } else if ( texture.isData3DTexture ) {
-
-//     textures.setTexture3D( texture, 0 );
-
-//   } else if ( texture.isDataArrayTexture || texture.isCompressedArrayTexture ) {
-
-//     textures.setTexture2DArray( texture, 0 );
-
-//   } else {
-
-//     textures.setTexture2D( texture, 0 );
-
-//   }
-
-//   state.unbindTexture();
-
-// };
-
-
-
-
 // Measure the size of all sections before it and create a start value for scrolling
 const [startValue, setStartValue] = useState(0)
 
-useEffect(()=>{
-  // Removes all elements in array past index, then adds all of them together
-  setStartValue(sectionSize.slice(0, i).reduce((a,b)=> a+b,0))
-},[sectionSize])
+// useEffect(()=>{
+//   // Removes all elements in array past index, then adds all of them together
+//   setStartValue(sectionSize.slice(0, i).reduce((a,b)=> a+b,0))
+// },[sectionSize])
 
 
 //SCROLLING ANIMATIONS
@@ -268,7 +247,7 @@ useEffect(()=>{
   return (
     
       <group ref={group}>
-    
+
         <mesh
           ref={ref}
           // material={materials.main}
@@ -285,12 +264,12 @@ useEffect(()=>{
           <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
-        {/* <Suspense fallback={<Loader/>}> */}
+     
         <ambientLight intensity={.5} />
         <pointLight position={[0, 0, 3]} intensity={.3} />
         <pointLight position={[0, 0, 60]} intensity={.3} />
-        {/* <pointLight position={[-5, 0, -3]} intensity={.5}/> */}
-        {/* </Suspense> */}
+      
+
         
         {/* <PerspectiveCamera ref={camera} position={el.position} makeDefault={!remove ? true : (!isVisible ? false : true)} /> */}
       </group>

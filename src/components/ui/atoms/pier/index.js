@@ -8,6 +8,7 @@ import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import useWindowSize from "../../../../hooks/windowSize";
 
 
+
 function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
   const sound = useRef()
   const [listener] = useState(() => new THREE.AudioListener())
@@ -135,7 +136,7 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
   return (<positionalAudio ref={sound} args={[listener]}/>)
 }
 
-const Camera = ({camera, scroll, remove, startValue}) => {
+const Camera = ({camera, isVisible, scroll, remove, startValue}) => {
 const position = [0,0, 0]
 
 const {height} = useWindowSize()
@@ -156,7 +157,7 @@ const {height} = useWindowSize()
 const cameraProps = {
   ref: camera,
   position: position,
-  makeDefault: !remove,
+  makeDefault: isVisible,
 }
 
   return <PerspectiveCamera {...cameraProps}/>;
