@@ -139,8 +139,8 @@ function Scene({ models, current, loaded, setLoaded }) {
   return (
     <div id="canvas" className="home">
       <Canvas
-      // camera={{ position: [0, 1.8, 6.4], fov: 25 }}
-        camera={{ position: [0, 1.8, 7], fov: 25 }}
+      camera={{ position: [0, 1.8, 6.4], fov: 25 }}
+        // camera={{ position: [0, 1.8, 7], fov: 25 }}
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
       >
         {/* <fog attach="fog" args={["white", 0, 15]} /> */}
