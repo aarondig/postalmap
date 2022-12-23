@@ -38,23 +38,32 @@ function Model({ orbit, model, el, i, current }) {
     opacity: current === i ? 1 : 0,
     onRest: () => current !== i && setRemove(true),
   });
+  useEffect(() => {
+    if (materials.main !== undefined) {
+      console.log("RUNNING")
+      // materials.main.map = null;
+      // materials.main.color = new THREE.Color(0xdadada);
+      materials.main.color = new THREE.Color(0xeeeeee);
+      // materials.main.color = new THREE.Color(0x404040);
+      // materials.main.color = new THREE.Color(0x909090);
+      materials.main.transparent = true;
+      materials.main.opacity = opacity;
+      materials.main.visible = false;
+      
+    }
+    if (materials[""] !== undefined) {
+      materials[""].map = null;
+      materials[""].color = new THREE.Color(0x404040);
+      materials[""].transparent = true;
+      materials[""].opacity = opacity;
+    }
+   
+ 
+  },[])
   if (materials.main !== undefined) {
-    materials.main.map = null;
-    // materials.main.color = new THREE.Color(0xdadada);
-    // materials.main.color = new THREE.Color(0xeeeeee);
-    // materials.main.color = new THREE.Color(0x404040);
-    materials.main.color = new THREE.Color(0x606060);
-    materials.main.transparent = true;
-    materials.main.opacity = opacity;
-    materials.main.visible = false;
-    materials.main.visible = i === current ? true : remove && false;
+  materials.main.visible = i === current ? true : remove && false;
   }
-  if (materials[""] !== undefined) {
-    materials[""].map = null;
-    materials[""].color = new THREE.Color(0x404040);
-    materials[""].transparent = true;
-    materials[""].opacity = opacity;
-  }
+
 
   useFrame(() => {
     if (i === current) {
@@ -76,8 +85,13 @@ function Model({ orbit, model, el, i, current }) {
       if (orbit.current !== undefined) {
         orbit.current.reset();
       }
+      
     }
+    
   }, [current]);
+ 
+
+
 
   return (
     <group ref={group} position={[0, el.posiY, 0]} scale={el.scale}>
@@ -89,7 +103,6 @@ function Model({ orbit, model, el, i, current }) {
       >
         <mesh
           ref={model}
-          // material={materials.main}
           geometry={
             nodes.mesh !== undefined
               ? nodes.mesh.geometry
