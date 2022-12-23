@@ -7,7 +7,8 @@ import {
   MeshReflectorMaterial,
   ContactShadows,
   Environment,
-  softShadows
+  softShadows,
+  Preload
 } from "@react-three/drei";
 import { data } from "../../../../data";
 import Scenes from "../../molecules/scenes";
@@ -43,21 +44,14 @@ const canvas = {
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
         shadows
       >
-        {/* <Suspense fallback={<Loader/>}> */}
+        
         
       <rectAreaLight position={[0, 20, 40]} intensity={90} width={200}
       height={1}/>
 
         <fog attach="fog" args={['#17171b', 40, 80]} />
    <Scenes {...scenes}/>
-   {/* <ambientLight intensity={.1}/> */}
-          {/* <Environment preset="studio" near={1} far={1000} resolution={256}/> */}
-  
-
-        
-
-     
-        {/* </Suspense> */}
+   <Preload all/>
       </Canvas>
       </div>
   );

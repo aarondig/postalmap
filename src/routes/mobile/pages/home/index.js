@@ -1,6 +1,6 @@
 import React, { useState, useRef, Suspense, useEffect, createRef } from "react";
 import "./style.css";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import * as THREE from "three";
 import { useControls } from "leva";
@@ -21,7 +21,7 @@ import {
   a as Animated,
 } from "@react-spring/three";
 import { data } from "../../../../data";
-import { OrbitControls, Plane, Float } from "@react-three/drei";
+import { OrbitControls, Plane, Float, Preload, AdaptiveDpr } from "@react-three/drei";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Particles } from "../../../../components/ui/molecules/Particles";
 import { Vector3 } from "three";
@@ -32,6 +32,9 @@ function Model({ orbit, model, el, i, current }) {
   const group = useRef();
 
   const [remove, setRemove] = useState(false);
+
+
+  // Loading Models
   const { nodes, materials } = useLoader(GLTFLoader, el.object);
 
   const { opacity } = useSpring({
@@ -63,7 +66,7 @@ function Model({ orbit, model, el, i, current }) {
   }
 
 
-  useFrame(() => {
+  useFrame((state) => {
     if (i === current) {
       if (orbit.current !== undefined) {
         orbit.current.target.lerp(
@@ -72,6 +75,10 @@ function Model({ orbit, model, el, i, current }) {
         );
         orbit.current.update();
       }
+    } 
+    if (i !== current) {
+      state.performance.regress();
+      
     }
   });
   useEffect(() => {
@@ -115,6 +122,7 @@ function Model({ orbit, model, el, i, current }) {
     </group>
   );
 }
+// Scales for performance
 
 function Scene({ models, current, loaded, setLoaded }) {
   const orbit = useRef();
@@ -136,12 +144,18 @@ function Scene({ models, current, loaded, setLoaded }) {
     },
   });
 
+
+
   return (
     <div id="canvas" className="home">
       <Canvas
       camera={{ position: [0, 1.8, 6.4], fov: 25 }}
+      
         // camera={{ position: [0, 1.8, 7], fov: 25 }}
-        gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
+        gl={{ antialias: false }}
+      
+        // flat={true}
+        dpr={[.01, 1]}
       >
         {/* <fog attach="fog" args={["white", 0, 15]} /> */}
         <fog attach="fog" args={["black", 0, 20]} />
@@ -167,6 +181,8 @@ function Scene({ models, current, loaded, setLoaded }) {
         </Animated.group>
 
         <OrbitControls ref={orbit} />
+        <AdaptiveDpr pixelated />
+        <Preload />
       </Canvas>
     </div>
   );
