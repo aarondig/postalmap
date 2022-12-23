@@ -6,12 +6,12 @@ import {data} from "../../../../data"
 import { InView } from "react-intersection-observer";
 import { a, useSpring } from "react-spring";
 
-function Video({i, el,  section, setCurrent}) {
+function Video({i, el,  section, setVisibleSection}) {
   const [inView, setInView] = useState();
   const [audio, setAudio] = useState();
 
   useEffect(()=>{
-    inView && setCurrent(i)
+    inView && setVisibleSection(i)
   },[inView])
 
   const overlay = useSpring({

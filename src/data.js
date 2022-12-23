@@ -263,7 +263,7 @@ export const data = [
   
       index: 0,
   
-      object: tunnel,
+      object: train,
   
       type: "detail",
     },{

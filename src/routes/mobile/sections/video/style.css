@@ -17,7 +17,8 @@ transform-style: preserve-3d;
     flex-direction: row;
     justify-content: center;
     overflow: hidden;
-    transform: translateZ(-1800px) scale(3.25);
+    /* transform: translateZ(-1800px) scale(3.25); */
+    transform: translateZ(-800px) scale(2);
     opacity: 0;
   }
   .video-overlay-c {

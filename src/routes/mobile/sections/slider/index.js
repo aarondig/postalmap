@@ -4,14 +4,14 @@ import {InView} from "react-intersection-observer";
 import {a, useSpring, useSprings} from "react-spring";
 import {data} from "../../../../data"
 
-function Slider({ i, el, section, setCurrent, slowFixed, scroll}) {
+function Slider({ i, el, section, setVisibleSection, slowFixed, scroll}) {
 
 
 // SETS IN VIEW
 
 const [inView, setInView] = useState();
 useEffect(()=>{
-  inView && setCurrent(i)
+  inView && setVisibleSection(i)
 
 },[inView])
 

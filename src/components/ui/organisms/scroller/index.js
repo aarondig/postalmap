@@ -18,6 +18,7 @@ import Title from "../../../../routes/mobile/sections/title";
 
 function Scroller({
   current,
+  setCurrent,
   scroll,
   onScroll,
   scrollContainer,
@@ -77,9 +78,12 @@ function Scroller({
     scroll: scroll,
     scrollContainer: scrollContainer,
 
-    current: visibleSection,
+    current: current,
+    setCurrent: setCurrent,
+
+    visibleSection: visibleSection,
     setIsInView: setIsInView,
-    setCurrent: setVisibleSection,
+    setVisibleSection: setVisibleSection,
     sectionSize: sectionSize,
   };
 
@@ -87,7 +91,7 @@ function Scroller({
     scroll: scroll,
     scrollContainer: scrollContainer,
 
-    setCurrent: setVisibleSection,
+    setVisibleSection: setVisibleSection,
 
     data: data[current].sections,
   };
@@ -95,7 +99,7 @@ function Scroller({
     scroll: scroll,
     scrollContainer: scrollContainer,
 
-    setCurrent: setVisibleSection,
+    setVisibleSection: setVisibleSection,
     sectionSize: sectionSize,
     data: data[current].sections,
   };
@@ -104,7 +108,7 @@ function Scroller({
     scroll: scroll,
     scrollContainer: scrollContainer,
 
-    setCurrent: setVisibleSection,
+    setVisibleSection: setVisibleSection,
   };
   return (
     <div id="scroller" ref={scrollContainer} onScroll={onScroll}>

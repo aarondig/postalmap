@@ -48,6 +48,7 @@ const [sections, setSection] = useState([]);
   const scroller = {
 
     current: current,
+    setCurrent: setCurrent,
     scroll: scroll,
     onScroll: onScroll,
     scrollContainer: scrollContainer,

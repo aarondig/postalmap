@@ -20,7 +20,7 @@ function Detail({
   el,
   section,
   sectionSize,
-  setCurrent,
+  setVisibleSection,
   scrollContainer,
   scroll,
   data
@@ -31,7 +31,7 @@ function Detail({
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    inView && setCurrent(i);
+    inView && setVisibleSection(i);
   }, [inView]);
 
 // Measure the size of all sections before it and create a start value for scrolling
@@ -74,8 +74,10 @@ useEffect(()=>{
 
     useFrame(() => {
       if (isVisible) {
-      // ref.current.rotation.y = (scroll - startValue) / 800 + rotation;
+        if (ref.current !== undefined) {
+      // ref.VisibleSection.rotation.y = (scroll - startValue) / 800 + rotation;
       ref.current.rotation.y = (scroll - startValue) / 800 ;
+        }
     }
     });
     

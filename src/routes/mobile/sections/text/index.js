@@ -8,7 +8,7 @@ function Text({
   i,
   el,
   section,
-  setCurrent,
+  setVisibleSection,
   slow3,
   scrollContainer,
   scroll,
@@ -20,7 +20,7 @@ function Text({
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    inView && setCurrent(i);
+    inView && setVisibleSection(i);
   }, [inView]);
 
   const parallax = useRef();
@@ -32,13 +32,13 @@ function Text({
   // if (inView) {
 
   //     setOpa((opa + 1) * 1.2)
-  //     content.current.style.opacity = opa / 250
+  //     content.VisibleSection.style.opacity = opa / 250
   // }
   //     }
   //     if (scroll.slice(-1) < scroll.slice(-2)) {
 
   //       setOpa(opa <= .04 ? 0 : ((opa + 1) / 1.2))
-  //       content.current.style.opacity = opa / 250
+  //       content.VisibleSection.style.opacity = opa / 250
 
   //       }
 
@@ -49,14 +49,14 @@ function Text({
 
   // },[scroll])
 
-  // ref={(element) => (slow3.current[i] = element)}
+  // ref={(element) => (slow3.VisibleSection[i] = element)}
 
   // PARALLAX
   //   const [scrollStart, setScrollStart] = useState(false)
   //   useEffect(()=>{
   //     if (inView) {
   //       !scrollStart && setScrollStart(scroll);
-  //       parallax.current.style.transform = `translateY(${((scroll-scrollStart)*.3)}px)`
+  //       parallax.VisibleSection.style.transform = `translateY(${((scroll-scrollStart)*.3)}px)`
   //     }
   //   if (!inView) {
   //     scrollStart && setScrollStart(false);

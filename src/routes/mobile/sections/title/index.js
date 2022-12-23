@@ -9,7 +9,7 @@ function Title({
   i,
   el,
   section,
-  setCurrent,
+  setVisibleSection,
   slow3,
   scrollContainer,
   scroll,
@@ -17,7 +17,7 @@ function Title({
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    inView && setCurrent(i);
+    inView && setVisibleSection(i);
   }, [inView]);
 
 
