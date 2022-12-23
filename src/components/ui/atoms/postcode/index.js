@@ -171,9 +171,16 @@ function Postcode({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   // IMPORT MODEL
   const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
 
-  materials.main.map = null;
-  materials.main.color = new THREE.Color(0x4f4f51);
-  materials.main.transparent = true;
+
+  useEffect(()=>{
+    materials.main.map = null;
+    materials.main.color = new THREE.Color(0x4f4f51);
+    materials.main.transparent = true;
+    materials.main.needsUpdate = true;
+
+
+  },[])
+ 
 
   // Checks if the scene is Visible
   const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
@@ -215,7 +222,7 @@ useEffect(()=>{
 
   //SCROLLING ANIMATIONS
 
-  useFrame(() => {
+  useFrame((state) => {
     ref.current.rotation.y = -scroll / 400 + 75;
   });
 
@@ -247,7 +254,6 @@ useEffect(()=>{
         // material={materials.main}
         geometry={nodes.mesh.geometry}
         position={[0, -1, -40]}
-        castShadow
         scale={1.8}
       >
         

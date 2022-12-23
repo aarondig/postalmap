@@ -43,53 +43,45 @@ export const data = [
     id: "postcode",
     title: "Postal Code",
     subtitle: "/ Postal Code - SE10-9DD",
-    text: "Situated on the southern bank of the River Thames, its architecture is remenicient of an older, grittier, Greenwhich.",
+    text: "Situated on the southern bank of the River Thames, its architecture is reminiscent of an older, grittier, Greenwich.",
     number: "01",
-
+  
     index: 0,
-
+  
     object: pccar,
     scale: 1.4,
     posiY: -.8,
     audio: sidewalkaud,
-
+  
     sections: [  {
       id: "postcode",
       title: "Postcode: SE10-9DD",
       subtitle: "/ Postal Code - SE10-9DD",
-      text: "Situated on the southern bank of the River Thames, its architecture is remenicient of an older, grittier, Greenwhich.",
+      text: "Situated on the southern bank of the River Thames, its architecture is reminiscent of an older, grittier, Greenwich.",
       number: "01",
-  
-      index: 0,
-  
-      object: postcode,
+       index: 0,
+       object: postcode,
       audio: sidewalkaud,
-  
-      type: "view",
+       type: "view",
     },{
       id: "description",
-      title: "A New / Changing Greenwhich",
+      title: "A New / Changing Greenwich",
       subtitle: "/ Postal Code / About",
-      text: "Situated on the southern bank of the River Thames, its architecture is remenicient of an older, grittier, Greenwhich. Before the influx of modern highrises and students, this location feels like an undisturbed enclave.",
+      text: "Situated on the southern bank of the River Thames, its architecture is reminiscent of an older, grittier, Greenwich. Before the influx of modern highrises and students, this location feels like an undisturbed enclave.",
       number: "02",
-  
-      index: 0,
-  
-      lightMode: "dark",
+       index: 0,
+       lightMode: "dark",
       type: "text",
     },
     {
       id: "slider",
       src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
-  
-      title: "Statement on something blah blah blah",
+       title: "Statement on something blah blah blah",
       subtitle: "/ Photography",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
       number: "02",
-  
-      index: 0,
-  
-      images: [
+       index: 0,
+       images: [
         {
           title: "Postal Code SE10-9DD",
           subtitle: "ARCHITECTURE / PHOTO",
@@ -100,7 +92,7 @@ export const data = [
           subtitle: "ARCHITECTURE / PHOTO",
           src: uniofgreenwichimg,
         },
-        
+       
         {
           title: "Greenwich Intersection",
           subtitle: "ENVIRONMENT / PHOTO",
@@ -108,22 +100,18 @@ export const data = [
         },
       ],
   
-  
       lightMode: "dark",
       type: "slider",
     },
     {
       id: "video",
       src: postalcodevid,
-  
-      title: "Statement on something blah blah blah",
+       title: "Statement on something blah blah blah",
       subtitle: "/ Introduction",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
       number: "02",
-  
-      index: 0,
-  
-      type: "video",
+       index: 0,
+       type: "video",
     },
     {
       id: "cannon",
@@ -131,12 +119,9 @@ export const data = [
       subtitle: "/ Walking / South Bank",
       text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
       number: "02",
-  
-      index: 0,
-  
-      object: cannon,
-  
-      type: "detail",
+       index: 0,
+       object: cannon,
+       type: "detail",
     },
     {
       id: "description",
@@ -144,57 +129,50 @@ export const data = [
       subtitle: "",
       text: "You'll see a ship perched in the center of the square. This is where students gather, young families meet, and live music fills the air. Continue walking along the bank, but pay attention to the atmosphere around you.",
       number: "02",
-  
-      index: 0,
-  
+       index: 0,
   
       lightMode: "dark",
       type: "text",
     },],
-
+  
     type: "view",
   },
-  
-  {
+   {
     id: "pier",
     title: "Greenwich Pier",
     subtitle: "/ Greenwich Pier",
-    text: "Located next to Greenwich Unversity, indulge in this immersive environment while you que for the Uber Boat.",
+    text: "Located next to Greenwich University, indulge in this immersive environment while you que for the Uber Boat.",
     number: "02",
-
+  
     index: 0,
-
+  
     object: cannon,
     scale: 2.2,
     posiY: -1.8,
     audio: pieraud,
-
-
+  
+  
     sections: [{
     id: "pier",
     title: "Greenwich Pier",
     subtitle: "/ Greenwich Pier",
-    text: "Located next to Greenwich Unversity, indulge in this immersive environment while you que for the Uber Boat.",
+    text: "Located next to Greenwich University, indulge in this immersive environment while you que for the Uber Boat.",
     number: "02",
-
+  
     index: 0,
-
+  
     object: pier,
     audio: pieraud,
-  
-    type: "view",
+     type: "view",
     },{
       id: "pierpay",
       title: "Tap to pay for your Uber Boat ride",
-      subtitle: "/ Uber Boat / Greenwhich Pier",
+      subtitle: "/ Uber Boat / Greenwich Pier",
       text: "While walking east along the bank of River Thames, pay attention to the textures of the cannons, which line the walkway. They will guide you to the pier.",
       number: "02",
-  
-      index: 0,
-  
-      object: pierpay,
-  
-      type: "detail",
+       index: 0,
+       object: pierpay,
+       type: "detail",
     },
     {
       id: "title",
@@ -202,9 +180,7 @@ export const data = [
       subtitle: "/ 03",
       text: "Jump on board, and enjoy the ride. You will pass by some of London's most iconic monuments, with an incredibly unique view.",
       number: "02",
-  
-      index: 0,
-  
+       index: 0,
   
       lightMode: "dark",
       type: "title",
@@ -212,21 +188,18 @@ export const data = [
     {
       id: "video",
       src: uberboatvid,
-  
-      title: "Statement on something blah blah blah",
+       title: "Statement on something blah blah blah",
       subtitle: "/ Introduction",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
       number: "02",
-  
-      index: 0,
-  
-      type: "video",
+       index: 0,
+       type: "video",
     },],
-
-
+  
+  
     type: "view",
   },
-  
+ 
   {
     id: "station",
     title: "Embankment Station",
@@ -255,29 +228,35 @@ export const data = [
   
       type: "view",
     },{
-      id: "stationplatform",
-      title: "Get on the Northern Line Train",
-      subtitle: "/ Embankment / Greenwhich Pier",
-      text: "Head to the platfom and join wait for the next southbound Northern Line Train.",
+      id: "description",
+      title: "Welcome to Embankment Station",
+      subtitle: "/ Embankment / About",
+      text: "Situated on the southern bank of the River Thames, its architecture is remenicient of an older, grittier, Greenwhich. Before the influx of modern highrises and students, this location feels like an undisturbed enclave.",
       number: "02",
   
       index: 0,
   
-      object: train,
-  
-      type: "detail",
+      lightMode: "dark",
+      type: "text",
+    },
+    {
+      id: "stationplatform",
+      title: "Get on the Northern Line Train",
+      subtitle: "/ Embankment / Greenwich Pier",
+      text: "Head to the platform and join wait for the next southbound Northern Line Train.",
+      number: "02",
+       index: 0,
+       object: train,
+       type: "detail",
     },{
       id: "slider",
       src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
-  
-      title: "Statement on something blah blah blah",
+       title: "Statement on something blah blah blah",
       subtitle: "/ Photography",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
       number: "02",
-  
-      index: 0,
-  
-      images: [
+       index: 0,
+       images: [
         {
           title: "Postal Code SE10-9DD",
           subtitle: "ARCHITECTURE / PHOTO",
@@ -288,7 +267,7 @@ export const data = [
           subtitle: "ARCHITECTURE / PHOTO",
           src: uniofgreenwichimg,
         },
-        
+       
         {
           title: "Greenwich Intersection",
           subtitle: "ENVIRONMENT / PHOTO",
@@ -296,54 +275,46 @@ export const data = [
         },
       ],
   
-  
       lightMode: "dark",
       type: "slider",
     },],
-
+  
     type: "view",
   },
-
+  
     {
     id: "lcc",
     title: "London College of Communication",
     subtitle: "/ London College of Communication",
     text: "Your destination is the epicenter of creative student culture in Elephant and Castle.",
     number: "02",
-
+  
     index: 0,
-
+  
     object: lcstudent,
     scale: 3.1,
     posiY: -3.2,
     audio: lccaud,
-
+  
     sections: [{
       id: "lcc",
       title: "London College of Communication",
       subtitle: "/ London College of Communication",
       text: "Your destination is the epicenter of creative student culture in Elephant and Castle.",
       number: "02",
-  
-      index: 0,
-  
-      object: lcc,
-  
-      audio: lccaud,
-  
-      type: "view",
+       index: 0,
+       object: lcc,
+       audio: lccaud,
+       type: "view",
     },{
       id: "slider",
       src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
-  
-      title: "Statement on something blah blah blah",
+       title: "Statement on something blah blah blah",
       subtitle: "/ Photography",
       text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
       number: "02",
-  
-      index: 0,
-  
-      images: [
+       index: 0,
+       images: [
         {
           title: "Postal Code SE10-9DD",
           subtitle: "ARCHITECTURE / PHOTO",
@@ -354,7 +325,7 @@ export const data = [
           subtitle: "ARCHITECTURE / PHOTO",
           src: uniofgreenwichimg,
         },
-        
+       
         {
           title: "Greenwich Intersection",
           subtitle: "ENVIRONMENT / PHOTO",
@@ -362,13 +333,12 @@ export const data = [
         },
       ],
   
-  
       lightMode: "dark",
       type: "slider",
     },],
-
+  
     type: "view",
   },
-];
-
+ ];
+ 
 // Types: Inspect, View, Text

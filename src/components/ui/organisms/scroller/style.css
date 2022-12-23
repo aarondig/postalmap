@@ -19,7 +19,7 @@
 
   #scroller > div:nth-last-child(1) {
   /* background: red; */
-   /* padding-bottom: env(safe-area-inset-bottom) !important; */
+   padding-bottom: env(safe-area-inset-bottom) !important;
    /* padding-bottom: 42px !important; */
   } 
 
