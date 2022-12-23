@@ -40,7 +40,6 @@ function Model({ orbit, model, el, i, current }) {
   });
   useEffect(() => {
     if (materials.main !== undefined) {
-      console.log("RUNNING")
       // materials.main.map = null;
       // materials.main.color = new THREE.Color(0xdadada);
       materials.main.color = new THREE.Color(0xeeeeee);
@@ -57,9 +56,8 @@ function Model({ orbit, model, el, i, current }) {
       materials[""].transparent = true;
       materials[""].opacity = opacity;
     }
-   
- 
   },[])
+  // Creates Opacity Transition
   if (materials.main !== undefined) {
   materials.main.visible = i === current ? true : remove && false;
   }
@@ -197,8 +195,7 @@ function Home({ current, setCurrent, basename }) {
         .fill()
         .map((el, i) => models[i] || createRef())
     );
-
-    // setLoaded(true);
+    setLoaded(true);
   }, []);
 
   //Selecting Page
