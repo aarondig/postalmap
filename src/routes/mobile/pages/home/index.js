@@ -39,23 +39,21 @@ function Model({ orbit, model, el, i, current }) {
     onRest: () => current !== i && setRemove(true),
   });
   if (materials.main !== undefined) {
-    // materials.main.map = null;
+    materials.main.map = null;
     // materials.main.color = new THREE.Color(0xdadada);
-    materials.main.color = new THREE.Color(0xeeeeee);
+    // materials.main.color = new THREE.Color(0xeeeeee);
     // materials.main.color = new THREE.Color(0x404040);
-    // materials.main.color = new THREE.Color(0x606060);
+    materials.main.color = new THREE.Color(0x606060);
     materials.main.transparent = true;
     materials.main.opacity = opacity;
+    materials.main.visible = false;
+    materials.main.visible = i === current ? true : remove && false;
   }
   if (materials[""] !== undefined) {
     materials[""].map = null;
     materials[""].color = new THREE.Color(0x404040);
     materials[""].transparent = true;
     materials[""].opacity = opacity;
-  }
-
-  if (group.current) {
-    group.current.visible = i === current ? true : remove && false;
   }
 
   useFrame(() => {
@@ -70,6 +68,7 @@ function Model({ orbit, model, el, i, current }) {
     }
   });
   useEffect(() => {
+
     if (i === current) {
       //Sets Loading True for Model
       // setLoad(true);
@@ -129,7 +128,8 @@ function Scene({ models, current, loaded, setLoaded }) {
   return (
     <div id="canvas" className="home">
       <Canvas
-        camera={{ position: [0, 1.8, 7], fov: 70 }}
+      // camera={{ position: [0, 1.8, 6.4], fov: 25 }}
+        camera={{ position: [0, 1.8, 7], fov: 25 }}
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
       >
         {/* <fog attach="fog" args={["white", 0, 15]} /> */}
