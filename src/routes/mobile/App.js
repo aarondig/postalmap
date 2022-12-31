@@ -112,7 +112,8 @@ function App() {
   // }
   const navigation = {
     current: current,
-    
+    setCurrent: setCurrent,
+
     audio: audio,
     audioRef: audioRef,
     setAudio: setAudio,

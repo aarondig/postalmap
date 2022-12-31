@@ -6,11 +6,17 @@ import { IoVolumeOffOutline, IoVolumeMediumOutline } from "react-icons/io5";
 import { a as animated, useSprings } from "react-spring";
 import "./style.css";
 import { data } from "../../../../data";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function Navigation({ audioRef, current, audio, setAudio, visibleSelection }) {
+function Navigation({ audioRef, current, setCurrent, audio, setAudio, visibleSelection }) {
   const [active, toggleActive] = useState(false);
   // const [settle, setSettle] = useState(false);
   
+
+const navigate = useNavigate();
+const location = useLocation();
+const url = location.pathname.split("/");
+
 
 const indicator = useSprings(data.length, data.map((el, i)=>
 i === current ?
@@ -23,6 +29,11 @@ i === current ?
   to: {opacity: 0},
 
 }))
+
+const handleNavigate = (e)=> {
+  setCurrent(data[e.target.dataset.key])
+  navigate(`../${url[1]}/${e.target.dataset.id}`, { replace: true })
+}
 
 
   const audioOff = useSpring({
@@ -94,15 +105,15 @@ i === current ?
           Locations
           </p>
           {data.map((el, i)=>{
-            return (<div className="nav-link" key={i}>
-            <h6 className="nav-link-title lg">{el.id}</h6>
+            return (<div className="nav-link" key={i} onClick={(e)=> handleNavigate(e)}>
+            <h6 data-id={el.id} data-key={i} className="nav-link-title lg" >{el.id}</h6>
             {/* <a.div className="indicator" style={indicator[i]}></a.div> */}
           </div>)
           })}
           
         </div>
 
-        <div className="nav-section">
+        {/* <div className="nav-section bottom">
         <p className="nav-subtitle">
           More
           </p>
@@ -112,7 +123,8 @@ i === current ?
           <div className="nav-link">
             <h6 className="nav-link-title md">Contact</h6>
           </div>
-        </div>
+        </div> */}
+
         </div>
 
       </a.div>

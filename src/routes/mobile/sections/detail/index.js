@@ -25,22 +25,15 @@ function Detail({
   scroll,
   data
 }) {
-
+  const orbit = useRef();
 
   const [isVisible, setIsVisible] = useState(false);
   const [inView, setInView] = useState(false);
 
+
   useEffect(() => {
     inView && setVisibleSection(i);
   }, [inView]);
-
-// Measure the size of all sections before it and create a start value for scrolling
-const [startValue, setStartValue] = useState(0)
-
-useEffect(()=>{
-  // Removes all elements in array past index, then adds all of them together
- setStartValue((sectionSize.slice(-(i)).reduce((a, b) => a + b, 0) - 98))
-},[sectionSize])
 
   const visible = useSpring({
     opacity: inView ? 1 : 0,
@@ -48,8 +41,9 @@ useEffect(()=>{
     config: { duration: 250 },
   });
 
-  function Scene({ scroll, startValue }) {
+  function Scene({ orbit, scroll }) {
     const ref = useRef();
+
 
     const { nodes, materials } = useLoader(GLTFLoader, el.object);
     
@@ -75,10 +69,14 @@ useEffect(()=>{
     useFrame(() => {
       if (isVisible) {
         if (ref.current !== undefined) {
-      // ref.VisibleSection.rotation.y = (scroll - startValue) / 800 + rotation;
-      ref.current.rotation.y = (scroll - startValue) / 800 ;
+      ref.current.rotation.y = scroll / 800 ;
         }
     }
+    // if (orbit.current) {
+    //   orbit.current.target = ref.current.geometry.boundingSphere.center;
+    //   orbit.current.update();
+    // }
+ 
     });
     
     useEffect(()=>{
@@ -93,7 +91,7 @@ useEffect(()=>{
       }
       if (el.id === "pierpay") {
         // setScale(7.2)
-        let scale = 7.2;
+        let scale = 3.2;
         ref.current.scale.x = scale;
         ref.current.scale.y = scale;
         ref.current.scale.z = scale;
@@ -105,7 +103,7 @@ useEffect(()=>{
         // setRotation(11.6)
       }
       if (el.id === "cannon") {
-        let scale = 2.5;
+        let scale = 6.5;
         ref.current.scale.x = scale;
         ref.current.scale.y = scale;
         ref.current.scale.z = scale;
@@ -164,6 +162,8 @@ const orbitcontrols = {
   // enablePan: false,
 }
 
+
+
   return (
     <InView id="detail" ref={section} onChange={setIsVisible} >
       <InView onChange={setInView} threshold={0.6} >
@@ -183,14 +183,14 @@ const orbitcontrols = {
       </div>
       <div className="canvas-wrap" style={data[i+1].type === "slider" || data[i+1].lightMode === "light" ? {paddingBottom: "80px"} : {paddingBottom: "0px"}}>
         <Canvas
-          camera={{ position: [0, 1.5, 7], fov: 70 }}
+          camera={{ position: [0, 1.5, 7], fov: 50 }}
           gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
           shadows
         >
           <pointLight position={[4, 5, 4]} intensity={1.2} />
           <pointLight position={[0, -30, -10]} intensity={.8} />
-          <OrbitControls {...orbitcontrols}/>
-          {isVisible && <Scene scroll={scroll} startValue={startValue} />}
+          <OrbitControls ref={orbit} {...orbitcontrols}/>
+          {isVisible && <Scene orbit={orbit} scroll={scroll} />}
         </Canvas> 
       </div>
       </InView>

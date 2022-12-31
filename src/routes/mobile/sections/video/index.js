@@ -30,7 +30,8 @@ function Video({i, el,  section, setVisibleSection}) {
   return <InView id="video" ref={section} onChange={setInView} threshold={.6}>
 
        {/* <div className="parallax-back"/> */}
-          <a.div className="video-c" onClick={()=> setAudio(!audio)} style={opacity}>
+       {/* style={opacity} */}
+          <a.div className="video-c" onClick={()=> setAudio(!audio)}>
           <div className="video-overlay-c">
           <a.h6 className="subtitle" style={overlaytext}>Tap to Listen</a.h6>
              

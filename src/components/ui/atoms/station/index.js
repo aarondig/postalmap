@@ -125,7 +125,7 @@ function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
   
   useEffect(() => {
 
-    sound.current && console.log("station: " + sound.current.getRefDistance())
+    // sound.current && console.log("station: " + sound.current.getRefDistance())
   }, [vol]);
 
 

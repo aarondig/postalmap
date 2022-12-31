@@ -11,6 +11,7 @@ import Text from "../../../../routes/mobile/sections/text";
 import { data } from "../../../../data";
 import View from "../../../../routes/mobile/sections/view";
 import Video from "../../../../routes/mobile/sections/video";
+import Image from "../../../../routes/mobile/sections/image";
 import Detail from "../../../../routes/mobile/sections/detail";
 import Module from "../module";
 import Slider from "../../../../routes/mobile/sections/slider";
@@ -99,6 +100,7 @@ function Scroller({
     scroll: scroll,
     scrollContainer: scrollContainer,
 
+
     setVisibleSection: setVisibleSection,
     sectionSize: sectionSize,
     data: data[current].sections,
@@ -147,6 +149,11 @@ function Scroller({
           case "video": {
             return (
               <Video key={i} i={i} el={el} section={sections[i]} {...image} />
+            );
+          }
+          case "image": {
+            return (
+              <Image key={i} i={i} el={el} section={sections[i]} {...image} />
             );
           }
           case "detail": {

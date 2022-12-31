@@ -1,33 +1,39 @@
 @media only screen and (max-width: 768px) {
-#video {
+#image {
   position: relative;
-  height: 80vh;
+  box-sizing: border-box;
   width: 100%;
   /* background: #050505; */
   /* max-height: 100vh; */
-/* transform-style: preserve-3d; */
+      padding-top:60px;
+      /* background: #050505; */
+transform-style: preserve-3d;
 display: flex;
 flex-direction: column;
 justify-content: center;
   }
-  .video-c {
+  .image-c {
     position: relative;
     object-fit: cover;
-    height: 100vh;
+    height: 80vh;
     /* width: 76%; */
+     background: #050505;
+
  
     display: flex;
     flex-direction: row;
     justify-content: center;
-    overflow: hidden;
+    /* overflow: hidden; */
+    pointer-events: none;
     /* transform: translateZ(-1800px) scale(3.25); */
-    /* transform: translateZ(-800px) scale(2); */
+    transform: translateZ(-400px) scale(1.8);
     /* opacity: 0; */
   }
-  .video-overlay-c {
+  .image-overlay-c {
     position: absolute;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
+    height: 100vh;
     top: 0;
     left: 0;
     display: flex;
@@ -36,22 +42,23 @@ justify-content: center;
     z-index: 1;
     pointer-events: none;
   }
-  .video-overlay {
+  .image-overlay {
     position: absolute;
     width: 100%;
     height: 100%;
     background: #050505;
-    opacity: 0;
+    opacity: .6;
   }
 
-  .parallax-back {
-    position: relative;
+  /* .parallax-back {
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100%;
     background: #050505;
     transform: translateZ(-1800px) scale(3.25);
-  }
-  #video .subtitle {
+  } */
+  #image .subtitle {
     align-self: center;
     font-size: 18px;
   color: #fff;
@@ -60,8 +67,9 @@ justify-content: center;
   z-index: 1;
   }
 
-  .video {
-    height: 100%;
+
+  .image {
+    height: 100vh;
   }
 
 

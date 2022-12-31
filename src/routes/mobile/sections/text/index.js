@@ -1,6 +1,6 @@
 import React, { useState, useRef, Suspense, useEffect } from "react";
 import "./style.css";
-import { a, useSpring } from "react-spring";
+import { a, useSpring, useSprings } from "react-spring";
 import useOnScreen from "../../../../hooks/useOnScreen";
 import { InView } from "react-intersection-observer";
 
@@ -15,7 +15,6 @@ function Text({
   data
 }) {
 
-
   const [inView, setInView] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -25,44 +24,7 @@ function Text({
 
   const parallax = useRef();
 
-  // useEffect(()=>{
 
-  //     //If scroll is positive
-  //     if (scroll.slice(-1) > scroll.slice(-2)) {
-  // if (inView) {
-
-  //     setOpa((opa + 1) * 1.2)
-  //     content.VisibleSection.style.opacity = opa / 250
-  // }
-  //     }
-  //     if (scroll.slice(-1) < scroll.slice(-2)) {
-
-  //       setOpa(opa <= .04 ? 0 : ((opa + 1) / 1.2))
-  //       content.VisibleSection.style.opacity = opa / 250
-
-  //       }
-
-  //       console.log(opa/250)
-  //     //If scroll is negative
-
-  //     // console.log(scroll.slice(-1) > scroll.slice(-2))
-
-  // },[scroll])
-
-  // ref={(element) => (slow3.VisibleSection[i] = element)}
-
-  // PARALLAX
-  //   const [scrollStart, setScrollStart] = useState(false)
-  //   useEffect(()=>{
-  //     if (inView) {
-  //       !scrollStart && setScrollStart(scroll);
-  //       parallax.VisibleSection.style.transform = `translateY(${((scroll-scrollStart)*.3)}px)`
-  //     }
-  //   if (!inView) {
-  //     scrollStart && setScrollStart(false);
-  //   }
-  // // console.log(scroll + scrollStart)
-  //   },[scroll])
 
   //ANIMATIONS
   const line1 = useSpring({
@@ -84,6 +46,48 @@ function Text({
     config: { duration: 250 },
   });
 
+  const textSprings = useSprings(
+    el.text.length,
+    el.text.map(
+      (el, i) =>
+      inView ? {
+          from: {
+            opacity: 0,
+            transform: "translateY(+20px)",
+          },
+          to: {
+            opacity: 1,
+            transform: "translateY(0)",
+          },
+
+          delay: (100 * i)+ 300,
+          config: {
+            // mass: 1,
+            // tension: 280,
+            // friction: 18
+          },
+        } :
+        {
+          from: {
+            opacity: 1,
+            transform: "translateY(0px)",
+          },
+          to: {
+            opacity: 0,
+            transform: "translateY(+20px)",
+          },
+
+          delay: (100 * i)+ 300,
+          config: {
+            // mass: 1,
+            // tension: 280,
+            // friction: 18
+          },
+        }
+    )
+  );
+
+
   // LIGHT MODE OR DARK MODE (False is Dark)
   const [lightMode, setLightMode] = useState();
 
@@ -104,6 +108,7 @@ function Text({
 
     onChange: (entry) => !entry && setInView(false),
   };
+
   return (
     <InView {...text}>
     <InView onChange={(entry) => entry && setInView(true)} threshold={.6}>
@@ -118,9 +123,12 @@ function Text({
                 ref={parallax}
                 style={lightMode ? { color: "#050505" } : { color: "#ffffff" }}
               >
-                <h6 className="subtitle">{el.subtitle}</h6>
-                <h2 className="title">{el.title}</h2>
-                <p className="text">{el.text}</p>
+                {el.subtitle !== null && <h6 className="subtitle">{el.subtitle}</h6>}
+                {el.title !== null &&  <h2 className="title">{el.title}</h2>}
+                {el.text.map((e,i)=>{
+                  return (<p className="text" key={i}>{el.text[i]}</p>)
+                })
+                }
                 {el.button && (
                   <div className="button-c">
                     <a href={el.button.link}>
@@ -138,15 +146,18 @@ function Text({
                 ref={parallax}
                 style={lightMode ? { color: "#050505" } : { color: "#ffffff" }}
               >
-                <a.h6 className="subtitle" style={line1}>
+                {el.subtitle !== null && <a.h6 className="subtitle" style={line1}>
                   {el.subtitle}
-                </a.h6>
-                <a.h2 className="title" style={line2}>
+                </a.h6>}
+                {el.title !== null &&  <a.h2 className="title" style={line2}>
                   {el.title}
-                </a.h2>
-                <a.p className="text" style={line3}>
-                  {el.text}
+                </a.h2>}
+                {el.text !== null && el.text.map((e,i)=>{
+                return <a.p className="text" style={textSprings[i]} key={i}>
+                  {el.text[i]}
                 </a.p>
+                })}
+                
               </div>
             )}
           </div>

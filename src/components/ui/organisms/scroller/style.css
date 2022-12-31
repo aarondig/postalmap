@@ -17,11 +17,7 @@
   
   }
 
-  #scroller > div:nth-last-child(1) {
-  /* background: red; */
-   padding-bottom: env(safe-area-inset-bottom) !important;
-   /* padding-bottom: 42px !important; */
-  } 
+
 
   .text-b {
     position: relative;
@@ -76,5 +72,13 @@
   .section-wrap {
     padding-top: 12vh;
     padding-bottom: 12vh;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    #scroller > div:nth-last-child(1) {
+      /* background: red; */
+       padding-bottom: 60px !important;
+       /* padding-bottom: 42px !important; */
+      } 
   }
 }

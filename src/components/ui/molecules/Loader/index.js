@@ -4,7 +4,6 @@ import { Html, useProgress } from "@react-three/drei";
 
 function Loader({ loaded, setLoaded }) {
   const { progress } = useProgress();
-  console.log(progress);
   let radius = 30;
 
   let stroke = 1;

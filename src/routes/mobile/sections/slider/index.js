@@ -80,6 +80,7 @@ const slider = {
 
   return (
       <InView style={lightMode ? {background: "#f4f4f4"} : {background: "#050505"}} {...slider}>
+    {data[i+1] !== undefined && (data[i-1].type !== "text" && <div className="top-spacer" />)}
     <div className="content-wrap">
       
     <a.h6 className="subtitle" style={subtitle}>{el.subtitle}</a.h6>
