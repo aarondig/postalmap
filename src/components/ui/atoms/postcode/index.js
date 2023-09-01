@@ -9,128 +9,128 @@ import Loader from "../../molecules/Loader";
 import useWindowSize from "../../../../hooks/windowSize";
 
 function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
-  const sound = useRef()
-  const [listener] = useState(() => new THREE.AudioListener())
-  const buffer = useLoader(THREE.AudioLoader, el.audio)
+  // const sound = useRef()
+  // const [listener] = useState(() => new THREE.AudioListener())
+  // const buffer = useLoader(THREE.AudioLoader, el.audio)
   
-  useEffect(()=>{
-    sound.current.setBuffer(buffer);
-    sound.current.setRefDistance(0);
-    return () => {
-      fadeOut();
-    };
-  },[]);
+  // useEffect(()=>{
+  //   sound.current.setBuffer(buffer);
+  //   sound.current.setRefDistance(0);
+  //   return () => {
+  //     fadeOut();
+  //   };
+  // },[]);
 
-  function playSound() {
+  // function playSound() {
 
-    var source = listener.context.createBufferSource();
-    source.connect(listener.context.destination);
-    source.start();
-  }
+  //   var source = listener.context.createBufferSource();
+  //   source.connect(listener.context.destination);
+  //   source.start();
+  // }
 
   
-  audioRef.current.addEventListener('click', function() {
-    if (!audio) {
-      if (!sound.current.isPlaying) {
-        playSound();
-      }
+  // audioRef.current.addEventListener('click', function() {
+  //   if (!audio) {
+  //     if (!sound.current.isPlaying) {
+  //       playSound();
+  //     }
       
-    }
-    if (audio) {
-      sound.current.pause();
-      sound.current.stop();
-    }
-  });
+  //   }
+  //   if (audio) {
+  //     sound.current.pause();
+  //     sound.current.stop();
+  //   }
+  // });
 
 
-  //SOUND START/CLEANUP
+  // //SOUND START/CLEANUP
 
-  var fadeIn = () =>
-    setTimeout(function () {
-      if (sound.current !== undefined) {
+  // var fadeIn = () =>
+  //   setTimeout(function () {
+  //     if (sound.current !== undefined) {
 
       
-      let volume = sound.current.getRefDistance();
+  //     let volume = sound.current.getRefDistance();
 
-      if (!sound.current.isPlaying) {
-        sound.current.play();
-      }
+  //     if (!sound.current.isPlaying) {
+  //       sound.current.play();
+  //     }
 
-      if (volume < 1) {
-        sound.current.setRefDistance(volume + 0.01);
-        if (isVisible) {
-          fadeIn();
-        }
-        if (!isVisible) {
-          clearTimeout(fadeIn);
-        }
-      }
-      if (volume >= 1) {
-        sound.current.setRefDistance(1);
-        clearTimeout(fadeIn);
-      }
-    }
-      clearTimeout(fadeIn);
-    }, 10);
+  //     if (volume < 1) {
+  //       sound.current.setRefDistance(volume + 0.01);
+  //       if (isVisible) {
+  //         fadeIn();
+  //       }
+  //       if (!isVisible) {
+  //         clearTimeout(fadeIn);
+  //       }
+  //     }
+  //     if (volume >= 1) {
+  //       sound.current.setRefDistance(1);
+  //       clearTimeout(fadeIn);
+  //     }
+  //   }
+  //     clearTimeout(fadeIn);
+  //   }, 10);
 
-  var fadeOut = () =>
-    setTimeout(function () {
-      if (sound.current !== undefined) {
-      let volume = Math.abs(sound.current.getRefDistance());
+  // var fadeOut = () =>
+  //   setTimeout(function () {
+  //     if (sound.current !== undefined) {
+  //     let volume = Math.abs(sound.current.getRefDistance());
 
 
-      if (volume > 0) {
-        sound.current.setRefDistance(Math.abs(volume - 0.01));
-        if (!isVisible) {
-          fadeOut();
+  //     if (volume > 0) {
+  //       sound.current.setRefDistance(Math.abs(volume - 0.01));
+  //       if (!isVisible) {
+  //         fadeOut();
           
-        }
-        if (isVisible) {
-          camera.current.remove(listener);
-          sound.current.setRefDistance(0);
-          clearTimeout(fadeOut);
-        }
-      }
-      if (volume <= 0.1) {
-        sound.current.setRefDistance(0);
-        sound.current.pause();
-        camera.current.remove(listener);
-        clearTimeout(fadeOut);
-      }
-    }
-      clearTimeout(fadeOut);
-    }, 10);
+  //       }
+  //       if (isVisible) {
+  //         camera.current.remove(listener);
+  //         sound.current.setRefDistance(0);
+  //         clearTimeout(fadeOut);
+  //       }
+  //     }
+  //     if (volume <= 0.1) {
+  //       sound.current.setRefDistance(0);
+  //       sound.current.pause();
+  //       camera.current.remove(listener);
+  //       clearTimeout(fadeOut);
+  //     }
+  //   }
+  //     clearTimeout(fadeOut);
+  //   }, 10);
 
-  useEffect(() => {
-
-    if (isVisible) {
-      camera.current.add(listener);
-      clearTimeout(fadeOut);
-      fadeIn();
-
-    }
-    if (!isVisible) {
-      clearTimeout(fadeIn);
-      fadeOut();
-     
-    }
-   return ()=>{
-    clearTimeout(fadeIn);
-    camera.current.remove(listener);
-    }
-  }, [isVisible]);
-
-  let vol = sound.current ? sound.current.getRefDistance() : 0;
-  
   // useEffect(() => {
 
-  //   sound.current && console.log("station: " + sound.current.getRefDistance())
-  // }, [vol]);
+  //   if (isVisible) {
+  //     camera.current.add(listener);
+  //     clearTimeout(fadeOut);
+  //     fadeIn();
+
+  //   }
+  //   if (!isVisible) {
+  //     clearTimeout(fadeIn);
+  //     fadeOut();
+     
+  //   }
+  //  return ()=>{
+  //   clearTimeout(fadeIn);
+  //   camera.current.remove(listener);
+  //   }
+  // }, [isVisible]);
+
+  // let vol = sound.current ? sound.current.getRefDistance() : 0;
+  
+  // // useEffect(() => {
+
+  // //   sound.current && console.log("station: " + sound.current.getRefDistance())
+  // // }, [vol]);
 
 
 
  
-  return (<positionalAudio ref={sound} args={[listener]}/>)
+  // return (<positionalAudio ref={sound} args={[listener]}/>)
 }
 
 
@@ -178,7 +178,6 @@ function Postcode({ i, el, current, scroll, sectionSize, audio, audioRef }) {
     materials.main.transparent = true;
     materials.main.needsUpdate = true;
 
-
   },[])
  
 
@@ -216,7 +215,10 @@ const [startValue, setStartValue] = useState(0)
 
 useEffect(()=>{
   // Removes all elements in array past index, then adds all of them together
- setStartValue(sectionSize.slice(0, i).reduce((a,b)=> a+b,0))
+  if(sectionSize){
+    setStartValue(sectionSize.slice(0, i).reduce((a,b)=> a+b,0))
+  }
+ 
 },[sectionSize])
 
 

@@ -23,7 +23,9 @@ function Router() {
    <Routes>
       {isMobile ? 
       
-      <Mobile/> : <Redirect/>
+      <Mobile/> : 
+    //   <Redirect/>
+    <Web/>
       
       }
       </Routes>
