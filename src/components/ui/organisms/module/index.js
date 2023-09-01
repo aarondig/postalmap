@@ -43,6 +43,7 @@ const canvas = {
       <Canvas
         gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
         shadows
+        frameloop="demand"
       >
         
         

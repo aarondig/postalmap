@@ -142,7 +142,7 @@ function App() {
       {/* <Wrapper {...wrapper}> */}
       <Navigation {...navigation} />
     
-      <Intro {...loader}/>
+      {/* <Intro {...loader}/> */}
 
       <Routes>
       <Route path={`/`} element={<Loader {...loader}/>} />

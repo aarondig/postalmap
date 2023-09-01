@@ -158,7 +158,7 @@ function Scene({ models, current, loaded, setLoaded }) {
       
         camera={{ position: [0, 1.8, 7], fov: 50 }}
         gl={{ antialias: true }}
-      
+        frameloop="demand"
         // flat={true}
         // dpr={[.1, 1]}
       >
