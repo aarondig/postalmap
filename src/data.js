@@ -301,7 +301,6 @@ export const data = [
 
     type: "view",
   },
-
   {
     id: "station",
     title: "Embankment Station",
@@ -389,7 +388,6 @@ export const data = [
 
     type: "view",
   },
-
   {
     id: "lcc",
     title: "London College of Communication",

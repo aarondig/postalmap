@@ -11,6 +11,8 @@ import Module from "../../../../components/ui/organisms/module";
 import Scroller from "../../../../components/ui/organisms/scroller";
 
 function Page({
+  i,
+  el,
   current,
   setCurrent,
 audio,
@@ -70,9 +72,10 @@ const [sections, setSection] = useState([]);
     audioRef: audioRef,
   };
 
- 
 
   const module = {
+  i: i,
+  el: el,
   scroll: scroll,
 
   current: current,

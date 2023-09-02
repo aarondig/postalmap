@@ -16,11 +16,13 @@ import { InView, useInView } from "react-intersection-observer";
 import Loader from "../../molecules/Loader";
 
 
-function Module({scroll, direct, current, isInView, sectionSize, audio, audioRef}) {
+function Module({i, el, scroll, direct, current, isInView, sectionSize, audio, audioRef}) {
 
-  
+ 
 
 const scenes = {
+  i: i,
+  el: el,
   scroll: scroll,
   direct: direct,
 

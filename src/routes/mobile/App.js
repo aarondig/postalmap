@@ -136,7 +136,7 @@ function App() {
     pointLoad: pointLoad,
     setPointLoad: setPointLoad,
   }
-
+ 
   return (
     <div className="App">
       {/* <Wrapper {...wrapper}> */}
@@ -162,10 +162,11 @@ function App() {
         </Route>
         
         {data.map((el, i) => {
+         
           return (
             <Route
               path={`${basename}/${data[i].id}`}
-              element={<Page {...page} />}
+              element={<Page el={el} i={i} {...page} />}
               key={i}
             />
           );

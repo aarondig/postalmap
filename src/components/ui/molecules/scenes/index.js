@@ -13,10 +13,11 @@ import Intro from "../../../../routes/mobile/pages/intro";
 import Platform from "../../atoms/platform";
 import Station from "../../atoms/station";
 import Lcc from "../../atoms/lcc";
+import Model from "../../atoms/model";
 
 
 
-function Scenes({ current, scroll, isInView, sectionSize, audio, audioRef }) {
+function Scenes({i, el, current, scroll, isInView, sectionSize, audio, audioRef }) {
   const group = useRef();
 
 //   const [scenes, setScenes] = useState([])
@@ -30,6 +31,7 @@ function Scenes({ current, scroll, isInView, sectionSize, audio, audioRef }) {
 //   })
 // },[])
 
+const ref = useRef();
 
   const sceneprops = {
     current: current,
@@ -42,12 +44,16 @@ function Scenes({ current, scroll, isInView, sectionSize, audio, audioRef }) {
  
 
   }
-  
+
 
   return (
-      <group ref={group} >
-        {/* <Suspense fallback={<Loader/>}> */}
-        {data.map((el, i) => {
+      <group ref={group}>
+        <Suspense fallback={<Loader/>}>
+        
+         
+         {/* <Model ref={ref} key={i} el={el} i={i} {...sceneprops}/> */}
+
+         {data.map((el, i) => {
           switch (el.id) {
             default: {
               return null;
@@ -76,7 +82,8 @@ function Scenes({ current, scroll, isInView, sectionSize, audio, audioRef }) {
 
           }
         })}
- {/* </Suspense> */}
+        
+ </Suspense>
       </group>
   );
 }
