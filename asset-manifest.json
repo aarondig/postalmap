@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/postalmap/static/css/main.3f96a5f8.css",
-    "main.js": "/postalmap/static/js/main.89ae1ee4.js",
+    "main.css": "/postalmap/static/css/main.c86d2304.css",
+    "main.js": "/postalmap/static/js/main.d7af6673.js",
     "static/media/embplatform.glb": "/postalmap/static/media/embplatform.7a8f27d41cca58144897.glb",
     "static/media/embpier.glb": "/postalmap/static/media/embpier.0596f48956783a689432.glb",
     "static/media/tunnel.glb": "/postalmap/static/media/tunnel.6d3c99cb14ba9b6a3c2d.glb",
@@ -36,11 +36,11 @@
     "static/media/uniofgreenwich.jpg": "/postalmap/static/media/uniofgreenwich.5d7e6aa958f5b767ca98.jpg",
     "static/media/QRCode.svg": "/postalmap/static/media/QRCode.f91ea5e2584c49e5821e979858c3d961.svg",
     "index.html": "/postalmap/index.html",
-    "main.3f96a5f8.css.map": "/postalmap/static/css/main.3f96a5f8.css.map",
-    "main.89ae1ee4.js.map": "/postalmap/static/js/main.89ae1ee4.js.map"
+    "main.c86d2304.css.map": "/postalmap/static/css/main.c86d2304.css.map",
+    "main.d7af6673.js.map": "/postalmap/static/js/main.d7af6673.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f96a5f8.css",
-    "static/js/main.89ae1ee4.js"
+    "static/css/main.c86d2304.css",
+    "static/js/main.d7af6673.js"
   ]
 }
