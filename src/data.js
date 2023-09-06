@@ -1,17 +1,19 @@
-import postcode from "../src/assets/scans/postcode.glb";
-import tunnel from "../src/assets/scans/tunnel.glb";
-import pier from "../src/assets/scans/pier.glb";
-import lcc from "../src/assets/scans/lcc.glb";
+import postcode from "../src/assets/scans/scenes/postcode.glb";
+import hallway from "../src/assets/scans/scenes/hallway.glb";
+import pier from "../src/assets/scans/scenes/pier.glb";
+import lcc from "../src/assets/scans/scenes/lcc.glb";
 
-import hallway from "../src/assets/scans/hallway.glb";
-import cannon from "../src/assets/scans/cannon.glb";
-import pccar from "../src/assets/scans/pccar.glb";
-import lcstudent from "../src/assets/scans/lcstudent.glb";
+import cannon from "../src/assets/scans/index-items/cannon.glb";
+import pccar from "../src/assets/scans/index-items/pccar.glb";
+import lcstudent from "../src/assets/scans/index-items/lcstudent.glb";
+import train from "../src/assets/scans/index-items/train.glb";
+
 import lcstudents from "../src/assets/scans/lcstudents.glb";
+import tunnel from "../src/assets/scans/tunnel.glb";
 // import pierpay from "../src/assets/scans/pierpay.glb";
 import pierpay from "../src/assets/scans/gppay.glb";
 import gpstudents from "../src/assets/scans/gpstudents.glb";
-import train from "../src/assets/scans/train.glb";
+
 
 import trainseats from "../src/assets/scans/train.glb";
 

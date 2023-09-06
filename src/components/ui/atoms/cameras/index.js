@@ -16,7 +16,7 @@ import Platform from "./platform.js";
 function Cameras({el, ref, camera, isVisible, scroll, remove, startValue}) {
 
   const camprops = {
-     ref: ref,
+    //  ref: ref,
     camera: camera,
     scroll: scroll,
     isVisible: isVisible,

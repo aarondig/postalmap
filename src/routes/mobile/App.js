@@ -50,9 +50,18 @@ function App() {
     });
     return;
   }, []);
+  // useEffect(() => {
+  //   let url = location.pathname;
 
-  
+  //   data.map((el, i) => {
+  //     if (url === `/${basename}/${data[i].id}`) {
+  //       setCurrent(i);
 
+  //       return true;
+  //     } else return false;
+  //   });
+  //   return;
+  // }, [location.pathname]);
 
   // // Startup Function
   // // const [projectHeight, setProjectHeight] = useState(0)

@@ -8,10 +8,6 @@ const Station = forwardRef(function ({camera, isVisible, scroll, remove, startVa
 
 
 // useEffect(()=>{
-//   materials.main.color = new THREE.Color(0x4f4f51);
-//   materials.main.transparent = true;
-//   materials.main.needsUpdate = true;
-//   materials.main.opacity = opacity;
 
 // if (ref.current !== undefined) {
 //   ref.current.position = [-.2, -4.8, 30];
@@ -20,7 +16,6 @@ const Station = forwardRef(function ({camera, isVisible, scroll, remove, startVa
 //   ref.current.scale = 1.8;
 // }
  
-  
 // },[])
 
 

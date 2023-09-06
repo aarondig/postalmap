@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
-import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
+import { useGLTF, PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
 import useWindowSize from "../../../../hooks/windowSize";
 import { WebGLRenderer } from "three";
@@ -170,8 +170,8 @@ function Station({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const camera = useRef();
 
 // IMPORT MODEL
-  const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
-
+  // const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
+  const { nodes, materials } = useGLTF(el.sections[0].object);
 
 // Checks if the scene is Visible
 const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);

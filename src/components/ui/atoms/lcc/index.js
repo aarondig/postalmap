@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
-import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
+import { useGLTF, PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
 import { InView } from "react-intersection-observer";
 
@@ -151,16 +151,6 @@ function Lcc({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const aud = useRef();
   const camera = useRef();
 
-// IMPORT MODEL
-  const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
-
-
-
-  materials[""].map = null;
-  materials[""].color = new THREE.Color(0x4F4F51);
-  materials[""].transparent = true;
-  materials[""].roughness = 1;
-
 // Checks if the scene is Visible
 const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
 
@@ -172,10 +162,26 @@ const [remove, setRemove] = useState(true);
   if (group.current) {
     group.current.visible = remove ? false : true;
   }
+
+
+// IMPORT MODEL
+  // const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
+  const { nodes, materials } = useGLTF(el.sections[0].object);
+  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
+  materials.main.opacity = opacity;
+  
+  useEffect(()=>{
+    materials.main.map = null;
+    materials.main.color = new THREE.Color(0x4f4f51);
+    materials.main.transparent = true;
+    materials.main.needsUpdate = true;
+   
+  },[])
+
+
  
 
-  const { opacity } = useSpring({ opacity: isVisible ? 1 : 0, onRest: () => current !== el.index && setRemove(true) });
-  materials[""].opacity = opacity;
+
 
 // STARTUP
 
@@ -235,7 +241,7 @@ useEffect(()=>{
     
         <mesh
           ref={ref}
-          geometry={nodes.mesh_0.geometry}
+          geometry={nodes.mesh.geometry}
           position={[-2, 1, 0]}
           castShadow
           scale={1.8}
@@ -244,7 +250,7 @@ useEffect(()=>{
           {audio && <Sound isVisible={isVisible} {...soundprops}/>}
           
 
-          <a.meshStandardMaterial {...materials[""]} />
+          <a.meshStandardMaterial {...materials.main} />
         </mesh>
         <Camera {...camprops}/>
         

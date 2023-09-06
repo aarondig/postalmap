@@ -5,7 +5,7 @@ import useWindowSize from "../../../../hooks/windowSize";
 
 const Pier = ({camera, isVisible, scroll, remove, startValue}) => {
 
-  console.log(startValue)
+  
 const position = [0,0, 0]
   
   const {height} = useWindowSize()

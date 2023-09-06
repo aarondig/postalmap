@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import "./App.css";
 
-import cannon from "../../assets/scans/cannon.glb"
+import cannon from "../../assets/scans/index-items/cannon.glb"
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import {

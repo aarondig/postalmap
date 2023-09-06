@@ -38,7 +38,7 @@ function Scroller({
   
 
 
-
+console.log(current)
 
 // // Setting Sections for Project page
 

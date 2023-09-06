@@ -21,7 +21,7 @@ import {
   a as Animated,
 } from "@react-spring/three";
 import { data } from "../../../../data";
-import { OrbitControls, Plane, Float, Preload, AdaptiveDpr } from "@react-three/drei";
+import { useGLTF, OrbitControls, Plane, Float, Preload, AdaptiveDpr } from "@react-three/drei";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Particles } from "../../../../components/ui/molecules/Particles";
 import { Vector3 } from "three";
@@ -35,18 +35,21 @@ function Model({ orbit, model, el, i, current }) {
 
 
   // Loading Models
-  const { nodes, materials } = useLoader(GLTFLoader, el.object);
+  const { nodes, materials } = useGLTF(el.object)
 
+// console.log(modes)
   const { opacity } = useSpring({
     opacity: current === i ? 1 : 0,
     onRest: () => current !== i && setRemove(true),
   });
-  materials.main.map = null;
-  materials.main.color = new THREE.Color(0x404040);
+ 
+  
   useEffect(() => {
    
     if (materials.main !== undefined) {
       materials.main.map = null;
+  materials.main.color = new THREE.Color(0x404040);
+   
       // materials.main.color = new THREE.Color(0xdadada);
       // materials.main.color = new THREE.Color(0xeeeeee);
       materials.main.color = new THREE.Color(0x404040);
@@ -55,12 +58,6 @@ function Model({ orbit, model, el, i, current }) {
       materials.main.opacity = opacity;
       // materials.main.visible = false;
       
-    }
-    if (materials[""] !== undefined) {
-      materials[""].map = null;
-      materials[""].color = new THREE.Color(0x404040);
-      materials[""].transparent = true;
-      materials[""].opacity = opacity;
     }
   },[])
   // Creates Opacity Transition
@@ -79,10 +76,10 @@ function Model({ orbit, model, el, i, current }) {
         orbit.current.update();
       }
     } 
-    // if (i !== current) {
-    //   state.performance.regress();
+    if (i !== current) {
+      state.performance.regress();
       
-    // }
+    }
   });
   useEffect(() => {
 

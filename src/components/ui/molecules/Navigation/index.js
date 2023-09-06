@@ -31,8 +31,9 @@ i === current ?
 }))
 
 const handleNavigate = (e)=> {
-  setCurrent(data[e.target.dataset.key])
+  setCurrent(data[e.target.dataset.key].index)
   navigate(`../${url[1]}/${e.target.dataset.id}`, { replace: true })
+  return toggleActive(!active);
 }
 
 

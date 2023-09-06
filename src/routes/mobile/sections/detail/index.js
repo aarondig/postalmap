@@ -9,9 +9,8 @@ import {
   Environment,
   softShadows,
 } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { a, useSpring } from "react-spring";
-
+import { useGLTF } from "@react-three/drei";
 import { InView } from "react-intersection-observer";
 import Loader from "../../pages/Loader";
 
@@ -45,8 +44,8 @@ function Detail({
     const ref = useRef();
 
 
-    const { nodes, materials } = useLoader(GLTFLoader, el.object);
-    
+    // const { nodes, materials } = useLoader(GLTFLoader, el.object);
+    const { nodes, materials } = useGLTF(el.object);
 
     useEffect(()=>{
       if (materials.main !== undefined) {

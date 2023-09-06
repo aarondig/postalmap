@@ -2,9 +2,9 @@ import React, { useState, useRef, Suspense, useEffect } from "react";
 import "./style.css";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
-import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
+import { useGLTF, PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import useWindowSize from "../../../../hooks/windowSize";
 
 
@@ -172,7 +172,8 @@ function Pier({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const camera = useRef();
 
 // IMPORT MODEL
-  const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
+  // const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
+  const { nodes, materials } = useGLTF(el.sections[0].object);
 
   materials.main.map = null ;
   materials.main.color = new THREE.Color(0x4F4F51);

@@ -2,9 +2,9 @@ import React, { useState, useRef, Suspense, useEffect } from "react";
 import "./style.css";
 import * as THREE from "three";
 import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+// import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
-import { PerspectiveCamera, PositionalAudio } from "@react-three/drei";
+import { useGLTF, PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
 import useWindowSize from "../../../../hooks/windowSize";
 
@@ -169,8 +169,8 @@ function Postcode({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const camera = useRef();
 
   // IMPORT MODEL
-  const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
-
+  // const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
+  const { nodes, materials } = useGLTF(el.sections[0].object);
 
   useEffect(()=>{
     materials.main.map = null;

@@ -31,7 +31,6 @@ function Scenes({i, el, current, scroll, isInView, sectionSize, audio, audioRef 
 //   })
 // },[])
 
-const ref = useRef();
 
   const sceneprops = {
     current: current,
@@ -51,9 +50,9 @@ const ref = useRef();
         <Suspense fallback={<Loader/>}>
         
          
-         {/* <Model ref={ref} key={i} el={el} i={i} {...sceneprops}/> */}
+         <Model  key={i} el={el} i={i} {...sceneprops}/>
 
-         {data.map((el, i) => {
+         {/* {data.map((el, i) => {
           switch (el.id) {
             default: {
               return null;
@@ -81,7 +80,7 @@ const ref = useRef();
 
 
           }
-        })}
+        })} */}
         
  </Suspense>
       </group>
