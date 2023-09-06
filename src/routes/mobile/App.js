@@ -155,8 +155,8 @@ function App() {
       {/* <Intro {...loader}/> */}
 
       <Routes>
-      <Route path={`/`} element={<Loader {...loader}/>} />
-      {/* <Route path={`${basename}`} element={<Intro {...loader}/>} /> */}
+      {/* <Route path={process.env.PUBLIC_URL +`/`} element={<Loader {...loader}/>} /> */}
+      {/* <Route path={process.env.PUBLIC_URL +`/`} element={<Intro {...loader}/>} /> */}
       {/* <Route path={`${basename}/home`} element={<Home {...home} />} /> */}
 
         {/* {data.map((el, i) => {

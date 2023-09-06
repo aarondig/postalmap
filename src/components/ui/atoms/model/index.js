@@ -166,7 +166,7 @@ function Model({ i, el, current, scroll, sectionSize, audio, audioRef }) {
     if (current !== 2) {
       // materials.main.map = null;
     }
-    materials.main.map = null;
+    // materials.main.map = null;
     materials.main.color = new THREE.Color(0x4f4f51);
     materials.main.transparent = true;
     materials.main.opacity = opacity;
