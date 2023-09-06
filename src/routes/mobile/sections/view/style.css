@@ -12,7 +12,7 @@
   transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
 
-    pointer-events: all;
+  
   }
   .inView {
     width: 100%;
@@ -22,17 +22,17 @@
   }
 
   #view .section-wrap {
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
 
     /* padding-left: 0;
     padding-right: 0; */
     /* transform: scale(7); */
     /* transform: translateZ(-1800px) scale(7); */
-    transform: translateZ(-1800px) scale(3.25);
-    /* z-index: 0; */
-z-index: 1;
-pointer-events: all;
+    /* Parallax */
+    /* transform: translateZ(-1800px) scale(3.25); */
+    z-index: 0;
+
   }
 
 #view .text-c {

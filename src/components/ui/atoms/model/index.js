@@ -152,9 +152,9 @@ function Model({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   // Model View Animations
 
   if (group.current) {
+    group.current.visible = false;
     group.current.visible = remove ? false : true;
   }
-
   const { opacity } = useSpring({
     opacity: isVisible ? 1 : 0,
     onRest: () => current !== el.index && setRemove(true),
@@ -166,10 +166,11 @@ function Model({ i, el, current, scroll, sectionSize, audio, audioRef }) {
     if (current !== 2) {
       // materials.main.map = null;
     }
+    materials.main.map = null;
     materials.main.color = new THREE.Color(0x4f4f51);
     materials.main.transparent = true;
-    materials.main.needsUpdate = true;
     materials.main.opacity = opacity;
+    materials.main.needsUpdate = true;
 
    // Postcode
    if (current === 0) {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useFrame } from "@react-three/fiber";
 import { PerspectiveCamera } from "@react-three/drei";
+import useWindowSize from "../../../../hooks/windowSize";
 
 const Lcc = ({camera, isVisible, scroll, remove, startValue}) => {
 

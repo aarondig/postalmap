@@ -26,9 +26,10 @@ function View({
   const navigate = useNavigate();
   const location = useLocation();
   const url = location.pathname.split("/");
-  
 
+ 
   const handleNext = () => {
+
     if (current >= data.length - 1) {
       navigate(`../${url[1]}/${data[0].id}`, { replace: true });
       setCurrent(0);
@@ -71,7 +72,8 @@ function View({
                   <div className="order-btns">
                     <div
                       className="order-btn prev"
-                      onClick={() => handlePrev()}
+                      onTouchEnd={(e) => handlePrev(e)}
+                      // onClick={(e) => handlePrev(e)}
                     >
                       <p>Prev</p>
                     </div>
@@ -80,7 +82,8 @@ function View({
                     </div>
                     <div
                       className="order-btn next"
-                      onClick={() => handleNext()}
+                      onTouchEnd={(e) => handleNext(e)}
+                      // onClick={(e) => handleNext(e)}
                     >
                       <p>Next</p>
                     </div>

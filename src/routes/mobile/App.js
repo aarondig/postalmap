@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, createRef, Suspense } from "react";
+import React, { useRef, useState, useEffect, createRef, Suspense } from "react";
 import "./App.css";
 import Wrapper from "../../components/ui/atoms/Wrapper";
 import Module from "../../components/ui/organisms/module";
@@ -23,6 +23,7 @@ import Page from "./pages/page";
 import Startup from "./pages/startup";
 
 function App() {
+
   const [current, setCurrent] = useState(0);
   
   // Displays which section is visible (USED TO BE Current but tells which section is currently visible)

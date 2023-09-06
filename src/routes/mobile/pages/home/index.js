@@ -42,24 +42,20 @@ function Model({ orbit, model, el, i, current }) {
     opacity: current === i ? 1 : 0,
     onRest: () => current !== i && setRemove(true),
   });
- 
   
-  useEffect(() => {
-   
-    if (materials.main !== undefined) {
-      materials.main.map = null;
+  materials.main.visible = false;
+  materials.main.map = null;
   materials.main.color = new THREE.Color(0x404040);
-   
-      // materials.main.color = new THREE.Color(0xdadada);
-      // materials.main.color = new THREE.Color(0xeeeeee);
-      materials.main.color = new THREE.Color(0x404040);
-      // materials.main.color = new THREE.Color(0x909090);
-      materials.main.transparent = true;
-      materials.main.opacity = opacity;
-      // materials.main.visible = false;
+  materials.main.transparent = true;
+  materials.main.opacity = opacity;
+  // useEffect(() => {
+    
+  //   if (materials.main !== undefined) {
       
-    }
-  },[])
+      
+      
+  //   }
+  // },[])
   // Creates Opacity Transition
   if (materials.main !== undefined) {
   materials.main.visible = i === current ? true : remove && false;
@@ -76,10 +72,10 @@ function Model({ orbit, model, el, i, current }) {
         orbit.current.update();
       }
     } 
-    if (i !== current) {
-      state.performance.regress();
+    // if (i !== current) {
+    //   state.performance.regress();
       
-    }
+    // }
   });
   useEffect(() => {
 
@@ -116,7 +112,7 @@ function Model({ orbit, model, el, i, current }) {
           }
         >
           <Animated.meshStandardMaterial
-            {...(materials.main !== undefined ? materials.main : materials[""])}
+            {...(materials.main)}
           />
         </mesh>
         </Suspense>
