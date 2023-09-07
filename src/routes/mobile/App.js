@@ -1,26 +1,26 @@
 import React, { useRef, useState, useEffect, createRef, Suspense } from "react";
 import "./App.css";
-import Wrapper from "../../components/ui/atoms/Wrapper";
-import Module from "../../components/ui/organisms/module";
-import Project from "./pages/project";
-import Loader from "./pages/Loader";
+// import Wrapper from "../../components/ui/atoms/Wrapper";
+// import Module from "../../components/ui/organisms/module";
+// import Project from "./pages/project";
+// import Loader from "./pages/Loader";
 import Navigation from "../../components/ui/molecules/Navigation";
-import Intro from "./pages/intro";
-import TestCanvas from "./pages/testcanvas";
+// import Intro from "./pages/intro";
+// import TestCanvas from "./pages/testcanvas";
 
 import {
   Routes,
   Route,
   useLocation,
-  useNavigate,
-  useMatch,
-  
 } from "react-router-dom";
 
 import { data } from "../../data";
-import Home from "./pages/home";
-import Page from "./pages/page";
-import Startup from "./pages/startup";
+// import Home from "./pages/home";
+// import Page from "./pages/page";
+// import Startup from "./pages/startup";
+
+const Home = React.lazy(() => import("./pages/home"));
+const Page = React.lazy(() => import("./pages/page"));
 
 function App() {
 
@@ -153,21 +153,9 @@ function App() {
       <Navigation {...navigation} />
     
       {/* <Intro {...loader}/> */}
-
+      <Suspense fallback={<p>loading</p>}>
       <Routes>
-      {/* <Route path={process.env.PUBLIC_URL +`/`} element={<Loader {...loader}/>} /> */}
-      {/* <Route path={process.env.PUBLIC_URL +`/`} element={<Intro {...loader}/>} /> */}
-      {/* <Route path={`${basename}/home`} element={<Home {...home} />} /> */}
-
-        {/* {data.map((el, i) => {
-          return (
-            <Route
-              path={`${basename}/home/${data[i].id}`}
-              element={<Page {...page} />}
-              key={i}
-            />
-          );
-        })} */}
+      
         <Route path={`${basename}`} element={<Home {...home} />}>
         </Route>
         
@@ -184,7 +172,7 @@ function App() {
       
 
       </Routes>
-      
+      </Suspense>
       {/* {started && 
       <TestCanvas {...points}/>
       }

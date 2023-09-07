@@ -7,8 +7,10 @@ import React, {
   useLayoutEffect,
 } from "react";
 import "./style.css";
-import Module from "../../../../components/ui/organisms/module";
-import Scroller from "../../../../components/ui/organisms/scroller";
+
+
+const Scroller = React.lazy(() => import("../../../../components/ui/organisms/scroller"));
+const Module = React.lazy(() => import("../../../../components/ui/organisms/module"));
 
 function Page({
   i,
@@ -87,9 +89,12 @@ const [sections, setSection] = useState([]);
 }
   return (
     <div id="page">
+        
       <Scroller {...scroller}/>
-      
+
+      <Suspense fallback={<div>Loading...</div>}>
       <Module {...module}/>
+      </Suspense>
     </div>
   );
 }

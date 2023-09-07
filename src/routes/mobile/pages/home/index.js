@@ -1,11 +1,5 @@
-import React, { useState, useRef, Suspense, useEffect, createRef } from "react";
+import React, { useState, useEffect, createRef, Suspense } from "react";
 import "./style.css";
-import { Canvas, useFrame, useLoader, useThree } from "@react-three/fiber";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import * as THREE from "three";
-import { useControls } from "leva";
-
-// import {
 //   a,
 //   useSpring,
 //   useSprings,
@@ -16,174 +10,14 @@ import { a, easings } from "react-spring";
 import {
   useSpring,
   useSprings,
-  useSpringRef,
-  useChain,
   a as Animated,
 } from "@react-spring/three";
 import { data } from "../../../../data";
-import { useGLTF, OrbitControls, Plane, Float, Preload, AdaptiveDpr } from "@react-three/drei";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { Particles } from "../../../../components/ui/molecules/Particles";
-import { Vector3 } from "three";
-import Loader from "../../../../components/ui/molecules/Loader";
+import { useNavigate } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
+import Loader from "../Loader";
 
-function Model({ orbit, model, el, i, current }) {
-  const group = useRef();
-
-  const [remove, setRemove] = useState(false);
-
-
-  // Loading Models
-  const { nodes, materials } = useGLTF(el.object)
-
-// console.log(modes)
-  const { opacity } = useSpring({
-    opacity: current === i ? 1 : 0,
-    onRest: () => current !== i && setRemove(true),
-  });
-  
-  materials.main.visible = false;
-  materials.main.map = null;
-  materials.main.color = new THREE.Color(0x404040);
-  materials.main.transparent = true;
-  materials.main.opacity = opacity;
-  // useEffect(() => {
-    
-  //   if (materials.main !== undefined) {
-      
-      
-      
-  //   }
-  // },[])
-  // Creates Opacity Transition
-  if (materials.main !== undefined) {
-  materials.main.visible = i === current ? true : remove && false;
-  }
-
-
-  useFrame((state) => {
-    if (i === current) {
-      if (orbit.current !== undefined) {
-        orbit.current.target.lerp(
-          nodes.mesh.geometry.boundingSphere.center,
-          0.01
-        );
-        orbit.current.update();
-      }
-    } 
-    // if (i !== current) {
-    //   state.performance.regress();
-      
-    // }
-  });
-  useEffect(() => {
-
-    if (i === current) {
-      //Sets Loading True for Model
-      // setLoad(true);
-      //Resets Orbit Controls on mount
-      if (orbit.current !== undefined) {
-        orbit.current.reset();
-      }
-      
-    }
-    
-  }, [current]);
- 
-
-
-
-  return (
-    <group ref={group} position={[0, el.posiY, 0]} scale={el.scale}>
-      <Float
-        speed={1.2} // Animation speed, defaults to 1
-        rotationIntensity={0.8} // XYZ rotation intensity, defaults to 1
-        floatIntensity={0.4} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
-        floatingRange={[0, 1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
-      >
-        <Suspense key={i} fallback={<Loader />}>
-        <mesh
-          ref={model}
-          geometry={
-            nodes.mesh !== undefined
-              ? nodes.mesh.geometry
-              : nodes.mesh_0.geometry
-          }
-        >
-          <Animated.meshStandardMaterial
-            {...(materials.main)}
-          />
-        </mesh>
-        </Suspense>
-      </Float>
-    </group>
-  );
-}
-// Scales for performance
-
-function Scene({ models, current, loaded, setLoaded }) {
-  const orbit = useRef();
-  const group = useRef();
-
-  const model = {
-    orbit: orbit,
-    current: current,
-  };
-
-  let count = 0;
-
-  const { scale } = useSpring({
-    scale: loaded ? 1 : 0,
-    delay: 200,
-    config: {
-      easing: easings.easeInOutExpo,
-      duration: 1200,
-    },
-  });
-
-
-
-  return (
-    <div id="canvas" className="home">
-      <Canvas
-      // camera={{ position: [0, 1.8, 6.4], fov: 25 }}
-      
-        camera={{ position: [0, 1.8, 7], fov: 50 }}
-        gl={{ antialias: true }}
-        frameloop="demand"
-        // flat={true}
-        // dpr={[.1, 1]}
-      >
-        <fog attach="fog" args={["black", 0, 20]} />
-        <pointLight position={[0, 1, 4]} intensity={0.2} />
-   
-        <directionalLight position={[0, .2, 0]} intensity={1.2} />
-        <Animated.group ref={group} scale={scale}>
-          {data.map((el, i) => {
-            if (el.type === "view") {
-              return (
-                <Suspense key={i} fallback={<Loader setLoaded={setLoaded}/>}>
-                  <Model
-                    el={el}
-                    i={count++}
-                    model={models[i]}
-                    {...model}
-                  />
-                  
-                </Suspense>
-              );
-            }
-          })}
-        </Animated.group>
-
-        <OrbitControls ref={orbit} autoRotate autoRotateSpeed={.4}/>
-        <AdaptiveDpr pixelated/>
-        <Preload all/>
-      </Canvas>
-    </div>
-  );
-}
+const Scene = React.lazy(() => import("./scene"));
 
 function Home({ current, setCurrent, basename }) {
   //Startup Function
@@ -327,6 +161,7 @@ const slideup = useSpring(
   let count = -1;
   return (
     <div id="home">
+      
       <a.div className="section-wrap" style={slideup} {...handlers}>
         <div className="info-c">
           {data.map((el, i) => {
@@ -377,7 +212,9 @@ const slideup = useSpring(
           </ul>
         </a.div>
       </a.div>
+      <Suspense fallback={<p>loading</p>}>
       <Scene {...scene} />
+      </Suspense>
     </div>
   );
 }
