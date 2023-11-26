@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/postalmap/static/css/main.ba2ad0ee.css",
-    "main.js": "/postalmap/static/js/main.dae7a5b2.js",
+    "main.js": "/postalmap/static/js/main.6ed4d5e2.js",
     "static/css/137.4c44ec4a.chunk.css": "/postalmap/static/css/137.4c44ec4a.chunk.css",
     "static/js/137.2395d0c7.chunk.js": "/postalmap/static/js/137.2395d0c7.chunk.js",
     "static/css/455.31d6cfe0.chunk.css": "/postalmap/static/css/455.31d6cfe0.chunk.css",
@@ -46,7 +46,7 @@
     "static/media/QRCode.svg": "/postalmap/static/media/QRCode.f91ea5e2584c49e5821e979858c3d961.svg",
     "index.html": "/postalmap/index.html",
     "main.ba2ad0ee.css.map": "/postalmap/static/css/main.ba2ad0ee.css.map",
-    "main.dae7a5b2.js.map": "/postalmap/static/js/main.dae7a5b2.js.map",
+    "main.6ed4d5e2.js.map": "/postalmap/static/js/main.6ed4d5e2.js.map",
     "137.4c44ec4a.chunk.css.map": "/postalmap/static/css/137.4c44ec4a.chunk.css.map",
     "137.2395d0c7.chunk.js.map": "/postalmap/static/js/137.2395d0c7.chunk.js.map",
     "455.204893ac.chunk.js.map": "/postalmap/static/js/455.204893ac.chunk.js.map",
@@ -58,6 +58,6 @@
   },
   "entrypoints": [
     "static/css/main.ba2ad0ee.css",
-    "static/js/main.dae7a5b2.js"
+    "static/js/main.6ed4d5e2.js"
   ]
 }
