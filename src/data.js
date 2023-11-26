@@ -414,7 +414,7 @@ export const data = [
     id: "lcc",
     title: "London College of Communication",
     subtitle: "/ London College of Communication",
-    text: "Your destination is the epicenter of creative student culture in Elephant and Castle.",
+    text: "The destination is a center of creative student culture in Elephant and Castle.",
     number: "02",
 
     index: 0,
