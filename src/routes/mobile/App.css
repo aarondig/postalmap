@@ -141,7 +141,7 @@ max-width: 40%;
   .order-btn {
     font-size: 18px;
     color: white;
-    
+    touch-action: auto;
    
   }
   .order-btn.next{

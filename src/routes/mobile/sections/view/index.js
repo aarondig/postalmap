@@ -70,23 +70,23 @@ function View({
                 <h2 className="title">{el.title}</h2>
                 <div className="order-btns row">
                   <div className="order-btns">
-                    <div
+                    <a
                       className="order-btn prev"
-                      onTouchStart={(e) => handlePrev(e)}
+                      onTouchEnd={(e) => handlePrev(e)}
                       // onClick={(e) => handlePrev(e)}
                     >
                       <p>Prev</p>
-                    </div>
+                    </a>
                     <div className="order-btn">
                       <p>/</p>
                     </div>
-                    <div
+                    <a
                       className="order-btn next"
-                      onTouchStart={(e) => handleNext(e)}
+                      onTouchEnd={(e) => handleNext(e)}
                       // onClick={(e) => handleNext(e)}
                     >
                       <p>Next</p>
-                    </div>
+                    </a>
                   </div>
                 </div>
               </div>

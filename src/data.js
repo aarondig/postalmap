@@ -51,7 +51,7 @@ export const data = [
     title: "Postal Code",
     subtitle: "/ Postal Code - SE10-9DD",
     text: [
-      "Situated on the southern bank of the River Thames, its architecture is reminiscent of an older, grittier, Greenwich.",
+      "Situated on the south bank of the River Thames, its architecture is reminiscent of an older, grittier, Greenwich.",
     ],
     number: "01",
 
