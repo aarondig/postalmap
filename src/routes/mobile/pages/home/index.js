@@ -7,15 +7,11 @@ import "./style.css";
 //   useTransition,
 // } from "react-spring";
 import { a, easings } from "react-spring";
-import {
-  useSpring,
-  useSprings,
-  a as Animated,
-} from "@react-spring/three";
+import { useSpring, useSprings, a as Animated } from "@react-spring/three";
 import { data } from "../../../../data";
 import { useNavigate } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
-import Loader from "../Loader";
+// import Loader from "../Loader";
 
 const Scene = React.lazy(() => import("./scene"));
 
@@ -32,9 +28,7 @@ function Home({ current, setCurrent, basename }) {
     {
       data.map((el, i) => {
         let count = 0;
-        if (el.type === "view") {
-          modelcount.push(count + 1);
-        }
+        modelcount.push(count + i);
       });
     }
     setModels((models) =>
@@ -42,6 +36,7 @@ function Home({ current, setCurrent, basename }) {
         .fill()
         .map((el, i) => models[i] || createRef())
     );
+
     setLoaded(true);
   }, []);
 
@@ -70,27 +65,22 @@ function Home({ current, setCurrent, basename }) {
   };
   // Swipeable
   const handlers = useSwipeable({
-    onSwipedLeft: ()=> handleNext(),
-    onSwipedRight: ()=> handlePrev(),
-  })
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+  });
 
-
-  
   // Animations
-const slideup = useSpring(
-  {
-       opacity: loaded ? 1 : 0, 
-       transform: loaded ? "translateY(0vh)" : "translateY(100vh)",
-       delay: 100,
-       config: {
-         duration: 1200,
-         tension: 120,
-         friction: 14,
-         easing: easings.easeInBounce,
-       },
-     }
-    
-   );
+  const slideup = useSpring({
+    opacity: loaded ? 1 : 0,
+    transform: loaded ? "translateY(0vh)" : "translateY(100vh)",
+    delay: 100,
+    config: {
+      duration: 1200,
+      tension: 120,
+      friction: 14,
+      easing: easings.easeInBounce,
+    },
+  });
 
   const line1 = useSpring({
     from: { opacity: 0, transform: "translateY(20px)" },
@@ -161,7 +151,6 @@ const slideup = useSpring(
   let count = -1;
   return (
     <div id="home">
-      
       <a.div className="section-wrap" style={slideup} {...handlers}>
         <div className="info-c">
           {data.map((el, i) => {
@@ -213,7 +202,7 @@ const slideup = useSpring(
         </a.div>
       </a.div>
       <Suspense fallback={<p>loading</p>}>
-      <Scene {...scene} />
+        <Scene {...scene} />
       </Suspense>
     </div>
   );

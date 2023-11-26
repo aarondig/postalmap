@@ -9,132 +9,16 @@ import { Canvas, useFrame, useThree, useLoader } from "@react-three/fiber";
 // import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useSpring, a } from "@react-spring/three";
 import { useGLTF, PerspectiveCamera, PositionalAudio } from "@react-three/drei";
+import useWindowSize from "../../../../hooks/windowSize";
 import Cameras from "../cameras/index.js";
 
-// function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
-//   // const sound = useRef()
-//   // const [listener] = useState(() => new THREE.AudioListener())
-//   // const buffer = useLoader(THREE.AudioLoader, el.audio)
-
-//   // useEffect(()=>{
-//   //   sound.current.setBuffer(buffer);
-//   //   sound.current.setRefDistance(0);
-//   //   return () => {
-//   //     fadeOut();
-//   //   };
-//   // },[]);
-
-//   // function playSound() {
-
-//   //   var source = listener.context.createBufferSource();
-//   //   source.connect(listener.context.destination);
-//   //   source.start();
-//   // }
-
-//   // audioRef.current.addEventListener('click', function() {
-//   //   if (!audio) {
-//   //     if (!sound.current.isPlaying) {
-//   //       playSound();
-//   //     }
-
-//   //   }
-//   //   if (audio) {
-//   //     sound.current.pause();
-//   //     sound.current.stop();
-//   //   }
-//   // });
-
-//   // //SOUND START/CLEANUP
-
-//   // var fadeIn = () =>
-//   //   setTimeout(function () {
-//   //     if (sound.current !== undefined) {
-
-//   //     let volume = sound.current.getRefDistance();
-
-//   //     if (!sound.current.isPlaying) {
-//   //       sound.current.play();
-//   //     }
-
-//   //     if (volume < 1) {
-//   //       sound.current.setRefDistance(volume + 0.01);
-//   //       if (isVisible) {
-//   //         fadeIn();
-//   //       }
-//   //       if (!isVisible) {
-//   //         clearTimeout(fadeIn);
-//   //       }
-//   //     }
-//   //     if (volume >= 1) {
-//   //       sound.current.setRefDistance(1);
-//   //       clearTimeout(fadeIn);
-//   //     }
-//   //   }
-//   //     clearTimeout(fadeIn);
-//   //   }, 10);
-
-//   // var fadeOut = () =>
-//   //   setTimeout(function () {
-//   //     if (sound.current !== undefined) {
-//   //     let volume = Math.abs(sound.current.getRefDistance());
-
-//   //     if (volume > 0) {
-//   //       sound.current.setRefDistance(Math.abs(volume - 0.01));
-//   //       if (!isVisible) {
-//   //         fadeOut();
-
-//   //       }
-//   //       if (isVisible) {
-//   //         camera.current.remove(listener);
-//   //         sound.current.setRefDistance(0);
-//   //         clearTimeout(fadeOut);
-//   //       }
-//   //     }
-//   //     if (volume <= 0.1) {
-//   //       sound.current.setRefDistance(0);
-//   //       sound.current.pause();
-//   //       camera.current.remove(listener);
-//   //       clearTimeout(fadeOut);
-//   //     }
-//   //   }
-//   //     clearTimeout(fadeOut);
-//   //   }, 10);
-
-//   // useEffect(() => {
-
-//   //   if (isVisible) {
-//   //     camera.current.add(listener);
-//   //     clearTimeout(fadeOut);
-//   //     fadeIn();
-
-//   //   }
-//   //   if (!isVisible) {
-//   //     clearTimeout(fadeIn);
-//   //     fadeOut();
-
-//   //   }
-//   //  return ()=>{
-//   //   clearTimeout(fadeIn);
-//   //   camera.current.remove(listener);
-//   //   }
-//   // }, [isVisible]);
-
-//   // let vol = sound.current ? sound.current.getRefDistance() : 0;
-
-//   // // useEffect(() => {
-
-//   // //   sound.current && console.log("station: " + sound.current.getRefDistance())
-//   // // }, [vol]);
-
-//   // return (<positionalAudio ref={sound} args={[listener]}/>)
-// }
 
 function Model({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const ref = useRef();
   const group = useRef();
-  // const aud = useRef();
   const camera = useRef();
 
+  console.log(el)
 
   // IMPORT MODEL
 
@@ -163,7 +47,7 @@ function Model({ i, el, current, scroll, sectionSize, audio, audioRef }) {
     // if (current !== 2) {
     //   // materials.main.map = null;
     // }
-    materials.main.map = null;
+    // materials.main.map = null;
     materials.main.color = new THREE.Color(0x4f4f51);
     materials.main.transparent = true;
     materials.main.opacity = opacity;

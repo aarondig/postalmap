@@ -157,6 +157,7 @@ gap: 32px;
     /* border-radius: 100%; */
   }
   #navigation .content-box {
+    height: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

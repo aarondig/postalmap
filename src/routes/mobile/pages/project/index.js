@@ -15,6 +15,7 @@ import Detail from "../../sections/detail";
 import Module from "../../../../components/ui/organisms/module";
 import Slider from "../../sections/slider";
 import Title from "../../sections/title";
+import Button from "../../sections/button";
 
 function Project({
   scroll,
@@ -107,6 +108,7 @@ function Project({
   return (
     <div id="project" ref={scrollContainer} onScroll={onScroll}>
       {data.map((el, i) => {
+         
         switch (el.type) {
           default: {
             return <div className="space" key={i} />;
@@ -151,6 +153,11 @@ function Project({
           case "slider": {
             return (
               <Slider key={i} i={i} el={el} section={sections[i]} {...detail} />
+            );
+          }
+          case "button": {
+            return (
+              <Button key={i} i={i} el={el} section={sections[i]} {...detail} />
             );
           }
         }

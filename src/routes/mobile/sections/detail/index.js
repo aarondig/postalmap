@@ -61,8 +61,8 @@ function Detail({
     },[])
     
     // const [scale,setScale] = useState()
-    const [position,setPosition] = useState()
-    const [rotation, setRotation] = useState(0)
+    // const [position,setPosition] = useState()
+    // const [rotation, setRotation] = useState(0)
    
 
     useFrame(() => {
@@ -102,10 +102,11 @@ function Detail({
         // setRotation(11.6)
       }
       if (el.id === "cannon") {
-        let scale = 6.5;
-        ref.current.scale.x = scale;
-        ref.current.scale.y = scale;
-        ref.current.scale.z = scale;
+        // let scale = 6.5;
+        // ref.current.scale.x = scale;
+        // ref.current.scale.y = scale;
+        // ref.current.scale.z = scale;
+
         // setScale(2.5)
         ref.current.position.y = -1;
         // setRotation(-.8)
@@ -134,12 +135,17 @@ function Detail({
 
     const mesh = {
       ref: ref,
-      material: materials.main !== undefined ? materials.main : materials[""],
-      geometry: nodes.mesh !== undefined ? nodes.mesh.geometry : nodes.mesh_0.geometry,
+      // material: materials.main !== undefined ? materials.main : materials[""],
+      // geometry: nodes.mesh !== undefined ? nodes.mesh.geometry : nodes.mesh_0.geometry,
+      material: materials.main,
+      geometry: nodes.mesh.geometry,
+
+
       // position: position,
       // scale: scale,
     
     }
+
 
 
     return (

@@ -8,59 +8,50 @@ import React, {
 } from "react";
 import "./style.css";
 
-
-const Scroller = React.lazy(() => import("../../../../components/ui/organisms/scroller"));
-const Module = React.lazy(() => import("../../../../components/ui/organisms/module"));
+const Scroller = React.lazy(() =>
+  import("../../../../components/ui/organisms/scroller")
+);
+const Module = React.lazy(() =>
+  import("../../../../components/ui/organisms/module")
+);
 
 function Page({
   i,
   el,
   current,
   setCurrent,
-audio,
+  audio,
   audioRef,
   visibleSection,
   setVisibleSection,
 }) {
+  // SCROLL RIG
+  const scrollContainer = useRef();
+  const [scroll, setScroll] = useState();
 
- // SCROLL RIG
-  const scrollContainer = useRef()
-  const [scroll, setScroll] = useState()
-  
-    const onScroll = (e) => {
-      setScroll(e.target.scrollTop);
+  const onScroll = (e) => {
+    setScroll(e.target.scrollTop);
+  };
 
-    };
+  useEffect(() => void onScroll({ target: scrollContainer.current }), []);
 
-    useEffect(() => void onScroll({ target: scrollContainer.current }), []);
-
-
-// // Setting Sections for Project page
-const [sections, setSection] = useState([]);
+  // // Setting Sections for Project page
+  const [sections, setSection] = useState([]);
   const [sectionSize, setSectionSize] = useState([]);
 
   const [projectHeight, setProjectHeight] = useState();
 
-
-
-
-
-
-
-
-
   const scroller = {
-
     current: current,
     setCurrent: setCurrent,
     scroll: scroll,
     onScroll: onScroll,
+    setScroll: setScroll,
     scrollContainer: scrollContainer,
 
     visibleSection: visibleSection,
     setVisibleSection: setVisibleSection,
 
-    
     // isInView: isInView,
     // setIsInView: setIsInView,
 
@@ -73,28 +64,26 @@ const [sections, setSection] = useState([]);
     audio: audio,
     audioRef: audioRef,
   };
-
-
+  console.log(scroll)
   const module = {
-  i: i,
-  el: el,
-  scroll: scroll,
+    i: i,
+    el: el,
+    scroll: scroll,
 
-  current: current,
-  // isInView: isInView,
-  sectionSize: sectionSize,
+    current: current,
+    // isInView: isInView,
+    sectionSize: sectionSize,
 
-  audio: audio,
-  audioRef: audioRef,
-}
+    audio: audio,
+    audioRef: audioRef,
+  };
   return (
     <div id="page">
-        
-      <Scroller {...scroller}/>
+      <Scroller {...scroller} />
 
-      <Suspense fallback={<div>Loading...</div>}>
-      <Module {...module}/>
-      </Suspense>
+        <Module {...module} />
+
+        
     </div>
   );
 }

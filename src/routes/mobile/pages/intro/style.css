@@ -4,7 +4,8 @@
     position: fixed;
   width: 100vw;
   height: 100vh;
-background: #050505;
+/* background: #050505; */
+background: #161717;
   z-index: 2;
   }
 #intro-wrap {
@@ -56,18 +57,27 @@ height: 100%;
   }
   #intro .letter {
     /* font-size: 74px; */
+    font-family: 'El Messiri', sans-serif;
+    color: #fff;
+
     font-size: 18.5vw;
+    font-weight: 400;
     line-height: normal;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-self: center;
-    padding-top: 12%;
+   margin: 0;
+   opacity: 0;
+    /* padding-top: 12%; */
   }
+
+  
 
 
   #intro .svg-c {
-    margin-top: 4vh;
+    position: absolute;
+    /* margin-top: 2vh; */
     box-sizing: border-box;
     align-self: center;
     display: flex;
@@ -113,11 +123,12 @@ height: 100%;
     
   }
 
-  #intro .section-wrap {
+  /* #intro .section-wrap {
     padding-top: 6vh;
+    padding: 50px 10% 50px 10%;
 
     
-  }
+  } */
   #intro .text-c {
     gap: 0px;
    
@@ -197,9 +208,19 @@ z-index: 0;
   box-sizing: border-box;
   width: 100%;
   min-height: 36vh;
-  padding-top: 6vh;
- 
+  /* padding-top: 6vh; */
+ align-items: center;
+ flex: 2;
  
 }
+
+
+.letters-c {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+}
+
   
 }

@@ -138,6 +138,18 @@ export const data = [
       },
       {
         id: "description",
+        title: null,
+        subtitle: null,
+        text: [
+          "These are artifacts of the neighborhood's maritime history, which was once a center for aspirational officers in the Royal Navy.",
+        ],
+        number: "02",
+        index: 0,
+        lightMode: "dark",
+        type: "text",
+      },
+      {
+        id: "description",
         title: "Approach Greenwich Pier",
         subtitle: "",
         text: [
@@ -148,6 +160,14 @@ export const data = [
 
         lightMode: "dark",
         type: "text",
+      },
+      {
+        id: "button",
+        title: "next",
+        subtitle: "",
+        index: 0,
+        lightMode: "dark",
+        type: "button",
       },
     ],
 

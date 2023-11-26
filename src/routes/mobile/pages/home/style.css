@@ -24,11 +24,13 @@
     /* background: #151515; */
     padding-top: 0px;
     padding-bottom: 20px;
-    
+    padding: 50px 10% 50px 10%;
+    background: #161717;
   }
   #home .info-c {
-    padding-top: 60px;
-    height: 26vh;
+    /* padding-top: 60px; */
+    height: 24vh;
+  
     /* opacity: 0; */
     /* padding-bottom:20px; */
    
@@ -85,6 +87,7 @@
     /* justify-content: space-between; */
     gap: 12px;
     align-items: center;
+    padding: 0;
   
   }
   

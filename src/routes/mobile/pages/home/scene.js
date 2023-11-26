@@ -57,13 +57,14 @@ function Scene({ models, current, loaded, setLoaded }) {
               return (
                 <Suspense key={i} fallback={<Loader setLoaded={setLoaded}/>}>
                   <Model
+          
                     el={el}
                     i={count++}
                     model={models[i]}
                     {...model}
                   />
                   
-                </Suspense>
+                 </Suspense>
               );
             }
           })}

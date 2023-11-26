@@ -16,12 +16,14 @@ import Detail from "../../../../routes/mobile/sections/detail";
 import Module from "../module";
 import Slider from "../../../../routes/mobile/sections/slider";
 import Title from "../../../../routes/mobile/sections/title";
+import Button from "../../../../routes/mobile/sections/button";
 
 function Scroller({
   current,
   setCurrent,
   scroll,
   onScroll,
+  setScroll,
   scrollContainer,
   
   setIsInView,
@@ -76,6 +78,7 @@ function Scroller({
 
   const view = {
     scroll: scroll,
+    setScroll: setScroll,
     scrollContainer: scrollContainer,
 
     current: current,
@@ -111,6 +114,7 @@ function Scroller({
 
     setVisibleSection: setVisibleSection,
   };
+
   return (
     <div id="scroller" ref={scrollContainer} onScroll={onScroll}>
       {data[current].sections.map((el, i) => {
@@ -163,6 +167,11 @@ function Scroller({
           case "slider": {
             return (
               <Slider key={i} i={i} el={el} section={sections[i]} {...detail} />
+            );
+          }
+          case "button": {
+            return (
+              <Button key={i} i={i} el={el} section={sections[i]} {...view} />
             );
           }
         }

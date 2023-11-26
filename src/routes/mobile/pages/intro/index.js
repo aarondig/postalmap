@@ -119,7 +119,7 @@ function Intro({ loading, setLoading, handleStart }) {
       }
 
       // setTimeout(() => setCounter(counter + 1), 30);
-      setTimeout(() => setCounter(counter + 0.2), 30);
+      setTimeout(() => setCounter(counter + 0.4), 30);
     }
     if (counter >= 99.8) {
       //Prevents gap in svg circle on completion

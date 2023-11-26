@@ -47,12 +47,12 @@ function Scenes({i, el, current, scroll, isInView, sectionSize, audio, audioRef 
 
   return (
       <group ref={group}>
-        <Suspense fallback={<Loader/>}>
+       
         
          
-         <Model  key={i} el={el} i={i} {...sceneprops}/>
+         {/* <Model  key={i} el={el} i={i} {...sceneprops}/> */}
 
-         {/* {data.map((el, i) => {
+         {data.map((el, i) => {
           switch (el.id) {
             default: {
               return null;
@@ -80,9 +80,9 @@ function Scenes({i, el, current, scroll, isInView, sectionSize, audio, audioRef 
 
 
           }
-        })} */}
+        })}
         
- </Suspense>
+
       </group>
   );
 }

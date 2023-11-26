@@ -5,7 +5,7 @@ import "./App.css";
 // import Project from "./pages/project";
 // import Loader from "./pages/Loader";
 import Navigation from "../../components/ui/molecules/Navigation";
-// import Intro from "./pages/intro";
+import Intro from "./pages/intro";
 // import TestCanvas from "./pages/testcanvas";
 
 import {
@@ -23,7 +23,7 @@ const Home = React.lazy(() => import("./pages/home"));
 const Page = React.lazy(() => import("./pages/page"));
 
 function App() {
-
+ 
   const [current, setCurrent] = useState(0);
   
   // Displays which section is visible (USED TO BE Current but tells which section is currently visible)
@@ -51,6 +51,8 @@ function App() {
     });
     return;
   }, []);
+
+  
   // useEffect(() => {
   //   let url = location.pathname;
 
@@ -152,7 +154,7 @@ function App() {
       {/* <Wrapper {...wrapper}> */}
       <Navigation {...navigation} />
     
-      {/* <Intro {...loader}/> */}
+      <Intro {...loader}/>
       <Suspense fallback={<p>loading</p>}>
       <Routes>
       
@@ -173,6 +175,8 @@ function App() {
 
       </Routes>
       </Suspense>
+
+      
       {/* {started && 
       <TestCanvas {...points}/>
       }

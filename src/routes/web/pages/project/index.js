@@ -6,6 +6,7 @@ import View from "../../sections/view";
 import Image from "../../sections/image";
 import Detail from "../../sections/detail";
 import Module from "../../../../components/ui/organisms/module";
+import Button from "../../../mobile/sections/button";
 
 function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent  }) {
 
@@ -44,7 +45,6 @@ function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent 
 
 
   useEffect(()=>{
-    
     slowFixed.current.map((el, i)=>{
       el.style.transform = `translateY(${-scroll*.3}px)`
     })
@@ -92,12 +92,13 @@ function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent 
     slowFixed: slowFixed,
 
   }
-
+  
 
   return (
     <div id="project" ref={scrollContainer} onScroll={onScroll}>
      <div className="scroll-container" ref={scrollContent}>
       {data.map((el, i) => {
+       
         switch (el.type) {
           default: {
             return <div className="space" key={i} />;
@@ -130,6 +131,11 @@ function Project({ scroll, onScroll, scrollContainer, scrollContent, setCurrent 
               <>
                 <Detail key={i} i={i} el={el} section={section[i]} {...detail}/>
               </>
+            );
+          }
+          case "button": {
+            return (
+              <Button key={i} i={i} el={el} section={section[i]} {...detail} />
             );
           }
         }

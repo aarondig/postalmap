@@ -50,10 +50,10 @@ function Module({
         />
 
         <fog attach="fog" args={["#17171b", 40, 80]} />
-        <Suspense fallback={<Loader />}>
+        {/* <Suspense fallback={<Loader />}> */}
           <Scenes {...scenes} />
          <Preload all/>
-        </Suspense>
+        {/* </Suspense> */}
       </Canvas>
     </div>
   );
