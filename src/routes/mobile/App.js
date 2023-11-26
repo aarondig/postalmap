@@ -154,7 +154,7 @@ function App() {
       {/* <Wrapper {...wrapper}> */}
       <Navigation {...navigation} />
     
-      {/* <Intro {...loader}/> */}
+      <Intro {...loader}/>
       <Suspense fallback={<p>loading</p>}>
       <Routes>
       
