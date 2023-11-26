@@ -72,7 +72,7 @@ function View({
                   <div className="order-btns">
                     <div
                       className="order-btn prev"
-                      onTouchEnd={(e) => handlePrev(e)}
+                      onTouchStart={(e) => handlePrev(e)}
                       // onClick={(e) => handlePrev(e)}
                     >
                       <p>Prev</p>
@@ -82,7 +82,7 @@ function View({
                     </div>
                     <div
                       className="order-btn next"
-                      onTouchEnd={(e) => handleNext(e)}
+                      onTouchStart={(e) => handleNext(e)}
                       // onClick={(e) => handleNext(e)}
                     >
                       <p>Next</p>

@@ -21,17 +21,14 @@
 
   #home .section-wrap {
      position: relative;
-    /* background: #151515; */
-    padding-top: 0px;
-    padding-bottom: 20px;
     padding: 50px 10% 50px 10%;
     background: #161717;
-    /* display: flex; */
-    gap:12px;
+
+    padding-bottom: calc(80px - 12%) !important;
   }
   #home .info-c {
     /* padding-top: 60px; */
-    height: 22svh;
+    height: 24svh;
   
     /* opacity: 0; */
     /* padding-bottom:20px; */
@@ -65,7 +62,7 @@
     
     max-width: 100%;
     color: #707070;
-    margin-bottom: 16%;
+    /* margin-bottom: 16%; */
     line-height: 1.4em;
     opacity: 0;
     overflow: hidden;

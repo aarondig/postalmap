@@ -52,7 +52,7 @@ function App() {
     return;
   }, []);
 
-  
+
   // useEffect(() => {
   //   let url = location.pathname;
 
@@ -154,7 +154,7 @@ function App() {
       {/* <Wrapper {...wrapper}> */}
       <Navigation {...navigation} />
     
-      <Intro {...loader}/>
+      {/* <Intro {...loader}/> */}
       <Suspense fallback={<p>loading</p>}>
       <Routes>
       
