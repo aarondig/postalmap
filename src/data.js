@@ -51,7 +51,7 @@ export const data = [
     title: "Postal Code",
     subtitle: "/ Postal Code - SE10-9DD",
     text: [
-      "Situated on the south bank of the River Thames, its architecture is reminiscent of an older, grittier, Greenwich.",
+      "On the south bank of the Thames, its architecture is reminiscent of an older, grittier, Greenwich.",
     ],
     number: "01",
 
@@ -177,7 +177,7 @@ export const data = [
     id: "pier",
     title: "Greenwich Pier",
     subtitle: "/ Greenwich Pier",
-    text: "Located next to Greenwich University, indulge in this immersive environment while you que for the Uber Boat.",
+    text: "Next to Greenwich University, immerse yourself in student culture while you que for the Uber Boat.",
     number: "02",
 
     index: 0,
@@ -414,7 +414,7 @@ export const data = [
     id: "lcc",
     title: "London College of Communication",
     subtitle: "/ London College of Communication",
-    text: "The destination is a center of creative student culture in Elephant and Castle.",
+    text: "The center of creative student culture in Elephant and Castle.",
     number: "02",
 
     index: 0,
