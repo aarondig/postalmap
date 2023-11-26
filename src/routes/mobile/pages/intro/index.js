@@ -171,11 +171,11 @@ function Intro({ loading, setLoading, handleStart }) {
         ? startIntro && {
             from: {
               opacity: 0,
-              transform: `translateY(+20px) scale(${i === 0 ? 2 : 0.8})`,
+              transform: `translateY(+20px) scale(${i === 0 ? 1 : 0.8})`,
             },
             to: {
               opacity: 1,
-              transform: `translateY(0) scale(${i === 0 ? 3 : 1})`,
+              transform: `translateY(0) scale(${i === 0 ? 2 : 1})`,
             },
 
             delay: 220 * i,

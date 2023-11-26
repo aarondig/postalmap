@@ -9,8 +9,8 @@ background: #161717;
   z-index: 2;
   }
 #intro-wrap {
-  padding-top: 12vh;
-  padding-bottom: 42px;
+  /* padding-top: 12vh; */
+  /* padding-bottom: 42px; */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@ background: #161717;
 
   justify-content: center;
   flex: 1;
-height: 100%;
+height: 100svh;
 }
 
   #cover {
@@ -83,7 +83,7 @@ height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    transform: scale(3.4);
+    transform: scale(2);
     opacity: 0;
     will-change: opacity;
   }
