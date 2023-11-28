@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/postalmap/static/css/main.3c6bb53c.css",
+    "main.css": "/postalmap/static/css/main.ae6628e2.css",
     "main.js": "/postalmap/static/js/main.0e9955b9.js",
     "static/css/137.faaa1d0a.chunk.css": "/postalmap/static/css/137.faaa1d0a.chunk.css",
     "static/js/137.4ef0dd37.chunk.js": "/postalmap/static/js/137.4ef0dd37.chunk.js",
@@ -48,7 +48,7 @@
     "static/media/uniofgreenwich.jpg": "/postalmap/static/media/uniofgreenwich.5d7e6aa958f5b767ca98.jpg",
     "static/media/QRCode.svg": "/postalmap/static/media/QRCode.f91ea5e2584c49e5821e979858c3d961.svg",
     "index.html": "/postalmap/index.html",
-    "main.3c6bb53c.css.map": "/postalmap/static/css/main.3c6bb53c.css.map",
+    "main.ae6628e2.css.map": "/postalmap/static/css/main.ae6628e2.css.map",
     "main.0e9955b9.js.map": "/postalmap/static/js/main.0e9955b9.js.map",
     "137.faaa1d0a.chunk.css.map": "/postalmap/static/css/137.faaa1d0a.chunk.css.map",
     "137.4ef0dd37.chunk.js.map": "/postalmap/static/js/137.4ef0dd37.chunk.js.map",
@@ -60,7 +60,7 @@
     "817.479e1da9.chunk.js.map": "/postalmap/static/js/817.479e1da9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c6bb53c.css",
+    "static/css/main.ae6628e2.css",
     "static/js/main.0e9955b9.js"
   ]
 }
