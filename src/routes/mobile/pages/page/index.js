@@ -82,8 +82,6 @@ function Page({
       <Scroller {...scroller} />
 
         <Module {...module} />
-
-        
     </div>
   );
 }

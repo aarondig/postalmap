@@ -1,5 +1,5 @@
 @media only screen and (max-width: 768px) {
-#text {
+#button {
   position: relative;
   box-sizing: border-box;
   /* width: 100vw;
@@ -9,6 +9,48 @@
   z-index: 1 ;
 
   /* padding-top: 80px; */
+  }
+  #button .section-wrap {
+    padding-top: 0;
+  }
+  
+#button .row {
+  display: flex;
+  flex-direction: row;
+  gap: 4%;
+}
+
+  .primary-button-c {
+    display: flex;
+    box-sizing: content-box;
+    flex: 2;
+    background: #f4f4f4;
+    /* border-radius: 50%; */
+    border-radius: 40px;
+    justify-content: center;
+    padding: 22px 0;
+  }
+  .secondary-button-c {
+    display: flex;
+    box-sizing: content-box;
+    flex: 1;
+    /* background: #f4f4f4; */
+    border: 1px solid #959595;
+    /* border-radius: 50%; */
+    border-radius: 40px;
+    justify-content: center;
+    padding: 22px 0;
+  }
+  .primary-button-text {
+    color: #161618;
+    font-size: 18px;
+    margin: 0;
+  }
+  .secondary-button-text {
+color: #fff;
+font-size: 18px;
+margin: 0;
+
   }
  
   #text .section-wrap {

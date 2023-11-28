@@ -45,6 +45,11 @@ import cuttysarkair from "./assets/images/greenwhich/cuttysarkair.jpg";
 import cuttysark from "./assets/images/greenwhich/cuttysark.jpeg";
 import greenwichuni from "./assets/images/greenwhich/greenwichuni.jpg";
 
+import cab from "./assets/images/station/cab.jpg";
+import skyline from "./assets/images/station/embankment-skyline.jpg";
+import distance from "./assets/images/station/social-distance.jpg";
+import passingtrain from "./assets/images/station/social-distance.jpg";
+
 export const data = [
   {
     id: "postcode",
@@ -288,6 +293,14 @@ export const data = [
         index: 0,
         type: "video",
       },
+      {
+        id: "button",
+        title: "next",
+        subtitle: "",
+        index: 0,
+        lightMode: "dark",
+        type: "button",
+      },
       // {
       //   id: "pierpay",
       //   title: "Tap to pay for your Uber Boat ride",
@@ -343,7 +356,7 @@ export const data = [
         title: "Embankment Station",
         subtitle: "/ Embankment Station",
         text: "Navigate through the hustle and bustle of this transit hub and look for the Northern Line.",
-        number: "02",
+        number: "01",
 
         index: 0,
 
@@ -357,7 +370,7 @@ export const data = [
         title: "Welcome to Embankment Station",
         subtitle: "/ Embankment / About",
         text: [
-          "Situated on the southern bank of the River Thames, its architecture is remenicient of an older, grittier, Greenwhich. Before the influx of modern highrises and students, this location feels like an undisturbed enclave.",
+          "As you disembark the Uber boat, take in the views of the views of London's Southbank skyline. Across the Thames you can see the London Eye, the Shard, and other notable buildings.",
         ],
         number: "02",
 
@@ -367,44 +380,92 @@ export const data = [
         type: "text",
       },
       {
-        id: "stationplatform",
-        title: "Get on the Northern Line Train",
-        subtitle: "/ Embankment / Greenwich Pier",
-        text: "Head to the platform and join wait for the next southbound Northern Line Train.",
-        number: "02",
-        index: 0,
-        object: train,
-        type: "detail",
-      },
-      {
         id: "slider",
         src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
         title: "Statement on something blah blah blah",
-        subtitle: "/ Photography",
+        subtitle: null,
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
         number: "02",
         index: 0,
         images: [
           {
-            title: "Postal Code SE10-9DD",
-            subtitle: "ARCHITECTURE / PHOTO",
-            src: postalcodeimg,
+            title: "Cab on Southbank",
+            subtitle: "STREET / PHOTO",
+            src: cab,
           },
           {
-            title: "University of Greenwich",
-            subtitle: "ARCHITECTURE / PHOTO",
-            src: uniofgreenwichimg,
+            title: "Passing Train",
+            subtitle: "STREET / PHOTO",
+            src: passingtrain,
           },
 
           {
-            title: "Greenwich Intersection",
-            subtitle: "ENVIRONMENT / PHOTO",
-            src: greenwhichimg,
+            title: "Southbank Skyline",
+            subtitle: "ARCHITECTURE / PHOTO",
+            src: skyline,
           },
         ],
 
         lightMode: "dark",
         type: "slider",
+      },
+      {
+        id: "stationplatform",
+        title: "Get on the Northern Line Train",
+        subtitle: "/ Embankment / Northern Line",
+        text: "Head to the platform and wait for the next southbound Northern Line Train.",
+        number: "03",
+        index: 0,
+        object: train,
+        type: "detail",
+      },
+      {
+        id: "stationplatform",
+        title: "Get on the Northern Line Train",
+        subtitle: "/ Embankment / Northern Line",
+        text: "Head to the platform and wait for the next southbound Northern Line Train.",
+        number: "04",
+        index: 0,
+        object: train,
+        type: "detail",
+      },
+      // {
+      //   id: "slider",
+      //   src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
+      //   title: "Statement on something blah blah blah",
+      //   subtitle: "/ Photography",
+      //   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+      //   number: "02",
+      //   index: 0,
+      //   images: [
+      //     {
+      //       title: "Postal Code SE10-9DD",
+      //       subtitle: "ARCHITECTURE / PHOTO",
+      //       src: postalcodeimg,
+      //     },
+      //     {
+      //       title: "University of Greenwich",
+      //       subtitle: "ARCHITECTURE / PHOTO",
+      //       src: uniofgreenwichimg,
+      //     },
+
+      //     {
+      //       title: "Greenwich Intersection",
+      //       subtitle: "ENVIRONMENT / PHOTO",
+      //       src: greenwhichimg,
+      //     },
+      //   ],
+
+      //   lightMode: "dark",
+      //   type: "slider",
+      // },
+      {
+        id: "button",
+        title: "next",
+        subtitle: "",
+        index: 0,
+        lightMode: "dark",
+        type: "button",
       },
     ],
 
@@ -465,6 +526,14 @@ export const data = [
 
         lightMode: "dark",
         type: "slider",
+      },
+      {
+        id: "button",
+        title: "next",
+        subtitle: "",
+        index: 0,
+        lightMode: "dark",
+        type: "button",
       },
     ],
 
