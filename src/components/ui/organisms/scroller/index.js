@@ -146,7 +146,59 @@ function Scroller({
           }
           case "view": {
             return (
-              <View key={i} i={i} el={el} section={sections[i]} {...view} />
+              <React.Fragment key={i}>
+                <View i={i} el={el} section={sections[i]} {...view} />
+                {/* Invisible hitboxes that scroll with content - sibling to view, not inside */}
+                <div className="view-button-hitboxes">
+                  <div className="order-btns">
+                    <div
+                      className="view-hitbox view-hitbox-prev"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (current <= 0) {
+                          setCurrent(data.length - 1);
+                        } else {
+                          setCurrent(current - 1);
+                        }
+                      }}
+                      onTouchEnd={(e) => {
+                        e.preventDefault();
+                        if (current <= 0) {
+                          setCurrent(data.length - 1);
+                        } else {
+                          setCurrent(current - 1);
+                        }
+                      }}
+                    >
+                      <p style={{ opacity: 0 }}>Prev</p>
+                    </div>
+                    <div className="view-hitbox">
+                      <p style={{ opacity: 0 }}>/</p>
+                    </div>
+                    <div
+                      className="view-hitbox view-hitbox-next"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (current >= data.length - 1) {
+                          setCurrent(0);
+                        } else {
+                          setCurrent(current + 1);
+                        }
+                      }}
+                      onTouchEnd={(e) => {
+                        e.preventDefault();
+                        if (current >= data.length - 1) {
+                          setCurrent(0);
+                        } else {
+                          setCurrent(current + 1);
+                        }
+                      }}
+                    >
+                      <p style={{ opacity: 0 }}>Next</p>
+                    </div>
+                  </div>
+                </div>
+              </React.Fragment>
             );
           }
           case "video": {

@@ -135,15 +135,13 @@ function Detail({
 
     const mesh = {
       ref: ref,
-      // material: materials.main !== undefined ? materials.main : materials[""],
-      // geometry: nodes.mesh !== undefined ? nodes.mesh.geometry : nodes.mesh_0.geometry,
-      material: materials.main,
-      geometry: nodes.mesh.geometry,
+      material: materials.main !== undefined ? materials.main : materials[""],
+      geometry: nodes.mesh !== undefined ? nodes.mesh.geometry : nodes.mesh_0.geometry,
 
 
       // position: position,
       // scale: scale,
-    
+
     }
 
 

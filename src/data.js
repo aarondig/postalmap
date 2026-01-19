@@ -381,87 +381,70 @@ export const data = [
       },
       {
         id: "slider",
-        src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
-        title: "Statement on something blah blah blah",
-        subtitle: null,
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+        title: "Embankment Station Through Time",
+        subtitle: "/ History / Architecture",
+        text: "Explore how Embankment Station has evolved from its Victorian origins to the modern transport hub it is today.",
         number: "02",
         index: 0,
         images: [
           {
-            title: "Cab on Southbank",
-            subtitle: "STREET / PHOTO",
-            src: cab,
+            title: "Embankment Station Entrance",
+            subtitle: "ARCHITECTURE / PHOTO",
+            src: cab, // Reusing cab image as a placeholder for station entrance
           },
           {
-            title: "Passing Train",
-            subtitle: "STREET / PHOTO",
+            title: "Northern Line Platform",
+            subtitle: "TRANSPORT / PHOTO",
             src: passingtrain,
           },
-
           {
-            title: "Southbank Skyline",
-            subtitle: "ARCHITECTURE / PHOTO",
+            title: "Thames Skyline",
+            subtitle: "VIEW / PHOTO",
             src: skyline,
           },
         ],
-
         lightMode: "dark",
         type: "slider",
       },
       {
-        id: "stationplatform",
-        title: "Get on the Northern Line Train",
-        subtitle: "/ Embankment / Northern Line",
-        text: "Head to the platform and wait for the next southbound Northern Line Train.",
+        id: "description",
+        title: "A Station with Stories to Tell",
+        subtitle: "/ Embankment / History",
+        text: [
+          "Opened in 1870 as part of the District Railway, Embankment Station has witnessed over 150 years of London's history. Its distinctive Victorian architecture still stands today, a testament to the engineering marvels of the era.",
+          "During World War II, the station served as a shelter during air raids, its deep tunnels providing safety for thousands of Londoners. The scars of that time can still be seen if you know where to look."
+        ],
         number: "03",
         index: 0,
-        object: train,
-        type: "detail",
+        lightMode: "dark",
+        type: "text",
       },
       {
         id: "stationplatform",
-        title: "Get on the Northern Line Train",
-        subtitle: "/ Embankment / Northern Line",
-        text: "Head to the platform and wait for the next southbound Northern Line Train.",
+        title: "Boarding the Northern Line",
+        subtitle: "/ Transport / Underground",
+        text: "Follow the signs to the Northern Line platform. As you descend, notice how the architecture changes from the grand Victorian entrance to the functional, tiled tunnels below. The familiar rumble of approaching trains grows louder with each step.",
         number: "04",
         index: 0,
         object: train,
         type: "detail",
       },
-      // {
-      //   id: "slider",
-      //   src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
-      //   title: "Statement on something blah blah blah",
-      //   subtitle: "/ Photography",
-      //   text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
-      //   number: "02",
-      //   index: 0,
-      //   images: [
-      //     {
-      //       title: "Postal Code SE10-9DD",
-      //       subtitle: "ARCHITECTURE / PHOTO",
-      //       src: postalcodeimg,
-      //     },
-      //     {
-      //       title: "University of Greenwich",
-      //       subtitle: "ARCHITECTURE / PHOTO",
-      //       src: uniofgreenwichimg,
-      //     },
-
-      //     {
-      //       title: "Greenwich Intersection",
-      //       subtitle: "ENVIRONMENT / PHOTO",
-      //       src: greenwhichimg,
-      //     },
-      //   ],
-
-      //   lightMode: "dark",
-      //   type: "slider",
-      // },
+      {
+        id: "description",
+        title: "The Rhythm of the City",
+        subtitle: "/ London Life",
+        text: [
+          "The station is a microcosm of London itself - a constant flow of people from all walks of life, each with their own story. The businessman checking his watch, the student with headphones lost in music, the tourist clutching a map - all briefly sharing the same space before continuing on their separate journeys.",
+          "Listen to the unique symphony of the Underground - the automated announcements, the whoosh of arriving trains, the murmur of a hundred conversations in as many languages."
+        ],
+        number: "05",
+        index: 0,
+        lightMode: "dark",
+        type: "text",
+      },
       {
         id: "button",
-        title: "next",
+        title: "Continue to LCC",
         subtitle: "",
         index: 0,
         lightMode: "dark",
@@ -499,37 +482,70 @@ export const data = [
       },
       {
         id: "slider",
-        src: "https://images.squarespace-cdn.com/content/v1/5af1c54f36099b9870f769e8/1526312872167-EQ7IZI4P1P7CGPS0NUD9/DSC07835.JPG?format=2500w",
-        title: "Statement on something blah blah blah",
-        subtitle: "/ Photography",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa egestas commodo risus orci feugiat sagittis, ut cursus.",
+        title: "Life at LCC",
+        subtitle: "/ Student Experience",
+        text: "A glimpse into the vibrant creative community at London College of Communication.",
         number: "02",
         index: 0,
         images: [
           {
-            title: "Postal Code SE10-9DD",
-            subtitle: "ARCHITECTURE / PHOTO",
-            src: postalcodeimg,
+            title: "The Atrium",
+            subtitle: "ARCHITECTURE / LCC",
+            src: greenwhichimg, // Using as placeholder for LCC atrium
           },
           {
-            title: "University of Greenwich",
-            subtitle: "ARCHITECTURE / PHOTO",
-            src: uniofgreenwichimg,
+            title: "Student Work",
+            subtitle: "CREATIVE / EXHIBITION",
+            src: greenwichuni, // Using as placeholder for student work
           },
-
           {
-            title: "Greenwich Intersection",
-            subtitle: "ENVIRONMENT / PHOTO",
-            src: greenwhichimg,
+            title: "Campus Life",
+            subtitle: "STUDENT / EXPERIENCE",
+            src: cuttysark, // Using as placeholder for campus life
           },
         ],
-
         lightMode: "dark",
         type: "slider",
       },
       {
+        id: "description",
+        title: "A Hub of Creativity",
+        subtitle: "/ About LCC",
+        text: [
+          "London College of Communication is a world leader in media and design education. Housed in a striking building in the heart of Elephant and Castle, it's a place where creativity and innovation thrive.",
+          "The college's alumni include Turner Prize winners, Oscar-nominated filmmakers, and leaders in journalism, design, and media industries worldwide."
+        ],
+        number: "03",
+        index: 0,
+        lightMode: "dark",
+        type: "text",
+      },
+      {
+        id: "detail",
+        title: "The Creative Process",
+        subtitle: "/ Behind the Scenes",
+        text: "Step inside the studios and workspaces where ideas come to life. From the hum of 3D printers to the quiet concentration of the design studios, every corner of LCC buzzes with creative energy.",
+        number: "04",
+        index: 0,
+        object: lcstudents,
+        type: "detail",
+      },
+      {
+        id: "description",
+        title: "Your Journey Continues",
+        subtitle: "/ Next Steps",
+        text: [
+          "As your virtual tour of LCC comes to an end, remember that this is just the beginning. The skills, ideas, and connections you'll develop here will shape your creative future.",
+          "Whether you're interested in journalism, design, media, or any other creative field, LCC provides the tools, space, and community to help you find your voice and make your mark on the world."
+        ],
+        number: "05",
+        index: 0,
+        lightMode: "dark",
+        type: "text",
+      },
+      {
         id: "button",
-        title: "next",
+        title: "Start Your Journey",
         subtitle: "",
         index: 0,
         lightMode: "dark",
