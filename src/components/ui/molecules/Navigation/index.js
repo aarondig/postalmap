@@ -17,14 +17,16 @@ const navigate = useNavigate();
 const location = useLocation();
 const url = location.pathname.split("/");
 
+// Check if we're on the home screen
+const isHome = location.pathname === "/postalmap" || location.pathname === "/postalmap/";
 
 const indicator = useSprings(data.length, data.map((el, i)=>
 i === current ?
-{ 
+{
   from: {opacity: 0},
   to: {opacity: 1},
 
-} : { 
+} : {
   from: {opacity: 1},
   to: {opacity: 0},
 
@@ -42,6 +44,12 @@ const handleNavigate = (e)=> {
   });
   const audioOn = useSpring({
     opacity: audio ? 1 : 0,
+  });
+
+  // Fade in audio button after leaving home screen
+  const audioButtonOpacity = useSpring({
+    opacity: isHome ? 0 : 1,
+    config: { mass: 1, tension: 280, friction: 60 },
   });
 
   const opacity = useSpring({
@@ -73,7 +81,7 @@ const handleNavigate = (e)=> {
             canis
           </a.h2>
           <div className="right-side">
-            <a.div className="nav-button" ref={audioRef} onClick={() => setAudio(!audio)}>
+            <a.div className="nav-button" ref={audioRef} onClick={() => setAudio(!audio)} style={audioButtonOpacity}>
               <a.div className="nav-icon" style={audioOn}>
                 <IoVolumeMediumOutline {...sound} />
               </a.div>

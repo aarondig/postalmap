@@ -8,129 +8,44 @@ import { useGLTF, PerspectiveCamera, PositionalAudio } from "@react-three/drei";
 import Loader from "../../molecules/Loader";
 import useWindowSize from "../../../../hooks/windowSize";
 
-function Sound({ el, audio, camera, isVisible, audioRef, remove }) {
-  // const sound = useRef()
-  // const [listener] = useState(() => new THREE.AudioListener())
-  // const buffer = useLoader(THREE.AudioLoader, el.audio)
-  
-  // useEffect(()=>{
-  //   sound.current.setBuffer(buffer);
-  //   sound.current.setRefDistance(0);
-  //   return () => {
-  //     fadeOut();
-  //   };
-  // },[]);
+function Sound({ el, audio, camera, isVisible }) {
+  const soundRef = useRef();
+  const { audioManager } = require('../../../utils/AudioManager');
 
-  // function playSound() {
+  useEffect(() => {
+    // Initialize audio manager with camera
+    if (camera.current) {
+      audioManager.init(camera.current);
+    }
 
-  //   var source = listener.context.createBufferSource();
-  //   source.connect(listener.context.destination);
-  //   source.start();
-  // }
+    // Load and manage audio for this scene
+    audioManager.playSceneAudio(
+      el.id,
+      el.audio,
+      isVisible,
+      (sound) => {
+        soundRef.current = sound;
+      }
+    );
 
-  
-  // audioRef.current.addEventListener('click', function() {
-  //   if (!audio) {
-  //     if (!sound.current.isPlaying) {
-  //       playSound();
-  //     }
-      
-  //   }
-  //   if (audio) {
-  //     sound.current.pause();
-  //     sound.current.stop();
-  //   }
-  // });
+    return () => {
+      // Fade out when component unmounts
+      if (soundRef.current) {
+        audioManager.fadeOut(soundRef.current);
+      }
+    };
+  }, []);
 
+  // Handle visibility and audio toggle changes
+  useEffect(() => {
+    audioManager.setEnabled(audio);
+    audioManager.playSceneAudio(el.id, el.audio, isVisible && audio);
+  }, [isVisible, audio]);
 
-  // //SOUND START/CLEANUP
-
-  // var fadeIn = () =>
-  //   setTimeout(function () {
-  //     if (sound.current !== undefined) {
-
-      
-  //     let volume = sound.current.getRefDistance();
-
-  //     if (!sound.current.isPlaying) {
-  //       sound.current.play();
-  //     }
-
-  //     if (volume < 1) {
-  //       sound.current.setRefDistance(volume + 0.01);
-  //       if (isVisible) {
-  //         fadeIn();
-  //       }
-  //       if (!isVisible) {
-  //         clearTimeout(fadeIn);
-  //       }
-  //     }
-  //     if (volume >= 1) {
-  //       sound.current.setRefDistance(1);
-  //       clearTimeout(fadeIn);
-  //     }
-  //   }
-  //     clearTimeout(fadeIn);
-  //   }, 10);
-
-  // var fadeOut = () =>
-  //   setTimeout(function () {
-  //     if (sound.current !== undefined) {
-  //     let volume = Math.abs(sound.current.getRefDistance());
-
-
-  //     if (volume > 0) {
-  //       sound.current.setRefDistance(Math.abs(volume - 0.01));
-  //       if (!isVisible) {
-  //         fadeOut();
-          
-  //       }
-  //       if (isVisible) {
-  //         camera.current.remove(listener);
-  //         sound.current.setRefDistance(0);
-  //         clearTimeout(fadeOut);
-  //       }
-  //     }
-  //     if (volume <= 0.1) {
-  //       sound.current.setRefDistance(0);
-  //       sound.current.pause();
-  //       camera.current.remove(listener);
-  //       clearTimeout(fadeOut);
-  //     }
-  //   }
-  //     clearTimeout(fadeOut);
-  //   }, 10);
-
-  // useEffect(() => {
-
-  //   if (isVisible) {
-  //     camera.current.add(listener);
-  //     clearTimeout(fadeOut);
-  //     fadeIn();
-
-  //   }
-  //   if (!isVisible) {
-  //     clearTimeout(fadeIn);
-  //     fadeOut();
-     
-  //   }
-  //  return ()=>{
-  //   clearTimeout(fadeIn);
-  //   camera.current.remove(listener);
-  //   }
-  // }, [isVisible]);
-
-  // let vol = sound.current ? sound.current.getRefDistance() : 0;
-  
-  // // useEffect(() => {
-
-  // //   sound.current && console.log("station: " + sound.current.getRefDistance())
-  // // }, [vol]);
-
-
-
- 
-  // return (<positionalAudio ref={sound} args={[listener]}/>)
+  // Return the audio element for Three.js scene graph
+  return soundRef.current ? (
+    <primitive object={soundRef.current} position={[0, 0, -20]} />
+  ) : null;
 }
 
 

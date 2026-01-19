@@ -21,13 +21,13 @@ A minimal, performant web experience that:
 - [ ] Add basic error boundaries around scenes
 
 ### 2. Audio System
-- [ ] Set up basic audio context
-- [ ] Load and play scene-specific audio
-- [ ] Add mute/unmute toggle
-  - [ ] Implement fade-in animation for audio icon (only after home screen)
-  - [ ] Ensure icon is hidden on home screen
-  - [ ] Add smooth transition for icon appearance
-- [ ] Clean up audio on scene change
+- [x] Set up basic audio context
+- [x] Load and play scene-specific audio
+- [x] Add mute/unmute toggle
+  - [x] Implement fade-in animation for audio icon (only after home screen)
+  - [x] Ensure icon is hidden on home screen
+  - [x] Add smooth transition for icon appearance
+- [x] Clean up audio on scene change
 
 ### 3. 3D Rendering
 - [ ] Fix mini canvas visibility
