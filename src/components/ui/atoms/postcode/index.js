@@ -42,7 +42,11 @@ function Sound({ el, audio, camera, isVisible }) {
   useEffect(() => {
     // Only manage playback if sound is loaded
     if (soundRef.current) {
-      audioManager.playSceneAudio(el.id, el.audio, isVisible && audio);
+      // Only call playSceneAudio when this scene is visible
+      // Audio on/off is controlled by the audio parameter
+      if (isVisible) {
+        audioManager.playSceneAudio(el.id, el.audio, audio);
+      }
     }
   }, [isVisible, audio, el.id, el.audio]);
 
