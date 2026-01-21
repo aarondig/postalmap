@@ -18,8 +18,6 @@ function Model({ i, el, current, scroll, sectionSize, audio, audioRef }) {
   const group = useRef();
   const camera = useRef();
 
-  console.log(el)
-
   // IMPORT MODEL
 
   const { nodes, materials } = useGLTF(el.sections[0].object);

@@ -71,10 +71,6 @@ function smoothScroll() {
   requestAnimationFrame(smoothScroll)
 }
 
-
-console.log(window.scrollY)
-    
-
     // const [scroll, setScroll] = useState({
     //   values: [],
     //   count: 0,

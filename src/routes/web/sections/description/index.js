@@ -37,14 +37,8 @@ function Description({i, el, section, setCurrent, slow3, scrollContainer, scroll
       
   //       setOpa(opa <= .04 ? 0 : ((opa + 1) / 1.2))
   //       content.current.style.opacity = opa / 250
-        
+
   //       }
-        
-
-  //       console.log(opa/250)
-  //     //If scroll is negative
-
-  //     // console.log(scroll.slice(-1) > scroll.slice(-2))
     
     
   // },[scroll])
@@ -62,7 +56,6 @@ function Description({i, el, section, setCurrent, slow3, scrollContainer, scroll
 //   if (!inView) {
 //     scrollStart && setScrollStart(false);
 //   }
-// // console.log(scroll + scrollStart)
 //   },[scroll])
 
   //ANIMATIONS

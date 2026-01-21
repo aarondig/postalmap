@@ -42,40 +42,65 @@ function Detail({
 
   function Scene({ orbit, scroll }) {
     const ref = useRef();
-
-
-    // const { nodes, materials } = useLoader(GLTFLoader, el.object);
-    const { nodes, materials } = useGLTF(el.object);
-
-    useEffect(()=>{
-      if (materials.main !== undefined) {
-        materials.main.map = null;
-        materials.main.color = new THREE.Color(0x404040);
-        materials.main.transparent = true;
-      } 
-      if (materials[""] !== undefined) {
-        materials[""].map = null;
-        materials[""].color = new THREE.Color(0x404040);
-        materials[""].transparent = true;
-      }
-    },[])
+    const [modelLoaded, setModelLoaded] = useState(false);
+    const [scale, setScale] = useState(1);
     
-    // const [scale,setScale] = useState()
-    // const [position,setPosition] = useState()
-    // const [rotation, setRotation] = useState(0)
-   
+    // Load the model with error handling
+    const { nodes, materials } = useGLTF(el.object, undefined, (gltf) => {
+      setModelLoaded(true);
+
+      // Calculate scale based on model size
+      const box = new THREE.Box3().setFromObject(gltf.scene);
+      const size = new THREE.Vector3();
+      box.getSize(size);
+      const maxDim = Math.max(size.x, size.y, size.z);
+      setScale(5 / maxDim); // Scale to fit within 5 units
+      
+      // Apply materials
+      if (materials) {
+        Object.values(materials).forEach(material => {
+          material.map = null;
+          material.color = new THREE.Color(0x00ffff); // Brighter cyan color
+          material.wireframe = true;
+          material.transparent = true;
+          material.opacity = 1;
+          material.needsUpdate = true;
+        });
+      }
+    });
+    
+    const [bbox, setBbox] = useState(null);
+    const [center, setCenter] = useState(new THREE.Vector3());
+    const [size, setSize] = useState(new THREE.Vector3());
+
+    useEffect(() => {
+      if (ref.current) {
+        const box = new THREE.Box3().setFromObject(ref.current);
+        const center = new THREE.Vector3();
+        const size = new THREE.Vector3();
+        box.getCenter(center);
+        box.getSize(size);
+        
+        // Center the model
+        ref.current.position.x = -center.x;
+        ref.current.position.y = -center.y;
+        ref.current.position.z = -center.z;
+        
+        // Scale to fit
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = 2 / maxDim; // Adjust scale factor as needed
+        ref.current.scale.set(scale, scale, scale);
+        
+        setBbox(box);
+        setCenter(center);
+        setSize(size);
+      }
+    }, [nodes]);
 
     useFrame(() => {
-      if (isVisible) {
-        if (ref.current !== undefined) {
-      ref.current.rotation.y = scroll / 800 ;
-        }
-    }
-    // if (orbit.current) {
-    //   orbit.current.target = ref.current.geometry.boundingSphere.center;
-    //   orbit.current.update();
-    // }
- 
+      if (isVisible && ref.current) {
+        ref.current.rotation.y = scroll / 500; // Slower rotation
+      }
     });
     
     useEffect(()=>{
@@ -146,15 +171,61 @@ function Detail({
 
 
 
+    // Check if we have valid geometry
+    let geometry;
+    let modelGroup = null;
+    
+    if (nodes.scene) {
+      // If the model is a scene, use its children
+      modelGroup = nodes.scene;
+    } else if (nodes.mesh) {
+      // If it's a direct mesh
+      geometry = nodes.mesh.geometry;
+    } else if (nodes.mesh_0) {
+      // Alternative mesh name
+      geometry = nodes.mesh_0.geometry;
+    } else if (Object.keys(nodes).length > 0) {
+      // Try to find any geometry in the nodes
+      const nodeKey = Object.keys(nodes).find(key => nodes[key].geometry);
+      if (nodeKey) geometry = nodes[nodeKey].geometry;
+    }
+
+    if (!geometry && !modelGroup) {
+      return (
+        <group>
+          <mesh>
+            <boxGeometry args={[1, 1, 1]} />
+            <meshBasicMaterial color="red" wireframe />
+          </mesh>
+        </group>
+      );
+    }
+    
     return (
       <Suspense fallback={<Loader/>}>
-        <mesh
-          
-          {...mesh}
-          
-        >
-    
-        </mesh>
+        <group>
+          {modelGroup ? (
+            <primitive 
+              object={modelGroup} 
+              ref={ref}
+              scale={[scale, scale, scale]}
+              position={[0, 0, 0]}
+            />
+          ) : (
+            <mesh 
+              ref={ref} 
+              geometry={geometry} 
+              scale={[scale, scale, scale]}
+            >
+              <meshBasicMaterial 
+                color={0xf0f0f0} 
+                wireframe={true}
+                transparent={true}
+                opacity={1}
+              />
+            </mesh>
+          )}
+        </group>
       </Suspense>
     );
   }
@@ -186,15 +257,26 @@ const orbitcontrols = {
       </div>
       <div className="canvas-wrap" style={data[i+1].type === "slider" || data[i+1].lightMode === "light" ? {paddingBottom: "80px"} : {paddingBottom: "0px"}}>
         <Canvas
-          camera={{ position: [0, 1.5, 7], fov: 50 }}
+          camera={{ position: [0, 1.5, 3], fov: 45, near: 0.1, far: 1000 }}
           gl={{ antialias: true, pixelRatio: window.devicePixelRatio }}
           shadows
         >
-          <pointLight position={[4, 5, 4]} intensity={1.2} />
-          <pointLight position={[0, -30, -10]} intensity={.8} />
-          <OrbitControls ref={orbit} {...orbitcontrols}/>
+          <ambientLight intensity={0.5} />
+          <directionalLight position={[10, 10, 5]} intensity={1} castShadow />
+          <directionalLight position={[-10, 10, -5]} intensity={0.5} />
+          <pointLight position={[0, 10, 0]} intensity={1} distance={20} decay={2} />
+          <OrbitControls 
+            ref={orbit}
+            enablePan={true}
+            enableZoom={true}
+            enableRotate={true}
+            minDistance={1}
+            maxDistance={20}
+            autoRotate={false}
+            autoRotateSpeed={0.5}
+          />
           {isVisible && <Scene orbit={orbit} scroll={scroll} />}
-        </Canvas> 
+        </Canvas>
       </div>
       </InView>
     </InView>

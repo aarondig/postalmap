@@ -5,7 +5,7 @@ import "./App.css";
 // import Project from "./pages/project";
 // import Loader from "./pages/Loader";
 import Navigation from "../../components/ui/molecules/Navigation";
-import Intro from "./pages/intro";
+// import Intro from "./pages/intro";
 // import TestCanvas from "./pages/testcanvas";
 
 import {
@@ -30,7 +30,6 @@ function App() {
   const [visibleSection, setVisibleSection] = useState([]);
 
   // // AUDIO
-  const audioRef = useRef();
   //Sets whether audio is heard in scenes
   const [audio, setAudio] = useState(false);
 
@@ -106,7 +105,7 @@ function App() {
   const page = {
     current: current,
     setCurrent: setCurrent,
-    audioRef: audioRef,
+    audio: audio,
     visibleSection: visibleSection,
     setVisibleSection: setVisibleSection,
   };
@@ -127,7 +126,6 @@ function App() {
     setCurrent: setCurrent,
 
     audio: audio,
-    audioRef: audioRef,
     setAudio: setAudio,
 
     visibleSection: visibleSection,
@@ -140,7 +138,6 @@ function App() {
     basename: basename,
 
     audio: audio,
-    audioRef: audioRef,
   };
 
   const points = {
@@ -153,8 +150,8 @@ function App() {
     <div className="App">
       {/* <Wrapper {...wrapper}> */}
       <Navigation {...navigation} />
-    
-      <Intro {...loader}/>
+
+      {/* <Intro {...loader}/> */}
       <Suspense fallback={<p>loading</p>}>
       <Routes>
       

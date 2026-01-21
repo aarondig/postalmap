@@ -26,7 +26,6 @@ function Loader({ loading, setLoading, handleStart }) {
     onRest: () => setLoading(false),
   });
  const handleUnmount = () => {
-  console.log("Click")
   if (countDone) {
     setUnmount(true)
     // setTimeout(() => setUnmount(), 4000);

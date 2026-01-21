@@ -121,15 +121,10 @@ import Cameras from "../cameras/index.js";
 
 //   // let vol = sound.current ? sound.current.getRefDistance() : 0;
 
-//   // // useEffect(() => {
-
-//   // //   sound.current && console.log("station: " + sound.current.getRefDistance())
-//   // // }, [vol]);
-
 //   // return (<positionalAudio ref={sound} args={[listener]}/>)
 // }
 
-function Model({ i, el, current, scroll, sectionSize, audio, audioRef }) {
+function Model({ i, el, current, scroll, sectionSize, audio }) {
   const ref = useRef();
   const group = useRef();
   // const aud = useRef();

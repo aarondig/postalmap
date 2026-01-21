@@ -14,7 +14,6 @@ function Module({
   isInView,
   sectionSize,
   audio,
-  audioRef,
 }) {
   const scenes = {
     i: i,
@@ -27,7 +26,6 @@ function Module({
     sectionSize: sectionSize,
 
     audio: audio,
-    audioRef: audioRef,
   };
 
   const canvas = {

@@ -19,20 +19,9 @@ const handleScroll = () => {
   // parallax.current.style.transform = `translateY(${-(scroll)*.3}px)`
 }
 
-// useEffect(() => {
-//     // setCount(count + 1);
-    
-//     handleScroll()
-//     console.log("Count:" + count)
-// },[scroll])
-
-
 useEffect(()=> {
 
 },[])
-
-// console.log("Count:" + count)
-// console.log("Scroll:" + scroll)
 {/* <div id="view" ref={section}> */}
   return (
 

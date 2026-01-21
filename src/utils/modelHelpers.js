@@ -23,7 +23,6 @@ export const findMeshGeometry = (nodes) => {
     }
   }
 
-  console.warn('No mesh geometry found in nodes:', Object.keys(nodes));
   return null;
 };
 
@@ -43,6 +42,5 @@ export const findMaterial = (materials) => {
     return materials[keys[0]];
   }
 
-  console.warn('No material found in materials:', Object.keys(materials));
   return null;
 };

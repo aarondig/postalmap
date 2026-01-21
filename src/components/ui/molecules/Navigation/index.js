@@ -8,7 +8,7 @@ import "./style.css";
 import { data } from "../../../../data";
 import { useNavigate, useLocation } from "react-router-dom";
 
-function Navigation({ audioRef, current, setCurrent, audio, setAudio, visibleSelection }) {
+function Navigation({ current, setCurrent, audio, setAudio, visibleSelection }) {
   const [active, toggleActive] = useState(false);
   // const [settle, setSettle] = useState(false);
   
@@ -81,7 +81,7 @@ const handleNavigate = (e)=> {
             canis
           </a.h2>
           <div className="right-side">
-            <a.div className="nav-button" ref={audioRef} onClick={() => setAudio(!audio)} style={audioButtonOpacity}>
+            <a.div className="nav-button" onClick={() => setAudio(!audio)} style={audioButtonOpacity}>
               <a.div className="nav-icon" style={audioOn}>
                 <IoVolumeMediumOutline {...sound} />
               </a.div>

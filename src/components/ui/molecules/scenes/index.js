@@ -17,7 +17,7 @@ import Model from "../../atoms/model";
 
 
 
-function Scenes({i, el, current, scroll, isInView, sectionSize, audio, audioRef }) {
+function Scenes({i, el, current, scroll, isInView, sectionSize, audio }) {
   const group = useRef();
 
 //   const [scenes, setScenes] = useState([])
@@ -36,11 +36,10 @@ function Scenes({i, el, current, scroll, isInView, sectionSize, audio, audioRef 
     current: current,
     scroll: scroll,
     audio: audio,
-    audioRef: audioRef,
 
     isInView: isInView,
     sectionSize: sectionSize,
- 
+
 
   }
 

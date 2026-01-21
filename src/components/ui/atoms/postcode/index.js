@@ -10,37 +10,41 @@ import useWindowSize from "../../../../hooks/windowSize";
 
 function Sound({ el, audio, camera, isVisible }) {
   const soundRef = useRef();
-  const { audioManager } = require('../../../utils/AudioManager');
+  const { audioManager } = require('../../../../utils/AudioManager');
 
+  // Initialize audio manager once
   useEffect(() => {
-    // Initialize audio manager with camera
     if (camera.current) {
       audioManager.init(camera.current);
     }
+  }, []);
 
-    // Load and manage audio for this scene
+  // Load audio on mount
+  useEffect(() => {
     audioManager.playSceneAudio(
       el.id,
       el.audio,
-      isVisible,
+      false, // Don't auto-play on load
       (sound) => {
         soundRef.current = sound;
       }
     );
 
     return () => {
-      // Fade out when component unmounts
+      // Fade out and stop when component unmounts
       if (soundRef.current) {
-        audioManager.fadeOut(soundRef.current);
+        audioManager.fadeOut(soundRef.current, 1000, true);
       }
     };
-  }, []);
+  }, [el.id, el.audio]);
 
   // Handle visibility and audio toggle changes
   useEffect(() => {
-    audioManager.setEnabled(audio);
-    audioManager.playSceneAudio(el.id, el.audio, isVisible && audio);
-  }, [isVisible, audio]);
+    // Only manage playback if sound is loaded
+    if (soundRef.current) {
+      audioManager.playSceneAudio(el.id, el.audio, isVisible && audio);
+    }
+  }, [isVisible, audio, el.id, el.audio]);
 
   // Return the audio element for Three.js scene graph
   return soundRef.current ? (
@@ -77,24 +81,24 @@ if (!remove) {
   );
 };
 
-function Postcode({ i, el, current, scroll, sectionSize, audio, audioRef }) {
+function Postcode({ i, el, current, scroll, sectionSize, audio }) {
   const ref = useRef();
   const group = useRef();
   const aud = useRef();
   const camera = useRef();
 
   // IMPORT MODEL
-  // const { nodes, materials } = useLoader(GLTFLoader, el.sections[0].object);
   const { nodes, materials } = useGLTF(el.sections[0].object);
 
-  useEffect(()=>{
-    materials.main.map = null;
-    materials.main.color = new THREE.Color(0x4f4f51);
-    materials.main.transparent = true;
-    materials.main.needsUpdate = true;
-
-  },[])
- 
+  // Set up material
+  useEffect(() => {
+    if (materials.main) {
+      materials.main.map = null;
+      materials.main.color = new THREE.Color(0x4f4f51);
+      materials.main.transparent = true;
+      materials.main.needsUpdate = true;
+    }
+  }, [materials]);
 
   // Checks if the scene is Visible
   const [isVisible, setIsVisible] = useState(el.index === 0 ? true : false);
@@ -160,22 +164,17 @@ useEffect(()=>{
     remove: remove,
 
     audio: audio,
-    audioRef: audioRef,
-    
   }
 
   return (
     <group ref={group}>
       <mesh
         ref={ref}
-        // material={materials.main}
         geometry={nodes.mesh.geometry}
         position={[0, -1, -40]}
         scale={1.8}
       >
-        
-          <Sound {...soundprops} />
-       
+        <Sound {...soundprops} />
         <a.meshStandardMaterial {...materials.main} />
       </mesh>
       <Camera {...camprops} />

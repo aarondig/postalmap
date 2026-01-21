@@ -67,7 +67,7 @@ function TestCanvas({started, pointLoad, setPointLoad}) {
 
   return (
     <div id="testcanvas" onClick={() => setMove(move - 2)}>
-      <Suspense fallback={console.log("loading")}>
+      <Suspense fallback={null}>
       <Canvas
         linear={true}
         camera={{ fov: 75, position: [0, 0, 7]}}

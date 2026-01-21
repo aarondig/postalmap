@@ -119,3 +119,10 @@ Key changes made:
    - Non-essential optimizations
 
 The tasks are now more focused on fixing what's already there rather than adding new features or making major architectural changes.
+
+
+## Testing
+- [ ] Bring back Intro loading screen once testing is complete
+  - File: `src/routes/mobile/App.js:8` and `src/routes/mobile/App.js:154`
+  - Uncomment: `import Intro from "./pages/intro";`
+  - Uncomment: `<Intro {...loader}/>`

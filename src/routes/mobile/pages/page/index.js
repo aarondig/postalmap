@@ -21,7 +21,6 @@ function Page({
   current,
   setCurrent,
   audio,
-  audioRef,
   visibleSection,
   setVisibleSection,
 }) {
@@ -62,9 +61,8 @@ function Page({
     setProjectHeight: setProjectHeight,
 
     audio: audio,
-    audioRef: audioRef,
   };
-  console.log(scroll)
+
   const module = {
     i: i,
     el: el,
@@ -75,7 +73,6 @@ function Page({
     sectionSize: sectionSize,
 
     audio: audio,
-    audioRef: audioRef,
   };
   return (
     <div id="page">
