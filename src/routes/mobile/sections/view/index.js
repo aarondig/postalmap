@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, Suspense, useMemo } from "react";
 import "./style.css";
 import { InView, useInView } from "react-intersection-observer";
 import { data } from "../../../../data";
-import { serialize } from "cheerio/lib/api/forms";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function View({
@@ -31,23 +30,22 @@ function View({
   const handleNext = () => {
 
     if (current >= data.length - 1) {
-      navigate(`../${url[1]}/${data[0].id}`, { replace: true });
+      navigate(`/${data[0].id}`, { replace: true });
       setCurrent(0);
-      // navigate(`${data[0].id}`)
     }
     if (current < data.length - 1) {
-      navigate(`../${url[1]}/${data[current + 1].id}`, { replace: true });
+      navigate(`/${data[current + 1].id}`, { replace: true });
       setCurrent(current + 1);
-      
+
     }
   };
   const handlePrev = () => {
     if (current <= 0) {
-      navigate(`../${url[1]}/${data[data.length - 1].id}`, { replace: true });
+      navigate(`/${data[data.length - 1].id}`, { replace: true });
       setCurrent(data.length - 1);
     }
     if (current > 0) {
-      navigate(`../${url[1]}/${data[current - 1].id}`, { replace: true });
+      navigate(`/${data[current - 1].id}`, { replace: true });
       setCurrent(current - 1);
     }
   };
