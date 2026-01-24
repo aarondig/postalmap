@@ -1,5 +1,11 @@
 @media only screen and (min-width: 768px) {
 
+/* COMMENTED OUT - Conflicts with MobileShell iPhone mockup wrapper
+ * position: fixed with 100vw/100vh anchors to viewport, not container
+ * Won't fit within 375px mockup width
+ */
+
+/*
 #project {
   position: fixed;
     height: 100vh;
@@ -10,8 +16,9 @@
     perspective: 800px;
     top:0;
     left: 0;
-  
+
   }
+*/
   .scroll-container {
     position: absolute;
     box-sizing: border-box;
@@ -25,18 +32,23 @@
     flex-direction: column;
     top: 0;
   } */
+/* COMMENTED OUT - Conflicts with MobileShell iPhone mockup wrapper
+ * Section blocks sized to full viewport (100vw/100vh) will overflow 375px mockup
+ */
+
+/*
   .text-b {
     position: relative;
     height: 100vh;
     width: 100vw;
     background: #101010;
-    
+
   }
   .view-b {
     position: relative;
     height: 100vh;
     width: 100vw;
-    
+
   }
   .image-b {
     position: relative;
@@ -44,6 +56,7 @@
     width: 100vw;
     background: #101010;
   }
+*/
 
   /* #project .background {
     height: 100vh;

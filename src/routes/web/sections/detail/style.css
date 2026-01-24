@@ -1,13 +1,17 @@
 @media only screen and (min-width: 768px) {
 
+/* COMMENTED OUT - Conflicts with MobileShell iPhone mockup wrapper
+ * Background colors set for full viewport context
+ */
+
+/*
 #detail {
   position: relative;
   box-sizing: border-box;
-  /* width: 100vw;
-  height: 100vh; */
 
   background: #050505;
   }
+*/
   #detail .text-c {
     /* opacity: 0; */
  max-width: 80%;

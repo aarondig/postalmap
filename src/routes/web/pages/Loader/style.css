@@ -1,5 +1,11 @@
 @media only screen and (min-width: 768px) {
 
+/* COMMENTED OUT - Conflicts with MobileShell iPhone mockup wrapper
+ * position: fixed with 100% width/height breaks out of mockup
+ * Won't be contained within device-screen
+ */
+
+/*
 #loader {
     position: fixed;
   width: 100%;
@@ -8,10 +14,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-/* background: #fff; */
 background: #050505;
   z-index: 3;
   }
+*/
 
   .svg-c {
     position: absolute;

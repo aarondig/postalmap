@@ -1,6 +1,11 @@
 
 @media only screen and (min-width: 768px) {
 
+/* COMMENTED OUT - Conflicts with MobileShell iPhone mockup wrapper
+ * Background and width may show outside mockup bounds
+ */
+
+/*
 #image {
   position: relative;
   box-sizing: content-box;
@@ -9,6 +14,7 @@
 
 
   }
+*/
   #image .section-wrap {
     /* padding-top: 6%; */
   }

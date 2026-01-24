@@ -1,3 +1,9 @@
+/* COMMENTED OUT - Conflicts with MobileShell iPhone mockup wrapper
+ * These styles set background on body/html instead of within mockup
+ * Global scrollbar hiding affects the entire page
+ */
+
+/*
 @media only screen and (min-width: 768px) {
 
 .App {
@@ -13,6 +19,9 @@ body, html {
 ::-webkit-scrollbar {
   display: none;
 }
+*/
+
+@media only screen and (min-width: 768px) {
 
 .row {
   display: flex;

@@ -1,10 +1,19 @@
+/* COMMENTED OUT - Conflicts with MobileShell iPhone mockup wrapper
+ * These styles were for the old desktop redirect page and will break the new mockup:
+ * - overflow: hidden on body/html prevents proper scrolling
+ * - 100vh/100vw sizing competes with mockup container
+ * - Absolute positioned canvas breaks out of iPhone frame
+ * - QR code positioning uses viewport-relative offsets
+ */
+
+/*
 @media only screen and (min-width: 768px) {
 
   body, html {
     background: #050505;
     overflow: hidden;
-   
-   
+
+
    }
 
   .App {
@@ -46,12 +55,11 @@ pointer-events: none;
 h1 {
   font-family: Inter;
   font-weight: 300;
-  /* font-size: 36px; */
   color: white;
   font-size: 4.5vw;
 }
 h2 {
- 
+
 }
 h4 {
   font-family: Inter;
@@ -63,8 +71,6 @@ h4 {
 h6 {
   font-family: Inter;
   font-weight: 300;
-
-  /* font-size: 18px; */
 }
 p {
   font-family: Inter;
@@ -72,3 +78,4 @@ p {
 }
 
 }
+*/

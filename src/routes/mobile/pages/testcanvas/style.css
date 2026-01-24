@@ -1,11 +1,10 @@
-@media only screen and (max-width: 768px) {
+/* Media query wrapper removed - styles now apply on all viewports */
 
 #testcanvas {
     position: fixed;
-  width: 100vw;
-  height: 100vh;
+  width: var(--app-width);
+  height: var(--app-height);
 background: #050505;
   z-index: 0;
   /* padding-bottom: 40px; */
   }
-}
