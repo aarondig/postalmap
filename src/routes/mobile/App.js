@@ -33,16 +33,13 @@ function App() {
   //Sets whether audio is heard in scenes
   const [audio, setAudio] = useState(false);
 
-  // Router
-  const basename = "postalmap";
-
   // Location Handling
   const location = useLocation();
   useEffect(() => {
     let url = location.pathname;
 
     data.map((el, i) => {
-      if (url === `/${basename}/${data[i].id}`) {
+      if (url === `/${data[i].id}`) {
         setCurrent(i);
 
         return true;
@@ -135,8 +132,6 @@ function App() {
     current: current,
     setCurrent: setCurrent,
 
-    basename: basename,
-
     audio: audio,
   };
 
@@ -154,21 +149,21 @@ function App() {
       {/* <Intro {...loader}/> */}
       <Suspense fallback={<p>loading</p>}>
       <Routes>
-      
-        <Route path={`${basename}`} element={<Home {...home} />}>
+
+        <Route path="/" element={<Home {...home} />}>
         </Route>
-        
+
         {data.map((el, i) => {
-         
+
           return (
             <Route
-              path={`${basename}/${data[i].id}`}
+              path={`/${data[i].id}`}
               element={<Page el={el} i={i} {...page} />}
               key={i}
             />
           );
         })}
-      
+
 
       </Routes>
       </Suspense>

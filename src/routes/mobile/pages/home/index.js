@@ -15,7 +15,7 @@ import { useSwipeable } from "react-swipeable";
 
 const Scene = React.lazy(() => import("./scene"));
 
-function Home({ current, setCurrent, basename }) {
+function Home({ current, setCurrent }) {
   //Startup Function
   const [loaded, setLoaded] = useState(false);
 
@@ -61,7 +61,7 @@ function Home({ current, setCurrent, basename }) {
   // Navigating to Page
   const navigate = useNavigate();
   const handleEnter = () => {
-    navigate(`${data[current].id}`);
+    navigate(`/${data[current].id}`);
   };
   // Swipeable
   const handlers = useSwipeable({

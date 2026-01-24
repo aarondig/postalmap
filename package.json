@@ -1,12 +1,11 @@
 {
-  "homepage": "https://aarondig.github.io/postalmap/",
   "name": "postalmap",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.20.5",
-    "@react-three/drei": "^9.35.1",
-    "@react-three/fiber": "^8.8.10",
+    "@react-three/drei": "9.35.1",
+    "@react-three/fiber": "8.8.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -23,12 +22,10 @@
     "react-scripts": "5.0.1",
     "react-spring": "^9.5.5",
     "react-swipeable": "^7.0.0",
-    "three": "^0.145.0",
+    "three": "0.145.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -53,7 +50,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^4.0.0"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
