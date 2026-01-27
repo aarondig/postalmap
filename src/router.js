@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, createRef, Suspense } from "react";
-import Web from "./routes/web/App";
 import Mobile from "./routes/mobile/App";
-import Redirect from "./routes/redirect/App";
+import MobileShell from "./components/wrappers/MobileShell";
 import {BrowserRouter as Routes} from "react-router-dom"
 
 function Router() {
@@ -16,20 +15,13 @@ function Router() {
           window.removeEventListener('resize', handleWindowSizeChange);
       }
   }, []);
-  
-  const isMobile = width <= 768;
 
   return (
    <Routes>
-      {isMobile ? 
-      
-      <Mobile/> : 
-    //   <Redirect/>
-    <Web/>
-      
-      }
-      </Routes>
-      
+      <MobileShell>
+        <Mobile/>
+      </MobileShell>
+    </Routes>
   );
 }
 

@@ -1,0 +1,1331 @@
+/* ==========================================================================
+   Device Frame Styles - iPhone X Mockup
+   Only active for tablet/desktop viewports (>768px)
+   ========================================================================== */
+
+/* Mobile passthrough - no frame styles below 769px */
+@media only screen and (max-width: 768px) {
+  .mobile-shell {
+    display: contents; /* Makes wrapper invisible, children render as if no wrapper */
+  }
+}
+
+/* Tablet/Desktop - Show device frame */
+@media only screen and (min-width: 769px) {
+
+  /* ==========================================================================
+     Shell Wrapper - Full viewport background
+     ========================================================================== */
+  .mobile-shell {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #161618 0%, #161618 80%, #202020 100%);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+  }
+
+  /* ==========================================================================
+     Device Frame - iPhone X outer container
+     Dimensions based on iPhone X: 375x812 screen + bezel
+     ========================================================================== */
+  .device-frame {
+    position: relative;
+    width: 395px;  /* 375px screen + 10px bezel each side */
+    background: #1c1c1e; /* iPhone space gray */
+    border-radius: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+
+    /* Box shadow for depth */
+    box-shadow:
+      0 0 0 2px #2c2c2e,
+      0 0 0 4px #1c1c1e,
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      0 10px 20px rgba(0, 0, 0, 0.3);
+
+    /* CRITICAL: Creates containing block for position:fixed children */
+    transform: translateZ(0);
+    transform-origin: center center;
+
+    /* Isolate stacking context */
+    isolation: isolate;
+  }
+
+  /* ==========================================================================
+     Device Screen - Inner screen area where mobile app renders
+     ========================================================================== */
+  .device-screen {
+    position: relative;
+    width: 375px;
+    height: 812px;
+    background: #050505;
+    border-radius: 40px;
+    overflow: hidden;
+
+    /* Containment for fixed elements and viewport units */
+    contain: layout style;
+  }
+
+  /* ==========================================================================
+     Device Notch - iPhone X style notch
+     ========================================================================== */
+  .device-notch {
+    position: absolute;
+    top: 10px; /* Account for bezel */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 30px;
+    background: #1c1c1e;
+    border-radius: 0 0 20px 20px;
+    z-index: 9999; /* Above all app content */
+  }
+
+  /* Speaker grille in notch */
+  .device-notch::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 6px;
+    background: #0a0a0a;
+    border-radius: 3px;
+  }
+
+  /* Camera dot in notch */
+  .device-notch::after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: 25px;
+    width: 8px;
+    height: 8px;
+    background: #0a0a0a;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px rgba(50, 50, 80, 0.5);
+  }
+
+  /* ==========================================================================
+     Side Buttons (decorative)
+     ========================================================================== */
+  .device-frame::before {
+    /* Volume buttons - left side */
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 120px;
+    width: 3px;
+    height: 30px;
+    background: #2c2c2e;
+    border-radius: 2px 0 0 2px;
+    box-shadow: 0 40px 0 #2c2c2e; /* Second volume button */
+  }
+
+  .device-frame::after {
+    /* Power button - right side */
+    content: '';
+    position: absolute;
+    right: -3px;
+    top: 150px;
+    width: 3px;
+    height: 50px;
+    background: #2c2c2e;
+    border-radius: 0 2px 2px 0;
+  }
+
+  /* ==========================================================================
+     Responsive Scaling - Scale down for shorter viewports
+     ========================================================================== */
+
+  /* Viewport height < 920px - scale to 95% */
+  @media (max-height: 920px) {
+    .device-frame {
+      transform: translateZ(0) scale(0.95);
+    }
+  }
+
+  /* Viewport height < 870px - scale to 90% */
+  @media (max-height: 870px) {
+    .device-frame {
+      transform: translateZ(0) scale(0.9);
+    }
+  }
+
+  /* Viewport height < 820px - scale to 85% */
+  @media (max-height: 820px) {
+    .device-frame {
+      transform: translateZ(0) scale(0.85);
+    }
+  }
+
+  /* Viewport height < 770px - scale to 80% */
+  @media (max-height: 770px) {
+    .device-frame {
+      transform: translateZ(0) scale(0.8);
+    }
+  }
+
+  /* Viewport height < 720px - scale to 75% */
+  @media (max-height: 720px) {
+    .device-frame {
+      transform: translateZ(0) scale(0.75);
+    }
+  }
+
+  /* Viewport height < 670px - scale to 70% */
+  @media (max-height: 670px) {
+    .device-frame {
+      transform: translateZ(0) scale(0.7);
+    }
+  }
+
+  /* ==========================================================================
+     Home Indicator (bottom bar)
+     ========================================================================== */
+  .device-home-indicator {
+    position: absolute;
+    bottom: 18px; /* Inside screen area */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 134px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    z-index: 9999;
+    pointer-events: none;
+  }
+
+  /* ==========================================================================
+     CRITICAL: Mobile Layout Styles for Desktop
+     These replicate the mobile CSS that only applies at max-width: 768px
+     Without these, the app has no layout on desktop viewports
+     ========================================================================== */
+
+  /* --- Scroller (main scroll container) --- */
+  .device-screen #scroller {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 800px;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior-y: none !important;
+  }
+
+  .device-screen #scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* --- Navigation --- */
+  .device-screen #navigation {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    will-change: height, opacity;
+  }
+
+  .device-screen .nav-bar {
+    position: relative;
+    width: 100%;
+    height: 12vh;
+    z-index: 5;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .device-screen .nav-active {
+    position: fixed;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #404040;
+    will-change: transform;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .device-screen .nav-inner-wrap {
+    padding: 16vh 10% 10vh 10%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    gap: 32px;
+  }
+
+  .device-screen .nav-back {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #404040;
+    pointer-events: none;
+  }
+
+  .device-screen .nav-btn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    background: transparent;
+    z-index: 12;
+  }
+
+  .device-screen .nav-button {
+    position: relative;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 38px;
+    min-width: 38px;
+    padding-right: 28px;
+    z-index: 10;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .device-screen #navigation .content-box {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10%;
+    padding-left: 10%;
+    gap: 24px;
+  }
+
+  .device-screen .logo {
+    font-family: 'El Messiri', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    line-height: 1.8em;
+  }
+
+  .device-screen .nav-link-title {
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  .device-screen .nav-link-title.md {
+    font-size: 20px;
+    padding-top: 2.2vh;
+    padding-bottom: 1vh;
+  }
+
+  .device-screen .nav-link-title.lg {
+    font-size: 24px;
+    padding-top: 2.2vh;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid #252525;
+  }
+
+  .device-screen .nav-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #707070;
+    margin: 0;
+    padding-bottom: 8px;
+  }
+
+  /* --- Section blocks --- */
+  .device-screen .text-b {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: #101010;
+  }
+
+  .device-screen .view-b {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+
+  .device-screen .image-b {
+    position: relative;
+    height: 200%;
+    width: 100%;
+    background: #101010;
+  }
+
+  .device-screen .section-wrap {
+    box-sizing: border-box;
+    padding: 12vh 10%;
+    will-change: transform;
+  }
+
+  .device-screen .content-box {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
+
+  .device-screen .content-wrap {
+    box-sizing: border-box;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .device-screen .text-c {
+    position: relative;
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    white-space: wrap;
+  }
+
+  /* --- View section with parallax --- */
+  .device-screen #view {
+    position: relative;
+    box-sizing: border-box;
+    min-height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .device-screen .inView {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+  }
+
+  .device-screen #view .section-wrap {
+    width: 100%;
+    transform: translateZ(-1800px) scale(3.25);
+    z-index: 0;
+  }
+
+  .device-screen #view .text-c {
+    padding-top: 42vh;
+  }
+
+  .device-screen #view .subtitle {
+    color: #959595;
+    font-size: 16px;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .device-screen #view .title {
+    color: #fff;
+    margin: 0;
+    font-size: 30px;
+    max-width: 100%;
+    white-space: wrap;
+    pointer-events: none;
+  }
+
+  .device-screen #view .col-1 {
+    display: none;
+  }
+
+  /* --- Image section with parallax --- */
+  .device-screen #image {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 60px;
+    transform-style: preserve-3d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .device-screen .image-c {
+    position: relative;
+    object-fit: cover;
+    height: 80vh;
+    background: #050505;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    pointer-events: none;
+    transform: translateZ(-400px) scale(1.8);
+  }
+
+  .device-screen .image-overlay-c {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .device-screen .image-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #050505;
+    opacity: 0.6;
+  }
+
+  .device-screen .image {
+    height: 100%;
+  }
+
+  .device-screen #image .subtitle {
+    align-self: center;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+    margin: 0;
+    z-index: 1;
+  }
+
+  /* --- Text sections --- */
+  .device-screen .text-section,
+  .device-screen .title-section,
+  .device-screen .button-section {
+    z-index: 1;
+  }
+
+  .device-screen .title {
+    margin: 0;
+    font-size: 28px;
+    white-space: wrap;
+  }
+
+  .device-screen .subtitle {
+    font-size: 16px;
+    margin: 0;
+    margin-bottom: 2vh;
+  }
+
+  .device-screen .text {
+    font-size: 16px;
+    color: #959595;
+    line-height: 1.4em;
+  }
+
+  /* --- Video section --- */
+  .device-screen .video-c {
+    height: 80vh;
+    overflow: hidden;
+  }
+
+  /* --- Slider section --- */
+  .device-screen .slider-c {
+    overflow: visible;
+  }
+
+  .device-screen .slider-inner {
+    overflow-y: hidden;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .device-screen .slider-inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .device-screen .slider-image {
+    min-width: 75vw;
+    height: 50vw;
+    object-fit: scale-down;
+    overflow: hidden;
+  }
+
+  /* --- Hitboxes for view section buttons --- */
+  .device-screen .view-button-hitboxes {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    z-index: 100;
+    pointer-events: none;
+    box-sizing: border-box;
+    padding: 0 10%;
+    padding-bottom: 24vh;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: -8px;
+  }
+
+  .device-screen .view-hitbox {
+    pointer-events: auto !important;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    height: auto;
+  }
+
+  .device-screen .view-hitbox-prev {
+    padding-right: 18px;
+  }
+
+  .device-screen .view-hitbox-next {
+    padding-left: 18px;
+  }
+
+  /* --- Order buttons (Prev/Next) --- */
+  .device-screen .order-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    flex: 1 1 auto;
+    max-width: 40%;
+  }
+
+  .device-screen .order-btn {
+    font-size: 18px;
+    color: white;
+    touch-action: auto;
+  }
+
+  .device-screen .order-btn.next {
+    opacity: 0.4;
+    padding-left: 18px;
+  }
+
+  .device-screen .order-btn.prev {
+    opacity: 1;
+    padding-right: 18px;
+  }
+
+  /* --- Row/Column layout utilities --- */
+  .device-screen .row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .device-screen .col-1 {
+    display: flex;
+    flex: 1;
+    align-items: center;
+  }
+
+  .device-screen .col-2 {
+    display: flex;
+    flex: 2;
+    align-items: center;
+  }
+
+  .device-screen .col-3 {
+    display: flex;
+    flex: 3;
+    align-items: center;
+  }
+
+  .device-screen .col-4 {
+    display: flex;
+    flex: 4;
+    align-items: center;
+  }
+
+  /* --- Spacers --- */
+  .device-screen .top-spacer {
+    width: 100%;
+    padding-top: 80px;
+  }
+
+  .device-screen .bottom-spacer {
+    width: 100%;
+    padding-top: 60px;
+  }
+
+  /* --- Typography --- */
+  .device-screen h2 {
+    font-family: Inter;
+    font-weight: 300;
+  }
+
+  .device-screen h6 {
+    font-family: Inter;
+    font-weight: 300;
+  }
+
+  .device-screen p {
+    font-family: Inter;
+    font-weight: 300;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .device-screen a {
+    color: #050505;
+    text-decoration: none;
+  }
+
+  .device-screen a:hover {
+    opacity: 0.4;
+  }
+
+  .device-screen a:visited {
+    opacity: 0.8;
+  }
+
+  /* --- App container --- */
+  .device-screen .App {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* --- Home page --- */
+  .device-screen #home {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .device-screen .carousel-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12vw;
+  }
+
+  /* --- Module (3D canvas) --- */
+  .device-screen .module {
+    position: fixed;
+    z-index: 0;
+  }
+
+  /* --- General canvas positioning (fixes Three.js not filling screen) --- */
+  .device-screen #canvas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  /* --- Detail section --- */
+  .device-screen .detail-c {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .device-screen .detail-inner {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12vh;
+  }
+
+  .device-screen .detail-item {
+    margin-bottom: 2vh;
+  }
+
+  /* --- Button section --- */
+  .device-screen .button-c {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .device-screen .button-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #252525;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+  }
+
+  /* --- Title section --- */
+  .device-screen .title-section .title {
+    font-size: 6vw;
+    margin-bottom: 4vh;
+  }
+
+  /* ==========================================================================
+     ADDITIONAL MOBILE SECTION STYLES
+     Replicated from mobile CSS files that use @media (max-width: 768px)
+     ========================================================================== */
+
+  /* --- #button section --- */
+  .device-screen #button {
+    position: relative;
+    box-sizing: border-box;
+    background: #050505;
+    z-index: 1;
+  }
+
+  .device-screen #button .section-wrap {
+    padding-top: 0;
+  }
+
+  .device-screen #button .row {
+    display: flex;
+    flex-direction: row;
+    gap: 4%;
+  }
+
+  .device-screen .primary-button-c {
+    display: flex;
+    box-sizing: content-box;
+    flex: 2;
+    background: #f4f4f4;
+    border-radius: 40px;
+    justify-content: center;
+    padding: 16px 0;
+  }
+
+  .device-screen .secondary-button-c {
+    display: flex;
+    box-sizing: content-box;
+    flex: 1;
+    border: 1px solid #959595;
+    border-radius: 32px;
+    justify-content: center;
+    padding: 16px 0;
+  }
+
+  .device-screen .primary-button-text {
+    color: #161618;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .device-screen .secondary-button-text {
+    color: #fff;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* --- #text section --- */
+  .device-screen #text {
+    position: relative;
+    box-sizing: border-box;
+    background: #050505;
+    z-index: 1;
+  }
+
+  .device-screen #text .section-wrap {
+    z-index: 1;
+  }
+
+  .device-screen #text .title {
+    margin: 0;
+    font-size: 32px;
+    max-width: 100%;
+    margin-bottom: 2vh;
+    white-space: wrap;
+  }
+
+  .device-screen #text .subtitle {
+    color: #959595;
+    font-size: 18px;
+    margin: 0;
+    margin-bottom: 2vh;
+  }
+
+  .device-screen #text .text {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 100%;
+    white-space: wrap;
+  }
+
+  .device-screen #text .button-c {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .device-screen #text a {
+    flex: 1 0;
+  }
+
+  .device-screen #text .button-text {
+    font-size: 18px;
+  }
+
+  .device-screen #text .button-visual {
+    height: 0.8px;
+    flex: 1 0;
+    background: #050505;
+    align-self: center;
+  }
+
+  .device-screen #text .col-1 {
+    display: none;
+  }
+
+  /* --- #title section --- */
+  .device-screen #title {
+    position: relative;
+    box-sizing: border-box;
+    background: #050505;
+    z-index: 1;
+    transform-style: preserve-3d;
+  }
+
+  .device-screen #title .section-wrap {
+    z-index: 1;
+  }
+
+  .device-screen .line {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 32%;
+    background: #252525;
+  }
+
+  .device-screen #title .title {
+    margin: 0;
+    font-family: 'El Messiri', sans-serif;
+    font-size: 64px;
+    line-height: 1.2em;
+    max-width: 100%;
+    margin-bottom: 2vh;
+    white-space: wrap;
+  }
+
+  .device-screen #title .subtitle {
+    color: #959595;
+    font-size: 32px;
+    margin: 0;
+    margin-bottom: 2vh;
+  }
+
+  .device-screen #title .text {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 100%;
+    white-space: wrap;
+  }
+
+  .device-screen #title .button-c {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .device-screen #title a {
+    flex: 1 0;
+  }
+
+  .device-screen #title .button-text {
+    font-size: 18px;
+  }
+
+  .device-screen #title .button-visual {
+    height: 0.8px;
+    flex: 1 0;
+    background: #050505;
+    align-self: center;
+  }
+
+  .device-screen #title .col-1 {
+    display: none;
+  }
+
+  /* --- #slider section --- */
+  .device-screen #slider {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: visible;
+    z-index: 1;
+  }
+
+  .device-screen #slider .subtitle {
+    color: #959595;
+  }
+
+  .device-screen #slider .top-spacer {
+    position: relative;
+    padding-top: 60px;
+  }
+
+  .device-screen ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+  }
+
+  .device-screen li {
+    margin: 0;
+    opacity: 0;
+  }
+
+  .device-screen .slider {
+    padding-left: 10%;
+    padding-right: 10%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+
+  .device-screen .slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .device-screen .card-row {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .device-screen .card {
+    min-width: 75vw;
+  }
+
+  .device-screen .card:nth-last-child(1) {
+    padding-right: 10%;
+  }
+
+  .device-screen .thumbnail {
+    width: 100%;
+    height: 50vw;
+    object-fit: scale-down;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+    background: #eaeaea;
+  }
+
+  .device-screen .thumbnail img {
+    height: 100%;
+  }
+
+  .device-screen .card .text-c {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8%;
+    gap: 16px;
+  }
+
+  .device-screen .card h6 {
+    font-size: 12px;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  .device-screen .card h4 {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  /* --- #video section --- */
+  .device-screen #video {
+    position: relative;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .device-screen .video-c {
+    position: relative;
+    object-fit: cover;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .device-screen .video-overlay-c {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .device-screen .video-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #050505;
+    opacity: 0;
+  }
+
+  .device-screen .parallax-back {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #050505;
+    transform: translateZ(-1800px) scale(3.25);
+  }
+
+  .device-screen #video .subtitle {
+    align-self: center;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 400;
+    margin: 0;
+    z-index: 1;
+  }
+
+  .device-screen .video {
+    height: 100%;
+  }
+
+  /* --- #detail section --- */
+  .device-screen #detail {
+    position: relative;
+    box-sizing: border-box;
+    background: #050505;
+  }
+
+  .device-screen #detail .text-c {
+    max-width: 100%;
+  }
+
+  .device-screen #detail .title {
+    color: #fff;
+    margin: 0;
+    font-size: 32px;
+    max-width: 100%;
+    white-space: wrap;
+    margin-bottom: 2vh;
+  }
+
+  .device-screen #detail .subtitle {
+    color: #959595;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .device-screen #detail .text {
+    color: #959595;
+    margin: 0;
+    font-size: 18px;
+    max-width: 100%;
+    white-space: wrap;
+  }
+
+  .device-screen .canvas-wrap {
+    height: 400px;
+    width: 100%;
+  }
+
+  .device-screen .canvas-wrap:nth-child(1) {
+    overflow: visible;
+  }
+
+  .device-screen .canvas-wrap canvas {
+    width: 100%;
+  }
+
+  .device-screen #detail .row {
+    gap: 12vh;
+  }
+
+  .device-screen #detail .col-1 {
+    display: none;
+  }
+
+  /* --- #home page --- */
+  .device-screen #home {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: end;
+  }
+
+  /* Canvas.home uses RELATIVE positioning with flex - adjusts to content below */
+  /* height: 100% is needed so R3F's inner divs can resolve their percentage heights */
+  .device-screen #canvas.home {
+    position: relative;
+    flex: 1 1;
+    width: 100%;
+    height: 100%;
+    background: #050505;
+  }
+
+  .device-screen #home .section-wrap {
+    position: relative;
+    padding: 50px 10% 50px 10%;
+    background: #161717;
+    padding-bottom: calc(80px - 12%) !important;
+  }
+
+  .device-screen #home .info-c {
+    height: 24svh;
+  }
+
+  .device-screen #home .text-c {
+    position: absolute;
+    box-sizing: border-box;
+    gap: 0px;
+    min-height: 12svh;
+    padding-right: 10%;
+    opacity: 0;
+  }
+
+  .device-screen #home .title {
+    font-size: 1.15rem;
+    color: #fff;
+    width: 80%;
+    font-weight: 400;
+    margin: 0;
+    opacity: 0;
+  }
+
+  .device-screen #home .text {
+    max-width: 100%;
+    color: #707070;
+    line-height: 1.4em;
+    opacity: 0;
+    overflow: hidden;
+    font-size: 1.15rem;
+  }
+
+  .device-screen #home .row {
+    max-width: 100%;
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  .device-screen #home .index-c {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex: 1 2 0;
+    gap: 12px;
+    align-items: center;
+    padding: 0;
+  }
+
+  .device-screen #home .index {
+    position: relative;
+    height: 100%;
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .device-screen #home .index-line {
+    background: white;
+    width: 100%;
+    height: 2px;
+  }
+
+  /* --- #project page (duplicate of scroller styles) --- */
+  .device-screen #project {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    perspective: 800px;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior-y: none !important;
+  }
+
+  /* --- Wrapper component --- */
+  .device-screen .wrapper {
+    box-sizing: border-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+  }
+
+  .device-screen .wrapper::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* --- Indicator (navigation) --- */
+  .device-screen .indicator {
+    position: relative;
+    width: 10px;
+    height: 9%;
+    opacity: 0;
+    background: white;
+    align-self: center;
+    margin-left: -10%;
+  }
+
+  /* --- Nav icon --- */
+  .device-screen .nav-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+  }
+
+  .device-screen .nav-icon path {
+    stroke-width: 16px;
+  }
+
+  .device-screen .hamburger-react {
+    height: 26px;
+    width: 26px;
+  }
+
+  .device-screen .hamburger-react * {
+    height: 1px !important;
+  }
+
+  .device-screen svg {
+    will-change: transform;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* --- Nav section styling --- */
+  .device-screen .nav-section :nth-last-child(1) > .nav-link-title {
+    border: none !important;
+  }
+
+  .device-screen .nav-link {
+    box-sizing: border-box;
+  }
+}

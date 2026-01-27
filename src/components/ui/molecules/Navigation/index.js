@@ -57,7 +57,7 @@ const handleNavigate = (e)=> {
   });
 
   const wrapper = useSpring({
-    transform: active ? "translateY(0vh)" : "translateY(100vh)",
+    transform: active ? "translateY(0vh)" : "translateY(110vh)",
     background: active ? "#050505" : "#fff",
     config: { mass: 1, tension: 280, friction: 60 },
     // onRest: () => setSettle(true)
